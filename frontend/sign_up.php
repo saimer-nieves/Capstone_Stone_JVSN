@@ -13,30 +13,32 @@ if (isPostRequest()) {
     $log_username = filter_input(INPUT_POST, 'username');
     $log_password = filter_input(INPUT_POST, 'password');
 
+        $results = add_businessO($userID, $company, $fname, $lname, $email, $phone, $bo_username, $bo_password);
     header('Location: index.php');
+                                 
     
     // your logic here
     //$Allow_user = checkLogin ($log_username, $log_password); //this will return Whether login credentials is true or false
     
 
-    if(($log_username == "manager" && $log_password == "manager") || ($log_username == "employee" && $log_password == "employee")) //if they have a valid login
-    {
+  //  if(($log_username == "manager" && $log_password == "manager") || ($log_username == "employee" && $log_password == "employee")) //if they have a valid login
+ //   {
         
 
-        $_SESSION["username"] = $log_username;
-        $_SESSION["password"] = $log_password;
+  //      $_SESSION["username"] = $log_username;
+  //      $_SESSION["password"] = $log_password;
         //send them to control.php
-        header('Location: control_panel.php');
+  //      header('Location: control_panel.php');
         //$usergroups = checkEmployeeLogin("Erik", "NEIT");
 
 
-    }
-    else
-    {
-        $feedback .= " Invalid Login";
-        header('Location: index.php');
+   // }
+   // else
+   // {
+   //     $feedback .= " Invalid Login";
+    //    header('Location: index.php');
 
-    }
+   // }
 //testing push
 }
 
