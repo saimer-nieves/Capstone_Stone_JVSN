@@ -5,13 +5,13 @@
 CREATE TABLE IF NOT EXISTS businessO_login
  (
 	userID INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
-        company NVARCHAR(255),
-        fname NVARCHAR(255),
-        lname NVARCHAR(255),
-        email INT UNSIGNED,
-         phone NVARCHAR(255),
-        bo_username  NVARCHAR(255),
-        bo_password  NVARCHAR(255),      
+        company NVARCHAR(255) DEFAULT NULL,
+        fname NVARCHAR(255) DEFAULT NULL,
+        lname NVARCHAR(255) DEFAULT NULL,
+        email NVARCHAR(255) DEFAULT NULL,
+         phone NVARCHAR(255) DEFAULT NULL,
+        bo_username  NVARCHAR(255) DEFAULT NULL,
+        bo_password  NVARCHAR(255) DEFAULT NULL   
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 -- SELECT * FROM EmployeeLogins;
