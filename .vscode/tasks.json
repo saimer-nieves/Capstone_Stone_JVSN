@@ -13,7 +13,7 @@
           "command": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
       },
       "args": [
-          "http://localhost:88/SE266.05-CRMS-Final-Project/${relativeFile}"
+          "http://localhost:88/Capstone_Stone_JVSN/${relativeFile}"
       ],
       "presentation": {
           "echo": false,
