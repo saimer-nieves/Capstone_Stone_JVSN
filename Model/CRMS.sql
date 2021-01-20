@@ -2,13 +2,16 @@
 
 /* Employee Logins Table */
 
-CREATE TABLE IF NOT EXISTS EmployeeLogins (
+CREATE TABLE IF NOT EXISTS businessO_login
+ (
 	userID INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
-        username NVARCHAR(255),
-        userPassword NVARCHAR(255),
-        userGroup NVARCHAR(255),
-        companyID INT UNSIGNED,
-        FOREIGN KEY (companyID) REFERENCES ClientCompanies(companyID) ON DELETE CASCADE       
+        company NVARCHAR(255),
+        fname NVARCHAR(255),
+        lname NVARCHAR(255),
+        email INT UNSIGNED,
+         phone NVARCHAR(255),
+        bo_username  NVARCHAR(255),
+        bo_password  NVARCHAR(255),      
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 -- SELECT * FROM EmployeeLogins;

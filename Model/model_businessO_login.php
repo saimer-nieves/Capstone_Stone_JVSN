@@ -86,29 +86,24 @@
 
         return $results;
     }
-
-    function add_businessO($companyID, $pImg, $fName, $mName, $lName, $addr1, $addr2, $city, $state, $zip, $phone, $email, $purch, $bd) {
+   
+    function add_businessO($userID, $company, $fname, $lname, $email, $phone, $bo_username, $bo_password) {
         global $db;
 
         $results = 0;
 
-        $stmt = $db->prepare("INSERT INTO Customers SET companyID = :companyID, profileImg = :pImg, firstName = :fName, middleName = :mName, lastName = :lName, address1 = :addr1, address2 = :addr2, city = :city, state = :state, zip = :zip, phone = :phone, email = :email, purchases = :purch, birthday = :bd");
+        $stmt = $db->prepare("INSERT INTO businessO_login SET userID = :userID, company = :company, fname = :fname, lname = :lname, email = :email, phone = :phone, bo_username = :bo_username, bo_password = :bo_password);
 
         $binds = array (
-            ":companyID" => $companyID,
-            ":pImg" => $pImg,
-            ":fName" => $fName,
-            ":mName" => $mName,
-            ":lName" => $lName,
-            ":addr1" => $addr1,
-            ":addr2" => $addr2,
-            ":city" => $city,
-            ":state" => $state,
-            ":zip" => $zip,
-            ":phone" => $phone,
+            ":userID" => $userID,
+            ":company" => $company,
+            ":fname" => $fname,
+            ":lname" => $lname,
             ":email" => $email,
-            ":purch" => $purch,
-            ":bd" => $bd
+            ":phone" => $phone,
+            ":bo_username" => $bo_username,
+            ":bo_password" => $bo_password,
+           
         );
 
         if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
