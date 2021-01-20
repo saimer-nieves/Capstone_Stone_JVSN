@@ -14,6 +14,15 @@ CREATE TABLE IF NOT EXISTS businessO_login
         bo_password  NVARCHAR(255) DEFAULT NULL   
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
+
+
+INSERT INTO teams (teamName,division) VALUES ("Boston Celtics", "East");
+INSERT INTO teams (teamName,division) VALUES ("LA Lakers", "West");
+INSERT INTO teams (teamName,division) VALUES ("Houston Rockets", "West");
+INSERT INTO teams (teamName,division) VALUES ("Miami Heat", "East");
+
+
+
 -- SELECT * FROM EmployeeLogins;
 -- INSERT INTO EmployeeLogins (username, userPassword) VALUES ('Jack', SHA1('Password'));
 -- INSERT INTO EmployeeLogins (username, userPassword, userGroup, companyID) VALUES ('Scott', SHA1('NEIT'), "employee", 1);

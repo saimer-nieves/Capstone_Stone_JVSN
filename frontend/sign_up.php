@@ -3,6 +3,7 @@
 include "../includes/header.php";
 //include (__DIR__ .'/../model/model_EmployeeLogins.php');
 include "../includes/functions.php";
+include "../Model/model_businessO_login.php";
 
    
 $feedback = "";
@@ -10,10 +11,17 @@ session_start();
 session_unset();
 if (isPostRequest()) {
     //Obtaining Text from textbox
-    $log_username = filter_input(INPUT_POST, 'username');
-    $log_password = filter_input(INPUT_POST, 'password');
+   
+    $company = filter_input(INPUT_POST, 'company');
+    $fname = filter_input(INPUT_POST, 'fname');
+    $lname = filter_input(INPUT_POST, 'lname');
+    $email = filter_input(INPUT_POST, 'email');
+    $phone = filter_input(INPUT_POST, 'phone');
+    $bo_username = filter_input(INPUT_POST, 'bo_username');
+    $bo_password = filter_input(INPUT_POST, 'bo_password');
 
-        $results = add_businessO($userID, $company, $fname, $lname, $email, $phone, $bo_username, $bo_password);
+
+        $results = add_businessO( $company, $fname, $lname, $email, $phone, $bo_username, $bo_password);
     header('Location: index.php');
                                  
     
@@ -109,12 +117,12 @@ if (isPostRequest()) {
 
 
 
-                                <div id="form_info">
+                             
 
                                     <div id="left_form">
-                                    
+                                    <input type="hidden" maxlength = 80 class="form-control text_box"  name="userID" >
                                         <label> <h5>Company: </h5></label>
-                                        <input type="text" maxlength = 40  class="form-control text_box" name="fName" required>
+                                        <input type="text" maxlength = 40  class="form-control text_box" name="company" required>
                                    
 
                                         <br>
@@ -122,16 +130,17 @@ if (isPostRequest()) {
                                        
                                         <br>
 
+                                       
                                         <label> <h5>First Name: </h5></label>
-                                        <input type="text" maxlength = 80 class="form-control text_box"  name="mName" >
+                                        <input type="text" maxlength = 80 class="form-control text_box"  name="fname" >
                                       
                                         <br>
                                         <br>
 
                                         <label> <h5>Last Name: </h5></label>
-                                        <input type="text" maxlength = 80 class="form-control text_box"  name="lName" required>
+                                        <input type="text" maxlength = 80 class="form-control text_box"  name="lname" required>
                                         
-                                        <br>
+                                        <br> 
                                         <br>
                                         <br> <label> <h5>Email: abc@abc.abc  </h5></label>
                                         <input type="email"  class="form-control text_box" name="email" pattern ='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' required>
@@ -141,16 +150,16 @@ if (isPostRequest()) {
                                         <input type="tel" maxlength = 20 id="phone" name="phone" placeholder="(###) ###-####"  pattern="[(][0-9]{3}[)][ ][0-9]{3}-[0-9]{4}" class="form-control text_box" required >
                                   
                                         <br>
-
+                                     
                                         <label> <h5>Username </h5></label>
-                                        <input type="text" maxlength = 255 class="form-control text_box" name="addr1" required>
+                                        <input type="text" maxlength = 255 class="form-control text_box" name="bo_username" required>
                                     
 
                                         <br>
                                         <br>
 
                                         <label> <h5>Password : </h5></label>
-                                        <input type="text" maxlength = 255 class="form-control text_box" name="addr2" >
+                                        <input type="text" maxlength = 255 class="form-control text_box" name="bo_password" >
                                         
 
                                         <br>

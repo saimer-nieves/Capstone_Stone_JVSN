@@ -87,15 +87,15 @@
         return $results;
     }
    
-    function add_businessO($userID, $company, $fname, $lname, $email, $phone, $bo_username, $bo_password) {
+    function add_businessO($company, $fname, $lname, $email, $phone, $bo_username, $bo_password) {
         global $db;
 
         $results = 0;
 
-        $stmt = $db->prepare("INSERT INTO businessO_login SET userID = :userID, company = :company, fname = :fname, lname = :lname, email = :email, phone = :phone, bo_username = :bo_username, bo_password = :bo_password);
+        $stmt = $db->prepare("INSERT INTO businessO_login SET  company = :company, fname = :fname, lname = :lname, email = :email, phone = :phone, bo_username = :bo_username, bo_password = :bo_password");
 
         $binds = array (
-            ":userID" => $userID,
+           
             ":company" => $company,
             ":fname" => $fname,
             ":lname" => $lname,
@@ -112,6 +112,8 @@
 
         return $results;
     }
+
+  //  $me =  add_businessO("meeee", "meeee", "meeee", "meeee", "meeee", "meeee", "meeee");
 
     function updateCustomers($cusID, $companyID, $pImg, $fName, $mName, $lName, $addr1, $addr2, $city, $state, $zip, $phone, $email, $purch, $bd) {
         global $db;
