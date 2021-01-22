@@ -95,7 +95,7 @@ include "../includes/header.php";
         <div class="row">
           <div class="col-lg-4 d-flex align-items-stretch" data-aos="fade-right">
             <div class="content " >
-              <h3>test</h3>
+              <h3>boss webpage will go here</h3>
               <img src="../images/background1.webp" class=" view_page">
               <div class="text-center">
                 <a href="#" class="more-btn">open webpage <i class="bx bx-chevron-right"></i></a>
@@ -121,35 +121,35 @@ include "../includes/header.php";
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200" >
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 1</h4>
-                <p>App</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-1.jpg" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app" >
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 1</h4>
-                <p>App</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-1.jpg" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <div class="col-lg-4 col-md-6 portfolio-item filter-app" onmouseover="mouseOverpic1()" onmouseout="mouseOut()">
+            <div class="portfolio-wrap">
+              <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>App 1</h4>
+                <p>App</p>
+                <div class="portfolio-links">
+                  <a href="assets/img/portfolio/portfolio-1.jpg" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
+                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app" onmouseover="mouseOverpic2()" onmouseout="mouseOut()">
+            <div class="portfolio-wrap">
+              <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>App 1</h4>
+                <p>App</p>
+                <div class="portfolio-links">
+                  <a href="assets/img/portfolio/portfolio-1.jpg" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
+                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app" onmouseover="mouseOverpic3()" onmouseout="mouseOut()">
             <div class="portfolio-wrap">
               <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid " alt="">
               <div class="portfolio-info">
@@ -370,6 +370,11 @@ include "../includes/header.php";
    
        
     function mouseOverpic1(){display_img.src="assets/img/portfolio/portfolio-6.jpg"}
+    function mouseOverpic2(){display_img.src="assets/img/portfolio/portfolio-6.jpg"}
+    function mouseOverpic3(){display_img.src="assets/img/portfolio/portfolio-6.jpg"}
+    function mouseOverpic4(){display_img.src="assets/img/portfolio/portfolio-6.jpg"}
+    function mouseOverpic5(){display_img.src="assets/img/portfolio/portfolio-6.jpg"}
+
    
 //
     
