@@ -24,6 +24,7 @@
   <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
   <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -36,11 +37,14 @@
   ======================================================== -->
 
   <style>
+
+
 #main_store1
 {
   background-color:none;
   width:100%;
   padding:10px;
+  position:absolute;
 }
 
 .store_sizing
@@ -49,6 +53,13 @@
     width:300px;
     margin-left:40px;
     margin-bottom:40px;
+}
+.store_logo
+{
+  width:100%;
+  height:100%;
+  padding:0px;
+  margin:0px;
 }
 
 .store_detail_sizing
@@ -65,6 +76,7 @@
 
     background-color:yellow;
 
+
     float:left;
  
    
@@ -80,6 +92,18 @@
   position:absolute;
   margin-left:340px;
 }
+
+#store1_detail2
+{
+  display:none;
+  width:300px;
+  height:100px;
+  background-color:red;
+  position:absolute;
+  margin-left:340px;
+}
+
+
 
 .store2{
 
@@ -124,6 +148,43 @@
 
     background-color:white;
     float:left;
+
+}
+
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body { font-family: sans-serif; }
+
+.gallery {
+ // background: #EEE;
+}
+
+.gallery-cell {
+  width: 1400px;
+  height: 400px;
+  margin-right: 10px;
+  //background: #8C8;
+  
+}
+
+/* cell number */
+.gallery-cell:before {
+  display: block;
+  text-align: center;
+  
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+
+
+.store_pic_ad
+{
+  width:730px;
 
 }
 
@@ -180,17 +241,55 @@
 
 
     <div id="main_store1"> 
-        <div class="store1 store_sizing">1</div>
-        <div id="store1_detail1">1</div>
+
+        <!-- Flickity HTML init -->
+        <div class="gallery js-flickity"
+          data-flickity-options='{ "wrapAround": true }'>
+          <div class="gallery-cell"> 
+            
+                <div class="store1 store_sizing"  onmouseover="mouseOver10()" onmouseout="fade_exit()" >
+                  <img src="../images/JC_logo.jpg" class="store_logo">
+              
+              </div>
+                <div id="store1_detail1">JC penny</div>
+              
+
+                <div class="store2 store_sizing"  onclick="myFunction()"  >2  </div>
+                <div class="store3 store_sizing"  onclick="myFunction()" >3</div>
+                <div class="store4 store_sizing"  onclick="myFunction()">4</div>
+                <div class="store5 store_sizing" >5</div>
+                <div class="store6 store_sizing">6</div>
+                <div class="store7 store_sizing" >7</div>
+                <div class="store8 store_sizing">8</div>
 
 
-        <div class="store2 store_sizing"  onclick="myFunction()"  >2 <a href="../week9/index.php" onmouseover="myFunction()" ><input type="button" value="view Week 9" class="buttons"></a></td> </div>
-        <div class="store3 store_sizing"  onclick="myFunction()" >3</div>
-        <div class="store4 store_sizing"  onclick="myFunction()">4</div>
-        <div class="store5 store_sizing" >5</div>
-        <div class="store6 store_sizing">6</div>
-        <div class="store7 store_sizing" >7</div>
-        <div class="store8 store_sizing">8</div>
+          </div>
+          <div class="gallery-cell">
+
+
+          <div class="store1 store_sizing"  onmouseover="mouseOver100()" onmouseout="fade_exit()" ></div>
+                <div id="store1_detail2">Jc Penny store</div>
+              
+
+                <div class="store2 store_sizing" style="background-color:red;"  onclick="myFunction()"  >2  </div>
+                <div class="store3 store_sizing"  onclick="myFunction()" >3</div>
+                <div class="store4 store_sizing"  onclick="myFunction()">4</div>
+                <div class="store5 store_sizing" >5</div>
+                <div class="store6 store_sizing">6</div>
+                <div class="store7 store_sizing" >7</div>
+                <div class="store8 store_sizing">8</div>
+
+
+
+
+
+
+          </div>
+          <div class="gallery-cell"></div>
+          <div class="gallery-cell"></div>
+          <div class="gallery-cell"></div>
+        </div>
+    
       
     </div>
  
@@ -215,65 +314,15 @@
             </div>
           </div>
           <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
-            <div class="owl-carousel testimonials-carousel">
+            <div class=" "  style="background-color:green; width:730px;" >
+                <img src="../images/air_jordan_ad.jpg" class="store_pic_ad">
+                </div>
 
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-              </div>
-
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-              </div>
-
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-              </div>
-
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-              </div>
-
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-              </div>
+                <div class="">
+                 
+                </div>
 
             </div>
-          </div>
         </div>
 
       </div>
@@ -295,7 +344,7 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Bethany</h3>
+            <h3>Bethany </h3>
             <p>
               A108 Adam Street <br>
               New York, NY 535022<br>
@@ -376,6 +425,9 @@
   <script src="assets/vendor/venobox/venobox.min.js"></script>
   <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.js"></script>
+
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
@@ -388,12 +440,19 @@
 <script>
 
 
-$(document).ready(function(){console.log("saimer")})
 
-function myFunction() {
-  console.log("saimer");
+function mouseOver10() {
+  $("#store1_detail1").fadeIn(1000);
 }
 
+function mouseOver100() {
+  $("#store1_detail2").fadeIn(1000);
+}
+
+function fade_exit() {
+  $("#store1_detail1").fadeOut(500);
+  $("#store1_detail2").fadeOut(500);
+}
 
 
 

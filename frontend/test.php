@@ -1,48 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.css" rel="stylesheet">
 
-    <Style>
-        #div1
-        {
-            background-color:red;
-            height:200px;
-            width:400px;}
-    
-    </Style>
+  <style>
+
+/* external css: flickity.css */
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body { font-family: sans-serif; }
+
+.gallery {
+  background: #EEE;
+}
+
+.gallery-cell {
+  width: 66%;
+  height: 200px;
+  margin-right: 10px;
+  background: #8C8;
+  
+}
+
+/* cell number */
+.gallery-cell:before {
+  display: block;
+  text-align: center;
+  
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+
+  </style>
 </head>
 <body>
-    
+  
 
 
-    
-    
-    
-    </div>
+
+
+
+
+
+<p><code>wrapAround: true</code></p>
+
+<!-- Flickity HTML init -->
+<div class="gallery js-flickity"
+  data-flickity-options='{ "wrapAround": true }'>
+  <div class="gallery-cell"> asdasdasdas</div>
+  <div class="gallery-cell"></div>
+  <div class="gallery-cell"></div>
+  <div class="gallery-cell"></div>
+  <div class="gallery-cell"></div>
+</div>
 </body>
 </html>
 
 
-<Script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.js"></script>
 
-$(document).ready(function(){console.log("saimer")})
 
-function mouseOver10() {
-  console.log("saimer");
-}
-
-$(document).ready(function(){
- 
- //$("#message").fadeIn();
- //$("#message").fadeIn("slow");
- $("#space_holder").fadeOut(500);
- 
- $("#store1_detail1").fadeIn(1000);
- 
- 
-
-});
-</Script>

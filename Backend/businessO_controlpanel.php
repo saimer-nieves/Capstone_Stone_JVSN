@@ -1,6 +1,7 @@
 <?php
 
 include "../includes/header.php";
+
 //include (__DIR__ .'/../model/model_EmployeeLogins.php');
 ?>
 
@@ -44,7 +45,8 @@ include "../includes/header.php";
   <style>
     .view_page
     {
-      width:250px;
+      width:350px;
+      height:100%;
      
     }
 
@@ -94,12 +96,10 @@ include "../includes/header.php";
 
         <div class="row">
           <div class="col-lg-4 d-flex align-items-stretch" data-aos="fade-right">
-            <div class="content " >
-              <h3>boss webpage will go here</h3>
+            <div class="content " style="padding:10px;" >
+            
               <img src="../images/background1.webp" class=" view_page">
-              <div class="text-center">
-                <a href="#" class="more-btn">open webpage <i class="bx bx-chevron-right"></i></a>
-              </div>
+             
             </div>
           </div>
           <div class="col-lg-8 d-flex align-items-stretch">
@@ -123,12 +123,12 @@ include "../includes/header.php";
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app" onmouseover="mouseOverpic1()" onmouseout="mouseOut()">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+              <img src="../images/temp_store1.PNG" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>App 1</h4>
                 <p>App</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-1.jpg" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
+                  <a href="../images/temp_store1.PNG" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
                   <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
@@ -203,7 +203,7 @@ include "../includes/header.php";
               </div>
             </div>
           </div>
-
+       
           
         </div>
         
@@ -248,7 +248,7 @@ include "../includes/header.php";
                 <h4>App 1</h4>
                 <p>App</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-1.jpg" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
+                  <a href="../images/temp_store1.PNG" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
                   <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
@@ -369,7 +369,7 @@ include "../includes/header.php";
     
    
        
-    function mouseOverpic1(){display_img.src="assets/img/portfolio/portfolio-6.jpg"}
+    function mouseOverpic1(){display_img.src="../images/temp_store1.PNG"}
     function mouseOverpic2(){display_img.src="assets/img/portfolio/portfolio-6.jpg"}
     function mouseOverpic3(){display_img.src="assets/img/portfolio/portfolio-6.jpg"}
     function mouseOverpic4(){display_img.src="assets/img/portfolio/portfolio-6.jpg"}
