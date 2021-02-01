@@ -54,7 +54,7 @@
         <div id="middle">
             <center><h1><?='PHP and MySQL - Saimer Nieves';?></h1>
             
-            <p>Welcome to my PHP and MySQL page. You can find an overview of all my working PHP projects along with my code</p>
+            <p>Welcome to my PHP and MySQL page. You can find an overview of all my working PHP projects along with my code test code</p>
             
             
             <div id="left_window">
