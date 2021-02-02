@@ -22,14 +22,14 @@
         <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content" id="myDropdown">
-        <a href="http://se266-php-nieves-s-2020.herokuapp.com/PHP_Pract_1_SN/"><?='Table';?></a>
-        <a href="http://se266-php-nieves-s-2020.herokuapp.com/PHP_Pract_2_SN/"><?='Protoype';?></a>
+        <a href=""><?='';?></a>
+        <a href=""><?='';?></a>
         
         </div>
         </div> 
       
-        <a href="git_sources.php"><?='Git Resources';?></a>
-        <a href="https://github.com/saimer-nieves/SE266"><?='My GitHub Repo';?></a>
+        <a href="git_sources.php"><?='';?></a>
+        <a href="https://github.com/saimer-nieves/SE266"><?='';?></a>
         </div>
 
                 
@@ -52,64 +52,53 @@
         }
         </script>    
         <div id="middle">
-            <center><h1><?='PHP and MySQL - Saimer Nieves';?></h1>
+            <center><h1><?='Capstone Project Origin Mall';?></h1>
             
-            <p>Welcome to my PHP and MySQL page. You can find an overview of all my working PHP projects along with my code test code</p>
+            <p>Welcome our Capstone Page for Junior Voltaire and Saimer Nieves</p>
             
             
             <div id="left_window">
                 <h2><?='Assignment Overview';?></h2>
                
 
-
+                <h4>Completed Assignments</h4>
                 <table id="table_">
                     <tbody>
-                        <tr>
-                            <td><?='File Layouts';?></td>
-                            <td><a href="Capstone_Technical_Design.pdf"  onmouseover="mouseOver1()" onmouseout="mouseOut()"><input type="button" value="view PHP P 1" id="btn1" class="buttons"></a></td>
+                         <tr>
+                            <td><?='Proposal';?></td>
+                            <td><a href="Proposal_Origin_Websites.pdf"  onmouseover="" onmouseout="mouseOut()"><input type="button" value="view " id="btn1" class="buttons"></a></td>
                         </tr>
                             <tr>
-                                <td><?='Week 1 - PHP Pract 2';?></td>  
-                                <td><a href="http://se266-php-nieves-s-2020.herokuapp.com/PHP_Pract_2_SN/"  onmouseover="mouseOver2()" onmouseout="mouseOut()" ><input type="button" value="view PHP P 2" class="buttons"></a></td>
+                                <td><?='Status Report 1';?></td>  
+                                <td><a href="STATUS_REPORT_W1.pdf"  onmouseover="" onmouseout="mouseOut()" ><input type="button" value="view " class="buttons"></a></td>
                             </tr> 
+
+
+
+                        <tr>
+                            <td><?='Prototype';?></td>
+                            <td><a href="ORIGIN MALL PROJECT SNJV.pdf"  onmouseover="" onmouseout="mouseOut()"><input type="button" value="view " id="btn1" class="buttons"></a></td>
+                        </tr>
                             <tr>
-                                <td><?='Week 1 - PHP Pract 3';?></td> 
-                                <td><a href="http://se266-php-nieves-s-2020.herokuapp.com/PHP_Pract_3_SN/" onmouseover="mouseOver3()" onmouseout="mouseOut()"><input type="button" value="view PHP P 3" class="buttons"></a></td>
-                            </tr>       
-                            <tr>
-                                <td><?='Week 1 - PHP Pract 4';?></td>   
-                                <td><a href="http://se266-php-nieves-s-2020.herokuapp.com/PHP_Pract_4_SN/" onmouseover="mouseOver4()" onmouseout="mouseOut()"><input type="button" value="view PHP P 4" class="buttons"></a></td>
-                            </tr>     
-                            <tr>
-                                <td><?='Week 1 - (Fizz Buzz)';?></td>  
-                                <td><a href="http://se266-php-nieves-s-2020.herokuapp.com/Fizz_Buzz/" onmouseover="mouseOver5()" onmouseout="mouseOut()"><input type="button" value="view Fizz Buzz" class="buttons"></a></td> 
-                            </tr>     
-                            <tr>
-                                <td><?='Week 2 - (Patient Intake) ';?></td>  
-                                <td><a href="http://se266-php-nieves-s-2020.herokuapp.com/Form/"  onmouseover="mouseOver6()" onmouseout="mouseOut()"><input type="button" value="view Patient Int." class="buttons"></a></td>
-                            </tr>      
-                            <tr>
-                                <td><?='Week 3 - (ATM)';?></td> 
-                                <td><a href="http://se266-php-nieves-s-2020.herokuapp.com/ATM/account.php" onmouseover="mouseOver7()" onmouseout="mouseOut()"><input type="button" value="view ATM" class="buttons"></a></td> 
-                            </tr>      
-                            <tr>
-                                <td><?='Week 4 - Patients V/Add';?></td> 
-                                <td><a href="http://se266-php-nieves-s-2020.herokuapp.com/teams_folder/" onmouseover="mouseOver8()" onmouseout="mouseOut()"><input type="button" value="view Patients " class="buttons"></a></td>
-                            </tr>       
-                            <tr>
-                                <td><?='Week 5 - Pats. UPD/Del';?></td>
-                                <td><a href="http://se266-php-nieves-s-2020.herokuapp.com/Week5/view.php" onmouseover="mouseOver9()" onmouseout="mouseOut()"><input type="button" value="view P UPD|DEL" class="buttons"></a></td> 
-                            </tr>       
-                            <tr>
-                                <td><?='Week 6 - Schools';?></td> 
-                                <td><a href="http://se266-php-nieves-s-2020.herokuapp.com/Schools/login.php" onmouseover="mouseOver10()" onmouseout="mouseOut()"><input type="button" value="view Schools" class="buttons"></a></td> 
-                            </tr>       
-                            <tr><td><?='<b>Final Project</b>';?></td> 
-                                <td><a  onmouseover="mouseOver11()" onmouseout="mouseOut()"><input type="button" value="view Final Project" class="buttons"></a></td> </tr>      
-                            
-                                
-                                
-                                
+                                <td><?='Status Report 2';?></td>  
+                                <td><a href="STATUS_REPORT_W2.pdf"  onmouseover="" onmouseout="mouseOut()" ><input type="button" value="view " class="buttons"></a></td>
+                            </tr> 
+
+                        <tr>
+                            <td><?='Database design and Implementation';?></td>  
+                            <td><a href="Capstone_DB_Design_1.PNG"  onmouseover="" onmouseout="mouseOut()"><input type="button" value="view " id="btn1" class="buttons"></a></td>
+                        </tr>
+                        <tr>
+                            <td><?='Technical Design';?></td>  
+                            <td><a href="Capstone_Technical_Design.pdf"  onmouseover="" onmouseout="mouseOut()"><input type="button" value="view " id="btn1" class="buttons"></a></td>
+                        </tr>
+                        <tr>
+                             <td><?='Status Report 3';?></td>  
+                            <td><a href="STATUS_REPORT_W3.pdf"  onmouseover="" onmouseout="mouseOut()"><input type="button" value="view " id="btn1" class="buttons"></a></td>
+                        </tr>
+                        
+                      
+                           
                                 
                                 
                                 
@@ -124,9 +113,40 @@
                                 
                             
                                 
-                            </ul></td>
-                        </tr>
+                        
+              
                     </tbody>
+                    
+                
+                </table >
+                <h4>Pending Assignments</h4>
+                <table id="table_">
+                    <tbody>
+                         <tr>
+                            <td><?='Status Report 4';?></td>
+                            <td><a href=""  onmouseover="" onmouseout="mouseOut()"><input type="button" value="view" id="btn1" class="buttons"></a></td>
+                        </tr>
+                       
+                      
+                           
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                        
+                                
+                                
+                                
+                                
+                            
+                                
+                        
+              
+                    </tbody>
+                    
                 
                 </table >
                     
@@ -161,7 +181,7 @@
             <div id="right_window">
 
 
-                <center><h2>Hover over Button to view Here | Click button to Visit Site</h3>
+                <center><h2></h3>
                 
                 <img src="images/php_logo.png" id="view_image_spot">
             </center>
