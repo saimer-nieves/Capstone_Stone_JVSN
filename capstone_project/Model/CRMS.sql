@@ -16,6 +16,8 @@ CREATE TABLE IF NOT EXISTS businessO_login
 
 
 
+
+
 INSERT INTO teams (teamName,division) VALUES ("Boston Celtics", "East");
 INSERT INTO teams (teamName,division) VALUES ("LA Lakers", "West");
 INSERT INTO teams (teamName,division) VALUES ("Houston Rockets", "West");
@@ -93,5 +95,4 @@ CREATE TABLE IF NOT EXISTS Memos (
 
 -- SELECT * FROM Memos;
 -- INSERT INTO MEMOS (customerID, mDate, memo) VALUES (5, "2020/10/15", "Replaced car tires.");
-
 

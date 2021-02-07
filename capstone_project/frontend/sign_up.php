@@ -22,7 +22,7 @@ if (isPostRequest()) {
 
 
         $results = add_businessO( $company, $fname, $lname, $email, $phone, $bo_username, $bo_password);
-    header('Location: index.php');
+    header('Location: outside_index.php');
                                  
     
     // your logic here
@@ -173,12 +173,12 @@ if (isPostRequest()) {
       padding: 5px;
       }
       .item:hover p, .item:hover i, .question:hover p, .question label:hover, input:hover::placeholder {
-      color: #8ebf42;
+      color: white;
       }
       .item input:hover, .item select:hover, .item textarea:hover {
       border: 1px solid transparent;
-      box-shadow: 0 0 8px 0 #8ebf42;
-      color: #8ebf42;
+      box-shadow: 0 0 8px 0 white;
+      color: white;
       }
       .item {
       position: relative;
@@ -190,7 +190,7 @@ if (isPostRequest()) {
       .item i, input[type="date"]::-webkit-calendar-picker-indicator {
       position: absolute;
       font-size: 20px;
-      color: #a9a9a9;
+      color: white;
       }
       .item i {
       right: 2%;
@@ -223,7 +223,7 @@ if (isPostRequest()) {
       width: 17px;
       height: 17px;
       border-radius: 50%;
-      border: 2px solid #8ebf42;
+      border: 2px solid white;
       }
       label.radio:after {
       content: "";
@@ -233,7 +233,7 @@ if (isPostRequest()) {
      
       left: 5px;
       background: transparent;
-      border: 3px solid #8ebf42;
+      border: 3px solid white;
       border-top: none;
       border-right: none;
       transform: rotate(-45deg);
@@ -248,7 +248,7 @@ if (isPostRequest()) {
       }
    
       button:hover {
-      background: #82b534;
+      background: white;
       }
       @media (min-width: 568px) {
       .name-item, .city-item {
@@ -272,7 +272,7 @@ if (isPostRequest()) {
 
 
       @import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+      @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
 
 .grad{
 	position: absolute;
@@ -292,7 +292,8 @@ if (isPostRequest()) {
 	position: absolute;
 	top: calc(50% - 35px);
 	left: calc(50% - 255px);
-	z-index: 2;
+  z-index: 2;
+  
 }
 
 .header div{
@@ -351,7 +352,7 @@ if (isPostRequest()) {
 	border: 1px solid #fff;
 	cursor: pointer;
 	border-radius: 2px;
-	color: #a18d6c;
+	color: black;
 	font-family: 'Exo', sans-serif;
 	font-size: 16px;
 	font-weight: 400;
@@ -360,21 +361,28 @@ if (isPostRequest()) {
 }
 
 .login input[type=button]:hover{
-	opacity: 0.8;
+	opacity: 0.9;
 }
 
 .login input[type=button]:active{
-	opacity: 0.6;
+	opacity: 0.7;
 }
 
 .login input[type=text]:focus{
 	outline: none;
-	border: 1px solid rgba(255,255,255,0.9);
+  border: 1px solid white
+
 }
 
 .login input[type=password]:focus{
 	outline: none;
-	border: 1px solid rgba(255,255,255,0.9);
+	border: 1px solid white;
+}
+
+
+.login input[type=password]:focus{
+	outline: none;
+	border: 1px solid white;
 }
 
 .login input[type=button]:focus{
@@ -391,19 +399,74 @@ if (isPostRequest()) {
 
 #log_in
 {
-    background-color:white;
+    background-color:none;
     margin-top:200px;
     height:500px;
 
 
 }
+
+#images_holder
+{
+  height:400px;
+  width:1300px;
+  background-color:none;
+  transform: rotate3d(20, 20, 5,60deg);
+  margin-left:300px;
+  margin-top:200px;
+
+ 
+}
+
+.img_design
+{ border: 1px solid;
+
+    box-shadow: 1px 10px 10px black;
+
+  height:150px;
+  float:left;
+  margin:5px 5px 10px 0px;
+
+}
+
+#txt_background
+{
+  background-color:red;
+  height:200px;
+  width:600px;
+  position:absolute;
+  top:300px;
+  left:400px;
+  border-radius:50px;
+
+  
+}
+
     </style>
 </head>
 <body>
     
 
 
+<div id="images_holder"> 
+  <img src="../images/ae_logo.png" class="img_design">
+  <img src="../images/childrenplace_logo.jpg" class="img_design">
+  <img src="../images/cheesecake_logo.jpg" class="img_design">
+  <img src="../images/gamestop_logo.png" class="img_design">
+  <img src="../images/cured_collection_logo.jpg" class="img_design">
+  
+  <img src="../images/dave_buster_logo2.jpg" class="img_design">
 
+  <img src="../images/gap_logo.jpeg" class="img_design">
+  <img src="../images/JC_logo.jpg" class="img_design">
+
+  <img src="../images/nike_logo1.jpg" class="img_design">
+  <img src="../images/vans_logo.png" class="img_design">
+  
+
+
+</div>
+<div id="txt_background"></div>
 
 
 
@@ -411,13 +474,15 @@ if (isPostRequest()) {
         <div class="body"></div>
 		<div class="grad"></div>
 		<div class="header">
-			<div>Origin Mall<span></span></div>
+			<div>Origin Mall</div> <!--TODO ADD SOME PHP HERE FOR CHANGING NAME-->
 		</div>
 		<br>
 		<div class="login">
-				<input type="text" placeholder="username" name="user"><br>
-				<input type="password" placeholder="password" name="password"><br>
-				<input type="button" value="Login">
+      
+				<input type="text" placeholder="username" name="user" id="username"><br>
+				<input type="password" placeholder="password" name="password" id="username"><br>
+        <input type="button" value="Login">
+        
 		</div>
 
 </div>
