@@ -10,10 +10,10 @@
       "label": "Open PHP Server",
       "command": "Chrome",
       "windows": {
-          "command": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+          "command": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
       },
       "args": [
-          "http://localhost:88/Capstone_Stone_JVSN/${relativeFile}"
+          "http://localhost:80/Capstone_Stone_JVSN/${relativeFile}"
       ],
       "presentation": {
           "echo": false,

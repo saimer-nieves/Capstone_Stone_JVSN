@@ -1,207 +1,286 @@
+
+
 <?php
 
-    include (__DIR__ . '/db.php');
+include (__DIR__ . '/db.php');
 
-    function getCustomers() {
-        global $db;
+//getMerchants 
+function getMerchants() {
+    global $db;
 
-        $results = [];
+    $results = [];
 
-        $stmt = $db->prepare("SELECT customerID, firstName, lastName, state, phone FROM Customers");
+    $stmt = $db->prepare("SELECT merchant_ID ,fName,lName, email, password, phone FROM Merchants_TBL");
 
-        if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);   
-        }
-
-        return $results;
-
+    if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);   
     }
 
-    function getCustomer($id) {
-        global $db;
+    return $results;
 
-        $results = [];
+}
+//getCustomer()
+function getCustomers() {
+    global $db;
 
-        $stmt = $db->prepare("SELECT * FROM Customers WHERE customerID = :customerID");
+    $results = [];
 
-        $stmt->bindValue(":customerID", $id);
+    $stmt = $db->prepare("SELECT customerID,fName,lName, email, password, phone FROM Customers_TBL");
 
-        if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);   
-        }
-
-        return $results;
+    if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);   
     }
 
-    function searchCustomers($f, $l, $bd, $city, $state) {
-        global $db;
+    return $results;
 
-        $results = [];
+}
 
-        $sql = "";
-        $bindsElements = [];
+//getCustomre($id)  getMerchants($id)
+function getMerchant($id) {
+    global $db;
+
+    $results = [];
+
+    $stmt = $db->prepare("SELECT * FROM Merchants WHERE MerchantID = :MerchantID");
+
+    $stmt->bindValue(":MerchantID", $id);
+
+    if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);   
+    }
+
+    return $results;
+}
+
+
+
+//getCustomre($id)  getMerchants($id)
+function getCustomer($id) {
+    global $db;
+
+    $results = [];
+
+    $stmt = $db->prepare("SELECT * FROM Customers WHERE customerID = :customerID");
+
+    $stmt->bindValue(":customerID", $id);
+
+    if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);   
+    }
+
+    return $results;
+}
+
+//Maybe
+function searchCustomers($f, $l, $bd, $city, $state) {
+    global $db;
+
+    $results = [];
+
+    $sql = "";
+    $bindsElements = [];
+    
+
+    if ($f != "") {
+        $sql .= "AND fName = :fName ";
+        $bindsElements[":fName"] = $f;
+    }
+
+    if ($l != "") {
+        $sql .= "AND lName = :lName ";
+        $bindsElements[":lName"] = $l;
+    }
+
+    if ($bd != "") {
+        $sql .= "AND birthday = :birthday ";
+        $bindsElements[":birthday"] = $bd;
+    }
+
+    if ($city != "") {
+        $sql .= "AND city = :city ";
+        $bindsElements[":city"] = $city;
+    }
+
+    if ($state != "") {
+        $sql .= "AND state = :state ";
+        $bindsElements[":state"] = $state;
+    }
+
+    $stmt = $db->prepare("SELECT * FROM Customers WHERE 0=0 $sql;");
+
+
+    // $binds = array (
+    //     ":firstName" => $f,
+    //     ":lastName" => $l,
+    //     ":birthday" => $bd,
+    //     ":city" => $city,
+    //     ":state" => $state
+    // );
+
+    $binds = $bindsElements;
+
+    if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);   
+    }
+
+    return $results;
+}
+
+
+//addMerchants($All-Fields-names here)    addCustomers(All field names here)
+
+function addMerchants($merchand_ID,$fName,$lName, $email, $password, $phone) {
+    global $db;
+
+    $results = 0;
+
+    $stmt = $db->prepare("INSERT INTO Merchants_TBL SET  merchand_ID = :merchand_ID, fname = :fname, lname = :lname, email = :email,password= :password, phone = :phone");
+
+    $binds = array (
+       
+        ":merchands_ID" => $merchands_ID,
+        ":fname" => $fname,
+        ":lname" => $lname,
+        "password" => $password,
+        ":email" => $email,
+        ":phone" => $phone,
         
+       
+    );
 
-        if ($f != "") {
-            $sql .= "AND firstName = :firstName ";
-            $bindsElements[":firstName"] = $f;
-        }
-
-        if ($l != "") {
-            $sql .= "AND lastName = :lastName ";
-            $bindsElements[":lastName"] = $l;
-        }
-
-        if ($bd != "") {
-            $sql .= "AND birthday = :birthday ";
-            $bindsElements[":birthday"] = $bd;
-        }
-
-        if ($city != "") {
-            $sql .= "AND city = :city ";
-            $bindsElements[":city"] = $city;
-        }
-
-        if ($state != "") {
-            $sql .= "AND state = :state ";
-            $bindsElements[":state"] = $state;
-        }
-
-        $stmt = $db->prepare("SELECT * FROM Customers WHERE 0=0 $sql;");
-
-
-        // $binds = array (
-        //     ":firstName" => $f,
-        //     ":lastName" => $l,
-        //     ":birthday" => $bd,
-        //     ":city" => $city,
-        //     ":state" => $state
-        // );
-
-        $binds = $bindsElements;
-
-        if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);   
-        }
-
-        return $results;
-    }
-   
-    function add_businessO($company, $fname, $lname, $email, $phone, $bo_username, $bo_password) {
-        global $db;
-
-        $results = 0;
-
-        $stmt = $db->prepare("INSERT INTO businessO_login SET  company = :company, fname = :fname, lname = :lname, email = :email, phone = :phone, bo_username = :bo_username, bo_password = :bo_password");
-
-        $binds = array (
-           
-            ":company" => $company,
-            ":fname" => $fname,
-            ":lname" => $lname,
-            ":email" => $email,
-            ":phone" => $phone,
-            ":bo_username" => $bo_username,
-            ":bo_password" => $bo_password,
-           
-        );
-
-        if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
-            $results = 1;   
-        }
-
-        return $results;
+    if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
+        $results = 1;   
     }
 
-  //  $me =  add_businessO("meeee", "meeee", "meeee", "meeee", "meeee", "meeee", "meeee");
+    return $results;
+}
 
-    function updateCustomers($cusID, $companyID, $pImg, $fName, $mName, $lName, $addr1, $addr2, $city, $state, $zip, $phone, $email, $purch, $bd) {
-        global $db;
 
-        $results = 0;
+ //addMerchants($All-Fields-names here)    addCustomers(All field names here)
 
-        $stmt = $db->prepare("UPDATE Customers SET companyID = :companyID, profileImg = :pImg, firstName = :fName, middleName = :mName, lastName = :lName, address1 = :addr1, address2 = :addr2, city = :city, state = :state, zip = :zip, phone = :phone, email = :email, purchases = :purch, birthday = :bd WHERE customerID = :cusID");
+function addCustomers($Customers_ID, $fName,$lName, $email, $password, $phone) {
+    global $db;
 
-        $binds = array (
-            ":cusID" => $cusID,
-            ":companyID" => $companyID,
-            ":pImg" => $pImg,
-            ":fName" => $fName,
-            ":mName" => $mName,
-            ":lName" => $lName,
-            ":addr1" => $addr1,
-            ":addr2" => $addr2,
-            ":city" => $city,
-            ":state" => $state,
-            ":zip" => $zip,
-            ":phone" => $phone,
-            ":email" => $email,
-            ":purch" => $purch,
-            ":bd" => $bd
-        );
+    $results = 0;
 
-        if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
-            $results = 1;   
-        }
+    $stmt = $db->prepare("INSERT INTO Merchants_TBL SET  merchand_ID = :merchand_ID, fname = :fname, lname = :lname, email = :email,password= :password, phone = :phone");
 
-        return $results;
+    $binds = array (
+       
+        ":Customers_ID" => $Customers_ID,
+        ":fname" => $fname,
+        ":lname" => $lname,
+        "password" => $password,
+        ":email" => $email,
+        ":phone" => $phone,
+        
+       
+    );
+
+    if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
+        $results = 1;   
     }
 
-    function deleteCustomers($id) {
-        global $db;
+    return $results;
+}
 
-        $results = "ERROR: Deletion failed.";
 
-        $stmt = $db->prepare("DELETE FROM Customers WHERE customerID = :id");
+//  $me =  add_businessO("meeee", "meeee", "meeee", "meeee", "meeee", "meeee", "meeee");
 
-        $stmt->bindValue(':id', $id);
 
-        if ($stmt->execute() && $stmt->rowCount() > 0) {
-            $results = "Customer record successfully deleted.";
-        }
 
-        return $results;
+
+
+//updateMerchants updateCustomers
+function updateCustomers($cusID, $companyID, $pImg, $fName, $mName, $lName, $addr1, $addr2, $city, $state, $zip, $phone, $email, $purch, $bd) {
+    global $db;
+
+    $results = 0;
+
+    $stmt = $db->prepare("UPDATE Customers SET companyID = :companyID, profileImg = :pImg, firstName = :fName, middleName = :mName, lastName = :lName, address1 = :addr1, address2 = :addr2, city = :city, state = :state, zip = :zip, phone = :phone, email = :email, purchases = :purch, birthday = :bd WHERE customerID = :cusID");
+
+    $binds = array (
+        ":cusID" => $cusID,
+        ":companyID" => $companyID,
+        ":pImg" => $pImg,
+        ":fName" => $fName,
+        ":mName" => $mName,
+        ":lName" => $lName,
+        ":addr1" => $addr1,
+        ":addr2" => $addr2,
+        ":city" => $city,
+        ":state" => $state,
+        ":zip" => $zip,
+        ":phone" => $phone,
+        ":email" => $email,
+        ":purch" => $purch,
+        ":bd" => $bd
+    );
+
+    if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
+        $results = 1;   
     }
 
-    function custsPerState() {
-        global $db;
+    return $results;
+}
 
-        $results = array(); // Creating empty array to be filled by SELECT statement.
 
-        $stmt = $db->prepare("SELECT state, COUNT(*) AS custsPerStateCtr from Customers GROUP BY state ORDER BY COUNT(*);");
+//deleteMerchants deleteCustomers
+function deleteCustomers($id) {
+    global $db;
 
-        if ($stmt->execute() && $stmt->rowCount() > 0) {
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        }
+    $results = "ERROR: Deletion failed.";
 
-        return ($results);
+    $stmt = $db->prepare("DELETE FROM Customers WHERE customerID = :id");
+
+    $stmt->bindValue(':id', $id);
+
+    if ($stmt->execute() && $stmt->rowCount() > 0) {
+        $results = "Customer record successfully deleted.";
     }
 
-    function custsAllAges() {
-        global $db;
+    return $results;
+}
 
-        $results = array();  // Creating empty array to be filled by SELECT statement.
+function custsPerState() {
+    global $db;
 
-        $stmt = $db->prepare("SELECT birthday from Customers;");
+    $results = array(); // Creating empty array to be filled by SELECT statement.
 
-        if ($stmt->execute() && $stmt->rowCount() > 0) {
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        }
+    $stmt = $db->prepare("SELECT state, COUNT(*) AS custsPerStateCtr from Customers GROUP BY state ORDER BY COUNT(*);");
 
-        return ($results);
+    if ($stmt->execute() && $stmt->rowCount() > 0) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Debugs
-    // var_dump(getCustomers());
-    // var_dump(getCustomer(1));
-    // var_dump(searchCustomers("David", "Ted", "1998-05-22", "Arlington", "CA"));
-    // var_dump(searchCustomers("David", "Ted", "1998-05-22", "", ""));
-    // var_dump(addCustomers(1, "", "Isaac", "Jacob", "Benjamin", "17th Dust Road", "2nd Floor", "Charlestown", "MA", "75102", "(401) 111-5511", "IsaacBenjamin@yahoo.com", 1, "1980-07-28"));
-    // var_dump(addCustomers(1, "", "Abraham", "Jacob", "Salvador", "7th Dust Road", "10th Floor", "Kingston", "MA", "75100", "(401) 111-5500", "AbrahamSalvador@yahoo.com", 0, "1955-07-28"));
-    // var_dump(updateCustomers(10, 1, "", "Abraham1", "Jacob1", "Salvador1", "1st Dust Road", "1th Floor", "Kingston1", "CA", "75101", "(401) 111-5501", "AbrahamSalvador1@yahoo.com", 10, "1955-01-28"));
-    // var_dump(deleteCustomers(4));
-    // var_dump(custsPerState());
-    // var_dump(custsAllAges());
+    return ($results);
+}
+
+function custsAllAges() {
+    global $db;
+
+    $results = array();  // Creating empty array to be filled by SELECT statement.
+
+    $stmt = $db->prepare("SELECT birthday from Customers;");
+
+    if ($stmt->execute() && $stmt->rowCount() > 0) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    return ($results);
+}
+
+// Debugs
+// var_dump(getCustomers());
+// var_dump(getCustomer(1));
+// var_dump(searchCustomers("David", "Ted", "1998-05-22", "Arlington", "CA"));
+// var_dump(searchCustomers("David", "Ted", "1998-05-22", "", ""));
+// var_dump(addCustomers(1, "", "Isaac", "Jacob", "Benjamin", "17th Dust Road", "2nd Floor", "Charlestown", "MA", "75102", "(401) 111-5511", "IsaacBenjamin@yahoo.com", 1, "1980-07-28"));
+// var_dump(addCustomers(1, "", "Abraham", "Jacob", "Salvador", "7th Dust Road", "10th Floor", "Kingston", "MA", "75100", "(401) 111-5500", "AbrahamSalvador@yahoo.com", 0, "1955-07-28"));
+// var_dump(updateCustomers(10, 1, "", "Abraham1", "Jacob1", "Salvador1", "1st Dust Road", "1th Floor", "Kingston1", "CA", "75101", "(401) 111-5501", "AbrahamSalvador1@yahoo.com", 10, "1955-01-28"));
+// var_dump(deleteCustomers(4));
+// var_dump(custsPerState());
+// var_dump(custsAllAges());
 
 
 
