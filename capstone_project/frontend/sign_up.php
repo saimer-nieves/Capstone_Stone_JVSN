@@ -93,17 +93,38 @@ if (isPostRequest()) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
     <style>
-    #sign_upForm
+    #sign_upForm_merchants
     {
         width:800px;
-        margin-left:500px;
+        
         background-color:yellow;
         margin-top:100px;
+        position:absolute;
+
+        top:20px;
+        left:600px;
+        display:none;
+        
     
     }
-    body
+
+    #sign_upForm_customer
     {
+        width:800px;
         
+        background-color:yellow;
+        margin-top:100px;
+        position:absolute;
+
+        top:20px;
+        left:300px;
+        display:none;
+        
+    
+    }
+    html
+    {
+     //overflow: hidden;
     }
     html, body {
       min-height: 100%;
@@ -402,20 +423,40 @@ if (isPostRequest()) {
     background-color:none;
     margin-top:200px;
     height:500px;
+    
 
 
 }
 
 #images_holder
 {
-  height:400px;
-  width:1300px;
+  height:100px;
+  width:600px;
   background-color:none;
-  transform: rotate3d(20, 20, 5,60deg);
-  margin-left:300px;
-  margin-top:200px;
+  transform: rotate3d(20, 20, 5,55deg);
+  margin-left:850px;
+  margin-top:100px;
+
 
  
+}
+#divider_Cus_Bus
+{transform: rotate3d(20, 20, 5,50deg);
+  height:200px;
+  width:700px;
+  background-color:red;
+ position:absolute;
+ left:0px;
+ top:175px;
+}
+#divider_Cus_Bus_bottom
+{transform: rotate3d(20, 20, 5,50deg);
+  height:200px;
+  width:700px;
+  background-color:red;
+ position:absolute;
+ left:720px;
+ top:425px;
 }
 
 .img_design
@@ -423,7 +464,7 @@ if (isPostRequest()) {
 
     box-shadow: 1px 10px 10px black;
 
-  height:150px;
+  height:70px;
   float:left;
   margin:5px 5px 10px 0px;
 
@@ -466,7 +507,11 @@ if (isPostRequest()) {
 
 
 </div>
+<div id="divider_Cus_Bus"></div>
+<div id="divider_Cus_Bus_bottom"></div>
+
 <div id="txt_background"></div>
+
 
 
 
@@ -482,147 +527,18 @@ if (isPostRequest()) {
 				<input type="text" placeholder="username" name="user" id="username"><br>
 				<input type="password" placeholder="password" name="password" id="username"><br>
         <input type="button" value="Login">
+        <br>
+        <h6 id="a_form_link" style="margin-left:70px; color:white;">Click here to Sing Up</h6>
         
 		</div>
 
 </div>
 
-<div id="sign_upForm">
+<div id="sign_upForm_merchants">
     
     <form method="post" action="sign_up.php">
 
-    <div class="banner">
-          <h1>Babysitter Application Form</h1>
-        </div>
-        <div class="item">
-          <p>Name</p>
-          <div class="name-item">
-            <input type="text" name="First" placeholder="First" />
-            <input type="text" name="Last" placeholder="Last" />
-          </div>
-        </div>
-        <div class="item">
-          <p>Birth Date</p>
-          <input type="date" name="bdate" required/>
-          <i class="fas fa-calendar-alt"></i>
-        </div>
-        <div class="question">
-          <p>Driving Licence</p>
-          <div class="question-answer">
-            <input type="radio" value="none" id="radio_1" name="driving"/>
-            <label for="radio_1" class="radio"><span>Yes</span></label>
-            <input type="radio" value="none" id="radio_2" name="driving" />
-            <label for="radio_2" class="radio"><span>No</span></label>
-          </div>
-        </div>
-        <div class="question">
-          <p>Do you study?</p>
-          <div class="question-answer">
-            <input type="radio" value="none" id="radio_3" name="study"/>
-            <label for="radio_3" class="radio"><span>Yes</span></label>
-            <input type="radio" value="none" id="radio_4" name="study" />
-            <label for="radio_4" class="radio"><span>No</span></label>
-          </div>
-        </div>
-        <div class="question">
-          <p>Martial Status</p>
-          <div class="question-answer">
-            <input type="radio" value="none" id="single" name="status"/>
-            <label for="single" class="radio"><span>Single</span></label>
-            <input type="radio" value="none" id="married" name="status" />
-            <label for="married" class="radio"><span>Married</span></label>
-          </div>
-        </div>
-        <div class="question">
-          <p>Do you smoke?</p>
-          <div class="question-answer">
-            <input type="radio" value="none" id="radio_5" name="smoke"/>
-            <label for="radio_5" class="radio"><span>Yes</span></label>
-            <input type="radio" value="none" id="radio_6" name="smoke" />
-            <label for="radio_6" class="radio"><span>No</span></label>
-          </div>
-        </div>
-        <div class="question">
-          <p>Do you drink?</p>
-          <div class="question-answer">
-            <input type="radio" value="none" id="radio_7" name="drink"/>
-            <label for="radio_7" class="radio"><span>Yes</span></label>
-            <input type="radio" value="none" id="radio_8" name="drink" />
-            <label for="radio_8" class="radio"><span>No</span></label>
-            <input type="radio" value="none" id="once" name="drink" />
-            <label for="once" class="radio"><span>Every once in a while</span></label>
-          </div>
-        </div>
-        <div class="item">
-          <p>Any Certificates?</p>
-          <textarea rows="3"></textarea>
-        </div>
-        <div class="item">
-          <p>Please describe yourself</p>
-          <textarea rows="3"></textarea>
-        </div>
-        <div class="item">
-          <p>Phone</p>
-          <input type="text" name="name"/>
-        </div>
-        <div class="item">
-          <p>Email</p>
-          <input type="text" name="name"/>
-        </div>
-        <div class="item">
-          <p>Address</p>
-          <input type="text" name="name" placeholder="Street address"/>
-          <input type="text" name="name" placeholder="Street address line 2"/>
-          <div class="city-item">
-            <input type="text" name="name" placeholder="City" />
-            <input type="text" name="name" placeholder="Region" />
-            <input type="text" name="name" placeholder="Postal / Zip code" />
-            <select>
-              <option value="">Country</option>
-              <option value="1">Russia</option>
-              <option value="2">Germany</option>
-              <option value="3">France</option>
-              <option value="4" selected>Armenia</option>
-              <option value="5">USA</option>
-            </select>
-          </div>
-        </div>
-        <div class="question">
-          <p>High School</p>
-          <div class="question-answer">
-            <input type="radio" value="none" id="radio_9" name="school"/>
-            <label for="radio_9" class="radio"><span>Yes</span></label>
-            <input type="radio" value="none" id="radio_10" name="school" />
-            <label for="radio_10" class="radio"><span>No</span></label>
-          </div>
-        </div>
-        <div class="question">
-          <p>College</p>
-          <div class="question-answer">
-            <input type="radio" value="none" id="radio_11" name="college"/>
-            <label for="radio_11" class="radio"><span>Yes</span></label>
-            <input type="radio" value="none" id="radio_12" name="college" />
-            <label for="radio_12" class="radio"><span>No</span></label>
-          </div>
-        </div>employerte
-        <div class="item">
-          <p>Name of Employer</p>
-          <div class="name-item">
-            <input type="text" name="name" placeholder="First" />
-            <input type="text" name="name" placeholder="Last" />
-          </div>
-        </div>
-        <div class="item">
-          <p>Phone</p>
-          <input type="text" name="name"/>
-        </div>
-        <div class="item">
-          <p>Age of Children</p>
-          <input type="text" name="name"/>
-        </div>
-        <div class="btn-block">
-          <button type="submit" href="/">Apply</button>
-        </div>
+    
             <div id="form_application">
                             <center>
                          
@@ -662,6 +578,7 @@ if (isPostRequest()) {
                              
 
                                     <div id="left_form">
+                                    <a href="sign_up.php"><img src="../images/left_return_arrow.png" style="width:30px;"></a></br><br><br>
                                     <input type="hidden" maxlength = 80 class="form-control text_box"  name="userID" >
                                         <label> <h5>Company: </h5></label>
                                         <input type="text" maxlength = 40  class="form-control text_box" name="company" required>
@@ -747,6 +664,94 @@ if (isPostRequest()) {
 
 
 
+<div id="sign_upForm_customer">
+    <form method="post" action="sign_up.php">
+            <div id="form_application">
+                            <center>
+                            <hr>
+                                
+                                </div>
+                                
+                                    <div id="left_form">
+                                    <a href="sign_up.php"><img src="../images/left_return_arrow.png" style="width:30px;"></a></br><br><br>
+                                    <input type="hidden" maxlength = 80 class="form-control text_box"  name="userID" >
+                                        <label> <h5>Company: </h5></label>
+                                        <input type="text" maxlength = 40  class="form-control text_box" name="company" required>
+                                  
+                                        <br>
+                                        <br>
+                                        <label> <h5>First Name: </h5></label>
+                                        <input type="text" maxlength = 80 class="form-control text_box"  name="fname" >
+                                      
+                                        <br>
+                                        <br>
+
+                                        <label> <h5>Last Name: </h5></label>
+                                        <input type="text" maxlength = 80 class="form-control text_box"  name="lname" required>
+                                        
+                                        <br> 
+                                        <br>
+                                        <br> <label> <h5>Email: abc@abc.abc  </h5></label>
+                                        <input type="email"  class="form-control text_box" name="email" pattern ='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' required>
+                               
+                                        <br>
+                                        <br> <label> <h5>Phone : (###) ###-####</h5></label>
+                                        <input type="tel" maxlength = 20 id="phone" name="phone" placeholder="(###) ###-####"  pattern="[(][0-9]{3}[)][ ][0-9]{3}-[0-9]{4}" class="form-control text_box" required >
+                                  
+                                        <br>
+                                     
+                                        <label> <h5>Username </h5></label>
+                                        <input type="text" maxlength = 255 class="form-control text_box" name="bo_username" required>
+                                    
+
+                                        <br>
+                                        <br>
+
+                                        <label> <h5>Password : </h5></label>
+                                        <input type="text" maxlength = 255 class="form-control text_box" name="bo_password" >
+                                        
+
+                                        <br>
+                                        <br>
+
+                                        <label> <h5>Confirm Password: </h5></label>
+                                        <input type="text" maxlength = 100 class="form-control text_box"  name="city" required>
+                                      
+                                    </div>
+
+
+
+                                    <button name="sign_up" type="submit" class=" bg-success" style="margin-top:50px; margin-left:50px; height:50px; width:200px;font-weight:bold;" href="#">Sign Up</i></button>
+                     
+                               
+                                
+                                </div>
+                                
+                              
+
+                                  
+
+
+
+
+
+
+
+
+
+
+                </form>
+                     
+
+
+
+
+
+
+
+                </div>
+</div>
+
 
 
 
@@ -774,6 +779,22 @@ if (isPostRequest()) {
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         
                 <script>
+
+                var form_signup_link = document.querySelector("#a_form_link");
+                var form_div_merchants = document.querySelector("#sign_upForm_merchants");
+                var form_div_customer = document.querySelector("#sign_upForm_customer");
+                var login_div = document.querySelector("#log_in");
+
+
+                form_signup_link.addEventListener("click", echo_voice);
+
+                function echo_voice()
+                {
+                  console.log("saimer you are getting close");
+                  form_div_merchants.style.display="block";
+                  login_div.style.display="none";
+                }
+
                 function openForm() {
                 document.getElementById("memoform").style.display = "block";
                 }
