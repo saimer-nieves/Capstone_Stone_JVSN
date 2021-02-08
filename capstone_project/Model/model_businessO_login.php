@@ -129,21 +129,21 @@ function searchCustomers($f, $l, $bd, $city, $state) {
 
 //addMerchants($All-Fields-names here)    addCustomers(All field names here)
 
-function addMerchants($merchand_ID,$fName,$lName, $email, $password, $phone) {
+function addMerchants($mer_fName,$mer_lName, $mer_password, $mer_email, $mer_phone) {
     global $db;
 
     $results = 0;
 
-    $stmt = $db->prepare("INSERT INTO Merchants_TBL SET  merchand_ID = :merchand_ID, fname = :fname, lname = :lname, email = :email,password= :password, phone = :phone");
+    $stmt = $db->prepare("INSERT INTO Merchants_TBL SET  mer_fname = :mer_fname, mer_lname = :mer_lname,mer_password= :mer_password, mer_email = :mer_email, mer_phone = :mer_phone");
 
     $binds = array (
        
-        ":merchands_ID" => $merchands_ID,
-        ":fname" => $fname,
-        ":lname" => $lname,
-        "password" => $password,
-        ":email" => $email,
-        ":phone" => $phone,
+        
+        ":mer_fname" => $mer_fname,
+        ":mer_lname" => $mer_lname,
+        "mer_password" => $mer_password,
+        ":mer_email" => $mer_email,
+        ":mer_phone" => $mer_phone,
         
        
     );
@@ -154,8 +154,9 @@ function addMerchants($merchand_ID,$fName,$lName, $email, $password, $phone) {
 
     return $results;
 }
-
-
+$restults = addMerchants("JUN","VOL","PSAS", "MYEMAIL", "4206616");
+var_dump($restults);
+exit;
  //addMerchants($All-Fields-names here)    addCustomers(All field names here)
 
 function addCustomers($Customers_ID, $fName,$lName, $email, $password, $phone) {

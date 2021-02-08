@@ -9,60 +9,75 @@ include "../Model/model_businessO_login.php";
 $feedback = "";
 session_start();
 session_unset();
-if (isPostRequest()) {
-    //Obtaining Text from textbox
+if (isset($_GET["action"]) != "")
+{
+  $action_type = $_GET["action"];
+  echo $action_type;
+
+
+
+
+      
+    if (isPostRequest()) {
+      //Obtaining Text from textbox
+
+
+      if($action_type == "business")
+      {
+    
+      
+      $mer_fname = filter_input(INPUT_POST, 'mer_fname');
+      $mer_lname = filter_input(INPUT_POST, 'mer_lname');
+      $mer_email = filter_input(INPUT_POST, 'mer_email');
+      $mer_phone = filter_input(INPUT_POST, 'mer_phone');
    
-    $company = filter_input(INPUT_POST, 'company');
-    $fname = filter_input(INPUT_POST, 'fname');
-    $lname = filter_input(INPUT_POST, 'lname');
-    $email = filter_input(INPUT_POST, 'email');
-    $phone = filter_input(INPUT_POST, 'phone');
-    $bo_username = filter_input(INPUT_POST, 'bo_username');
-    $bo_password = filter_input(INPUT_POST, 'bo_password');
+      $mer_password = filter_input(INPUT_POST, 'mer_password');
 
 
-        $results = add_businessO( $company, $fname, $lname, $email, $phone, $bo_username, $bo_password);
-    header('Location: outside_index.php');
-                                 
+          $results = addMerchants($mer_fName,$mer_lName, $mer_password, $mer_email, $mer_phone);
+      header('Location: outside_index.php');
+      }      
+      
+      
+      if($action_type == "customer")
+      {
     
-    // your logic here
-    //$Allow_user = checkLogin ($log_username, $log_password); //this will return Whether login credentials is true or false
-    
-
-  //  if(($log_username == "manager" && $log_password == "manager") || ($log_username == "employee" && $log_password == "employee")) //if they have a valid login
- //   {
-        
-
-  //      $_SESSION["username"] = $log_username;
-  //      $_SESSION["password"] = $log_password;
-        //send them to control.php
-  //      header('Location: control_panel.php');
-        //$usergroups = checkEmployeeLogin("Erik", "NEIT");
+      
+      $fname = filter_input(INPUT_POST, 'cus_fname');
+      $lname = filter_input(INPUT_POST, 'cus_lname');
+      $email = filter_input(INPUT_POST, 'cus_email');
+      $phone = filter_input(INPUT_POST, 'cus_phone');
+      $bo_username = filter_input(INPUT_POST, 'cus_username');
+      $bo_password = filter_input(INPUT_POST, 'cus_password');
 
 
-   // }
-   // else
-   // {
-   //     $feedback .= " Invalid Login";
-    //    header('Location: index.php');
+          $results = add_businessO( $company, $fname, $lname, $email, $phone, $bo_username, $bo_password);
+      header('Location: outside_index.php');
+      }                     
+      
+      // your logic here
+      //$Allow_user = checkLogin ($log_username, $log_password); //this will return Whether login credentials is true or false
+      
 
-   // }
-//testing push
+    //  if(($log_username == "manager" && $log_password == "manager") || ($log_username == "employee" && $log_password == "employee")) //if they have a valid login
+    //   {
+          
 
-
-
-
-
-
-
-
-
-
-
+    //      $_SESSION["username"] = $log_username;
+    //      $_SESSION["password"] = $log_password;
+          //send them to control.php
+    //      header('Location: control_panel.php');
+          //$usergroups = checkEmployeeLogin("Erik", "NEIT");
 
 
+    // }
+    // else
+    // {
+    //     $feedback .= " Invalid Login";
+      //    header('Location: index.php');
 
-
+    // }
+    //testing push
 
 
 
@@ -76,6 +91,23 @@ if (isPostRequest()) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
 
 }
 
@@ -117,8 +149,9 @@ if (isPostRequest()) {
         position:absolute;
 
         top:20px;
-        left:300px;
+        left:200px;
         display:none;
+        
         
     
     }
@@ -540,7 +573,7 @@ if (isPostRequest()) {
 
     
             <div id="form_application">
-                            <center>
+                            <center>Business</center>
                          
                             
 
@@ -580,8 +613,7 @@ if (isPostRequest()) {
                                     <div id="left_form">
                                     <a href="sign_up.php"><img src="../images/left_return_arrow.png" style="width:30px;"></a></br><br><br>
                                     <input type="hidden" maxlength = 80 class="form-control text_box"  name="userID" >
-                                        <label> <h5>Company: </h5></label>
-                                        <input type="text" maxlength = 40  class="form-control text_box" name="company" required>
+                                        
                                    
 
                                         <br>
@@ -591,34 +623,31 @@ if (isPostRequest()) {
 
                                        
                                         <label> <h5>First Name: </h5></label>
-                                        <input type="text" maxlength = 80 class="form-control text_box"  name="fname" >
+                                        <input type="text" maxlength = 80 class="form-control text_box"  name="mer_fname" >
                                       
                                         <br>
                                         <br>
 
                                         <label> <h5>Last Name: </h5></label>
-                                        <input type="text" maxlength = 80 class="form-control text_box"  name="lname" required>
+                                        <input type="text" maxlength = 80 class="form-control text_box"  name="mer_lname" required>
                                         
                                         <br> 
                                         <br>
                                         <br> <label> <h5>Email: abc@abc.abc  </h5></label>
-                                        <input type="email"  class="form-control text_box" name="email" pattern ='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' required>
+                                        <input type="email"  class="form-control text_box" name="mer_email" pattern ='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' required>
                                
                                         <br>
                                         <br> <label> <h5>Phone : (###) ###-####</h5></label>
-                                        <input type="tel" maxlength = 20 id="phone" name="phone" placeholder="(###) ###-####"  pattern="[(][0-9]{3}[)][ ][0-9]{3}-[0-9]{4}" class="form-control text_box" required >
+                                        <input type="tel" maxlength = 20 id="phone" name="mer_phone" placeholder="(###) ###-####"  pattern="[(][0-9]{3}[)][ ][0-9]{3}-[0-9]{4}" class="form-control text_box" required >
                                   
                                         <br>
                                      
-                                        <label> <h5>Username </h5></label>
-                                        <input type="text" maxlength = 255 class="form-control text_box" name="bo_username" required>
-                                    
 
                                         <br>
                                         <br>
 
                                         <label> <h5>Password : </h5></label>
-                                        <input type="text" maxlength = 255 class="form-control text_box" name="bo_password" >
+                                        <input type="text" maxlength = 255 class="form-control text_box" name="mer_password" >
                                         
 
                                         <br>
@@ -665,9 +694,10 @@ if (isPostRequest()) {
 
 
 <div id="sign_upForm_customer">
+
     <form method="post" action="sign_up.php">
             <div id="form_application">
-                            <center>
+                            <center>Customer</center>
                             <hr>
                                 
                                 </div>
@@ -675,40 +705,35 @@ if (isPostRequest()) {
                                     <div id="left_form">
                                     <a href="sign_up.php"><img src="../images/left_return_arrow.png" style="width:30px;"></a></br><br><br>
                                     <input type="hidden" maxlength = 80 class="form-control text_box"  name="userID" >
-                                        <label> <h5>Company: </h5></label>
-                                        <input type="text" maxlength = 40  class="form-control text_box" name="company" required>
-                                  
+                                        
                                         <br>
                                         <br>
                                         <label> <h5>First Name: </h5></label>
-                                        <input type="text" maxlength = 80 class="form-control text_box"  name="fname" >
+                                        <input type="text" maxlength = 80 class="form-control text_box"  name="cus_fname" >
                                       
                                         <br>
                                         <br>
 
                                         <label> <h5>Last Name: </h5></label>
-                                        <input type="text" maxlength = 80 class="form-control text_box"  name="lname" required>
+                                        <input type="text" maxlength = 80 class="form-control text_box"  name="cus_lname" required>
                                         
                                         <br> 
                                         <br>
                                         <br> <label> <h5>Email: abc@abc.abc  </h5></label>
-                                        <input type="email"  class="form-control text_box" name="email" pattern ='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' required>
+                                        <input type="email"  class="form-control text_box" name="cus_email" pattern ='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' required>
                                
                                         <br>
                                         <br> <label> <h5>Phone : (###) ###-####</h5></label>
-                                        <input type="tel" maxlength = 20 id="phone" name="phone" placeholder="(###) ###-####"  pattern="[(][0-9]{3}[)][ ][0-9]{3}-[0-9]{4}" class="form-control text_box" required >
+                                        <input type="tel" maxlength = 20 id="phone" name="cus_phone" placeholder="(###) ###-####"  pattern="[(][0-9]{3}[)][ ][0-9]{3}-[0-9]{4}" class="form-control text_box" required >
                                   
                                         <br>
                                      
-                                        <label> <h5>Username </h5></label>
-                                        <input type="text" maxlength = 255 class="form-control text_box" name="bo_username" required>
-                                    
 
                                         <br>
                                         <br>
 
                                         <label> <h5>Password : </h5></label>
-                                        <input type="text" maxlength = 255 class="form-control text_box" name="bo_password" >
+                                        <input type="text" maxlength = 255 class="form-control text_box" name="cus_password" >
                                         
 
                                         <br>
@@ -791,8 +816,19 @@ if (isPostRequest()) {
                 function echo_voice()
                 {
                   console.log("saimer you are getting close");
-                  form_div_merchants.style.display="block";
+
+                  
                   login_div.style.display="none";
+                  <?php if($action_type == "customer") :?>
+                    form_div_customer.style.display="block";
+                  
+                  <?php elseif($action_type == "business") :?>
+                      form_div_merchants.style.display="block";
+                  <?php else:?>
+                     form_div_customer.style.display="none";
+                     form_div_merchants.style.display="none";
+                     login_div.style.display="block";
+                  <?php endif;?>
                 }
 
                 function openForm() {
