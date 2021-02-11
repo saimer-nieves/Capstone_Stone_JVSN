@@ -38,6 +38,8 @@
 
   <style>
 
+body
+{}
 #hero
 {
     background-image:url("../images/main_back2.png");
@@ -197,7 +199,7 @@ body { font-family: sans-serif; }
 #all_store_logos
 {
     width:100%;
-    background-color:#2ECCFA;
+    background-color:#e6fffa;
     height:100%;
     position:absolute;
 
@@ -355,33 +357,29 @@ box-shadow: -10px 15px 25px black;
 
 .divider
 {
-    background-color:red;
+    background-color:#53c68c;
     width:100%;
     height:60px;
+    margin-bottom:10px;
 }
   </style>
 </head>
 
 <body>
-
- <!-- ======= Header ======= -->
- <header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container">
-
-    <div class="logo mr-auto" style="width:180px; position:absolute;">
-          <h1 class="text-light"><a href="index.html"><span>Origin</span></a></h1>
+<header id="header" class="align-items-center" style="background-color:#53c68c;margin-bottom:10px; ">
+    <div class="container" style="background-color:#53c68c;">
+      <div class="header-container d-flex align-items-center" style="background-color:#53c68c;">
+        <div class="logo mr-auto" style="background-color:#53c68c;">
+          <h1 class="text-light"><a href="index.html"><span>Junior Add Logo Here</span></a></h1>
           <!-- Uncomment below if you prefer to use an image logo -->
           <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
-      <div class="header-container d-flex align-items-center" style="background-color:none; margin-left:400px; width:950px;padding-top:20px;padding-bottom:20px; padding-left:10px;">
-       
 
-        <nav class="nav-menu">
-          <ul>
+        <nav class="nav-menu" style="background-color:#53c68c;">
+          <ul style="background-color:#53c68c;">
             <li class="active"><a href="#header">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-       
+         
             <li class="drop-down"><a href="">Drop Down</a>
               <ul>
                 <li><a href="#">Drop Down 1</a></li>
@@ -397,7 +395,7 @@ box-shadow: -10px 15px 25px black;
                 <li><a href="#">Drop Down 3</a></li>
                 <li><a href="#">Drop Down 4</a></li>
                 <li><a href="#">Drop Down 5</a></li>
-              </ul>
+                </ul>
             </li>
             
             
@@ -409,6 +407,8 @@ box-shadow: -10px 15px 25px black;
     </div>
   </header><!-- End Header -->
 
+ <!-- ======= Header ======= -->
+ 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
 
@@ -478,7 +478,7 @@ box-shadow: -10px 15px 25px black;
       </div>
   <div class="divider"></div>
  <!-- ======= About Section ======= -->
- <section id="about" class="about" style="background-color:none;padding:none; height:400px;">
+ <section id="about" class="about" style="background-color:#e6fffa;padding:none; height:400px;">
       <div class="container" style="height:400px;">
    
         <div class="row content">
@@ -512,7 +512,7 @@ box-shadow: -10px 15px 25px black;
     
 <!--TODO WE HAVE TO FINISH ADDING USERS TYPE BOXES AND FOOTER SAYING THIS IS REINFORMENT FROM PHP AND JAVASCRIPT-->
     <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials section-bg">
+    <section id="testimonials" class="testimonials section-bg" style="background-color:#e6fffa;">
       <div class="container">
 
         <div class="row">

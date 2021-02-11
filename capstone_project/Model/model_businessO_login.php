@@ -127,6 +127,7 @@ function searchCustomers($f, $l, $bd, $city, $state) {
 }
 
 
+
 //addMerchants($All-Fields-names here)    addCustomers(All field names here)
 
 function addMerchants($mer_fName,$mer_lName, $mer_password, $mer_email, $mer_phone) {

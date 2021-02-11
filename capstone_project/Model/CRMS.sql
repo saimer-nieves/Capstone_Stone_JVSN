@@ -2,7 +2,7 @@
 
 /* Employee Logins Table */
 
-CREATE TABLE IF NOT EXISTS businessO_login
+CREATE TABLE IF NOT EXISTS mechants_
  (
 	userID INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
         company NVARCHAR(255) DEFAULT NULL,
@@ -14,6 +14,31 @@ CREATE TABLE IF NOT EXISTS businessO_login
         bo_password  NVARCHAR(255) DEFAULT NULL   
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
+/*******************************/
+
+CREATE TABLE IF NOT EXISTS merchants_TBL (
+		mer_ID INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+        mer_fname NVARCHAR(255),
+        mer_lname NVARCHAR(255),
+        
+        mer_email NVARCHAR(255),
+        mer_phone NVARCHAR(255),
+        mer_password NVARCHAR(255)
+               
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
+
+
+/*******************************/
+CREATE TABLE IF NOT EXISTS customers_tbl (
+		cus_ID INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+        cus_fname NVARCHAR(255),
+        cus_lname NVARCHAR(255),
+        
+        cus_email NVARCHAR(255),
+        cus_phone NVARCHAR(255),
+        cus_password NVARCHAR(255)
+               
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 
 

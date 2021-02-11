@@ -45,22 +45,21 @@
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="align-items-center">
-    <div class="container">
-      <div class="header-container d-flex align-items-center">
-        <div class="logo mr-auto">
-          <h1 class="text-light"><a href="index.php"><span>Bethany</span></a></h1>
+  
+<header id="header" class="align-items-center" style="background-color:#53c68c;margin-bottom:10px; ">
+    <div class="container" style="background-color:#53c68c;">
+      <div class="header-container d-flex align-items-center" style="background-color:#53c68c;">
+        <div class="logo mr-auto" style="background-color:#53c68c;">
+          <h1 class="text-light"><a href="outside_index.php"><span>Junior Add Logo Here</span></a></h1>
           <!-- Uncomment below if you prefer to use an image logo -->
           <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
 
-        <nav class="nav-menu">
-          <ul>
-            <li class="active"><a href="index.php">Home</a></li>
+        <nav class="nav-menu" style="background-color:#53c68c;">
+          <ul style="background-color:#53c68c;">
+            <li class="active"><a href="outside_index.php">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#team">Team</a></li>
+         
             <li class="drop-down"><a href="">Drop Down</a>
               <ul>
                 <li><a href="#">Drop Down 1</a></li>
@@ -76,11 +75,12 @@
                 <li><a href="#">Drop Down 3</a></li>
                 <li><a href="#">Drop Down 4</a></li>
                 <li><a href="#">Drop Down 5</a></li>
-              </ul>
+                </ul>
             </li>
-            <li><a href="#contact">Contact</a></li>
-
-            <li class="get-started"><a href="#about">Get Started</a></li>
+            
+            
+            <li class="get-started" style="margin-left:100px;"><a href="sign_up.php?action=customer">Customer </br> <center>Menu</center></a></li>
+            <li class="get-started"><a href="sign_up.php?action=business">Business Owner</br> <center>Menu</center></a></li>
           </ul>
         </nav><!-- .nav-menu -->
       </div><!-- End Header Container -->
