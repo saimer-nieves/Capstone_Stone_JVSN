@@ -16,8 +16,8 @@ CREATE TABLE IF NOT EXISTS mechants_
 
 /*******************************/
 
-CREATE TABLE IF NOT EXISTS merchants_TBL (
-		mer_ID INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS merchants_tbl (
+		mer_ID INT  AUTO_INCREMENT NOT NULL PRIMARY KEY,
         mer_fname NVARCHAR(255),
         mer_lname NVARCHAR(255),
         
@@ -121,3 +121,40 @@ CREATE TABLE IF NOT EXISTS Memos (
 -- SELECT * FROM Memos;
 -- INSERT INTO MEMOS (customerID, mDate, memo) VALUES (5, "2020/10/15", "Replaced car tires.");
 
+
+CREATE TABLE IF NOT EXISTS merchants_store_tbl (
+	store_ID INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+        store_name NVARCHAR(255),
+        store_category NVARCHAR(255),
+        store_day_created DATETIME,
+        store_img_logo  NVARCHAR(255),
+        FOREIGN KEY (mer_ID) REFERENCES ClientCompanies(mer_ID) ON DELETE CASCADE       
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
+
+
+
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+CREATE TABLE IF NOT EXISTS `se266_saimer`.`merchant_stores_tbl` (
+  `store_ID` INT(10) UNSIGNED NOT NULL,
+  `store_name` NVARCHAR(255) NULL,
+  `store_category` NVARCHAR(255) NULL,
+  `store_day_created` DATETIME NULL DEFAULT NULL,
+  `store_img_logo` NVARCHAR(255) NULL,
+  `mer_ID` INT(11) NOT NULL,
+  PRIMARY KEY (`store_ID`),
+  INDEX `fk_merchant_stores_tbl_merchants_tbl_idx` (`mer_ID` ASC) ,
+  CONSTRAINT `fk_merchant_stores_tbl_merchants_tbl`
+    FOREIGN KEY (`mer_ID`)
+    REFERENCES `se266_saimer`.`merchants_tbl` (`mer_ID`)
+    )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
