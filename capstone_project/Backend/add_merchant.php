@@ -1,33 +1,30 @@
 <?php
 session_start(); 
 include "../includes/back_side_nav.php";
-
-
-if((isset($_POST["uploadBtn"])))
-{
-
-     
-
-
-}
- 
-
+include "../Model/model_add_merchant_store.php";
 
 
 
 $message = ''; 
 if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
 {
+
+
+  /*THIS SECTION TAKES CARE OF UPLOADING FILE TO FOLDER */
   if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK)
   {
     // get details of the uploaded file
     $fileTmpPath = $_FILES['uploadedFile']['tmp_name'];
+
+    
     $fileName = $_FILES['uploadedFile']['name'];
     $fileSize = $_FILES['uploadedFile']['size'];
     $fileType = $_FILES['uploadedFile']['type'];
     $fileNameCmps = explode(".", $fileName);
     $fileExtension = strtolower(end($fileNameCmps));
  
+    echo "This is fileName variable:" . $fileName;
+
     // sanitize file-name
     $newFileName =  $fileName ;
     $_SESSION["fileName"] = $fileName;
@@ -59,22 +56,33 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
     $message = 'There is some error in the file upload. Please check the following error.<br>';
     $message .= 'Error:' . $_FILES['uploadedFile']['error'];
   }
-/*
+
+
+
+
+
+
+
+
+
+
+  
+
   echo "YOU DID IT" ;
+ /* $fileName     this is the variable with the regular name of the image*/
+  $store_name = filter_input(INPUT_POST, 'store_name');
+  $store_category = filter_input(INPUT_POST, 'store_category');
 
-  $mer_fname = filter_input(INPUT_POST, 'mer_fname');
-  $mer_lname = filter_input(INPUT_POST, 'mer_lname');
-  $mer_email = filter_input(INPUT_POST, 'mer_email');
-  $mer_phone = filter_input(INPUT_POST, 'mer_phone');
-
-  $mer_password = filter_input(INPUT_POST, 'mer_password');
+  $results = add_merchant_stores($store_name, $store_category,date("Y-m-d"), $fileName, 1);
 
 
-      $results = add_merchants( $mer_fname, $mer_lname, $mer_email, $mer_phone, SHA1($mer_password));
-  header('Location: sign_up.php?action=business');*/
+
+  $results = add_merchants( $mer_fname, $mer_lname, $mer_email, $mer_phone, SHA1($mer_password));
+  header("Location: ../Backend/merchant_main_panel.php");
+  
 }
 $_SESSION['message'] = $message;
-header("Location: merchant_main_panel.php");
+
 
 
 
@@ -145,6 +153,8 @@ header("Location: merchant_main_panel.php");
         font-size: 16px;
         font-weight: bold;
         color: #fff;
+
+        z-index: 4;
       }
 
       #logo_div
@@ -154,9 +164,11 @@ header("Location: merchant_main_panel.php");
         background-color:#53c68c;
         margin-left:200px;
         margin-top:100px;
-        z-index: -2;
+        
         padding-top:100px;
         padding-left:90px;
+
+        z-index: -3;
       }
 
 
@@ -352,6 +364,27 @@ header("Location: merchant_main_panel.php");
     }
 
 
+    .button_spot_position
+    {
+      position:absolute;
+      margin-top:205px;
+      left:300px;
+    }
+
+    .button_returns {
+  background-color: none;
+  border: 5px solid #4CAF50;
+  color: white;
+  padding: 5px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+
   </style>
 </head>
 <body>
@@ -362,7 +395,11 @@ header("Location: merchant_main_panel.php");
       unset($_SESSION['message']);
     }
   ?>
-  <form method="POST" action = "<?php $_PHP_SELF ?>" enctype="multipart/form-data">
+<a href="../Backend/merchant_main_panel.php" class="button_returns" style=" margin-left:200px; margin-top:50px;position:absolute; border-radius:10px;">
+
+  <img src="../images/left_return_arrow.png" style="height:30px; ">
+  </a>
+  <form method="POST" action = "<?php $_PHP_SELF ?>" enctype="multipart/form-data" style="background-color:none;padding-top:100px;">
     <div class="upload-wrapper" style="padding-bottom:360px; background-color:none;">
       <!--<span class="file-name">Choose a file...</span>-->
      
@@ -374,35 +411,40 @@ header("Location: merchant_main_panel.php");
 
      
 
-      <div id="logo_div">
-      
-       
-          <div class="button-wrap">
-            <label class="button" for="upload">Add Logo</label>
-            <input  type="file" id="upload" name="uploadedFile">
+          <div id="logo_div">
+          
+          
+              
+            
+            
+            
+
           </div>
-        
-        
-        
-    
-      </div>
+          <div class="button-wrap button_spot_position">
+                <label class="button" for="upload">Add Logo</label>
+                <input  type="file" id="upload" name="uploadedFile">    <!--FORM ELEMENT *********************-->
+          </div>
+
+          <div id="text_boxes_div">
+            <div class="form-group">
+              <label for="usr" >Name:</label>
+                <input type="text" class="form-control" id="store_name"  name ="store_name">      <!--FORM ELEMENT *********************-->
+            </div>
+
+            
+            <div class="form-group">
+              <label for="sel1">Select list:</label>
+              <select name="store_category" class="form-control" id="sel1">             <!--FORM ELEMENT *********************-->
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+            </div>
 
 
-      <div id="text_boxes_div">
-        <div class="form-group">
-          <label for="usr" >Name:</label>
-            <input type="text" class="form-control" id="store_name" >
-        </div>
-        <div class="form-group">
-          <label for="sel1">Select list:</label>
-          <select class="form-control" id="sel1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-          </select>
-        </div>
-        <input type="submit" name="uploadBtn" value="Upload" id="uploading_btn" />
+
+            <input type="submit" name="uploadBtn" value="Upload" id="uploading_btn" />
       </div>
 
       

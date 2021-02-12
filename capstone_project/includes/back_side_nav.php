@@ -1,18 +1,15 @@
 <?php
 
- include "../includes/back_header.php";
+  include "back_header.php";
 
-;?>
 
+?>
 
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
@@ -31,160 +28,12 @@
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
 
+    <title>Sidebar #1</title>
+  </head>
+  <body>
+  
     
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="css/styles.css" rel="stylesheet" />
-        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
-
-        <script src="assets/demo/datatables-demo.js"></script>
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
-
-<style>
-
-body
-{
-   // padding-top:100px;
-   background-color:#e6fffa;
-}
-
-#body-row
-{
-    margin-left:0;
-    margin-right:0;
-}
-#sidebar-container 
-{
-    min-height: 100vh;   
-    background-color: #333;
-    padding: 0;
-}
-
-/* Sidebar sizes when expanded and expanded */
-.sidebar-expanded {
-    width: 230px;
-}
-.sidebar-collapsed {
-    width: 60px;
-}
-
-/* Menu item*/
-#sidebar-container .list-group a 
-{
-    height: 50px;
-    color: white;
-}
-
-/* Submenu item*/
-#sidebar-container .list-group .sidebar-submenu a 
-{
-    height: 45px;
-    padding-left: 30px;
-}
-.sidebar-submenu {
-    font-size: 0.9rem;
-}
-
-/* Separators */
-.sidebar-separator-title {
-    background-color: #333;
-    height: 35px;
-}
-.sidebar-separator {
-    background-color: #333;
-    height: 25px;
-}
-.logo-separator {
-    background-color: #333;    
-    height: 60px;
-}
-
-/* Closed submenu icon */
-#sidebar-container .list-group .list-group-item[aria-expanded="false"] .submenu-icon::after 
-{
-  content: " \f0d7";
-  font-family: FontAwesome;
-  display: inline;
-  text-align: right;
-  padding-left: 10px;
-}
-/* Opened submenu icon */
-#sidebar-container .list-group .list-group-item[aria-expanded="true"] .submenu-icon::after 
-{
-  content: " \f0da";
-  font-family: FontAwesome;
-  display: inline;
-  text-align: right;
-  padding-left: 10px;
-}
-
-#merchant_owner
-{
-    width:400px;
-   height:600px;
-   background-color:red;
-   float:left;
-   margin-left:100px;
-   margin-top:100px;
-}
-
-#all_merchant_stores
-{ width:700px;
-   height:600px;
-   background-color:blue;
-   float:left;
-   margin-left:50px;
-   margin-top:100px;
-
-}
-
-
-#all_stores_top
-{
-    width:700px;
-    height:400px;
-    background-color:red;
-}
-
-#all_stores_bottom
-{
-    width:700px;
-    height:200px;
-    background-color:green;
-}
-
-.new_store_div
-{
-  width:200px;
-  height:150px;
-  background-color:yellow;
-  float:left;
-  margin:20px 0px 0px 20px;
-}
-    </style>
-</head>
-<body>
-    
-
-<aside class="sidebar">
+    <aside class="sidebar">
       <div class="toggle">
         <a href="#" class="burger js-menu-toggle" data-toggle="collapse" data-target="#main-navbar">
               <span></span>
@@ -228,48 +77,30 @@ body
       </div>
       
     </aside>
-
-</body>
+    
+  
+  </body>
 </html>
 
-<script>
 
-$('#body-row .collapse').collapse('hide'); 
+<!-- Template Main JS File -->
+<script src="/js/app.e9951830.js"></script>
+    <script src="/js/chunk-vendors.a64910e5.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
 
-// Collapse/Expand icon
-$('#collapse-icon').addClass('fa-angle-double-left'); 
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 
-// Collapse click
-$('[data-toggle=sidebar-colapse]').click(function() {
-    SidebarCollapse();
-});
+        
 
-function SidebarCollapse () {
-    $('.menu-collapsed').toggleClass('d-none');
-    $('.sidebar-submenu').toggleClass('d-none');
-    $('.submenu-icon').toggleClass('d-none');
-    $('#sidebar-container').toggleClass('sidebar-expanded sidebar-collapsed');
-    
-    // Treating d-flex/d-none on separators with title
-    var SeparatorTitle = $('.sidebar-separator-title');
-    if ( SeparatorTitle.hasClass('d-flex') ) {
-        SeparatorTitle.removeClass('d-flex');
-    } else {
-        SeparatorTitle.addClass('d-flex');
-    }
-    
-    // Collapse/Expand icon
-    $('#collapse-icon').toggleClass('fa-angle-double-left fa-angle-double-right');
-}
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
 
 
-
-</script>
-
-<script src="https://codeply.com/v/eDmT9PMWW3"></script>
-
-
-  <!-- Vendor JS Files -->
+      <!-- Vendor JS Files -->
   <script src="assets/vendor/jquery/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
@@ -282,8 +113,7 @@ function SidebarCollapse () {
   <script src="assets/vendor/aos/aos.js"></script>
   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.js"></script>
-
-    <script>
+<script>
             // Hide submenus
             $('#body-row .collapse').collapse('hide'); 
 
@@ -313,18 +143,3 @@ function SidebarCollapse () {
                 $('#collapse-icon').toggleClass('fa-angle-double-left fa-angle-double-right');
             }
   </script>
-    <!-- Template Main JS File -->
-    <script src="/js/app.e9951830.js"></script>
-    <script src="/js/chunk-vendors.a64910e5.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/main.js"></script>
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-
-        
-
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>

@@ -1,6 +1,22 @@
 <?php
 
  include "../includes/back_header.php";
+ include "../Model/model_add_merchant_store.php";
+
+
+
+ $results_array = get_merchant_stores(1);
+
+ //var_dump($results_array);
+
+
+
+
+
+
+
+
+
 
 ;?>
 
@@ -175,14 +191,42 @@ body
 {
   width:200px;
   height:150px;
-  background-color:yellow;
+  background-color:blue;
   float:left;
   margin:20px 0px 0px 20px;
+  border: 2px solid red;
+  border-radius: 15px;
+}
+
+.merchant_logo_settings
+{
+  width:200px;
+  height:150px;
+  border: 2px solid red;
+  border-radius: 15px;
+  
+
+
+}
+
+
+.new_store_text_div
+{
+  width:120px;
+  height:30px;
+  background-color:yellow;
+  position:absolute;
+  margin-top:60px;
+  margin-left:45px;
+  font-family:sans-serif;
+  text-shadow: 2px 2px 5px red;
+  text-align: center;
 }
     </style>
 </head>
 <body>
     
+
 
 <aside class="sidebar">
       <div class="toggle">
@@ -251,8 +295,9 @@ body
 
 
             <div id="all_stores_bottom">
-            <button name="return_arrow" type="button" id="plus_symbol" style="margin-top:50px; margin-left:360px; height:100px; width:150px;font-weight:bold;" ><img src="../images/plus_icon.png" style="width:30px;"></i></button>
-
+              <form method="POST" action = "<?php $_PHP_SELF ?>" enctype="multipart/form-data">
+                <button name="plus_merchant_btn" type="button" id="plus_symbol" style="margin-top:50px; margin-left:500px; height:100px; width:150px;font-weight:bold;" ><img src="../images/plus_icon.png" style="width:30px;"></i></button>
+              </form>
             </div>
 
         
@@ -307,19 +352,45 @@ body
 
 
                 
-                plus_symbol.addEventListener("click", add_store);
-               
+                plus_symbol.addEventListener("click", send_to_next_site);
 
-
-                function add_store()
+                function send_to_next_site ()
                 {
-                  var new_store_div =  document.createElement("div");
-                  new_store_div.setAttribute("class","new_store_div");
-                  new_store_div.innerHTML = "STORE WAS CREATED";
-
-                  all_stores_top.appendChild(new_store_div)
-                  console.log("saimer plus");
+                  window.location.href = "../Backend/add_merchant.php";
                 }
+
+
+                
+                  document.onload = add_store();
+
+                  function add_store()
+                  {
+                    <?php foreach ($results_array as $row): ?>
+                    var new_store_div =  document.createElement("div");
+                    var new_store_text_div =  document.createElement("div");
+                    var new_img =  document.createElement("img");
+
+
+                    new_store_div.setAttribute("class","new_store_div");
+                    new_store_text_div.setAttribute("class","new_store_text_div");
+
+                    new_img.setAttribute("src","../Backend/uploaded_files/<?php echo $row['store_img_logo']; ?>");
+                    new_img.setAttribute("class","merchant_logo_settings");
+
+
+                    new_store_text_div.innerHTML = "<?php echo $row['store_name'];?>";
+                    //new_store_div.css("background-image", "url(../images/cheesecake_logo.jpg)");
+                    new_store_div.appendChild(new_store_text_div);
+                    new_store_div.appendChild(new_img);
+                    
+
+                    all_stores_top.appendChild(new_store_div);
+
+
+                    console.log("saimer plus");
+                    <?php endforeach; ?>
+                  }
+                
 
 $('#body-row .collapse').collapse('hide'); 
 
