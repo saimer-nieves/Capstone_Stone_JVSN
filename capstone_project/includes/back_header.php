@@ -59,7 +59,7 @@
           <ul style="background-color:#53c68c;">
            
             
-            <li class="get-started"><a href="sign_up.php?action=business">Logout</br></a></li>
+            <li class="get-started"><a href="../frontend/outside_index.php">Logout</br></a></li>
           </ul>
         </nav><!-- .nav-menu -->
       </div><!-- End Header Container -->

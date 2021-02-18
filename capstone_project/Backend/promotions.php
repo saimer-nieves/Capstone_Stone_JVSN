@@ -1,11 +1,13 @@
 <?php
 
- 
+
  include "../Model/model_add_merchant_store.php";
+ include "../Model/model_promotions.php";
 
 
 
- $results_array = get_merchant_stores(1);
+ $active_results_array =  get_promotions_active(52);
+ $expired_results_array =  get_promotions_expired(52);
 
  //var_dump($results_array);
 
@@ -19,12 +21,16 @@
 
 
 ;?>
+<?php
 
 
-<?php 
-include "../includes/back_side_nav.php"; // this outputs information and has to be below the header or it wont work
+
+include "../includes/back_side_nav.php";
+
 
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -191,23 +197,23 @@ body
     background-color:green;
 }
 
-.new_store_div
+.new_promotion
 {
   width:200px;
   height:150px;
   background-color:blue;
   float:left;
-  margin:20px 0px 0px 20px;
-  border: 2px solid red;
-  border-radius: 15px;
+  margin:5px;
+//  border: 2px solid red;
+  border-radius: 2px;
 }
 
 .merchant_logo_settings
 {
   width:200px;
   height:150px;
-  border: 2px solid red;
-  border-radius: 15px;
+  border: 1px solid black;
+  border-radius: 2px;
   
 
 
@@ -226,38 +232,98 @@ body
   text-shadow: 2px 2px 5px red;
   text-align: center;
 }
+
+#all_content
+{
+    background-color:green;
+    height:650px;
+    width:900px;
+    margin-left:200px;
+    margin-top:40px;
+}
+
+#store_name_section
+{
+
+    width:100%;
+    height:100px;
+    background-color:red;
+    margin-bottom:10px;
+
+}
+
+#middle_section_title
+{
+
+    width:100%;
+    height:70px;
+    background-color:yellow;
+    
+
+}
+
+#active_promotions
+{
+  
+  width:440px;
+  height:400px;
+  background-color:orange;
+  float:left;
+  margin:15px 20px 20px 0px;
+}
+
+#inactive_promotions
+{
+  
+  width:440px;
+  height:400px;
+  background-color:purple;
+  float:left;
+
+  margin:15px 0px 0px 0px;
+}
+
+
+#active_title
+{
+  background-color:red; 
+  height:100%;
+  width:50%;
+  text-align:center;
+  float:left;
+  padding-top:20px;
+}
+
+#inactive_title
+{
+  background-color:gray; 
+  height:100%;
+  width:50%;
+  float:left;
+  text-align:center;
+  padding-top:20px;
+}
     </style>
 </head>
 <body>
     
 
-
     <main>
       
 
 
+        <div id="all_content">
+        
+                <div id="store_name_section"></div>
 
+                <div id="middle_section_title">
+                
+                    <div id="active_title">ACTIVE</div> <div id="inactive_title">INACTIVE</div>
+                </div>
 
+                <div id="active_promotions"></div>
 
-        <div id="merchant_owner"></div>
-        <div id="all_merchant_stores">
-            <div id="all_stores_top">
-            
-
-
-
-
-
-
-
-            </div>
-
-
-            <div id="all_stores_bottom">
-              <form method="POST" action = "<?php $_PHP_SELF ?>" enctype="multipart/form-data">
-                <button name="plus_merchant_btn" type="button" id="plus_symbol" style="margin-top:50px; margin-left:500px; height:100px; width:150px;font-weight:bold;" ><img src="../images/plus_icon.png" style="width:30px;"></i></button>
-              </form>
-            </div>
+                <div id="inactive_promotions"></div>
 
         
         </div>
@@ -289,23 +355,50 @@ body
 
 
 
-
-
-
-
-
-
-
-
-
     </main>
+
+    
+
+
+
+
+
+
+
+
+
+   
+
+
+              <form method="POST" action = "<?php $_PHP_SELF ?>" enctype="multipart/form-data">
+                <button name="plus_promotion_btn" type="button" id="plus_symbol" style="position:fixed; top:600px; left:1120px; height:100px; width:150px;font-weight:bold;" ><img src="../images/plus_icon.png" style="width:30px;"></i></button>
+              </form>
+            
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
 
 <script>
 
                 var plus_symbol = document.querySelector("#plus_symbol");
-                var all_stores_top = document.querySelector("#all_stores_top"); //create a div then give class of Active_store div use php to bring info from the tables
+                var active_promotions = document.querySelector("#active_promotions"); //create a div then give class of Active_store div use php to bring info from the tables
+                var all_expired = document.querySelector("#inactive_promotions"); //create a div then give class of Active_store div use php to bring info from the tables
                 
               
 
@@ -315,7 +408,7 @@ body
 
                 function send_to_next_site ()
                 {
-                  window.location.href = "../Backend/add_merchant.php";
+                  window.location.href = "../Backend/add_promotion.php";
                 }
 
 
@@ -324,32 +417,58 @@ body
 
                   function add_store()
                   {
-                    <?php foreach ($results_array as $row): ?>
-                    var new_store_div =  document.createElement("div");
-                    var new_store_text_div =  document.createElement("div");
-                    var new_img =  document.createElement("img");
+                    <?php foreach ($active_results_array as $row): ?>
+                      var new_store_div =  document.createElement("div");
+                      var new_store_text_div =  document.createElement("div");
+                      var new_img =  document.createElement("img");
 
 
-                    new_store_div.setAttribute("class","new_store_div");
-                    new_store_text_div.setAttribute("class","new_store_text_div");
+                      new_store_div.setAttribute("class","new_promotion");
+                      new_store_text_div.setAttribute("class","new_store_text_div");
 
-                    new_img.setAttribute("src","../Backend/uploaded_files/<?php echo $row['store_img_logo']; ?>");
-                    new_img.setAttribute("class","merchant_logo_settings");
-
-
-                    new_store_text_div.innerHTML = "<?php echo $row['store_name'];?>";
-                    //new_store_div.css("background-image", "url(../images/cheesecake_logo.jpg)");
-                    new_store_div.appendChild(new_store_text_div);
-                    new_store_div.appendChild(new_img);
-                    
-
-                    all_stores_top.appendChild(new_store_div);
+                    // new_img.setAttribute("src","../Backend/uploaded_files/<?php ?>");
+                    // new_img.setAttribute("class","merchant_logo_settings");
 
 
-                    console.log("saimer plus");
+                      new_store_text_div.innerHTML = "<?php echo $row['promotion_type'];?>";
+                      //new_store_div.css("background-image", "url(../images/cheesecake_logo.jpg)");
+                      new_store_div.appendChild(new_store_text_div);
+                      //new_store_div.appendChild(new_img);
+                      
+
+                      active_promotions.appendChild(new_store_div);
+
+
+                      console.log("saimer plus");
+                    <?php endforeach; ?>
+
+
+
+                    <?php foreach ($expired_results_array as $row): ?>
+                      var new_store_div =  document.createElement("div");
+                      var new_store_text_div =  document.createElement("div");
+                      var new_img =  document.createElement("img");
+
+
+                      new_store_div.setAttribute("class","new_promotion");
+                      new_store_text_div.setAttribute("class","new_store_text_div");
+
+                    // new_img.setAttribute("src","../Backend/uploaded_files/<?php ?>");
+                    // new_img.setAttribute("class","merchant_logo_settings");
+
+
+                      new_store_text_div.innerHTML = "<?php echo $row['promotion_type'];?>";
+                      //new_store_div.css("background-image", "url(../images/cheesecake_logo.jpg)");
+                      new_store_div.appendChild(new_store_text_div);
+                      //new_store_div.appendChild(new_img);
+                      
+
+                      all_expired.appendChild(new_store_div);
+
+
+                      console.log("saimer plus");
                     <?php endforeach; ?>
                   }
-
-
+    
 
 </script>

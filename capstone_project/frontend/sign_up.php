@@ -17,7 +17,7 @@ $action_type = $_GET["action"];
 if((isset($_POST["sign_up_btn_mer"])) && ($action_type == "business"))
 {
 
-      echo "YOU DID IT" ;
+    
 
       $mer_fname = filter_input(INPUT_POST, 'mer_fname');
       $mer_lname = filter_input(INPUT_POST, 'mer_lname');
@@ -110,7 +110,7 @@ if((isset($_POST["login_btn"])))
     if (isset($_GET["action"]) != "")
 {
   $action_type = $_GET["action"];
-  echo $action_type;
+
 
 
 

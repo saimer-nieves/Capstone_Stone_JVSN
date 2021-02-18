@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-include "../includes/back_side_nav.php";
+
 include "../Model/model_add_merchant_store.php";
 
 
@@ -13,6 +13,7 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
   /*THIS SECTION TAKES CARE OF UPLOADING FILE TO FOLDER */
   if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK)
   {
+    
     // get details of the uploaded file
     $fileTmpPath = $_FILES['uploadedFile']['tmp_name'];
 
@@ -23,7 +24,7 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
     $fileNameCmps = explode(".", $fileName);
     $fileExtension = strtolower(end($fileNameCmps));
  
-    echo "This is fileName variable:" . $fileName;
+    
 
     // sanitize file-name
     $newFileName =  $fileName ;
@@ -39,22 +40,22 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
  
       if(move_uploaded_file($fileTmpPath, $dest_path)) 
       {
-        $message ='File is successfully uploaded.';
+       // $message ='File is successfully uploaded.';
       }
       else
       {
-        $message = 'There was some error moving the file to upload directory. Please make sure the upload directory is writable by web server.';
+       // $message = 'There was some error moving the file to upload directory. Please make sure the upload directory is writable by web server.';
       }
     }
     else
     {
-      $message = 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions);
+      //$message = 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions);
     }
   }
   else
   {
-    $message = 'There is some error in the file upload. Please check the following error.<br>';
-    $message .= 'Error:' . $_FILES['uploadedFile']['error'];
+   // $message = 'There is some error in the file upload. Please check the following error.<br>';
+   // $message .= 'Error:' . $_FILES['uploadedFile']['error'];
   }
 
 
@@ -68,7 +69,7 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
 
   
 
-  echo "YOU DID IT" ;
+
  /* $fileName     this is the variable with the regular name of the image*/
   $store_name = filter_input(INPUT_POST, 'store_name');
   $store_category = filter_input(INPUT_POST, 'store_category');
@@ -77,14 +78,18 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
 
 
 
-  $results = add_merchants( $mer_fname, $mer_lname, $mer_email, $mer_phone, SHA1($mer_password));
-  header("Location: ../Backend/merchant_main_panel.php");
+  header("Location: merchant_main_panel.php");
+  
   
 }
 $_SESSION['message'] = $message;
 
 
 
+
+?>
+<?php 
+include "../includes/back_side_nav.php"; // this outputs information and has to be below the header or it wont work
 
 ?>
 
@@ -477,4 +482,5 @@ $_SESSION['message'] = $message;
 
 
 </script>
+
 
