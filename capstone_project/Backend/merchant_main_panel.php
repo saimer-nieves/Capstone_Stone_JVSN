@@ -1,11 +1,27 @@
 <?php
 
  
+session_start();
+
+//CODE BELOW IS TO KICK PEOPLE OFF IF THEY ARE NOT LOGGED IN
+/*if ($_SESSION["username"] == null)
+{
+     header("Location: login.php");
+
+}*/
+
  include "../Model/model_add_merchant_store.php";
+ 
+  echo $_SESSION["mer_ID"].$_SESSION["mer_fname"] .$_SESSION["mer_lname"] .$_SESSION["mer_email"] .$_SESSION["mer_phone"] ;
+
+ $mer_ID= $_SESSION["mer_ID"];
+ $mer_fname= $_SESSION["mer_fname"];
+ $mer_lname= $_SESSION["mer_lname"];
+ $mer_email= $_SESSION["mer_email"];
+ $mer_phone= $_SESSION["mer_phone"];
 
 
-
- $results_array = get_merchant_stores(1);
+ $results_array = get_merchant_stores($mer_ID);
 
  //var_dump($results_array);
 

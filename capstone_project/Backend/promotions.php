@@ -1,13 +1,27 @@
 <?php
 
+session_start(); 
+$mer_ID= $_SESSION["mer_ID"];
 
  include "../Model/model_add_merchant_store.php";
  include "../Model/model_promotions.php";
 
 
 
- $active_results_array =  get_promotions_active(52);
- $expired_results_array =  get_promotions_expired(52);
+ $all_owned_stores_array = get_merchant_stores($mer_ID);; //get promotions for store 52
+ //var_dump($all_owned_stores_array);
+ 
+//exit;
+
+ foreach ($all_owned_stores_array as $row): 
+  $store_ID_FOUND = $row['store_ID'];
+  $active_results_array =  get_promotions_active( $store_ID_FOUND); //get promotions for store 52
+  $expired_results_array =  get_promotions_expired( $store_ID_FOUND);
+  
+ 
+
+ endforeach;
+ //exit;
 
  //var_dump($results_array);
 
@@ -233,16 +247,16 @@ body
   text-align: center;
 }
 
-#all_content
+.all_content
 {
-    background-color:green;
-    height:650px;
+    background-color:none;
+    height:100%;
     width:900px;
     margin-left:200px;
     margin-top:40px;
 }
 
-#store_name_section
+.store_name_section
 {
 
     width:100%;
@@ -252,7 +266,7 @@ body
 
 }
 
-#middle_section_title
+.middle_section_title
 {
 
     width:100%;
@@ -262,7 +276,7 @@ body
 
 }
 
-#active_promotions
+.active_promotions
 {
   
   width:440px;
@@ -272,7 +286,7 @@ body
   margin:15px 20px 20px 0px;
 }
 
-#inactive_promotions
+.inactive_promotions
 {
   
   width:440px;
@@ -284,7 +298,7 @@ body
 }
 
 
-#active_title
+.active_title
 {
   background-color:red; 
   height:100%;
@@ -294,7 +308,7 @@ body
   padding-top:20px;
 }
 
-#inactive_title
+.inactive_title
 {
   background-color:gray; 
   height:100%;
@@ -303,27 +317,26 @@ body
   text-align:center;
   padding-top:20px;
 }
+
+
+.unique_store
+{
+  float:left;
+  margin-bottom:200px;
+}
     </style>
 </head>
-<body>
+<body >
     
 
     <main>
       
 
 
-        <div id="all_content">
+
+        <div class="all_content">
         
-                <div id="store_name_section"></div>
 
-                <div id="middle_section_title">
-                
-                    <div id="active_title">ACTIVE</div> <div id="inactive_title">INACTIVE</div>
-                </div>
-
-                <div id="active_promotions"></div>
-
-                <div id="inactive_promotions"></div>
 
         
         </div>
@@ -396,6 +409,64 @@ body
 
 <script>
 
+var all_content_div = document.querySelector(".all_content");
+
+
+//foreach store here
+<?php foreach ($all_owned_stores_array as $row): ?>
+
+
+
+
+
+
+      var each_unique_div =  document.createElement("div");
+      each_unique_div.setAttribute("class","unique_store");  //UNIQUE
+
+
+      var store_name_section_div =  document.createElement("div");
+      store_name_section_div.setAttribute("class","store_name_section"); //STORE TITLE
+
+      var middle_section_title_div =  document.createElement("div");
+      middle_section_title_div.setAttribute("class","middle_section_title");  // MIDDLE SECTION FOR TITLES
+
+
+      var active_title_div =  document.createElement("div");
+      active_title_div.setAttribute("class","active_title"); //ACTIVE TITLES
+
+      var inactive_title_div =  document.createElement("div");
+      inactive_title_div.setAttribute("class","inactive_title"); //INACTIVE TITLE
+
+      var active_promotions_div =  document.createElement("div");
+      active_promotions_div.setAttribute("class","active_promotions"); //ACTIVE PROMOTION
+
+      var inactive_promotions_div =  document.createElement("div");
+      inactive_promotions_div.setAttribute("class","inactive_promotions"); //INACTIVE PROMOTIONS
+
+      all_content_div.appendChild(each_unique_div);
+      each_unique_div.appendChild(store_name_section_div);
+      each_unique_div.appendChild(middle_section_title_div);
+
+
+
+
+
+
+      each_unique_div.appendChild(active_promotions_div);
+      each_unique_div.appendChild(inactive_promotions_div);
+
+
+      middle_section_title_div.appendChild(active_title_div);
+      middle_section_title_div.appendChild(inactive_title_div);
+    console.log("sdasdsad");
+    // store_ID, store_name, store_category, store_day_created, store_img_logo, mer_ID
+    store_name_section_div.innerHTML = "<?php echo $row['store_name'];?>";
+<?php endforeach; ?>
+
+
+console.log("sdasdsad");
+
+
                 var plus_symbol = document.querySelector("#plus_symbol");
                 var active_promotions = document.querySelector("#active_promotions"); //create a div then give class of Active_store div use php to bring info from the tables
                 var all_expired = document.querySelector("#inactive_promotions"); //create a div then give class of Active_store div use php to bring info from the tables
@@ -417,58 +488,69 @@ body
 
                   function add_store()
                   {
-                    <?php foreach ($active_results_array as $row): ?>
-                      var new_store_div =  document.createElement("div");
-                      var new_store_text_div =  document.createElement("div");
-                      var new_img =  document.createElement("img");
+                    
+                    
+                        <?php foreach ($active_results_array as $row): ?>
+                            
+                            var new_store_text_div =  document.createElement("div");
+                            var new_img =  document.createElement("img");
 
 
-                      new_store_div.setAttribute("class","new_promotion");
-                      new_store_text_div.setAttribute("class","new_store_text_div");
+                            
+                            new_store_text_div.setAttribute("class","new_store_text_div");
 
-                    // new_img.setAttribute("src","../Backend/uploaded_files/<?php ?>");
-                    // new_img.setAttribute("class","merchant_logo_settings");
-
-
-                      new_store_text_div.innerHTML = "<?php echo $row['promotion_type'];?>";
-                      //new_store_div.css("background-image", "url(../images/cheesecake_logo.jpg)");
-                      new_store_div.appendChild(new_store_text_div);
-                      //new_store_div.appendChild(new_img);
-                      
-
-                      active_promotions.appendChild(new_store_div);
+                           //new_img.setAttribute("src","../Backend/uploaded_files/<?php ?>");
+                           //new_img.setAttribute("class","merchant_logo_settings");
 
 
-                      console.log("saimer plus");
-                    <?php endforeach; ?>
+                           new_store_text_div.innerHTML = "<?php echo $row['promotion_type'];?> <br> <?php echo $row['promotion_title'];?>";
+                           console.log(new_store_text_div)
+                            //new_store_div.css("background-image", "url(../images/cheesecake_logo.jpg)");
+                            //new_store_div.appendChild(new_store_text_div);
+                            //new_store_div.appendChild(new_img);
+                            
+
+                            //active_promotions_div.appendChild(new_store_div);
+
+
+                            console.log("saimer plus");
+                        <?php endforeach; ?>
 
 
 
-                    <?php foreach ($expired_results_array as $row): ?>
-                      var new_store_div =  document.createElement("div");
-                      var new_store_text_div =  document.createElement("div");
-                      var new_img =  document.createElement("img");
+                        <?php foreach ($expired_results_array as $row): ?>
+                            var new_store_div =  document.createElement("div");
+                            var new_store_text_div =  document.createElement("div");
+                            var new_img =  document.createElement("img");
 
 
-                      new_store_div.setAttribute("class","new_promotion");
-                      new_store_text_div.setAttribute("class","new_store_text_div");
+                            new_store_div.setAttribute("class","new_promotion");
+                            new_store_text_div.setAttribute("class","new_store_text_div");
 
-                    // new_img.setAttribute("src","../Backend/uploaded_files/<?php ?>");
-                    // new_img.setAttribute("class","merchant_logo_settings");
-
-
-                      new_store_text_div.innerHTML = "<?php echo $row['promotion_type'];?>";
-                      //new_store_div.css("background-image", "url(../images/cheesecake_logo.jpg)");
-                      new_store_div.appendChild(new_store_text_div);
-                      //new_store_div.appendChild(new_img);
-                      
-
-                      all_expired.appendChild(new_store_div);
+                          // new_img.setAttribute("src","../Backend/uploaded_files/<?php ?>");
+                          // new_img.setAttribute("class","merchant_logo_settings");
 
 
-                      console.log("saimer plus");
-                    <?php endforeach; ?>
+                            new_store_text_div.innerHTML = "<?php echo $row['promotion_type'];?><br> <?php echo $row['promotion_title'];?>";
+                            //new_store_div.css("background-image", "url(../images/cheesecake_logo.jpg)");
+                            new_store_div.appendChild(new_store_text_div);
+                            //new_store_div.appendChild(new_img);
+                            
+
+                            inactive_promotions_div.appendChild(new_store_div);
+
+
+                            console.log("saimer plus");
+                        <?php endforeach; ?>
+
+
+
+
+                 
                   }
     
+                  console.log("sdasdsad");
 
+
+                  
 </script>

@@ -26,18 +26,19 @@ var_dump($results);
 //var_dump($results[0]["store_category"]);
 exit;*/
 
-function add_promotions($promotion_type, $promotion_title, $promotion_exp_date, $promotion_description, $promotion_code,$store_ID) {
+function add_promotions($promotion_type, $promotion_title,$promotion_subheading, $promotion_exp_date, $promotion_address, $promotion_code,$store_ID) {
     global $db;
 
     $results = 0;
 
-    $stmt = $db->prepare("INSERT INTO promotions_tbl SET promotion_type = :promotion_type, promotion_title = :promotion_title, promotion_exp_date = :promotion_exp_date, promotion_description = :promotion_description, promotion_code = :promotion_code, store_ID = :store_ID");
+    $stmt = $db->prepare("INSERT INTO promotions_tbl SET promotion_type = :promotion_type, promotion_title = :promotion_title, promotion_subheading = :promotion_subheading, promotion_exp_date = :promotion_exp_date, promotion_address = :promotion_address, promotion_code = :promotion_code, store_ID = :store_ID");
 
     $binds = array (
         ":promotion_type" => $promotion_type,
         ":promotion_title" => $promotion_title,
+        ":promotion_subheading" => $promotion_subheading,
         ":promotion_exp_date" => $promotion_exp_date,
-        ":promotion_description" => $promotion_description,
+        ":promotion_address" => $promotion_address,
         ":promotion_code" => $promotion_code,
         ":store_ID" => $store_ID
     );
@@ -49,9 +50,13 @@ function add_promotions($promotion_type, $promotion_title, $promotion_exp_date, 
     return $results; 
 }
 
+////$testing = add_promotions("Coupon","50% off","only on apples",  "2021-02-25", "99 ENIT st", "5020241","52");
+//var_dump($testing);
+//exit;
 //46 47 48/*
 /*date("m/d/Y") this will help you set your time  */
 /*$testing = add_promotions("today", "Fall Big Sale", "2021-02-17", "Come buy fall color shirts 50%", 4561561210,52);
+
 
 var_dump($testing);
 exit;*/
@@ -65,7 +70,7 @@ function get_promotions_expired($store_ID) {
 
     $results = [];
     
-    $stmt = $db->prepare("SELECT promotion_ID, promotion_type, promotion_title, promotion_exp_date, promotion_description, promotion_code, store_ID FROM promotions_tbl WHERE store_ID = :store_ID AND promotion_exp_date <= :promotion_exp_date");
+    $stmt = $db->prepare("SELECT promotion_ID, promotion_type, promotion_title, promotion_subheading, promotion_exp_date, promotion_address, promotion_code, store_ID FROM promotions_tbl WHERE store_ID = :store_ID AND promotion_exp_date <= :promotion_exp_date");
 
     $stmt->bindValue(":store_ID", $store_ID);
     $stmt->bindValue(":promotion_exp_date", date("Y-m-d"));
@@ -92,7 +97,7 @@ function get_promotions_active($store_ID) {
 
     $results = [];
     
-    $stmt = $db->prepare("SELECT promotion_ID, promotion_type, promotion_title, promotion_exp_date, promotion_description, promotion_code, store_ID FROM promotions_tbl WHERE store_ID = :store_ID AND promotion_exp_date > :promotion_exp_date");
+    $stmt = $db->prepare("SELECT promotion_ID, promotion_type, promotion_title, promotion_subheading, promotion_exp_date, promotion_address, promotion_code, store_ID FROM promotions_tbl WHERE store_ID = :store_ID AND promotion_exp_date > :promotion_exp_date");
 
     $stmt->bindValue(":store_ID", $store_ID);
     $stmt->bindValue(":promotion_exp_date", date("Y-m-d"));
@@ -105,6 +110,9 @@ function get_promotions_active($store_ID) {
 
 }
 
+//$results = get_promotions_active(52);
+//var_dump($results);
+//exit;
 /*
 $results = get_promotions_active(46);
 var_dump($results);

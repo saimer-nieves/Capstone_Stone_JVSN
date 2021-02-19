@@ -6,6 +6,7 @@ include "../includes/functions.php";
 include "../Model/model_sign_ups.php";
 include "../Model/model_logins.php";
 
+
    
 $feedback = "";
 session_start();
@@ -67,7 +68,25 @@ if((isset($_POST["login_btn"])))
 
         if($results == 1)
         {
-          header('Location: ../Backend/merchant_main_panel.php');
+           //
+          //header('Location: ../Backend/customer_main_panel.php'); //
+
+
+          $array_info = check_customer_login_return_info($txt_email, $txt_password);
+
+          $_SESSION["cus_ID"] = $array_info["cus_ID"];
+          $_SESSION["cus_fname"] = $array_info["cus_fname"];
+          $_SESSION["cus_lname"] = $array_info["cus_lname"];
+          $_SESSION["cus_email"] = $array_info["cus_email"];
+          $_SESSION["cus_phone"] = $array_info["cus_phone"];
+
+          //echo $_SESSION["cus_ID"].$_SESSION["cus_fname"] .$_SESSION["cus_lname"] .$_SESSION["cus_email"] .$_SESSION["cus_phone"] ;
+         
+
+
+          header('Location: ../Backend/customer_main_panel.php');
+
+
         }
         else if ($results == 0)
         {
@@ -79,10 +98,26 @@ if((isset($_POST["login_btn"])))
       }
       else if(($action_type == "business"))
       {
-        $results = check_merchant_login($mer_email, $mer_password);
+        $results = check_merchant_login($txt_email, $txt_password);
 
         if($results == 1)
         {
+           
+          
+
+
+          $array_info = check_merchant_login_return_info($txt_email, $txt_password);
+
+          $_SESSION["mer_ID"] = $array_info["mer_ID"];
+          $_SESSION["mer_fname"] = $array_info["mer_fname"];
+          $_SESSION["mer_lname"] = $array_info["mer_lname"];
+          $_SESSION["mer_email"] = $array_info["mer_email"];
+          $_SESSION["mer_phone"] = $array_info["mer_phone"];
+
+          //echo $_SESSION["mer_ID"].$_SESSION["mer_fname"] .$_SESSION["mer_lname"] .$_SESSION["mer_email"] .$_SESSION["mer_phone"] ;
+         
+
+
           header('Location: ../Backend/merchant_main_panel.php');
         }
         else if ($results == 0)
@@ -109,7 +144,7 @@ if((isset($_POST["login_btn"])))
 
     if (isset($_GET["action"]) != "")
 {
-  $action_type = $_GET["action"];
+  //$action_type = $_GET["action"];
 
 
 
@@ -123,19 +158,7 @@ if((isset($_POST["login_btn"])))
       if($action_type == "business")
       {
     
-      
-      $mer_fname = filter_input(INPUT_POST, 'mer_fname');
-      $mer_lname = filter_input(INPUT_POST, 'mer_lname');
-      $mer_email = filter_input(INPUT_POST, 'mer_email');
-      $mer_phone = filter_input(INPUT_POST, 'mer_phone');
-   
-      $mer_password = filter_input(INPUT_POST, 'mer_password');
 
-
-          $results = addMerchants($mer_fName,$mer_lName, $mer_password, $mer_email, $mer_phone);
-      header('Location: outside_index.php');
-      }      
-      
       
       if($action_type == "customer")
       {
@@ -203,7 +226,7 @@ if((isset($_POST["login_btn"])))
 
 
 
-
+    }
 
     }
 

@@ -1,65 +1,37 @@
 <?php
 session_start(); 
-
+$mer_ID= $_SESSION["mer_ID"];
 include "../Model/model_add_merchant_store.php";
+include "../Model/model_promotions.php";
 
+
+$all_owned_stores_array = get_merchant_stores($mer_ID);; //get promotions for store 52
+
+
+if (isset($_POST['big_sale_submit']) )
+{
+  //STORE ID 52 IS SAMPLE
+//TODO MAKE SURE YOU CREATEA A SESSION VARUIABLE WITH THE USER id 
+  echo "YESSSSSSSSS";
+
+
+  $promotion_type = "big sale";
+  $promotion_title = filter_input(INPUT_POST, 'big_sale_title');
+  $promotion_subheading = filter_input(INPUT_POST, 'big_sale_subheading');
+  $promotion_exp_date = filter_input(INPUT_POST, 'big_sale_expire');
+  $promotion_address = filter_input(INPUT_POST, 'big_sale_address');
+  $promotion_code = filter_input(INPUT_POST, 'big_sale_code');
+  $store_ID = filter_input(INPUT_POST, 'store_name');
+
+  
+  $results =add_promotions($promotion_type, $promotion_title,$promotion_subheading, $promotion_exp_date, $promotion_address, $promotion_code,$store_ID);
+ // $testing = add_promotions("today", "Fall Big Sale", "2021-02-17", "Come buy fall color shirts 50%", 4561561210,52);
+
+ header("Location:promotions.php");
+}
 
 
 $message = ''; 
-if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
-{
-
-
-  /*THIS SECTION TAKES CARE OF UPLOADING FILE TO FOLDER */
-  if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK)
-  {
-    
-    // get details of the uploaded file
-    $fileTmpPath = $_FILES['uploadedFile']['tmp_name'];
-
-    
-    $fileName = $_FILES['uploadedFile']['name'];
-    $fileSize = $_FILES['uploadedFile']['size'];
-    $fileType = $_FILES['uploadedFile']['type'];
-    $fileNameCmps = explode(".", $fileName);
-    $fileExtension = strtolower(end($fileNameCmps));
- 
-    
-
-    // sanitize file-name
-    $newFileName =  $fileName ;
-    $_SESSION["fileName"] = $fileName;
-    // check if file has one of the following extensions
-    $allowedfileExtensions = array('jpg', 'gif', 'png', 'zip', 'txt', 'xls', 'doc');
- 
-    if (in_array($fileExtension, $allowedfileExtensions))
-    {
-      // directory in which the uploaded file will be moved
-      $uploadFileDir = './uploaded_files/';
-      $dest_path = $uploadFileDir . $newFileName;
- 
-      if(move_uploaded_file($fileTmpPath, $dest_path)) 
-      {
-       // $message ='File is successfully uploaded.';
-      }
-      else
-      {
-       // $message = 'There was some error moving the file to upload directory. Please make sure the upload directory is writable by web server.';
-      }
-    }
-    else
-    {
-      //$message = 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions);
-    }
-  }
-  else
-  {
-   // $message = 'There is some error in the file upload. Please check the following error.<br>';
-   // $message .= 'Error:' . $_FILES['uploadedFile']['error'];
-  }
-
-
-
 
 
 
@@ -71,17 +43,12 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
 
 
  /* $fileName     this is the variable with the regular name of the image*/
-  $store_name = filter_input(INPUT_POST, 'store_name');
-  $store_category = filter_input(INPUT_POST, 'store_category');
-
-  $results = add_merchant_stores($store_name, $store_category,date("Y-m-d"), $fileName, 1);
 
 
 
-  header("Location: merchant_main_panel.php");
-  
-  
-}
+
+
+
 $_SESSION['message'] = $message;
 
 
@@ -398,7 +365,7 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
   background-color:red;
   width:980px;
   height:530px;
-  margin-left:280px;
+  margin-left:200px;
   margin-top:100px;
   padding:15px;
   position:absolute;
@@ -407,12 +374,13 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
 #selected_div
 {
   background-color:orange;
-  width:980px;
+  width:1480px;
   height:530px;
-  margin-left:1280px;
+  
   margin-top:100px;
   padding:15px;
   position:absolute;
+  display:none;
   
 
 }
@@ -454,12 +422,14 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
 #selected_div 
 {
 
-  opacity: 0;
-  -webkit-transition: opacity 0.3s ease-in-out;
-  -moz-transition: opacity 0.3s ease-in-out;
-  -ms-transition: opacity 0.3s ease-in-out;
-  -o-transition: opacity 0.3s ease-in-out;
-  transition: opacity 0.3 ease-in-out;
+  opacity: 1;
+  -webkit-transition: opacity 0.3s ;
+  -moz-transition: opacity 0.3s ;
+  -ms-transition: opacity 0.3s ;
+  -o-transition: opacity 0.3s ;
+  transition: opacity 0.3;
+  transition:all 2s;
+  
 }
 
 #all_promotions 
@@ -476,11 +446,26 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
 #all_promotions.fade 
 {
   opacity:0;
+  transition: all 2s;
 }
 #selected_div.fade 
 {
-  opacity:1;
+  opacity:0;
+  transition: all 2s;
 }
+
+
+#all_promotions.unfade 
+{
+  opacity:1;
+  transition: all 2s;
+}
+#selected_div.unfade 
+{
+  opacity:1;
+  transition: all 2s;
+}
+
 
 .lbl_
 {
@@ -495,7 +480,7 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
 
 .form_
 {
-  background-color:blue;
+  background-color:none;
   width:645px;
   height:500px;
   float:left;
@@ -517,7 +502,7 @@ display:none;
 
 #big_sale_selected
 {
-display:none;
+display:block;
 
 }
 
@@ -546,6 +531,76 @@ display:none;
   display:none;
   
 }
+
+
+
+
+/*slider */
+
+#slider 
+{
+  position: relative;
+  width: 100%;
+  height: 1000px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0,0,0,0.3);
+}
+  
+    
+
+  
+
+  #prev, #next
+  {
+    width: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    font-size: 2rem;
+    text-shadow: 0 0 20px rgba(0,0,0,0.6);
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 150ms ease;
+  }
+
+    #prev, #next :hover 
+    {
+      background-color: rgba(0,0,0,0.5);
+      text-shadow: 0;
+    }
+  
+  #prev 
+  {  
+    left: 10px;
+  }
+  #next 
+  {
+    right: 10px;
+  }
+
+  #display_sample_coupon
+  {
+    height:200px;
+    width:340px;
+    background-color:white;
+    float:left;
+    margin-top:100px;
+    margin-left:20px;
+    
+
+  }
+
+.main_promotion
+{
+  float:left;
+}
+
+
+
+
   </style>
 </head>
 <body>
@@ -565,169 +620,244 @@ display:none;
 <!-- TESTING PURPOSES  <button>Start Animation</button>-->
 
 
+<div id="slider">
+  <ul id="slideWrap" style="position: relative;
+    list-style: none;
+    height: 100%;
+    width: 9999%;
+    padding-left:0px;
+    margin: 0;
+    transition: all 750ms ease;
+    left: 0;"> 
+   
+    <li style=" height: 100%; float: left;width:1360px; background-color:Red;  "> 
+              <div id="all_promotions">
 
-<div id="all_promotions">
-
-  <!-- TESTING PURPOSES  <div style="background:#98bf21;height:100px;width:100px;position:absolute;"></div>  -->
-  <!--*****************************************************************************************-->
-  <a href="#" id="a_coupon" >
-      <div id="coupon">
+          <!-- TESTING PURPOSES  <div style="background:#98bf21;height:100px;width:100px;position:absolute;"></div>  -->
+          <!--*****************************************************************************************-->
+          <a href="#" id="a_coupon" >
+              <div id="coupon">
 
 
-      <h4 class="text_display"> coupon</h4>
+              <h4 class="text_display"> coupon</h4>
 
 
-      </div>
-    </a>
-  <!--*****************************************************************************************-->
-  <a href="#" id="a_big_sale">
-      <div id="Big_Sale">
-
-
-
-      <h4 class="text_display"> Big_Sale</h4>
-
-      </div>
-  </a>
-
-    <!--*****************************************************************************************-->
-  <a href="#">
-      <div id="Info">
-
+              </div>
+            </a>
+          <!--*****************************************************************************************-->
+          <a href="#" id="a_big_sale">
+              <div id="Big_Sale">
 
 
 
-      <h4 class="text_display"> Info</h4>
+              <h4 class="text_display"> Big_Sale</h4>
 
-      </div>
-  </a>
-  <!--*****************************************************************************************-->
-</div>
+              </div>
+          </a>
 
-<div id="selected_div">
-
-
-    <div id="coupon_selected">
-
-      <div class="lbl_" >
-      <h4 class="text-light promotion_title">Coupon</h4>
-      </div>
-      <div class="form_">
-
-                  <form method="post" action = "<?php $_PHP_SELF ?>">
-
-           
-                          
-                          
-                            
-
-                                      
-                                        <label> <h5>mom Name: </h5></label>
-                                        <input type="text" maxlength = 80 class="form-control text_box"  name="cus_fname" >
-                                      
-                                      
-                                        <label> <h5>Last Name: </h5></label>
-                                        <input type="text" maxlength = 80 class="form-control text_box"  name="cus_lname" required>
-                                        
-                                        
-                                         <label> <h5>Email: abc@abc.abc  </h5></label>
-                                        <input type="email"  class="form-control text_box" name="cus_email" pattern ='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' required>
-                              
-                                        
-                                         <label> <h5>Phone : (###) ###-####</h5></label>
-                                        <input type="tel" maxlength = 20 id="phone" name="cus_phone" placeholder="(###) ###-####"  pattern="[(][0-9]{3}[)][ ][0-9]{3}-[0-9]{4}" class="form-control text_box" required >
-                                  
-                                        <label> <h5>Password : </h5></label>
-                                        <input type="text" maxlength = 255 class="form-control text_box" name="cus_password" >
-                                        
-
-                                       
-                                        <button name="sign_up_btn_cus" type="submit" class=" bg-success"  href="#">Sign up</i></button>
-                                  
+            <!--*****************************************************************************************-->
+          <a href="#">
+              <div id="Info">
 
 
-                                    
 
-                                    
-                    
-                              
-                                
-                               
 
-                </form>
+              <h4 class="text_display"> Info</h4>
+
+              </div>
+          </a>
+          <!--*****************************************************************************************-->
+          </div>
+
          
 
+              
+              
+              
+              
+              
+              
+    
+    </li>
+    <li style=" height: 100%; float: left; width:1400px; background-color:green;">
+    
+    
+              <div id="selected_div">
 
 
-                </div>
+          <div id="coupon_selected">
+            <div class = "main_promotion">
+                  <div class="lbl_" >
+                  <h4 class="text-light promotion_title">Coupon</h4>
+                  </div>
+                  <div class="form_">
 
-    </div>
+                              <form method="post" action = "<?php $_PHP_SELF ?>">
 
-
-    <div id="big_sale_selected">
-
-      <div class="lbl_">
-      <h4 class="text-light promotion_title">Big Sale</h4>
-      </div>
-      <div class="form_">
-
-                  <form method="post" action = "<?php $_PHP_SELF ?>">
-
-           
-                          
-                          
-                            
-
+                      
                                       
-                                        <label> <h5>sale Name: </h5></label>
-                                        <input type="text" maxlength = 80 class="form-control text_box"  name="cus_fname" >
                                       
-                                      
-                                        <label> <h5>sale Name: </h5></label>
-                                        <input type="text" maxlength = 80 class="form-control text_box"  name="cus_lname" required>
-                                        
-                                        
-                                         <label> <h5>Email: abc@abc.abc  </h5></label>
-                                        <input type="email"  class="form-control text_box" name="cus_email" pattern ='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' required>
-                              
-                                        
-                                         <label> <h5>Phone : (###) ###-####</h5></label>
-                                        <input type="tel" maxlength = 20 id="phone" name="cus_phone" placeholder="(###) ###-####"  pattern="[(][0-9]{3}[)][ ][0-9]{3}-[0-9]{4}" class="form-control text_box" required >
-                                  
-                                        <label> <h5>Password : </h5></label>
-                                        <input type="text" maxlength = 255 class="form-control text_box" name="cus_password" >
                                         
 
-                                       
-                                        <button name="sign_up_btn_cus" type="submit" class=" bg-success"  href="#">Sign up</i></button>
-                                  
+                                                  
+                                                    <label> <h5>Label: </h5></label>
+                                                    <input type="text" maxlength = 80 class="form-control text_box"  name="cus_fname" >
+                                                  
+                                                  
+                                                    <label> <h5>Title: </h5></label>
+                                                    <input type="text" maxlength = 80 class="form-control text_box"  name="coupon_title" required>
+                                                    
+                                                    
+                                                    <label> <h5>Subheading  </h5></label>
+                                                    <input type="text"  class="form-control text_box" name="coupon_subheading">
+                                          
+                                                    
+                                                    <label> <h5>Expire</h5></label>
+                                                    <input type="text"  class="form-control text_box" name="coupon_expire">
+
+                                                    <label> <h5>address </h5></label>
+                                                    <input type="text" maxlength = 255 class="form-control text_box" name="coupon_address" >
+                                                    
+                                                    <label> <h5>code </h5></label>
+                                                    <input type="text" maxlength = 255 class="form-control text_box" name="coupon_code" >
+                                                    
+
+                                                  
+                                                    <button name="sign_up_btn_cus" type="submit" class=" bg-success"  href="#">Sign up</i></button>
+                                              
 
 
-                                    
+                                                
 
-                                    
-                    
-                              
+                                                
                                 
-                               
+                                          
+                                            
+                                          
 
-                </form>
-         
+                            </form>
+                            </div>
+                            <div id="display_sample_coupon">
+                  <h3 id="title">Title here</h3>
+                  <h5 id="subheading" name="coupon_subheading"> subheading</h5>
+                  <h6 id="expire" name="coupon_expire"> expire</h6>
+                  <h6 id="address" name="coupon_address"> address</h6>
+                  <h6 id="code" name="coupon_code"> code</h6>
 
-
-
+                  
                 </div>
 
-    </div>
+                        </div>
 
-<!--
-    <div id="ad">
+            
+          </div>
 
-      <div class="lbl_"></div>
-      <div class="form_"></div>
 
-    </div>-->
+          
+
+          <div id="big_sale_selected">
+
+              <div class = "main_promotion">
+                    <div class="lbl_" >
+                    <h4 class="text-light promotion_title">BIG SALE</h4>
+                    </div>
+                    <div class="form_">
+
+                                <form method="post" action = "<?php $_PHP_SELF ?>">
+
+                        
+                                        
+                                        
+                                          
+
+                                                    
+                                                      <label> <h5>Label: </h5></label>
+                                                      <input type="text" maxlength = 80 class="form-control text_box"  name="cus_fname" >
+                                                    
+                                                    
+                                                      <label> <h5>Title: </h5></label>
+                                                      <input type="text" maxlength = 80 class="form-control text_box"  name="big_sale_title" required>
+                                                      
+                                                      
+                                                      <label> <h5>Subheading  </h5></label>
+                                                      <input type="text"  class="form-control text_box" name="big_sale_subheading">
+                                            
+                                                      
+                                                      <label> <h5>Expire</h5></label>
+                                                      <input type="date"  class="form-control text_box" name="big_sale_expire">
+
+                                                      <label> <h5>address </h5></label>
+                                                      <input type="text" maxlength = 255 class="form-control text_box" name="big_sale_address" >
+                                                      
+                                                      <label> <h5>code </h5></label>
+                                                      <input type="text" maxlength = 255 class="form-control text_box" name="big_sale_code" >
+                                                      
+
+                                                      <div class="form-group">
+                                                        <label for="sel1">Select list:</label>
+                                                        <select name="store_name" class="form-control" id="sel1">             <!--FORM ELEMENT *********************-->
+                                                        <?php foreach ($all_owned_stores_array as $row): ?>
+                                                          <option value="<?php echo $row['store_ID'];?>"><?php echo $row['store_name'];?></option>
+                                                        <?php endforeach; ?>
+                                                        
+                                                          
+                                                        </select>
+                                                      </div>
+
+
+                                                    
+                                                      <button name="big_sale_submit" type="submit" class=" bg-success"  href="#">big_sale_submit</i></button>
+                                                
+
+
+                                                  
+
+                                                  
+                                  
+                                            
+                                              
+                                            
+
+                              </form>
+                              </div>
+                              <div id="display_sample_coupon">
+                    <h3 id="title2">Title here</h3>
+                    <h5 id="subheading2" name="coupon_subheading"> subheading</h5>
+                    <h6 id="expire2" name="coupon_expire"> expire</h6>
+                    <h6 id="address2" name="coupon_address"> address</h6>
+                    <h6 id="code2" name="coupon_code"> code</h6>
+
+                    
+                  </div>
+
+                      </div>
+
+
+          </div>
+          
+
+          <!--
+          <div id="ad">
+
+            <div class="lbl_"></div>
+            <div class="form_"></div>
+
+          </div>-->
+         
+    
+    
+    
+    
+    
+    </li>
+    <li style="  height: 100%; float: left; width:1400px; background-color:blue;"> 
+    </li>
+    <li style="  height: 100%; float: left; width:1400px; background-color:orange;"></li>
+  </ul>
+  <a id="prev" href="#">&#8810;</a>
+  <a id="next" href="#">&#8811;</a>
 </div>
+
 
 
 
@@ -743,8 +873,13 @@ display:none;
 </body>
 </html>
 
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+
+
+
+
 
 var all_promotions_div = document.querySelector("#all_promotions")
 var selected_div = document.querySelector("#selected_div")
@@ -754,35 +889,44 @@ var a_big_sale = document.querySelector("#a_big_sale")
 
 
 var coupon_selected = document.querySelector("#coupon_selected");
+var big_sale_selected = document.querySelector("#big_sale_selected");
 var left_icon_container = document.querySelector("#left_icon_container");
 
 
 a_coupon.onclick = function()
 {
-  coupon_selected.style.display="block";
-  left_icon_container.style.display="block";
+  //coupon_selected.style.display="block";
+  //left_icon_container.style.display="block";
+ 
   
-  $("#all_promotions").animate({right: '950px'});
- console.log("saimer")
+
+
+
+
   //all_promotions_div.classList.toggle('fade');
 
 
 
 
-  $("#selected_div").animate({right: '150px'});
+ 
  // selected_div.classList.toggle('fade');
+
+
+
+
+
+
+ 
   
   
   
 }
 left_icon_container.onclick = function()
 {
-  //coupon_selected.style.display="none";
- // left_icon_container.style.display="none";
+ 
+  left_icon_container.style.display="none";
 
 
- $("#all_promotions").animate({right: '200px'});
- a_coupon.animate({right: '200px'});
 
   
   
@@ -793,19 +937,7 @@ left_icon_container.onclick = function()
 
 a_big_sale.onclick = function()
 {
-  big_sale_selected.style.display="block";
-  return_menu_btn.style.display="block";
-  $("#all_promotions").animate({right: '950px'});
- console.log("saimer")
- // all_promotions_div.classList.toggle('fade');
 
-
-
-
-  $("#selected_div").animate({right: '150px'});
- // selected_div.classList.toggle('fade');
-  
-  
   
 }
 
@@ -821,4 +953,226 @@ a_big_sale.onclick = function()
             });
           });
         }); */
+</script>
+
+
+
+
+
+
+
+<script>
+
+var responsiveSlider = function() {
+
+var slider = document.getElementById("slider");
+var sliderWidth = slider.offsetWidth;
+var slideList = document.getElementById("slideWrap");
+var count = 1;
+var items = slideList.querySelectorAll("li").length;
+var prev = document.getElementById("prev");
+var a_coupon = document.getElementById("a_coupon");
+var a_big_sale = document.getElementById("a_big_sale");
+
+window.addEventListener('resize', function() {
+  sliderWidth = slider.offsetWidth;
+});
+
+var prevSlide = function() {
+  if(count > 1) {
+    count = count - 2;
+    slideList.style.left = "-" + count * sliderWidth + "px";
+    count++;
+  }
+  else if(count = 1) {
+    count = items - 1;
+    slideList.style.left = "-" + count * sliderWidth + "px";
+    count++;
+  }
+};
+
+var nextSlide = function() {
+  if(count < items) {
+    slideList.style.left = "-" + count * sliderWidth + "px";
+    count++;
+    
+  }
+  else if(count = items) {
+    slideList.style.left = "0px";
+    count = 1;
+    
+  }
+};
+var timer_count = 0;
+/**THIS IS WHAT HAPPENS WHEN YOU PRESS A PROMOTION BUTTON */
+a_coupon.addEventListener("click", function() {
+  selected_div.style.display="block";
+  coupon_selected.style.display="block";
+  big_sale_selected.style.display="none";
+  all_promotions_div.classList.toggle('fade');
+  timer_count++;
+  
+  console.log("you can see it");
+  nextSlide();
+  
+  
+});
+a_big_sale.addEventListener("click", function() {
+
+  var timer_count2 = 0;
+
+  timer_count2++;
+  selected_div.style.display="block";
+  coupon_selected.style.display="none";
+  
+  big_sale_selected.style.display="block";
+  
+  all_promotions_div.classList.toggle('fade'); //fades content out
+  nextSlide(); //
+});
+
+prev.addEventListener("click", function() {
+  
+  
+  prevSlide();
+  all_promotions_div.classList.toggle('unfade');
+
+  
+  
+});
+
+
+};
+
+window.onload = function() {
+responsiveSlider();  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function convertCurrency(value) {
+    // your calculation here
+    return (value );
+}
+//COUPON SAMPLE
+  //THIS IS TITLE UPDATE
+    var title = document.querySelector("#title"); //get variable to display text
+    $('[name="coupon_title"]').on('change keyup', function() { //variable that you are typing in
+        value = $(this).val();
+        console.log(value);
+        title.innerHTML = value; // variable you push to
+    })
+  //TITLE ENDS HERE
+
+
+
+  //THIS IS Subheading UPDATE
+  var subheading = document.querySelector("#subheading"); //get variable to display text
+    $('[name="coupon_subheading"]').on('change keyup', function() { //variable that you are typing in
+        value = $(this).val();
+        console.log(value);
+        subheading.innerHTML = value; // variable you push to
+    })
+  //Subheading ENDS HERE
+
+
+
+  //THIS IS expire UPDATE
+  var expire = document.querySelector("#expire"); //get variable to display text
+    $('[name="coupon_expire"]').on('change keyup', function() { //variable that you are typing in
+        value = $(this).val();
+        console.log(value);
+        expire.innerHTML = value; // variable you push to
+    })
+  //expire HERE
+
+
+  //THIS IS address UPDATE
+  var address = document.querySelector("#address"); //get variable to display text
+    $('[name="coupon_address"]').on('change keyup', function() { //variable that you are typing in
+        value = $(this).val();
+        console.log(value);
+        address.innerHTML = value; // variable you push to
+    })
+  //address ENDS HERE
+
+  //THIS IS code UPDATE
+  var code = document.querySelector("#code"); //get variable to display text
+    $('[name="coupon_code"]').on('change keyup', function() { //variable that you are typing in
+        value = $(this).val();
+        console.log(value);
+        code.innerHTML = value; // variable you push to
+    })
+  //code ENDS HERE
+//END COUPON SAMPLE
+
+
+
+
+//BIG SALE SAMPLE
+  //THIS IS TITLE UPDATE
+  var title2 = document.querySelector("#title2"); //get variable to display text
+    $('[name="big_sale_title"]').on('change keyup', function() { //variable that you are typing in
+        value = $(this).val();
+        console.log(value);
+        title2.innerHTML = value; // variable you push to
+    })
+  //TITLE ENDS HERE
+
+
+
+  //THIS IS Subheading UPDATE
+  var subheading2 = document.querySelector("#subheading2"); //get variable to display text
+    $('[name="big_sale_subheading"]').on('change keyup', function() { //variable that you are typing in
+        value = $(this).val();
+        console.log(value);
+        subheading2.innerHTML = value; // variable you push to
+    })
+  //Subheading ENDS HERE
+
+
+
+  //THIS IS expire UPDATE
+  var expire2 = document.querySelector("#expire2"); //get variable to display text
+    $('[name="big_sale_expire"]').on('change keyup', function() { //variable that you are typing in
+        value = $(this).val();
+        console.log(value);
+        expire2.innerHTML = value; // variable you push to
+    })
+  //expire HERE
+
+
+  //THIS IS address UPDATE
+  var address2 = document.querySelector("#address2"); //get variable to display text
+    $('[name="big_sale_address"]').on('change keyup', function() { //variable that you are typing in
+        value = $(this).val();
+        console.log(value);
+        address2.innerHTML = value; // variable you push to
+    })
+  //address ENDS HERE
+
+  //THIS IS code UPDATE
+  var code2 = document.querySelector("#code2"); //get variable to display text
+    $('[name="big_sale_code"]').on('change keyup', function() { //variable that you are typing in
+        value = $(this).val();
+        console.log(value);
+        code2.innerHTML = value; // variable you push to
+    })
+  //code ENDS HERE
+//END COUPON SAMPLE
+
+
 </script>

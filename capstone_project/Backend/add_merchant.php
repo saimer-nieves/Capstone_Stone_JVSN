@@ -3,7 +3,7 @@ session_start();
 
 include "../Model/model_add_merchant_store.php";
 
-
+$mer_ID= $_SESSION["mer_ID"];
 
 $message = ''; 
 if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
@@ -74,7 +74,7 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
   $store_name = filter_input(INPUT_POST, 'store_name');
   $store_category = filter_input(INPUT_POST, 'store_category');
 
-  $results = add_merchant_stores($store_name, $store_category,date("Y-m-d"), $fileName, 1);
+  $results = add_merchant_stores($store_name, $store_category,date("Y-m-d"), $fileName, $mer_ID);
 
 
 
