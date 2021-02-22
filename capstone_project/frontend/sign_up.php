@@ -84,7 +84,7 @@ if((isset($_POST["login_btn"])))
          
 
 
-          header('Location: ../Backend/customer_main_panel.php');
+          header('Location: ../Backend/customer_profile.php');
 
 
         }

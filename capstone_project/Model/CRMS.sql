@@ -227,3 +227,20 @@ CREATE TABLE IF NOT EXISTS promotions_tbl (
         store_ID INT UNSIGNED,
         FOREIGN KEY (store_ID) REFERENCES merchant_stores_tbl(store_ID) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
+
+
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS subscriptions_tbl (
+		subscription_ID INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+		subscription_active bit,
+        subscription_date DATETIME, 
+        subscription_exit_date DATETIME, 
+        store_ID INT UNSIGNED,
+        cus_ID INT UNSIGNED,
+        FOREIGN KEY (store_ID) REFERENCES merchant_stores_tbl(store_ID) ON DELETE CASCADE,
+        FOREIGN KEY (cus_ID) REFERENCES customers_tbl(cus_ID) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;

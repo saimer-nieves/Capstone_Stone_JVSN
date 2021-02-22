@@ -9,9 +9,21 @@ $mer_ID= $_SESSION["mer_ID"];
 
 
  $all_owned_stores_array = get_merchant_stores($mer_ID);; //get promotions for store 52
- //var_dump($all_owned_stores_array);
+ var_dump($all_owned_stores_array);
  
-//exit;
+ echo "<br><br><br><br><br><br>".sizeof($all_owned_stores_array);
+
+ $total_items = sizeof($all_owned_stores_array);
+  for ($x = 0; $x < sizeof($all_owned_stores_array); $x++) {
+    $k = array_search($all_owned_stores_array[$x], $all_owned_stores_array); //$k = 1;
+
+    echo "<br><br><br>".$k;
+  }
+  
+
+  
+ 
+
 
 /*
  foreach ($all_owned_stores_array as $row)
