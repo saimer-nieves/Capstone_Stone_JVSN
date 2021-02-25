@@ -325,7 +325,7 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
       background-color:none;
       width:350px;
       height:200px;
-      margin-left:100px;
+      
       margin-top:100px;
       float:left;
     }
@@ -373,7 +373,7 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
 
 #selected_div
 {
-  background-color:orange;
+  background-color:#e7fde2;
   width:1480px;
   height:530px;
   
@@ -482,8 +482,9 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
 {
   background-color:none;
   width:645px;
-  height:500px;
+  
   float:left;
+  margin-top:20px;
 }
 
 
@@ -587,8 +588,9 @@ display:block;
     width:340px;
     background-color:white;
     float:left;
-    margin-top:100px;
+    margin-top:150px;
     margin-left:20px;
+    padding:20px;
     
 
   }
@@ -599,8 +601,118 @@ display:block;
 }
 
 
+.font_created_by_us
+{
+  
+  font-family: Arial Black, Arial, Helvetica;
+  color:black;
+  font-size: 10px;
+  
+}
 
+.push_side
+{
+  margin-left:50px;
+}
 
+.form_boxes
+{
+  margin-left:50px;
+
+  margin-top:40px;
+}
+
+#store2
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:green;
+  font-size: 20px;
+  text-align:center;
+}
+#title2
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:Red;
+  font-size: 30px;
+  text-align:center;
+}
+#expire2
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:black;
+  font-size: 10px;
+  text-align:center;
+}
+#description2
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:black;
+  font-size: 10px;
+  text-align:center;
+  margin-top:10px;
+}
+#address2
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:grey;
+  font-size: 10px;
+  text-align:center;
+  margin-top:30px;
+ 
+}
+
+.button_style_by_us
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:white;
+  background-color:#53C68C;
+  font-size: 12px;
+  border-radius:20px;
+
+  padding:20px;
+  border: none;
+  outline:none;
+  position:absolute;
+  margin-left:750px;
+ 
+}
+
+#coupon_bar
+{
+  margin-left:70px;
+  height:40px;
+}
+
+#code
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:black;
+  font-size: 10px;
+  text-align:center;
+  margin-top:10px;
+}
+#title
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:Red;
+  font-size: 30px;
+  text-align:center;
+}
+#subheading
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:Red;
+  font-size: 14px;
+  text-align:center;
+}
+
+#expire
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:black;
+  font-size: 10px;
+  text-align:center;
+}
   </style>
 </head>
 <body>
@@ -698,32 +810,45 @@ display:block;
                                       
                                       
                                         
+                                                  
+                                                    <div class="form-group row form_boxes">
+                                                      <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">Title: </h5></label>
+                                                      <div class="col-sm-7 ">
+                                                      <input type="text" maxlength = 80 class="form-control text_box"  name="coupon_title" required>
+                                                      </div>
+                                                    </div>
+                                                    
+                                                    <div class="form-group row form_boxes">
+                                                      <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">Subheading  </h5></label>
+                                                      <div class="col-sm-7 ">
+                                                      <input type="text"  class="form-control text_box" name="coupon_subheading">
+                                                      </div>
+                                                    </div>
+                                                    
+                                                    <div class="form-group row form_boxes">
+                                                      <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">Expire</h5></label>
+                                                      <div class="col-sm-7 ">
+                                                      <input type="date"  class="form-control text_box" name="coupon_expire">
+                                                      </div>
+                                                    </div>
+
+                                                    <div class="form-group row form_boxes">
+                                                      <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">address </h5></label>
+                                                      <div class="col-sm-7 ">
+                                                      <input type="text" maxlength = 255 class="form-control text_box" name="coupon_address" >
+                                                      </div>
+                                                    </div>
+
+                                                    <div class="form-group row form_boxes">
+                                                      <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">code </h5></label>
+                                                      <div class="col-sm-7 ">
+                                                      <input type="text" maxlength = 255 class="form-control text_box" name="coupon_code" >
+                                                      </div>
+                                                    </div>
+
 
                                                   
-                                                    <label> <h5>Label: </h5></label>
-                                                    <input type="text" maxlength = 80 class="form-control text_box"  name="cus_fname" >
-                                                  
-                                                  
-                                                    <label> <h5>Title: </h5></label>
-                                                    <input type="text" maxlength = 80 class="form-control text_box"  name="coupon_title" required>
-                                                    
-                                                    
-                                                    <label> <h5>Subheading  </h5></label>
-                                                    <input type="text"  class="form-control text_box" name="coupon_subheading">
-                                          
-                                                    
-                                                    <label> <h5>Expire</h5></label>
-                                                    <input type="text"  class="form-control text_box" name="coupon_expire">
-
-                                                    <label> <h5>address </h5></label>
-                                                    <input type="text" maxlength = 255 class="form-control text_box" name="coupon_address" >
-                                                    
-                                                    <label> <h5>code </h5></label>
-                                                    <input type="text" maxlength = 255 class="form-control text_box" name="coupon_code" >
-                                                    
-
-                                                  
-                                                    <button name="sign_up_btn_cus" type="submit" class=" bg-success"  href="#">Sign up</i></button>
+                                                    <button name="sign_up_btn_cus" type="submit" class=" bg-success button_style_by_us"  href="#">Sign up</i></button>
                                               
 
 
@@ -742,6 +867,7 @@ display:block;
                   <h5 id="subheading" name="coupon_subheading"> subheading</h5>
                   <h6 id="expire" name="coupon_expire"> expire</h6>
                   <h6 id="address" name="coupon_address"> address</h6>
+                  <img src="../images/coupon_bar_bg_rem.png" id="coupon_bar">
                   <h6 id="code" name="coupon_code"> code</h6>
 
                   
@@ -770,43 +896,51 @@ display:block;
                                         
                                           
 
-                                                    
-                                                      <label> <h5>Label: </h5></label>
-                                                      <input type="text" maxlength = 80 class="form-control text_box"  name="cus_fname" >
-                                                    
-                                                    
-                                                      <label> <h5>Title: </h5></label>
+                                                   
+                                                    <div class="form-group row form_boxes">
+                                                      <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">COUPON TITLE: </h5></label>
+                                                      <div class="col-sm-7 ">
                                                       <input type="text" maxlength = 80 class="form-control text_box"  name="big_sale_title" required>
-                                                      
-                                                      
-                                                      <label> <h5>Subheading  </h5></label>
-                                                      <input type="text"  class="form-control text_box" name="big_sale_subheading">
-                                            
-                                                      
-                                                      <label> <h5>Expire</h5></label>
+                                                      </div>
+                                                    </div>
+                                         
+                                                    <div class="form-group row form_boxes">
+                                                      <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">VALID UNTIL:</h5></label>
+                                                      <div class="col-sm-7 ">
                                                       <input type="date"  class="form-control text_box" name="big_sale_expire">
+                                                      </div>
+                                                    </div>
 
-                                                      <label> <h5>address </h5></label>
+                                                    <div class="form-group row form_boxes">
+                                                      <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">ADDRESS: </h5></label>
+                                                      <div class="col-sm-7 ">
                                                       <input type="text" maxlength = 255 class="form-control text_box" name="big_sale_address" >
-                                                      
-                                                      <label> <h5>code </h5></label>
-                                                      <input type="text" maxlength = 255 class="form-control text_box" name="big_sale_code" >
-                                                      
+                                                      </div>
+                                                    </div>
 
-                                                      <div class="form-group">
-                                                        <label for="sel1">Select list:</label>
-                                                        <select name="store_name" class="form-control" id="sel1">             <!--FORM ELEMENT *********************-->
-                                                        <?php foreach ($all_owned_stores_array as $row): ?>
-                                                          <option value="<?php echo $row['store_ID'];?>"><?php echo $row['store_name'];?></option>
-                                                        <?php endforeach; ?>
-                                                        
-                                                          
-                                                        </select>
+                                                    <div class="form-group row form_boxes">
+                                                      <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">DESCRIPTION: </h5></label>
+                                                      <div class="col-sm-7 ">
+                                                      <input type="text" maxlength = 255 class="form-control text_box" name="big_sale_description" >
+                                                      </div>
+                                                    </div>
+
+                                                      <div class="form-group row form_boxes">
+                                                        <label for="sel1" class=" col-sm-2 col-form-label font_created_by_us">STORE:</label>
+                                                        <div class="col-sm-7 ">
+                                                          <select name="store_name" class="form-control" id="sel1">             <!--FORM ELEMENT *********************-->
+                                                            <?php foreach ($all_owned_stores_array as $row): ?>
+                                                              <option value="<?php echo $row['store_name'];?>"><?php echo $row['store_name'];?></option>
+                                                            <?php endforeach; ?>
+                                                            
+                                                              
+                                                          </select>
+                                                        </div>
                                                       </div>
 
 
                                                     
-                                                      <button name="big_sale_submit" type="submit" class=" bg-success"  href="#">big_sale_submit</i></button>
+                                                      <button name="big_sale_submit" type="submit" class=" bg-success button_style_by_us"  href="#">CREATE PROMOTION</i></button>
                                                 
 
 
@@ -821,11 +955,14 @@ display:block;
                               </form>
                               </div>
                               <div id="display_sample_coupon">
+                    <h5 id="store2" name="coupon_store"> Store</h5>
                     <h3 id="title2">Title here</h3>
-                    <h5 id="subheading2" name="coupon_subheading"> subheading</h5>
+                    
                     <h6 id="expire2" name="coupon_expire"> expire</h6>
+                    <h6 id="description2" name="coupon_description"> description</h6>
+                    
                     <h6 id="address2" name="coupon_address"> address</h6>
-                    <h6 id="code2" name="coupon_code"> code</h6>
+                    
 
                     
                   </div>
@@ -1135,8 +1272,8 @@ function convertCurrency(value) {
 
 
   //THIS IS Subheading UPDATE
-  var subheading2 = document.querySelector("#subheading2"); //get variable to display text
-    $('[name="big_sale_subheading"]').on('change keyup', function() { //variable that you are typing in
+  var subheading2 = document.querySelector("#store2"); //get variable to display text
+    $('[name="store_name"]').on('change keyup', function() { //variable that you are typing in
         value = $(this).val();
         console.log(value);
         subheading2.innerHTML = value; // variable you push to
@@ -1165,8 +1302,8 @@ function convertCurrency(value) {
   //address ENDS HERE
 
   //THIS IS code UPDATE
-  var code2 = document.querySelector("#code2"); //get variable to display text
-    $('[name="big_sale_code"]').on('change keyup', function() { //variable that you are typing in
+  var code2 = document.querySelector("#description2"); //get variable to display text
+    $('[name="big_sale_description"]').on('change keyup', function() { //variable that you are typing in
         value = $(this).val();
         console.log(value);
         code2.innerHTML = value; // variable you push to
