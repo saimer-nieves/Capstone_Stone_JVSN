@@ -9,15 +9,13 @@ $mer_ID= $_SESSION["mer_ID"];
 
 
  $all_owned_stores_array = get_merchant_stores($mer_ID);; //get promotions for store 52
- var_dump($all_owned_stores_array);
- 
- echo "<br><br><br><br><br><br>".sizeof($all_owned_stores_array);
+
 
  $total_items = sizeof($all_owned_stores_array);
   for ($x = 0; $x < sizeof($all_owned_stores_array); $x++) {
     $k = array_search($all_owned_stores_array[$x], $all_owned_stores_array); //$k = 1;
 
-    echo "<br><br><br>".$k;
+ 
   }
   
 
@@ -121,6 +119,11 @@ body
 {
    // padding-top:100px;
    background-color:#e6fffa;
+   text-transform: uppercase;
+   //font-family: Arial Black, Arial, Helvetica;
+   // color:#593533;
+    
+   
 }
 
 #body-row
@@ -253,14 +256,10 @@ body
 
 .new_store_text_div
 {
-  width:120px;
-  height:30px;
+  
   background-color:yellow;
-  position:absolute;
-  margin-top:60px;
-  margin-left:45px;
-  font-family:sans-serif;
-  text-shadow: 2px 2px 5px red;
+
+ 
   text-align: center;
 }
 
@@ -278,48 +277,67 @@ body
 
     width:100%;
     height:100px;
-    background-color:red;
+    background-color:#D5F317;
     margin-bottom:10px;
+    float:left;
+
+
+    font-family: Arial Black, Arial, Helvetica;
+    color:black;
+    font-size: 25px;
+    text-align:center;
+    text-transform: uppercase;
+    padding-top:25px;
 
 }
 
-.middle_section_title
+.middle_section_active
 {
 
     width:100%;
     height:70px;
-    background-color:yellow;
-    
+    background-color:#0FF934;
+    float:left;
+
+}
+
+.middle_section_inactive
+{
+
+    width:100%;
+    height:70px;
+    background-color:#f2908b;
+    float:left;
 
 }
 
 .active_promotions
 {
   
-  width:440px;
-  height:400px;
+  width:920px;
+  height:200px;
   background-color:orange;
   float:left;
-  margin:15px 20px 20px 0px;
+  margin-bottom:10px;
 }
 
 .inactive_promotions
 {
   
-  width:440px;
-  height:400px;
+  width:920px;
+  height:200px;
   background-color:purple;
   float:left;
 
-  margin:15px 0px 0px 0px;
+  margin-bottom:10px;
 }
 
 
 .active_title
 {
-  background-color:red; 
+  background-color:#0FF934; 
   height:100%;
-  width:50%;
+  width:100%;
   text-align:center;
   float:left;
   padding-top:20px;
@@ -327,9 +345,9 @@ body
 
 .inactive_title
 {
-  background-color:gray; 
+  background-color:#f2908b; 
   height:100%;
-  width:50%;
+  width:100%;
   float:left;
   text-align:center;
   padding-top:20px;
@@ -340,6 +358,12 @@ body
 {
   float:left;
   margin-bottom:200px;
+}
+
+
+#plus_symbol
+{
+  background-color:#53C68C;
 }
     </style>
 </head>
@@ -528,8 +552,11 @@ var all_content_div = document.querySelector(".all_content");
               var store_name_section_div =  document.createElement("div");
               store_name_section_div.setAttribute("class","store_name_section"); //STORE TITLE
 
-              var middle_section_title_div =  document.createElement("div");
-              middle_section_title_div.setAttribute("class","middle_section_title");  // MIDDLE SECTION FOR TITLES
+              var middle_section_active =  document.createElement("div");
+              middle_section_active.setAttribute("class","middle_section_active");  // MIDDLE SECTION FOR TITLES
+             
+              var middle_section_inactive =  document.createElement("div");
+              middle_section_inactive.setAttribute("class","middle_section_inactive");  // MIDDLE SECTION FOR TITLES
 
 
               var active_title_div =  document.createElement("div");
@@ -546,7 +573,9 @@ var all_content_div = document.querySelector(".all_content");
 
               all_content_div.appendChild(each_unique_div);
               each_unique_div.appendChild(store_name_section_div);
-              each_unique_div.appendChild(middle_section_title_div);
+              each_unique_div.appendChild(middle_section_active);
+              each_unique_div.appendChild(active_promotions_div);
+              each_unique_div.appendChild(middle_section_inactive);
               
 
               console.log("junior outside");
@@ -556,12 +585,12 @@ var all_content_div = document.querySelector(".all_content");
 
               active_title_div.innerHTML = "Acttive";
               inactive_title_div.innerHTML = "Inacttive";
-              each_unique_div.appendChild(active_promotions_div);
+              
               each_unique_div.appendChild(inactive_promotions_div);
 
 
-              middle_section_title_div.appendChild(active_title_div);
-              middle_section_title_div.appendChild(inactive_title_div);
+              middle_section_active.appendChild(active_title_div);
+              middle_section_inactive.appendChild(inactive_title_div);
             console.log("sdasdsad");
             // store_ID, store_name, store_category, store_day_created, store_img_logo, mer_ID
             store_name_section_div.innerHTML = "<?php echo $row['store_name'];?>";
@@ -602,10 +631,12 @@ var all_content_div = document.querySelector(".all_content");
       
         var new_store_div =  document.createElement("div");
                             var new_store_text_div =  document.createElement("div");
+                            var new_store_delete_div =  document.createElement("div");
                             var new_img =  document.createElement("img");
 
 
                             new_store_div.setAttribute("class","new_promotion");
+                            new_store_text_div.setAttribute("class","new_store_text_div");
                             new_store_text_div.setAttribute("class","new_store_text_div");
 
                           // new_img.setAttribute("src","../Backend/uploaded_files/<?php ?>");
