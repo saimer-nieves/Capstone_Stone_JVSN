@@ -10,26 +10,87 @@ $all_owned_stores_array = get_merchant_stores($mer_ID);; //get promotions for st
 
 if (isset($_POST['big_sale_submit']) )
 {
-  //STORE ID 52 IS SAMPLE
-//TODO MAKE SURE YOU CREATEA A SESSION VARUIABLE WITH THE USER id 
-  echo "YESSSSSSSSS";
+    //STORE ID 52 IS SAMPLE
+  //TODO MAKE SURE YOU CREATEA A SESSION VARUIABLE WITH THE USER id 
+    echo "big sale submit";
 
 
-  $promotion_type = "big sale";
-  $promotion_title = filter_input(INPUT_POST, 'big_sale_title');
-  $promotion_subheading = filter_input(INPUT_POST, 'big_sale_subheading');
-  $promotion_exp_date = filter_input(INPUT_POST, 'big_sale_expire');
-  $promotion_address = filter_input(INPUT_POST, 'big_sale_address');
-  $promotion_code = filter_input(INPUT_POST, 'big_sale_code');
-  $store_ID = filter_input(INPUT_POST, 'store_name');
+    $promotion_type = "big sale";
+    $promotion_title = filter_input(INPUT_POST, 'big_sale_title');
+    $promotion_subheading = NULL;
+    $promotion_address = filter_input(INPUT_POST, 'big_sale_address');
+    $promotion_exp_date = filter_input(INPUT_POST, 'big_sale_expire');
 
-  
-  $results =add_promotions($promotion_type, $promotion_title,$promotion_subheading, $promotion_exp_date, $promotion_address, $promotion_code,$store_ID);
- // $testing = add_promotions("today", "Fall Big Sale", "2021-02-17", "Come buy fall color shirts 50%", 4561561210,52);
+    $promotion_description = filter_input(INPUT_POST, 'big_sale_description');
+    $promotion_code = NULL;
+    $store_name = filter_input(INPUT_POST, 'store_name_big_sale');
+    $store_ID = convert_storename_to_ID($store_name,$mer_ID);
+    
+    $results = add_promotions( $promotion_type, $promotion_title, $promotion_subheading, $promotion_address, $promotion_exp_date, $promotion_description, $promotion_code, $store_ID);
+  // $testing = add_promotions("today", "Fall Big Sale", "2021-02-17", "Come buy fall color shirts 50%", 4561561210,52);
 
- header("Location:promotions.php");
+  // header("Location:promotions.php");
 }
 
+
+
+
+
+
+if (isset($_POST['coupon_submit']) )
+{
+    //STORE ID 52 IS SAMPLE
+  //TODO MAKE SURE YOU CREATEA A SESSION VARUIABLE WITH THE USER id 
+    echo "coupon submit";
+
+
+    $promotion_type = "coupon";
+    $promotion_title = filter_input(INPUT_POST, 'coupon_title');
+    $promotion_subheading = filter_input(INPUT_POST, 'coupon_subheading');
+    $promotion_address = NULL;
+    $promotion_exp_date = filter_input(INPUT_POST, 'coupon_expire');
+    $promotion_description = filter_input(INPUT_POST, 'coupon_description');
+    $promotion_code = filter_input(INPUT_POST, 'coupon_code');
+    $store_name = filter_input(INPUT_POST, 'store_name_coupon');
+    $store_ID = convert_storename_to_ID($store_name,$mer_ID);
+
+    
+    $results = add_promotions( $promotion_type, $promotion_title, $promotion_subheading, $promotion_address, $promotion_exp_date, $promotion_description, $promotion_code, $store_ID);
+  // $testing = add_promotions("today", "Fall Big Sale", "2021-02-17", "Come buy fall color shirts 50%", 4561561210,52);
+
+  // header("Location:promotions.php");
+}
+
+
+
+
+
+
+
+if (isset($_POST['info_submit']) )
+{
+  //STORE ID 52 IS SAMPLE
+  //TODO MAKE SURE YOU CREATEA A SESSION VARUIABLE WITH THE USER id 
+    echo "info submit button";
+
+
+    $promotion_type = "info";
+    $promotion_title = filter_input(INPUT_POST, 'info_title');
+    $promotion_subheading = NULL;
+    $promotion_address = filter_input(INPUT_POST, 'info_address');
+    $promotion_exp_date = filter_input(INPUT_POST, 'info_expire');
+    $promotion_description = filter_input(INPUT_POST, 'info_description');
+    $promotion_code = NULL;
+  
+    $store_name = filter_input(INPUT_POST, 'store_name_info');
+    $store_ID = convert_storename_to_ID($store_name,$mer_ID);
+
+    
+    $results = add_promotions( $promotion_type, $promotion_title, $promotion_subheading, $promotion_address, $promotion_exp_date, $promotion_description, $promotion_code, $store_ID);
+  // $testing = add_promotions("today", "Fall Big Sale", "2021-02-17", "Come buy fall color shirts 50%", 4561561210,52);
+
+  //header("Location:promotions.php");
+}
 
 $message = ''; 
 
@@ -506,6 +567,11 @@ display:none;
 display:block;
 
 }
+#info_selected
+{
+display:none;
+
+}
 
 #return_menu_btn
 {
@@ -584,14 +650,31 @@ display:block;
 
   #display_sample_coupon
   {
+    height:250px;
+    width:340px;
+    background-color:#ffffff;
+    float:left;
+    margin-top:120px;
+    margin-left:20px;
+    padding:5px;
+    border-style: solid;
+    border-width: 5px;
+    border-color:#e73e45;
+
+  }
+
+  #display_sample_big_sale
+  {
     height:200px;
     width:340px;
-    background-color:white;
+    background-color:#ffffff;
     float:left;
     margin-top:150px;
     margin-left:20px;
-    padding:20px;
-    
+    padding:5px;
+    border-style: solid;
+    border-width: 5px;
+    border-color:black;
 
   }
 
@@ -635,6 +718,8 @@ display:block;
   color:Red;
   font-size: 30px;
   text-align:center;
+  padding:0px;
+  margin:0px;
 }
 #expire2
 {
@@ -642,6 +727,8 @@ display:block;
   color:black;
   font-size: 10px;
   text-align:center;
+  padding:0px;
+  margin:0px;
 }
 #description2
 {
@@ -649,7 +736,7 @@ display:block;
   color:black;
   font-size: 10px;
   text-align:center;
-  margin-top:10px;
+  margin-top:15px;
 }
 #address2
 {
@@ -657,9 +744,66 @@ display:block;
   color:grey;
   font-size: 10px;
   text-align:center;
-  margin-top:30px;
+  margin-top:35px;
  
 }
+
+
+
+
+
+
+
+
+#store3
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:white;
+  font-size: 10px;
+  text-align:center;
+  text-shadow: 1px 2px 1px black;
+
+  
+}
+#title3
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:white;
+  font-size: 30px;
+  text-align:center;
+  padding:0px;
+  padding-bottom:10px;
+  margin:0px;
+  text-shadow: 1px 2px 1px black;
+  border-bottom: solid 1px black;
+}
+
+#description3
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:black;
+  font-size: 10px;
+  text-align:center;
+  margin-top:25px;
+}
+#address3
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:white;
+  font-size: 10px;
+  text-align:center;
+  padding-bottom:10px;
+  text-shadow: 1px 2px 1px black;
+
+ 
+ 
+}
+
+
+
+
+
+
 
 .button_style_by_us
 {
@@ -689,7 +833,7 @@ display:block;
   color:black;
   font-size: 10px;
   text-align:center;
-  margin-top:10px;
+  margin-top:0px;
 }
 #title
 {
@@ -697,6 +841,7 @@ display:block;
   color:Red;
   font-size: 30px;
   text-align:center;
+ 
 }
 #subheading
 {
@@ -704,6 +849,8 @@ display:block;
   color:Red;
   font-size: 14px;
   text-align:center;
+  padding:0px;
+  margin:0px;
 }
 
 #expire
@@ -712,6 +859,38 @@ display:block;
   color:black;
   font-size: 10px;
   text-align:center;
+  padding:0px;
+  margin-top:5px;
+}
+
+#description
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:grey;
+  font-size: 10px;
+  text-align:center;
+  margin-top:15px;
+  margin-bottom:20px;
+ 
+}
+
+#store_name_coupon
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:black;
+  font-size: 12px;
+  text-align:center;
+  padding:0px;
+  margin:0px;
+  margin-bottom: 15px;
+}
+
+#sign_up_btn_cus
+{
+  
+  position:absolute;
+  margin-top:-80px;
+  width:180px;
 }
   </style>
 </head>
@@ -768,7 +947,7 @@ display:block;
           </a>
 
             <!--*****************************************************************************************-->
-          <a href="#">
+          <a href="#" id="a_info">
               <div id="Info">
 
 
@@ -833,9 +1012,9 @@ display:block;
                                                     </div>
 
                                                     <div class="form-group row form_boxes">
-                                                      <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">address </h5></label>
+                                                      <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">description </h5></label>
                                                       <div class="col-sm-7 ">
-                                                      <input type="text" maxlength = 255 class="form-control text_box" name="coupon_address" >
+                                                      <input type="text" maxlength = 255 class="form-control text_box" name="coupon_description" >
                                                       </div>
                                                     </div>
 
@@ -846,9 +1025,21 @@ display:block;
                                                       </div>
                                                     </div>
 
+                                                    <div class="form-group row form_boxes">
+                                                        <label for="sel1" class=" col-sm-2 col-form-label font_created_by_us">STORE:</label>
+                                                        <div class="col-sm-7 ">
+                                                          <select name="store_name_coupon" class="form-control" id="sel1">             <!--FORM ELEMENT *********************-->
+                                                            <?php foreach ($all_owned_stores_array as $row): ?>
+                                                              <option value="<?php echo $row['store_name'];?>"><?php echo $row['store_name'];?></option>
+                                                            <?php endforeach; ?>
+                                                            
+                                                              
+                                                          </select>
+                                                        </div>
+                                                      </div>
 
                                                   
-                                                    <button name="sign_up_btn_cus" type="submit" class=" bg-success button_style_by_us"  href="#">Sign up</i></button>
+                                                    <button name="coupon_submit" id="sign_up_btn_cus"  type="submit" class=" bg-success button_style_by_us"  href="#">Sign up</i></button>
                                               
 
 
@@ -863,10 +1054,12 @@ display:block;
                             </form>
                             </div>
                             <div id="display_sample_coupon">
+                  <h5 id="store_name_coupon" name="store_name_coupon"> Store</h5>
                   <h3 id="title">Title here</h3>
+                  
                   <h5 id="subheading" name="coupon_subheading"> subheading</h5>
                   <h6 id="expire" name="coupon_expire"> expire</h6>
-                  <h6 id="address" name="coupon_address"> address</h6>
+                  <h6 id="description" name="coupon_description"> DESCRIPTION</h6>
                   <img src="../images/coupon_bar_bg_rem.png" id="coupon_bar">
                   <h6 id="code" name="coupon_code"> code</h6>
 
@@ -928,7 +1121,7 @@ display:block;
                                                       <div class="form-group row form_boxes">
                                                         <label for="sel1" class=" col-sm-2 col-form-label font_created_by_us">STORE:</label>
                                                         <div class="col-sm-7 ">
-                                                          <select name="store_name" class="form-control" id="sel1">             <!--FORM ELEMENT *********************-->
+                                                          <select name="store_name_big_sale" class="form-control" id="sel1">             <!--FORM ELEMENT *********************-->
                                                             <?php foreach ($all_owned_stores_array as $row): ?>
                                                               <option value="<?php echo $row['store_name'];?>"><?php echo $row['store_name'];?></option>
                                                             <?php endforeach; ?>
@@ -954,24 +1147,132 @@ display:block;
 
                               </form>
                               </div>
-                              <div id="display_sample_coupon">
-                    <h5 id="store2" name="coupon_store"> Store</h5>
-                    <h3 id="title2">Title here</h3>
-                    
-                    <h6 id="expire2" name="coupon_expire"> expire</h6>
-                    <h6 id="description2" name="coupon_description"> description</h6>
-                    
-                    <h6 id="address2" name="coupon_address"> address</h6>
+                              <div id="display_sample_big_sale">
                     
 
-                    
-                  </div>
+                                <h5 id="store2" name="big_sale_store"> Store</h5>
+                                <h3 id="title2" name="big_sale_title">Title here</h3>
+                                
+                                <h6 id="expire2" name="big_sale_expire"> expire</h6>
+                                <h6 id="description2" name="big_sale_description"> description</h6>
+
+                                
+                                
+                                  <h6 id="address2" name="big_sale_address"> address</h6>
+                              
+
+                                
+                              </div>
 
                       </div>
 
 
           </div>
           
+
+
+          <div id="info_selected">
+
+            <div class = "main_promotion">
+                <div class="lbl_" >
+                <h4 class="text-light promotion_title">INFO </h4>
+                </div>
+                <div class="form_">
+
+                            <form method="post" action = "<?php $_PHP_SELF ?>">
+
+                    
+                                    
+                                    
+                                                  <div class="form-group row form_boxes">
+                                                    <label for="sel1" class=" col-sm-2 col-form-label font_created_by_us">STORE:</label>
+                                                    <div class="col-sm-7 ">
+                                                      <select name="store_name_info" class="form-control" id="sel1">             <!--FORM ELEMENT *********************-->
+                                                        <?php foreach ($all_owned_stores_array as $row): ?>
+                                                          <option value="<?php echo $row['store_name'];?>"><?php echo $row['store_name'];?></option>
+                                                        <?php endforeach; ?>
+                                                        
+                                                          
+                                                      </select>
+                                                    </div>
+                                                  </div>
+
+                                              
+                                                <div class="form-group row form_boxes">
+                                                  <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">INFO TICKET TITLE: </h5></label>
+                                                  <div class="col-sm-7 ">
+                                                  <input type="text" maxlength = 80 class="form-control text_box"  name="info_title" required>
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row form_boxes">
+                                                  <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">ADDRESS: </h5></label>
+                                                  <div class="col-sm-7 ">
+                                                  <input type="text" maxlength = 255 class="form-control text_box" name="info_address" >
+                                                  </div>
+                                                </div>
+
+                                                <div class="form-group row form_boxes">
+                                                  <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">VALID UNTIL:</h5></label>
+                                                  <div class="col-sm-7 ">
+                                                  <input type="date"  class="form-control text_box" name="info_expire">
+                                                  </div>
+                                                </div>
+
+                                                
+
+                                                <div class="form-group row form_boxes">
+                                                  <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">DESCRIPTION: </h5></label>
+                                                  <div class="col-sm-7 ">
+                                                  <input type="text" maxlength = 255 class="form-control text_box" name="info_description" >
+                                                  </div>
+                                                </div>
+
+                                                  
+
+
+                                                
+                                                  <button name="info_submit" type="submit" class=" bg-success button_style_by_us"  href="#">CREATE PROMOTION</i></button>
+                                            
+
+
+                                              
+
+                                              
+                              
+                                        
+                                          
+                                        
+
+                          </form>
+                          </div>
+                          <div id="display_sample_big_sale">
+                
+                            <div style="background-color:#ff8080;">
+                              
+                              <h3 id="title3" name="big_sale_title">Title here</h3>
+                              <h5 id="store3" name="big_sale_store"> Store</h5> 
+                              <h6 id="address3" name="big_sale_address"> address</h6>
+                 
+                            </div>
+
+                            <div >
+
+                              <h6 id="description3" name="big_sale_description"> description</h6>
+
+                            </div>
+                            
+                             
+                          
+
+                            
+                          </div>
+
+                  </div>
+
+
+          </div>
+
 
           <!--
           <div id="ad">
@@ -1022,11 +1323,12 @@ var all_promotions_div = document.querySelector("#all_promotions")
 var selected_div = document.querySelector("#selected_div")
 var a_coupon = document.querySelector("#a_coupon")
 var a_big_sale = document.querySelector("#a_big_sale")
-var a_big_sale = document.querySelector("#a_big_sale")
+var a_info = document.querySelector("#a_info")
 
 
 var coupon_selected = document.querySelector("#coupon_selected");
 var big_sale_selected = document.querySelector("#big_sale_selected");
+var info_selected = document.querySelector("#info_selected");
 var left_icon_container = document.querySelector("#left_icon_container");
 
 
@@ -1110,6 +1412,7 @@ var items = slideList.querySelectorAll("li").length;
 var prev = document.getElementById("prev");
 var a_coupon = document.getElementById("a_coupon");
 var a_big_sale = document.getElementById("a_big_sale");
+var a_info = document.getElementById("a_info");
 
 window.addEventListener('resize', function() {
   sliderWidth = slider.offsetWidth;
@@ -1146,6 +1449,7 @@ a_coupon.addEventListener("click", function() {
   selected_div.style.display="block";
   coupon_selected.style.display="block";
   big_sale_selected.style.display="none";
+  info_selected.style.display="none";
   all_promotions_div.classList.toggle('fade');
   timer_count++;
   
@@ -1163,6 +1467,20 @@ a_big_sale.addEventListener("click", function() {
   coupon_selected.style.display="none";
   
   big_sale_selected.style.display="block";
+  info_selected.style.display="none";
+  all_promotions_div.classList.toggle('fade'); //fades content out
+  nextSlide(); //
+});
+a_info.addEventListener("click", function() {
+
+  var timer_count2 = 0;
+
+  timer_count2++;
+  selected_div.style.display="block";
+  coupon_selected.style.display="none";
+  
+  big_sale_selected.style.display="none";
+  info_selected.style.display="block";
   
   all_promotions_div.classList.toggle('fade'); //fades content out
   nextSlide(); //
@@ -1238,11 +1556,11 @@ function convertCurrency(value) {
 
 
   //THIS IS address UPDATE
-  var address = document.querySelector("#address"); //get variable to display text
-    $('[name="coupon_address"]').on('change keyup', function() { //variable that you are typing in
+  var description = document.querySelector("#description"); //get variable to display text
+    $('[name="coupon_description"]').on('change keyup', function() { //variable that you are typing in
         value = $(this).val();
         console.log(value);
-        address.innerHTML = value; // variable you push to
+        description.innerHTML = value; // variable you push to
     })
   //address ENDS HERE
 
@@ -1255,6 +1573,15 @@ function convertCurrency(value) {
     })
   //code ENDS HERE
 //END COUPON SAMPLE
+
+  //THIS IS Subheading UPDATE
+  var store_name_coupon = document.querySelector("#store_name_coupon"); //get variable to display text
+    $('[name="store_name_coupon"]').on('change keyup', function() { //variable that you are typing in
+        value = $(this).val();
+        console.log(value);
+        store_name_coupon.innerHTML = value; // variable you push to
+    })
+  //Subheading ENDS HERE
 
 
 
@@ -1272,11 +1599,11 @@ function convertCurrency(value) {
 
 
   //THIS IS Subheading UPDATE
-  var subheading2 = document.querySelector("#store2"); //get variable to display text
-    $('[name="store_name"]').on('change keyup', function() { //variable that you are typing in
+  var store_name_big_sale = document.querySelector("#store2"); //get variable to display text
+    $('[name="store_name_big_sale"]').on('change keyup', function() { //variable that you are typing in
         value = $(this).val();
         console.log(value);
-        subheading2.innerHTML = value; // variable you push to
+        store_name_big_sale.innerHTML = value; // variable you push to
     })
   //Subheading ENDS HERE
 
@@ -1311,5 +1638,52 @@ function convertCurrency(value) {
   //code ENDS HERE
 //END COUPON SAMPLE
 
+
+
+//INFO SALE
+
+
+
+
+//BIG SALE SAMPLE
+  //THIS IS TITLE UPDATE
+  var title3 = document.querySelector("#title3"); //get variable to display text
+    $('[name="info_title"]').on('change keyup', function() { //variable that you are typing in
+        value = $(this).val();
+        console.log(value);
+        title3.innerHTML = value; // variable you push to
+    })
+  //TITLE ENDS HERE
+
+
+
+  //THIS IS Subheading UPDATE
+  var store_name_info = document.querySelector("#store3"); //get variable to display text
+    $('[name="store_name_info"]').on('change keyup', function() { //variable that you are typing in
+        value = $(this).val();
+        console.log(value);
+        store_name_info.innerHTML = value; // variable you push to
+    })
+  //Subheading ENDS HERE
+
+
+  //THIS IS address UPDATE
+  var info_address = document.querySelector("#address3"); //get variable to display text
+    $('[name="info_address"]').on('change keyup', function() { //variable that you are typing in
+        value = $(this).val();
+        console.log(value);
+        info_address.innerHTML = value; // variable you push to
+    })
+  //address ENDS HERE
+
+  //THIS IS DESCRIPTION UPDATE
+  var info_description = document.querySelector("#description3"); //get variable to display text
+    $('[name="info_description"]').on('change keyup', function() { //variable that you are typing in
+        value = $(this).val();
+        console.log(value);
+        info_description.innerHTML = value; // variable you push to
+    })
+  //code ENDS HERE
+//END COUPON SAMPLE
 
 </script>

@@ -221,14 +221,14 @@ CREATE TABLE IF NOT EXISTS promotions_tbl (
 	promotion_ID INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
         promotion_type NVARCHAR(255),
         promotion_title NVARCHAR(255), 
+        promotion_subheading NVARCHAR(255), 
+        promotion_address NVARCHAR(255), 
         promotion_exp_date DATETIME, 
         promotion_description NVARCHAR(2000),
         promotion_code NVARCHAR(255),
         store_ID INT UNSIGNED,
         FOREIGN KEY (store_ID) REFERENCES merchant_stores_tbl(store_ID) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
-
-
 
 
 
