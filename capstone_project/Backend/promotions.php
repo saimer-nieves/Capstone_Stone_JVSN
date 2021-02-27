@@ -263,6 +263,15 @@ body
   text-align: center;
 }
 
+.new_store_delete_div
+{
+  background-color:red;
+  height:50px;
+  text-align:right;
+}
+
+
+
 .all_content
 {
     background-color:none;
@@ -365,6 +374,14 @@ body
 {
   background-color:#53C68C;
 }
+
+.trash_img
+{
+
+  height:30px;
+}
+
+
     </style>
 </head>
 <body >
@@ -602,18 +619,27 @@ var all_content_div = document.querySelector(".all_content");
       
                             var new_store_div =  document.createElement("div");
                             var new_store_text_div =  document.createElement("div");
-                            var new_img =  document.createElement("img");
+                            var new_store_delete_div =  document.createElement("div");
+                            var img_delete_trash =  document.createElement("img");
+                            var a_tag_delete_image = document.createElement("a");
+
+                            img_delete_trash.setAttribute("src","../images/delete_img_trash.png");
+                            img_delete_trash.setAttribute("class","trash_img");
+                            a_tag_delete_image.setAttribute("href","view_customers.php?store=<?php echo $col['promotion_ID'];?>");
+                            a_tag_delete_image.appendChild(img_delete_trash);
 
 
                             new_store_div.setAttribute("class","new_promotion");
                             new_store_text_div.setAttribute("class","new_store_text_div");
-
+                            new_store_delete_div.setAttribute("class","new_store_delete_div");
                           // new_img.setAttribute("src","../Backend/uploaded_files/<?php ?>");
                           // new_img.setAttribute("class","merchant_logo_settings");
 
 
                             new_store_text_div.innerHTML = "<?php echo $col['promotion_type'];?><br> <?php echo $col['promotion_title'];?>";
+                            new_store_delete_div.appendChild(a_tag_delete_image);
                             //new_store_div.css("background-image", "url(../images/cheesecake_logo.jpg)");
+                            new_store_div.appendChild(new_store_delete_div);
                             new_store_div.appendChild(new_store_text_div);
                             //new_store_div.appendChild(new_img);
                             
@@ -632,19 +658,26 @@ var all_content_div = document.querySelector(".all_content");
         var new_store_div =  document.createElement("div");
                             var new_store_text_div =  document.createElement("div");
                             var new_store_delete_div =  document.createElement("div");
-                            var new_img =  document.createElement("img");
+                            var img_delete_trash =  document.createElement("img");
+                            var a_tag_delete_image = document.createElement("a");
 
+                            img_delete_trash.setAttribute("src","../images/delete_img_trash.png");
+                            img_delete_trash.setAttribute("class","trash_img");
+                            a_tag_delete_image.setAttribute("href","view_customers.php?store=<?php echo $col['promotion_ID'];?>");
+                            a_tag_delete_image.appendChild(img_delete_trash);
 
                             new_store_div.setAttribute("class","new_promotion");
                             new_store_text_div.setAttribute("class","new_store_text_div");
-                            new_store_text_div.setAttribute("class","new_store_text_div");
+                            new_store_delete_div.setAttribute("class","new_store_delete_div");
 
                           // new_img.setAttribute("src","../Backend/uploaded_files/<?php ?>");
                           // new_img.setAttribute("class","merchant_logo_settings");
 
 
                             new_store_text_div.innerHTML = "<?php echo $col['promotion_type'];?><br> <?php echo $col['promotion_title'];?>";
+                            new_store_delete_div.appendChild(a_tag_delete_image);
                             //new_store_div.css("background-image", "url(../images/cheesecake_logo.jpg)");
+                            new_store_div.appendChild(new_store_delete_div);
                             new_store_div.appendChild(new_store_text_div);
                             //new_store_div.appendChild(new_img);
                             
