@@ -20,6 +20,16 @@ $mer_ID= $_SESSION["mer_ID"];
   
 
   
+ if(isset($_POST['delete_promotions'])){
+  $promotion_ID = filter_input(INPUT_POST, 'hidden_PromoteID');
+  var_dump($id);
+  echo "saimer you deleted this promotion";
+
+  $results = updatePromotions($promotion_ID);
+
+  header("Location: promotions.php");
+   }
+
  
 
 
@@ -621,12 +631,19 @@ var all_content_div = document.querySelector(".all_content");
                             var new_store_text_div =  document.createElement("div");
                             var new_store_delete_div =  document.createElement("div");
                             var img_delete_trash =  document.createElement("img");
-                            var a_tag_delete_image = document.createElement("a");
+                            var button_delete_image = document.createElement("button");
+                            var hidden_input = document.createElement("input");
+                            var form_ = document.createElement("form");
 
+                            form_.setAttribute("action","<?php $_PHP_SELF ?>");
+                            form_.setAttribute("method","post");
+                            hidden_input.setAttribute("type","text");
+                            hidden_input.setAttribute("name","hidden_PromoteID");
+                            hidden_input.setAttribute("value","<?php echo $col['promotion_ID'];?>");
                             img_delete_trash.setAttribute("src","../images/delete_img_trash.png");
                             img_delete_trash.setAttribute("class","trash_img");
-                            a_tag_delete_image.setAttribute("href","view_customers.php?store=<?php echo $col['promotion_ID'];?>");
-                            a_tag_delete_image.appendChild(img_delete_trash);
+                            button_delete_image.setAttribute("name","delete_promotions");
+                            button_delete_image.appendChild(img_delete_trash);
 
 
                             new_store_div.setAttribute("class","new_promotion");
@@ -635,9 +652,10 @@ var all_content_div = document.querySelector(".all_content");
                           // new_img.setAttribute("src","../Backend/uploaded_files/<?php ?>");
                           // new_img.setAttribute("class","merchant_logo_settings");
 
-
                             new_store_text_div.innerHTML = "<?php echo $col['promotion_type'];?><br> <?php echo $col['promotion_title'];?>";
-                            new_store_delete_div.appendChild(a_tag_delete_image);
+                            form_.appendChild(hidden_input);
+                            form_.appendChild(button_delete_image);
+                            new_store_delete_div.appendChild(form_);
                             //new_store_div.css("background-image", "url(../images/cheesecake_logo.jpg)");
                             new_store_div.appendChild(new_store_delete_div);
                             new_store_div.appendChild(new_store_text_div);

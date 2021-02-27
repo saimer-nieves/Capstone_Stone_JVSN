@@ -198,3 +198,33 @@ $results = get_promotions_active(46);
 var_dump($results);
 //var_dump($results[0]["store_category"]);
 exit;*/
+
+
+
+function updatePromotions($promotion_ID) {
+    global $db;
+
+    $results = 0;
+
+    $stmt = $db->prepare("UPDATE promotions_tbl SET promotion_exp_date = :promotion_exp_date WHERE promotion_ID = :promotion_ID");
+
+    $binds = array (
+        ":promotion_exp_date" => "1000-01-01",
+        ":promotion_ID" => $promotion_ID,
+      
+    );
+
+    if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
+        $results = 1;   
+    }
+
+    return $results;
+}
+
+
+
+
+
+//$results = updatePromotions(1);
+//var_dump($results);
+////exit;
