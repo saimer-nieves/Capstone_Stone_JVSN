@@ -30,7 +30,7 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
     $newFileName =  $fileName ;
     $_SESSION["fileName"] = $fileName;
     // check if file has one of the following extensions
-    $allowedfileExtensions = array('jpg', 'gif', 'png', 'zip', 'txt', 'xls', 'doc');
+    $allowedfileExtensions = array('jpg', 'jpeg', 'gif', 'png', 'zip', 'txt', 'xls', 'doc');
  
     if (in_array($fileExtension, $allowedfileExtensions))
     {

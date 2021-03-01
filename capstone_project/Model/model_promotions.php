@@ -150,7 +150,7 @@ function get_promotions_expired($store_ID) {
 
     $results = [];
     
-    $stmt = $db->prepare("SELECT promotion_ID, promotion_type, promotion_title, promotion_subheading, promotion_exp_date, promotion_address, promotion_code, store_ID FROM promotions_tbl WHERE store_ID = :store_ID AND promotion_exp_date <= :promotion_exp_date");
+    $stmt = $db->prepare("SELECT promotion_ID, promotion_type, promotion_title, promotion_subheading, promotion_address, promotion_exp_date, promotion_description, promotion_code, store_ID FROM promotions_tbl WHERE store_ID = :store_ID AND promotion_exp_date <= :promotion_exp_date");
 
     $stmt->bindValue(":store_ID", $store_ID);
     $stmt->bindValue(":promotion_exp_date", date("Y-m-d"));
@@ -177,7 +177,7 @@ function get_promotions_active($store_ID) {
 
     $results = [];
     
-    $stmt = $db->prepare("SELECT promotion_ID, promotion_type, promotion_title, promotion_subheading, promotion_exp_date, promotion_address, promotion_code, store_ID FROM promotions_tbl WHERE store_ID = :store_ID AND promotion_exp_date > :promotion_exp_date");
+    $stmt = $db->prepare("SELECT promotion_ID, promotion_type, promotion_title, promotion_subheading, promotion_address, promotion_exp_date, promotion_description, promotion_code, store_ID FROM promotions_tbl WHERE store_ID = :store_ID AND promotion_exp_date > :promotion_exp_date");
 
     $stmt->bindValue(":store_ID", $store_ID);
     $stmt->bindValue(":promotion_exp_date", date("Y-m-d"));

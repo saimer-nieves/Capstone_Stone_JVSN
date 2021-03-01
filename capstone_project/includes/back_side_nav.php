@@ -160,14 +160,14 @@ body
 
         <div class="profile">
           <!--<img src="images/person_profile.jpg" alt="Image" class="img-fluid">-->
-          <h3 class="name">Sam Nieves</h3>
-          <span class="country">sam@gmail.com</span>
+          <h3 class="name"><b><?php echo $_SESSION["mer_fname"];?>  <?php echo $_SESSION["mer_lname"];?> </b></h3>
+          <span class="country"><b><?php echo $_SESSION["mer_email"];?></b></span>
         </div>
 
         <div class="counter d-flex justify-content-center">
           <!-- <div class="row justify-content-center"> -->
             <div class="col">
-              <strong class="number">892</strong>
+              <strong class="number"><?php echo $_SESSION["number_of_stores"];?></strong>
               <span class="number-label">Stores</span>
             </div>
             <div class="col">
@@ -175,8 +175,8 @@ body
               <span class="number-label">Subscribers</span>
             </div>
             <div class="col">
-              <strong class="number">150</strong>
-              <span class="number-label">Days</span>
+              <strong class="number"><?php echo $_SESSION["number_of_active_promotions"];?></strong>
+              <span class="number-label">Promotions Active</span>
             </div>
           <!-- </div> -->
         </div>

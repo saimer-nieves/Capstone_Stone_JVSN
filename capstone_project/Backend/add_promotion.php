@@ -30,6 +30,25 @@ if (isset($_POST['big_sale_submit']) )
   // $testing = add_promotions("today", "Fall Big Sale", "2021-02-17", "Come buy fall color shirts 50%", 4561561210,52);
 
   // header("Location:promotions.php");
+
+
+
+
+
+  $results_array = get_merchant_stores($_SESSION["mer_ID"]);
+  $number_of_stores =  count($results_array);
+  
+  $number_of_active_promotions = 0;
+  foreach($results_array as $row)
+  {
+   $answer = get_promotions_active($row['store_ID']);
+ 
+   $temp_number = count($answer);
+ 
+   $number_of_active_promotions = $number_of_active_promotions + $temp_number;
+  }
+  $_SESSION["number_of_active_promotions"] =  $number_of_active_promotions;
+
 }
 
 
@@ -59,6 +78,22 @@ if (isset($_POST['coupon_submit']) )
   // $testing = add_promotions("today", "Fall Big Sale", "2021-02-17", "Come buy fall color shirts 50%", 4561561210,52);
 
   // header("Location:promotions.php");
+
+
+  
+  $results_array = get_merchant_stores($_SESSION["mer_ID"]);
+  $number_of_stores =  count($results_array);
+ 
+  $number_of_active_promotions = 0;
+  foreach($results_array as $row)
+  {
+   $answer = get_promotions_active($row['store_ID']);
+ 
+   $temp_number = count($answer);
+ 
+   $number_of_active_promotions = $number_of_active_promotions + $temp_number;
+  }
+  $_SESSION["number_of_active_promotions"] =  $number_of_active_promotions;
 }
 
 
@@ -90,6 +125,22 @@ if (isset($_POST['info_submit']) )
   // $testing = add_promotions("today", "Fall Big Sale", "2021-02-17", "Come buy fall color shirts 50%", 4561561210,52);
 
   //header("Location:promotions.php");
+
+
+  
+  $results_array = get_merchant_stores($_SESSION["mer_ID"]);
+  $number_of_stores =  count($results_array);
+ 
+  $number_of_active_promotions = 0;
+  foreach($results_array as $row)
+  {
+   $answer = get_promotions_active($row['store_ID']);
+ 
+   $temp_number = count($answer);
+ 
+   $number_of_active_promotions = $number_of_active_promotions + $temp_number;
+  }
+  $_SESSION["number_of_active_promotions"] =  $number_of_active_promotions;
 }
 
 $message = ''; 
@@ -423,7 +474,7 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
 
 #all_promotions
 {
-  background-color:red;
+  background-color:none;
   width:980px;
   height:530px;
   margin-left:200px;
@@ -442,37 +493,45 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
   padding:15px;
   position:absolute;
   display:none;
-  
+  border: 2px solid black;
 
 }
 
 #coupon
-{ background-color:blue;
+{ background-color:red;
   width:300px;
   height:500px;
   float:left;
   margin-right:15px;
   text-align:center;
-
+  text-transform: uppercase;
+  font-family: Arial Black, Arial, Helvetica;
+  color:white;
 }
 
 
 #Big_Sale
-{ background-color:green;
+{ background-color:#53C68C;
   width:300px;
   height:500px;
   float:left;
   margin-right:15px;
   text-align:center;
+  text-transform: uppercase;
+   font-family: Arial Black, Arial, Helvetica;
+   color:white;
 }
 
 #Info
-{ background-color:yellow;
+{ background-color:#3DEFCC;
   width:300px;
   height:500px;
   float:left;
   margin-right:15px;
   text-align:center;
+  text-transform: uppercase;
+   font-family: Arial Black, Arial, Helvetica;
+    color:white;
 }
 
 .text_display
@@ -528,9 +587,27 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
 }
 
 
-.lbl_
+.lbl_coupon
 {
   background-color:red;
+  width:300px;
+  height:500px;
+  float:left;
+  text-align:center;
+  padding-top:200px;
+}
+.lbl_big_sale
+{
+  background-color:#53C68C;
+  width:300px;
+  height:500px;
+  float:left;
+  text-align:center;
+  padding-top:200px;
+}
+.lbl_info
+{
+  background-color:#3DEFCC;
   width:300px;
   height:500px;
   float:left;
@@ -565,6 +642,7 @@ display:none;
 #big_sale_selected
 {
 display:block;
+
 
 }
 #info_selected
@@ -641,11 +719,14 @@ display:none;
   
   #prev 
   {  
-    left: 10px;
+    left: 30px;
+    top:350px;
+    display:none;
   }
   #next 
   {
     right: 10px;
+    display:none;
   }
 
   #display_sample_coupon
@@ -894,7 +975,7 @@ display:none;
 }
   </style>
 </head>
-<body>
+<body style=" overflow:hidden;">
   <?php
     if (isset($_SESSION['message']) && $_SESSION['message'])
     {
@@ -921,7 +1002,7 @@ display:none;
     transition: all 750ms ease;
     left: 0;"> 
    
-    <li style=" height: 100%; float: left;width:1360px; background-color:Red;  "> 
+    <li style=" height: 100%; float: left;width:1360px; background-color:E6FFFA;   "> 
               <div id="all_promotions">
 
           <!-- TESTING PURPOSES  <div style="background:#98bf21;height:100px;width:100px;position:absolute;"></div>  -->
@@ -941,7 +1022,7 @@ display:none;
 
 
 
-              <h4 class="text_display"> Big_Sale</h4>
+              <h4 class="text_display"> Big Sale</h4>
 
               </div>
           </a>
@@ -970,7 +1051,7 @@ display:none;
               
     
     </li>
-    <li style=" height: 100%; float: left; width:1400px; background-color:green;">
+    <li style=" height: 100%; float: left; width:1400px; background-color:E6FFFA;">
     
     
               <div id="selected_div">
@@ -978,7 +1059,7 @@ display:none;
 
           <div id="coupon_selected">
             <div class = "main_promotion">
-                  <div class="lbl_" >
+                  <div class="lbl_coupon" >
                   <h4 class="text-light promotion_title">Coupon</h4>
                   </div>
                   <div class="form_">
@@ -1077,7 +1158,7 @@ display:none;
           <div id="big_sale_selected">
 
               <div class = "main_promotion">
-                    <div class="lbl_" >
+                    <div class="lbl_big_sale" >
                     <h4 class="text-light promotion_title">BIG SALE</h4>
                     </div>
                     <div class="form_">
@@ -1174,7 +1255,7 @@ display:none;
           <div id="info_selected">
 
             <div class = "main_promotion">
-                <div class="lbl_" >
+                <div class="lbl_info" >
                 <h4 class="text-light promotion_title">INFO </h4>
                 </div>
                 <div class="form_">
@@ -1288,9 +1369,7 @@ display:none;
     
     
     </li>
-    <li style="  height: 100%; float: left; width:1400px; background-color:blue;"> 
-    </li>
-    <li style="  height: 100%; float: left; width:1400px; background-color:orange;"></li>
+    
   </ul>
   <a id="prev" href="#">&#8810;</a>
   <a id="next" href="#">&#8811;</a>
@@ -1448,6 +1527,7 @@ var timer_count = 0;
 a_coupon.addEventListener("click", function() {
   selected_div.style.display="block";
   coupon_selected.style.display="block";
+  prev.style.display="block";
   big_sale_selected.style.display="none";
   info_selected.style.display="none";
   all_promotions_div.classList.toggle('fade');
@@ -1467,6 +1547,7 @@ a_big_sale.addEventListener("click", function() {
   coupon_selected.style.display="none";
   
   big_sale_selected.style.display="block";
+  prev.style.display="block";
   info_selected.style.display="none";
   all_promotions_div.classList.toggle('fade'); //fades content out
   nextSlide(); //
@@ -1481,6 +1562,7 @@ a_info.addEventListener("click", function() {
   
   big_sale_selected.style.display="none";
   info_selected.style.display="block";
+  prev.style.display="block";
   
   all_promotions_div.classList.toggle('fade'); //fades content out
   nextSlide(); //
@@ -1491,7 +1573,7 @@ prev.addEventListener("click", function() {
   
   prevSlide();
   all_promotions_div.classList.toggle('unfade');
-
+  prev.style.display="none";
   
   
 });

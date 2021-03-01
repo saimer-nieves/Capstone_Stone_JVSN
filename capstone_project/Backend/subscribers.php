@@ -6,7 +6,7 @@ $mer_ID= $_SESSION["mer_ID"];
  include "../Model/model_add_merchant_store.php";
  include "../Model/model_promotions.php";
 
- include "../includes/back_customer_nav.php";
+
 
  $all_owned_stores_array = get_merchant_stores($mer_ID); //get promotions for store 52
 

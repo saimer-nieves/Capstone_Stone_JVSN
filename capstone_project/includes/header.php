@@ -79,8 +79,8 @@
             </li>
             
             
-            <li class="get-started" style="margin-left:100px;"><a href="sign_up.php?action=customer">Customer </br> <center>Menu</center></a></li>
-            <li class="get-started"><a href="sign_up.php?action=business">Business Owner</br> <center>Menu</center></a></li>
+            <li class="get-started" style="margin-left:100px;"><a href="sign_up_Customer.php">Customer </br> <center>Menu</center></a></li>
+            <li class="get-started"><a href="sign_up_Merchant.php">Business Owner</br> <center>Menu</center></a></li>
           </ul>
         </nav><!-- .nav-menu -->
       </div><!-- End Header Container -->

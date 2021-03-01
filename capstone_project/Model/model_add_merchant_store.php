@@ -51,3 +51,21 @@ function add_merchant_stores($store_name, $store_category, $store_day_created, $
 $testing = add_merchant_stores("JC Providence", "Clothing", date("Y-m-d"), "myLogo.png", 1);
 var_dump($testing);
 exit;*/
+
+
+
+function deleteStore($store_ID) {
+    global $db;
+
+    $results = "ERROR: Deletion failed.";
+
+    $stmt = $db->prepare("DELETE FROM merchant_stores_tbl WHERE store_ID = :store_ID");
+
+    $stmt->bindValue(':store_ID', $store_ID);
+
+    if ($stmt->execute() && $stmt->rowCount() > 0) {
+        $results = "Store record successfully deleted.";
+    }
+
+    return $results;
+}

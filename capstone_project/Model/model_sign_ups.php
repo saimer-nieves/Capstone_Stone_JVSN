@@ -108,3 +108,29 @@ $answers = getCustomer(2); //gets a specific element
     echo $cus_email,$cus_password ;
    
 exit;*/
+
+
+//updateMerchantProfile
+
+
+function updateMerchantProfile($mer_ID, $mer_fname, $mer_lname, $mer_email, $mer_phone) {
+    global $db;
+
+    $results = 0;
+
+    $stmt = $db->prepare("UPDATE merchants_tbl SET mer_fname = :mer_fname, mer_lname = :mer_lname, mer_email = :mer_email, mer_phone = :mer_phone WHERE mer_ID = :mer_ID");
+
+    $binds = array (
+        ":mer_ID" => $mer_ID,
+        ":mer_fname" => $mer_fname,
+        ":mer_lname" => $mer_lname,
+        ":mer_email" => $mer_email,
+        ":mer_phone" => $mer_phone
+    );
+
+    if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
+        $results = 1;   
+    }
+
+    return $results;
+}
