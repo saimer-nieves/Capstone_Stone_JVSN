@@ -65,7 +65,12 @@ $eight = 8;
   margin:5px;
 //  border: 2px solid red;
   border-radius: 2px;
+
+  display:none;
+  
 }
+
+
 
   .store_p_btn
   {
@@ -379,6 +384,8 @@ var bid3 = document.querySelector(".bid9")
 
 <?php for ( $x=0; $x<10; $x++):?>
       <script>  
+
+      var new_promotion_box = document.querySelector(".new_promotion");
         $(document).ready(function(){
           var count = 0;
           $(".bid<?php echo $x;?>").click(function(){
@@ -389,14 +396,40 @@ var bid3 = document.querySelector(".bid9")
             if(count == 0)
             {
             
+              $(".new_promotion").slideDown(500);
+              $(".new_store_text_div").slideDown(500);
+              $(".pid<?php echo $x;?>").slideDown(500);
+              $("#promotion_div_box").slideDown(500);
               
-              $(".pid<?php echo $x;?>").slideDown();
-              $("#promotion_div_box").slideDown();
+              
+              
+              if(new_promotion_box.style.opacity < 1)
+              {
+                var opacity= opacity + 0.01;
+                new_promotion_box.style.opacity= opacity;
+              }
+              
+              
+              
+              
+              
               count++;
+
+
+
+
+
             }
             else if(count == 1)
             {
             
+              if(new_promotion_box.style.opacity > 0)
+              {
+                var opacity= opacity - 0.1;
+                new_promotion_box.style.opacity= opacity;
+              }
+              $(".new_promotion").slideUp(500);
+              $(".new_store_text_div").slideUp(500);
               $(".pid<?php echo $x;?>").slideUp();
               $("#promotion_div_box").slideUp();
               count--;

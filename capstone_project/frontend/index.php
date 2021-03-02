@@ -1,3 +1,24 @@
+<?php
+
+
+
+session_start(); 
+
+include "../Model/model_add_merchant_store.php";
+ $index_num = 0;
+$all_manual_stores = get_merchant_stores(4);
+
+
+
+;?>
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,24 +31,24 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="../Backend/assets/img/favicon.png" rel="icon">
+  <link href="../Backend/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../Backend/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../Backend/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="../Backend/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../Backend/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../Backend/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="../Backend/assets/vendor/owl.carousel/../Backend/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="../Backend/assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="../Backend/assets/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Bethany - v2.2.0
@@ -200,7 +221,7 @@ body { font-family: sans-serif; }
         <div class="logo mr-auto">
           <h1 class="text-light"><a href="index.html"><span>Bethany</span></a></h1>
           <!-- Uncomment below if you prefer to use an image logo -->
-          <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+          <!-- <a href="index.html"><img src="../Backend/assets/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
 
         <nav class="nav-menu">
@@ -245,26 +266,16 @@ body { font-family: sans-serif; }
         <!-- Flickity HTML init -->
         <div class="gallery js-flickity"
           data-flickity-options='{ "wrapAround": true }'>
-          <div class="gallery-cell"> 
+          <div class="gallery-cell galcel1"> 
             
-                <div class="store1 store_sizing"  onmouseover="mouseOver10()" onmouseout="fade_exit()" >
-                  <img src="../images/JC_logo.jpg" class="store_logo">
-              
-              </div>
-                <div id="store1_detail1">JC penny</div>
+                
               
 
-                <div class="store2 store_sizing"  onclick="myFunction()"  >2  </div>
-                <div class="store3 store_sizing"  onclick="myFunction()" >3</div>
-                <div class="store4 store_sizing"  onclick="myFunction()">4</div>
-                <div class="store5 store_sizing" >5</div>
-                <div class="store6 store_sizing">6</div>
-                <div class="store7 store_sizing" >7</div>
-                <div class="store8 store_sizing">8</div>
+         
 
 
           </div>
-          <div class="gallery-cell">
+          <div class="gallery-cell galcel2">
 
 
           <div class="store1 store_sizing"  onmouseover="mouseOver100()" onmouseout="fade_exit()" ></div>
@@ -285,9 +296,9 @@ body { font-family: sans-serif; }
 
 
           </div>
-          <div class="gallery-cell"></div>
-          <div class="gallery-cell"></div>
-          <div class="gallery-cell"></div>
+          <div class="gallery-cell galcel3"></div>
+          <div class="gallery-cell galcel4"></div>
+          <div class="gallery-cell galcel5"></div>
         </div>
     
       
@@ -415,26 +426,57 @@ body { font-family: sans-serif; }
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/jquery/jquery.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-  <script src="assets/vendor/counterup/counterup.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/venobox/venobox.min.js"></script>
-  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="../Backend/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../Backend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../Backend/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="../Backend/assets/vendor/php-email-form/validate.js"></script>
+  <script src="../Backend/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="../Backend/assets/vendor/counterup/counterup.min.js"></script>
+  <script src="../Backend/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../Backend/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="../Backend/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="../Backend/assets/vendor/aos/aos.js"></script>
   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.js"></script>
 
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="../Backend/assets/js/main.js"></script>
 
 </body>
 
 </html>
+
+<?php foreach ($all_manual_stores as $col):?>
+<script>
+
+var all_gallery_cells= document.querySelectorAll(".galcel1");
+
+      
+      var new_store_div =  document.createElement("div");
+      new_store_div.setAttribute("class","store<?php echo $index_num;?> store_sizing"); 
+
+      var new_store_img_background =  document.createElement("img");
+      new_store_img_background.setAttribute("class","store_logo"); 
+      new_store_img_background.setAttribute("src","<?php echo $row["store_img_logo"];?>"); 
+
+      new_store_div.appendChild(new_store_img_background);
+      all_gallery_cells.appendChild(new_store_div);
+      <?php $index_num++;?>
+
+
+
+</script>
+<?php endforeach;?>
+
+
+
+
+
+
+
+
+
 
 
 <script>
