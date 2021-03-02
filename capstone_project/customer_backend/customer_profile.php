@@ -26,18 +26,11 @@ include "../includes/back_customer_nav.php"
 <body>
   
   <div id="form">
-    <div class="mb-3 row">
-      <label for="staticEmail" class="col-sm-1 col-form-label">Firstname </label>
-      <div class="col-sm-3">
-        <input type="text" class="form-control" id="inputPassword">
-      </div>
-    </div>
-    <div class="mb-3 row">
-      <label for="inputPassword" class="col-sm-1 col-form-label" >Lastname</label>
-      <div class="col-sm-3">
-        <input type="password" class="form-control" id="inputPassword">
-      </div>
-    </div>
+    
+    <div><label>Customer name: <input></label></div>
+  <div><label>Telephone: <input type=tel></label></div>
+  <div><label>E-mail address: <input type=email></label></div>
+  
   </div>
 
 
