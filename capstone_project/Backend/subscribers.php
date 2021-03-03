@@ -18,6 +18,14 @@ $mer_ID= $_SESSION["mer_ID"];
  //var_dump($all_owned_stores_array);
 
 ?>
+<?php
+
+
+
+include "../includes/back_side_nav.php";
+
+
+?>
 
 
 <!DOCTYPE html>

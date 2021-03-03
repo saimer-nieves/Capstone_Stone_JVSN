@@ -1,46 +1,82 @@
-<?php
+<!DOCTYPE html> 
+<html> 
 
-include "../includes/back_customer_nav.php"
+<head> 
+	<title>How to create slide left and 
+	right toggle effect using jQuery?</title> 
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"> 
+</script> 
+	<style type="text/css"> 
+		.box { 
+			float: center; 
+			overflow: hidden; 
+			background: #32a852; 
+			width: 400px; 
+			padding: 0px; 
+		} 
+		/* Add padding and border to inner content 
+	for better animation effect */ 
+		
+		.box-inner { 
+			width: 400px; 
+			padding: 0px; 
+			border: 1px solid #000000; 
+		} 
+	</style> 
+</head> 
 
-?>
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-
-  <style>
-  #form
-  {
-    margin-left:400px;
-  }
+<body> 
+	<center> 
+		<h1 style="color:green;"> 
+		GeeksForGeeks 
+	</h1> 
+		<h3>jQuery | How to create slide 
+		left and right toggle effect?</h3> 
+		<hr> 
+		<div class="box"> 
+			<div class="box-inner"> 
+				<h4>.animate() method is used</h4> 
+				<p>GEEKSFORGEEKS - A computer 
+				science portal for geeks.</p> 
+			</div> 
+		</div> 
+		<hr> 
+		<button type="button" class="slide-left"> 
+		Click to Slide-Left 
+	</button> 
+		<button type="button" class="slide-right"> 
+		Click to Slide-Right 
+	</button>
   
-  </style>
-</head>
-<body>
   
-  <div id="form">
-    <div class="mb-3 row">
-      <label for="staticEmail" class="col-sm-1 col-form-label">Firstname </label>
-      <div class="col-sm-3">
-        <input type="text" class="form-control" id="inputPassword">
-      </div>
-    </div>
-    <div class="mb-3 row">
-      <label for="inputPassword" class="col-sm-1 col-form-label" >Lastname</label>
-      <div class="col-sm-3">
-        <input type="password" class="form-control" id="inputPassword">
-      </div>
-    </div>
-  </div>
+		<script type="text/javascript"> 
+			$(document).ready(function() { 
+				var boxWidth = $(".box").width(); 
+				$(".slide-left").hover(
+          
+          function() 
+          { 
+            $(".box").animate
+            (
+              { 
+              width: 0 
+              }
+            ); 
+          }
+,
+          function() 
+          { 
+					  $(".box").animate
+            (
+              { 
+						  width: boxWidth 
+					    }
+            ); 
+          }
+        ); 
+      });
+		</script> 
+	</center> 
+</body> 
 
-
-
-</body>
-</html>
+</html> 
