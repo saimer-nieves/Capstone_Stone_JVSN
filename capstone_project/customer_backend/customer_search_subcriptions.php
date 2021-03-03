@@ -1,3 +1,13 @@
+
+<?php
+
+include "..include/customer"
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

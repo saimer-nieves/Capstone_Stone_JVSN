@@ -49,6 +49,7 @@
 	</button>
   
   
+<<<<<<< HEAD
 		<script type="text/javascript"> 
 			$(document).ready(function() { 
 				var boxWidth = $(".box").width(); 
@@ -78,5 +79,16 @@
 		</script> 
 	</center> 
 </body> 
+=======
+  <div id="form">
+    
+    <div><label>Customer name: <input></label></div>
+  <div><label>Telephone: <input type=tel></label></div>
+  <div><label>E-mail address: <input type=email></label></div>
+  
+  </div>
+
+
+>>>>>>> eb9abeedae6e40586194bdf9d439b6fa9df26939
 
 </html> 
