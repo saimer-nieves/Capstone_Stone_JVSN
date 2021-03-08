@@ -86,20 +86,20 @@ include "../includes/header.php";
 
 .delete_btn_design
 {
-    padding: 7px;
+    padding: 10px;
     border: none;
     background: #53C68C;
-    border-radius:20px;
-    height:32px;
+    border-radius:10px;
+   
     font-family: Arial Black, Arial, Helvetica;
     color:white;
-    font-size: 10px;
+    font-size: 14px;
     text-align:center;
     text-transform: uppercase;
     border-bottom: black 1px solid;
     border-right: black 1px solid;
-    margin-top: 150px;
-    margin-left: 250px;
+    margin-top: 110px;
+    margin-left: 210px;
     
  
 }
@@ -107,7 +107,7 @@ include "../includes/header.php";
 .trash_img
 {
 
-  height:11px;
+  height:15px;
   padding:0px;
   margin:0px;
 
