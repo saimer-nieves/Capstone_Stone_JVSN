@@ -93,3 +93,23 @@ function get_merchant_stores_with_storesID($store_ID) {
 // $answer = get_merchant_stores_with_storesID(69);
 // var_dump($answer);
 // exit;
+function get_searched_stores($store_name) {
+    global $db;
+
+    $results = [];
+    
+    $stmt = $db->prepare("SELECT store_ID, store_name, store_category, store_day_created, store_img_logo,mer_ID FROM merchant_stores_tbl WHERE store_name LIKE :store_name");
+
+    $stmt->bindValue(":store_name", $store_name);
+
+    if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);   
+    }
+
+    return $results;
+
+}
+
+// $answer = get_searched_stores("am store");
+// var_dump($answer);
+// exit;

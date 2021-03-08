@@ -6,10 +6,10 @@ include "../includes/header.php";
 //include (__DIR__ .'/../model/model_EmployeeLogins.php');
 
 
-$action_type = $_GET["selectedStore"];
+$store_name_searched = $_GET["selectedStore"];
 // var_dump($action_type);
 // exit;
-$answer_all_stores_array = 'function_get_allstores';
+$answer_all_stores_array = get_searched_stores($store_name_searched);
 
 
 
@@ -128,26 +128,66 @@ $answer_all_stores_array = 'function_get_allstores';
 </head>
 <body>
     <div class="allSearch_result">
-        <div class="oneSearch_result">
-            
-            <div class="leftStoreContent">
-
-                <img src="../images/ae_logo.png" class="storeFoundLogo">
-                <div class="textContent">
-                    <h5 class="storeTitle">Gamestop</h5>
-                    <h6 class="storeType">Video Games</h6>
-                </div>
-            </div>
-
-            <div class="rightStoreContent">
-            <button name="unsubscribe_btn" class="delete_btn_design"> Subscribe <img src="../images/plus_icon.png" class="trash_img"></button>
+        
 
 
-            </div>
-
-
-        </div>
       
     </div>
 </body>
 </html>
+<?php foreach ($answer_all_stores_array as $col):?>                  
+
+    <script>
+        var allSearch_result = document.querySelector(".allSearch_result");
+        var oneSearch_result = document.createElement("div");
+        oneSearch_result.setAttribute("class","oneSearch_result");
+
+        var leftStoreContent =  document.createElement("div");
+        leftStoreContent.setAttribute("class","leftStoreContent");
+
+            var store_logo_img =  document.createElement("img");
+            store_logo_img.setAttribute("src","../Backend/uploaded_files/<?php echo $col['store_img_logo'];?>");
+            store_logo_img.setAttribute("class","storeFoundLogo");
+
+            var textContent_div =  document.createElement("div");
+            textContent_div.setAttribute("class","textContent");
+
+                var h5_storeTitle =  document.createElement("div");
+                h5_storeTitle.setAttribute("class","storeTitle");
+                h5_storeTitle.innerHTML = '<?php echo $col['store_name'];?>';
+
+
+                var h6_storeType =  document.createElement("div");
+                h6_storeType.setAttribute("class","storeType");
+                h6_storeType.innerHTML = '<?php echo $col['store_category'];?>';
+
+
+
+        var rightStoreContent =  document.createElement("div");
+        rightStoreContent.setAttribute("class","rightStoreContent");
+
+        var subscription_btn =  document.createElement("button");
+        subscription_btn.setAttribute("name","unsubscribe_btn");
+        subscription_btn.setAttribute("class","delete_btn_design");
+        subscription_btn.innerHTML = "Subscribe <img src='../images/plus_icon.png' class='trash_img'>"
+
+
+
+        leftStoreContent.appendChild(store_logo_img);
+        leftStoreContent.appendChild(textContent_div);
+            textContent_div.appendChild(h5_storeTitle);
+            textContent_div.appendChild(h6_storeType);
+
+        rightStoreContent.appendChild(subscription_btn);
+        
+
+
+        oneSearch_result.appendChild(leftStoreContent);
+        oneSearch_result.appendChild(rightStoreContent);
+
+        allSearch_result.appendChild(oneSearch_result);
+
+
+    </script>
+
+<?php endforeach;?>
