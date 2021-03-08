@@ -38,8 +38,8 @@ include "..include/customer"
 </head>
 <body>
     <div class="container">
-        <div class="box" style="background: red;"></div>
-        <div class="box stack-top" style="background: blue;"></div>
+        <div class="box stack-top" style="background: red;"></div>
+        <div class="box " style="background: blue;"></div>
     </div>
 </body>
 </html>

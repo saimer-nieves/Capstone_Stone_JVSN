@@ -45,7 +45,7 @@ $promotion_btn_num = 0;
 
   <style>
 
-
+/*border-bottom: aqua 10px solid; */
 
 
 .new_store_text_div
@@ -53,20 +53,22 @@ $promotion_btn_num = 0;
   
   
   background-color:rgba(44,41,41,0.8);
-  position:absolute;
-  margin-top:50px;
-  padding:100px 30px 0px 30px;
+  //position:absolute;
+  
+  
   font-family: Arial Black, Arial, Helvetica;
   color:white;
   font-size: 17px;
   
-
+  
+  width:150px;
   font-family:sans-serif;
  // text-shadow:5px 5px 20px #53C68C;
   text-align: center;
   text-transform: uppercase;
-  padding-top:10px;
-  padding-bottom:10px;
+  padding-top:15px;
+  padding-bottom:15px;
+
   font-weight: 900;
 
 }
@@ -100,10 +102,10 @@ $promotion_btn_num = 0;
     float:left;
 
     
-    background: #D5F317;  
+    background: none;  
     margin-bottom:20px;
     z-index: 1;
-    border: black 2px solid ;
+    
     
   }
 
@@ -132,7 +134,7 @@ $promotion_btn_num = 0;
   }
   .all_container
   {
-    background-color:blue;
+    background-color:none;
  
     width:1070px;
     height:149px;
@@ -142,7 +144,7 @@ $promotion_btn_num = 0;
   }
   .every_container
   {
-    background-color:blue;
+    background-color:none;
  
     width:1070px;
     height:149px;
@@ -167,7 +169,7 @@ $promotion_btn_num = 0;
     margin-left:150px;
     width:1070px;
     height:800px;
-    background-color:orange;
+    background-color:none;
     
 
   }
@@ -204,13 +206,14 @@ $promotion_btn_num = 0;
   .all_promotion_divs
   {
 
-    background-color:green;
+    background-color:rgba(15,249,52,0.1);
     float:left;
 
     width: 1070px;
     height: 339px;
     
     display:none;
+
     
    
  
@@ -221,15 +224,15 @@ $promotion_btn_num = 0;
   {
     width:100%;
     height:339px;
-    background-color:black;
+    background-color:none;
 
     display:none;
     margin-top:10px;
     
   }
-  .unique_inner_promotions0 {background-color:red;}
-  .unique_inner_promotions1 {background-color:purple;}
-  .unique_inner_promotions2 {background-color:yellow;}
+  .unique_inner_promotions0 {background-color:none;}
+  .unique_inner_promotions1 {background-color:none;}
+  .unique_inner_promotions2 {background-color:none;}
 
 
   .new_store_delete_div
@@ -237,7 +240,7 @@ $promotion_btn_num = 0;
   background-color:none;
   height:50px;
   text-align:right;
-  position:absolute;
+ // position:absolute;
   margin-left:100px;
   margin-top:5px;
 }
@@ -311,6 +314,7 @@ font-family: Arial Black, Arial, Helvetica;
 background-position: center  !important;
 background-repeat: no-repeat   !important;
 background-size: cover   !important;
+
 }
 
 
@@ -357,11 +361,506 @@ background-size: cover   !important;
 }
 
 
+.new_promotion_info
+{
+  width:200px;
+  height:150px;
+  background-color:#D5F317;
+  float:left;
+  margin:15px;
+  border-style: solid;
+    border-width: 5px;
+    border-color:white;
+  border-radius: 2px;
+}
+
+
+.mouse_will_be_hand
+{
+  cursor: pointer;
+}
+
+
+
+
+#center_view_flip
+{
+  background-color:red;
+  height:250px;
+  width:300px;
+  left:500px;
+  top:250px;
+  position:fixed;
+  display:none;
+}
+
+
+
+
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+  
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:active .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color:#53C68C ;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+
+
+
+
+#center_view_flip .flip-card .flip-card-inner .flip-card-front .mouse_will_be_hand .new_promotion_big_sale 
+{
+  height:250px;
+  width:270px;
+}
+#center_view_flip .flip-card .flip-card-inner .flip-card-front .mouse_will_be_hand .new_promotion_big_sale .new_store_text_div
+{
+  padding-top:30px;
+  
+  font-size: 20px;
+  font-weight: 900;
+}
+
+
+
+
+
+
+#center_view_flip .flip-card .flip-card-inner .flip-card-front .mouse_will_be_hand .new_promotion_coupon  
+{
+  height:250px;
+  width:270px;
+}
+#center_view_flip .flip-card .flip-card-inner .flip-card-front .mouse_will_be_hand .new_promotion_coupon  .new_store_text_div
+{
+  padding-top:30px;
+  
+  font-size: 20px;
+  font-weight: 900;
+}
+
+
+
+
+
+
+
+#center_view_flip .flip-card .flip-card-inner .flip-card-front .mouse_will_be_hand .new_promotion_info  
+{
+  height:250px;
+  width:270px;
+}
+#center_view_flip .flip-card .flip-card-inner .flip-card-front .mouse_will_be_hand .new_promotion_info  .new_store_text_div
+{
+  padding-top:30px;
+  
+  font-size: 20px;
+  font-weight: 900;
+  
+}
+
+
+
+
+#center_view_flip .flip-card .flip-card-inner .flip-card-front .new_store_delete_div form .delete_btn_design
+{
+  display:none;
+}
+
+
+
+#flip_close_div
+{
+  width:35px;
+  height:35px;
+  position:fixed;
+  top:250px;
+  left:765px;
+  background-color:red;
+  display:none;
+  padding:5px;
+}
+
+#flip_close_div:hover
+{
+  background-color: #F67E7E;
+}
+
+
+#display_sample_coupon
+  {
+    height:300px;
+    width:300px;
+    background-color:#ffffff;
+  
+    display:none;
+    padding:5px;
+    border-style: solid;
+    border-width: 5px;
+    border-color:#e73e45;
+
+  }
+
+
+
+
+#store_name_coupon
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:black;
+  font-size: 12px;
+  text-align:center;
+  padding:0px;
+  margin:0px;
+  margin-bottom: 15px;
+}
+
+#title
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:Red;
+  font-size: 30px;
+  text-align:center;
+ 
+}
+
+#subheading
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:Red;
+  font-size: 14px;
+  text-align:center;
+  padding:0px;
+  margin:0px;
+}
+
+
+
+#expire
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:black;
+  font-size: 10px;
+  text-align:center;
+  padding:0px;
+  margin-top:5px;
+}
+
+#description
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:grey;
+  font-size: 10px;
+  text-align:center;
+  margin-top:15px;
+  margin-bottom:20px;
+ 
+}
+
+
+
+
+#code
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:black;
+  font-size: 10px;
+  text-align:center;
+  margin-top:0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+#display_sample_big_sale
+  {
+    height:300px;
+    width:300px;
+    background-color:#ffffff;
+    display:none;
+    padding:5px;
+    border-style: solid;
+    border-width: 5px;
+    border-color:black;
+
+  }
+
+
+
+#store2
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:green;
+  font-size: 20px;
+  text-align:center;
+}
+#title2
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:Red;
+  font-size: 30px;
+  text-align:center;
+  padding:0px;
+  margin:0px;
+}
+#expire2
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:black;
+  font-size: 10px;
+  text-align:center;
+  padding:0px;
+  margin:0px;
+}
+#description2
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:black;
+  font-size: 10px;
+  text-align:center;
+  margin-top:15px;
+}
+#address2
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:grey;
+  font-size: 10px;
+  text-align:center;
+  margin-top:35px;
+ 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#display_sample_info
+  {
+    height:300px;
+    width:300px;
+    background-color:#ffffff;
+    display:none;
+    padding:5px;
+    border-style: solid;
+    border-width: 5px;
+    border-color:black;
+
+  }
+
+
+
+
+
+#store3
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:white;
+  font-size: 10px;
+  text-align:center;
+  text-shadow: 1px 2px 1px black;
+
+  
+}
+#title3
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:white;
+  font-size: 30px;
+  text-align:center;
+  padding:0px;
+  padding-bottom:10px;
+  margin:0px;
+  text-shadow: 1px 2px 1px black;
+  border-bottom: solid 1px black;
+}
+
+#description3
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:black;
+  font-size: 10px;
+  text-align:center;
+  margin-top:25px;
+}
+#address3
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:white;
+  font-size: 10px;
+  text-align:center;
+  padding-bottom:10px;
+  text-shadow: 1px 2px 1px black;
+
+ 
+ 
+}
+
+
+.make_hidden
+{
+  display:none;
+}
+
+
+.border_bottom_only
+{
+  border-bottom: 25px solid red;
+}
+
+
 
   
   </style>
 </head>
 <body>
+
+
+
+<div id="center_view_flip">
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          
+        </div>
+
+
+
+        <div class="flip-card-back">
+          
+              <div id="display_sample_coupon">
+                    
+                    <h3 id="title">Title here</h3>
+                    
+                    <h5 id="subheading" name="coupon_subheading"> subheading</h5>
+                    <h6 id="expire" name="coupon_expire"> expire</h6>
+                    <h6 id="description" name="coupon_description"> saimer nieves went to buy a mansion in florida and california and england he then bought a house for all his relatives</h6>
+                    <img src="../images/coupon_bar_bg_rem.png" id="coupon_bar">
+                    <h6 id="code" name="coupon_code"> code</h6>
+
+                    
+              </div>
+
+
+              <div id="display_sample_big_sale">
+                    
+
+                                <h5 id="store2" name="big_sale_store"> </h5><br>
+                                <h3 id="title2" name="big_sale_title">Title here</h3>
+                                
+                                <h6 id="expire2" name="big_sale_expire"> expire</h6>
+                                <h6 id="description2" name="big_sale_description"> description</h6>
+
+                                
+                                
+                                  <h6 id="address2" name="big_sale_address"> address</h6>
+                              
+
+                                
+              </div>
+
+
+              <div id="display_sample_info">
+                
+                            <div style="background-color:#ff8080;">
+                              
+                              <h3 id="title3" name="big_sale_title">Title here</h3>
+                              <h5 id="store3" name="big_sale_store"> </h5> 
+                              <h6 id="address3" name="big_sale_address"> address</h6>
+                 
+                            </div>
+
+                            <div>
+
+                              <h6 id="description3" name="big_sale_description"> description</h6>
+
+                            </div>
+                            
+                             
+                          
+
+                            
+              </div>
+
+        </div>
+      </div>
+    </div>
+        
+        
+    </div>
+    <a id="close_flip_div_btn"><div id="flip_close_div"><span class="glyphicon glyphicon-remove text-dark fa-2x" id="close_flip_div_icon"></div></a>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <div id="box">
@@ -457,10 +956,13 @@ var clicks<?php echo $index_number;?>= 0;
          
          <?php foreach($all_store_promotions_array as $pro):?>
          
-            subscribed_store_div.innerHTML= "<div class='outside_logo_display' style='background-image:url(../Backend/uploaded_files/<?php echo $pro['store_img_logo'];?>); height:100%; width:100%;'>      <div class='new_store_delete_div' >   <form method='post'>  <input type='hidden' name=hidden_storeID value='<?php  echo $pro["store_ID"];?>'> <button name='unsubscribe_btn' class='delete_btn_design' > Subscribe <img src='../images/plus_icon.png' class='trash_img'></button>   <button name='unsubscribe_btn' class='delete_btn_design_unsub' > X </button> </form></div>          <div class='new_store_text_div' ><?php  echo $pro["store_name"];?> </div>                                </div>";
+            subscribed_store_div.innerHTML= "<div onclick='myborder_bottom()' class='outside_logo_display outside_logo_display<?php echo $index_number;?>' style='background-image:url(../Backend/uploaded_files/<?php echo $pro['store_img_logo'];?>); height:100%; width:100%;'>      <div class='new_store_delete_div' >   <form method='post' class='form_box_container'>  <input type='hidden' name=hidden_storeID value='<?php  echo $pro["store_ID"];?>'> <button name='unsubscribe_btn' class='delete_btn_design' > Subscribe <img src='../images/plus_icon.png' class='trash_img'></button>   <button name='unsubscribe_btn' class='delete_btn_design_unsub' > X </button> </form></div>          <div class='new_store_text_div' ><?php  echo $pro["store_name"];?> </div>                                </div>";
          
+            
          
         <?php endforeach;?>
+
+       
 
         
           
@@ -474,11 +976,19 @@ var clicks<?php echo $index_number;?>= 0;
          //all_new_promotion_div.appendChild(subscribed_store_div);  THIS IS WHERE NEW PROMOTIONS WILL BE REDIRECRED
        
 
-
-         
+        
          
         $( ".store_p_btn<?php echo $index_number;?>" ).click( 
           function() {
+            
+
+
+            
+
+             
+      
+
+            
             
 
             var unique_inner_promotions_styling = document.querySelectorAll(".unique_inner_promotions_styling");
@@ -488,7 +998,7 @@ var clicks<?php echo $index_number;?>= 0;
 
                           if(clicks<?php echo $index_number;?> == 0)
                           {
-                           
+                            
 
                             $( ".unique_inner_promotions_styling" ).slideUp( 200, function() {
 
@@ -498,6 +1008,9 @@ var clicks<?php echo $index_number;?>= 0;
                             });
 
                             $( ".all_promotion_divs" ).slideUp( 200, function() {
+
+
+                             
 
                               $( ".unique_inner_promotions<?php echo $index_number;?>" ).slideDown( 200, function() {
 
@@ -520,6 +1033,7 @@ var clicks<?php echo $index_number;?>= 0;
                              
                             clicks<?php echo $index_number;?> ++;
                               console.log(clicks<?php echo $index_number;?>);
+
                               
                           }
                           else
@@ -555,6 +1069,11 @@ var clicks<?php echo $index_number;?>= 0;
                             clicks<?php echo $index_number;?>=0;
                             return;
                           }
+
+                          var selected_store_div = document.querySelector(".unique_inner_promotions<?php echo $index_number;?>")
+
+                    
+
                           
                             
 
@@ -567,6 +1086,13 @@ var clicks<?php echo $index_number;?>= 0;
                        
                       }
         );
+
+
+        
+        
+
+       
+
 
 
 
@@ -592,8 +1118,15 @@ var clicks<?php echo $index_number;?>= 0;
 
 <?php 
 $index_store_number = 0;
+$index_promotion_count = 0;
 foreach ($all_owned_stores_array as $col):?>
         <script>
+
+function myborder_bottom() {
+              var element = document.querySelector(".outside_logo_display<?php echo $index_store_number;?>")
+              console.log(element)
+              }
+         
 
           var all_new_active_promotion = document.querySelectorAll('.unique_inner_promotions_styling')
                   console.log(all_new_active_promotion)
@@ -605,10 +1138,53 @@ foreach ($all_owned_stores_array as $col):?>
          
           foreach ($active_results_array as $col):?>
             <script>
+                                var btn_form_ = document.querySelector('.form_box_container')
                                 var new_promotion_OUTERSHELL =  document.createElement("div");
+                                var a_tag_bridge = document.createElement("a");
+
+                                a_tag_bridge.setAttribute("class","a_tags_to_view<?php echo $index_promotion_count;?> mouse_will_be_hand");
+                                a_tag_bridge.setAttribute("id","a_id<?php echo $index_promotion_count;?>");
+
                                 var new_promotion_INNERSHELL =  document.createElement("div");
                                 var new_promotion_text_div =  document.createElement("div");
-                                
+
+                                var hidden_p_Promotion_type = document.createElement("p");
+                                var hidden_p_Promotion_Title = document.createElement("p");
+                                var hidden_p_Subheading = document.createElement("p");
+                                var hidden_p_Address = document.createElement("p");
+                                var hidden_p_exp_date = document.createElement("p");
+                                var hidden_p_description = document.createElement("p");
+                                var hidden_p_code = document.createElement("p");
+                                    
+
+                                    hidden_p_Promotion_type.setAttribute("class","hidden_Promotion_type<?php echo $index_promotion_count;?>  make_hidden");
+                                hidden_p_Promotion_Title.setAttribute("class","hidden_promotion_title<?php echo $index_promotion_count;?> make_hidden");
+                                hidden_p_Subheading.setAttribute("class","hidden_promotion_subheading<?php echo $index_promotion_count;?> make_hidden");
+                                hidden_p_Address.setAttribute("class","hidden_promotion_address<?php echo $index_promotion_count;?> make_hidden");
+                                hidden_p_exp_date.setAttribute("class","hidden_promotion_date<?php echo $index_promotion_count;?> make_hidden");
+                                hidden_p_description.setAttribute("class","hidden_promotion_description<?php echo $index_promotion_count;?> make_hidden");
+                                hidden_p_code.setAttribute("class","hidden_promotion_code<?php echo $index_promotion_count;?> make_hidden");
+
+
+                                hidden_p_Promotion_type.innerHTML = "<?php echo $col['promotion_type'];?>";
+                                hidden_p_Promotion_Title.innerHTML = "<?php echo $col['promotion_title'];?>";
+                                hidden_p_Subheading.innerHTML = "<?php echo $col['promotion_subheading'];?>";
+                                hidden_p_Address.innerHTML = "<?php echo $col['promotion_address'];?>";
+                                hidden_p_exp_date.innerHTML = "<?php echo $col['promotion_exp_date'];?>";
+                                hidden_p_description.innerHTML = "<?php echo $col['promotion_description'];?>";
+                                hidden_p_code.innerHTML = "<?php echo $col['promotion_code'];?>";
+
+                                btn_form_.appendChild(hidden_p_Promotion_type);
+                                btn_form_.appendChild(hidden_p_Promotion_Title);
+                                btn_form_.appendChild(hidden_p_Subheading);
+                                btn_form_.appendChild(hidden_p_Address);
+                                btn_form_.appendChild(hidden_p_exp_date);
+                                btn_form_.appendChild(hidden_p_description);
+                                btn_form_.appendChild(hidden_p_code);
+
+
+
+
                                 
                                 new_promotion_OUTERSHELL.setAttribute('class','all_new_active_promotion') ;
                                 <?php if ($col['promotion_type'] == "coupon" ) :?>
@@ -618,7 +1194,7 @@ foreach ($all_owned_stores_array as $col):?>
                                   new_promotion_INNERSHELL.setAttribute('class','new_promotion_big_sale ') ;
                                 <?php endif;?>
                                 <?php if ($col['promotion_type'] == "info" ) :?>
-                                  new_promotion_INNERSHELL.setAttribute('class','new_promotion_big_sale ') ;
+                                  new_promotion_INNERSHELL.setAttribute('class','new_promotion_info ') ;
                                 <?php endif;?>
                                 new_promotion_text_div.setAttribute('class','new_store_text_div_promotion') ;
                                 new_promotion_text_div.innerHTML= "<?php echo $col['promotion_type'] ;?>  <br>   <?php echo $col['promotion_title'] ;?> <br>  <?php echo $index_store_number.  $col['store_ID'];?>"
@@ -627,7 +1203,8 @@ foreach ($all_owned_stores_array as $col):?>
 
                                 console.log(all_new_active_promotion)
                                 new_promotion_INNERSHELL.appendChild(new_promotion_text_div);
-                                new_promotion_OUTERSHELL.appendChild(new_promotion_INNERSHELL);
+                                a_tag_bridge.appendChild(new_promotion_INNERSHELL);
+                                new_promotion_OUTERSHELL.appendChild(a_tag_bridge);
                                 all_new_active_promotion[<?php echo $index_store_number;?>].appendChild(new_promotion_OUTERSHELL);
 
     //********************************************************************* */
@@ -639,6 +1216,8 @@ foreach ($all_owned_stores_array as $col):?>
             //promotion_ID, promotion_type, promotion_title, promotion_subheading, promotion_exp_date, promotion_address, promotion_code, store_ID
             //store_name_section_div.innerHTML += "<?php //echo $col['promotion_ID'];?> <?php// echo $col['promotion_title'];?>";
             </script>
+
+        <?php $index_promotion_count++;?>
       <?php endforeach; ?>
 
 
@@ -655,7 +1234,161 @@ foreach ($all_owned_stores_array as $col):?>
 
 
 
+<!-- ANIMATION MIDDLE BOX-->
 
+
+
+
+<?php for ( $x=0; $x<$index_promotion_count; $x++):?>
+
+<script>
+
+var a_tags_to_view = document.querySelector(".a_tags_to_view");
+var center_view_flip = document.querySelector("#center_view_flip");
+var flip_card_front = document.querySelector(".flip-card-front");
+var flip_close_div = document.querySelector("#flip_close_div");
+var close_flip_div_btn = document.querySelector("#close_flip_div_btn");
+var all_new_active_promotion_array_OUTERSHELL = document.querySelectorAll(".all_new_active_promotion");
+
+
+var hidden_ID_value = document.querySelectorAll(".all_new_active_promotion");
+
+
+var n = 0;
+
+
+$(document).ready(function(){
+          var count = 0;
+          $(".a_tags_to_view<?php echo $x;?>").click(function(){
+
+            
+            flip_card_front.innerHTML = all_new_active_promotion_array_OUTERSHELL["<?php echo $x;?>"].innerHTML;
+            center_view_flip.style.display="block";
+            flip_close_div.style.display="block";
+
+            var p_tag_ID =  document.querySelector(".hidden_p<?php echo $x;?>");
+            var p_tag_Type =  document.querySelector(".hidden_Promotion_type<?php echo $x;?>");
+            var p_tag_Title =  document.querySelector(".hidden_promotion_title<?php echo $x;?>");
+            var p_tag_Subheading =  document.querySelector(".hidden_promotion_subheading<?php echo $x;?>");
+            var p_tag_Address =  document.querySelector(".hidden_promotion_address<?php echo $x;?>");
+            var p_tag_Date =  document.querySelector(".hidden_promotion_date<?php echo $x;?>");
+            var p_tag_Description =  document.querySelector(".hidden_promotion_description<?php echo $x;?>");
+            var p_tag_Code =  document.querySelector(".hidden_promotion_code<?php echo $x;?>");
+
+
+
+           var promotion_type = p_tag_Type.innerHTML;
+
+           if(promotion_type == "coupon")
+           {
+
+            var info_template =  document.querySelector("#display_sample_info");
+            var coupon_template =  document.querySelector("#display_sample_coupon");
+            coupon_template.style.display="block"
+            var big_sale_template =  document.querySelector("#display_sample_big_sale");
+            big_sale_template.style.display="none";
+            info_template.style.display="none";
+
+
+
+
+            var title =  document.querySelector("#title");
+            var subheading =  document.querySelector("#subheading");
+            var expire =  document.querySelector("#expire");
+            var description =  document.querySelector("#description");
+            var code =  document.querySelector("#code");
+           
+            title.innerHTML= p_tag_Title.innerHTML;
+            subheading.innerHTML= p_tag_Subheading.innerHTML;
+            expire.innerHTML= p_tag_Date.innerHTML;
+            description.innerHTML= p_tag_Description.innerHTML;
+            code.innerHTML= p_tag_Code.innerHTML;
+           
+           }
+
+
+
+           if(promotion_type == "big sale")
+           {
+            var info_template =  document.querySelector("#display_sample_info");
+            var coupon_template =  document.querySelector("#display_sample_coupon");
+            var big_sale_template =  document.querySelector("#display_sample_big_sale");
+            big_sale_template.style.display="block";
+            coupon_template.style.display="none";
+            info_template.style.display="none";
+
+
+
+
+        
+            var title2 =  document.querySelector("#title2");
+           
+            var expire2 =  document.querySelector("#expire2");
+            var description2 =  document.querySelector("#description2");
+            var address2 =  document.querySelector("#address2");
+           
+            
+            title2.innerHTML= p_tag_Title.innerHTML;
+            expire2.innerHTML= p_tag_Date.innerHTML;
+            description2.innerHTML= p_tag_Description.innerHTML;
+            address2.innerHTML= p_tag_Address.innerHTML;
+           
+           }
+
+
+
+
+           if(promotion_type == "info")
+           {
+
+            var info_template =  document.querySelector("#display_sample_info");
+            var coupon_template =  document.querySelector("#display_sample_coupon");
+            var big_sale_template =  document.querySelector("#display_sample_big_sale");
+            info_template.style.display="block";
+            big_sale_template.style.display="none";
+            coupon_template.style.display="none";
+
+
+
+
+        
+            var title3 =  document.querySelector("#title3");
+           
+            
+            var address3 =  document.querySelector("#address3");
+            var description3 =  document.querySelector("#description3");
+           
+            
+            title3.innerHTML= p_tag_Title.innerHTML;
+            
+            address3.innerHTML= p_tag_Address.innerHTML;
+            description3.innerHTML= p_tag_Description.innerHTML;
+           
+           }
+          });
+
+          
+        
+        
+        })
+
+$(document).ready(function(){
+          var count = 0;
+          $("#flip_close_div").click(function(){
+            
+            center_view_flip.style.display="none";
+            flip_close_div.style.display="none";
+       
+          });
+
+          
+        
+        
+        })
+
+</script>
+
+<?php endfor;?>
 
 
 
