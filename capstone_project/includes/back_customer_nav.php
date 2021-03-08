@@ -183,9 +183,9 @@ body
         
         <div class="nav-menu">
           <ul>
-            <li class="active"><a href="merchant_main_panel.php"><span class="icon-home mr-3"></span>Main Panel</a></li>
-            <li><a href="promotions.php"><span class="icon-search2 mr-3"></span>Search Subscriptions</a></li>
-            <li><a href="subscribers.php"><span class="icon-notifications mr-3"></span>VIEW PROMOTIONS</a></li>
+            <li class="active"><a href="merchant_main_panel.php"><span class="icon-home mr-3"></span>Main Subscriptions</a></li>
+            <li><a href="../Backend/index.php"><span class="icon-search2 mr-3"></span>Search Subscriptions</a></li>
+            <li><a href="../Backend/ActualCusProfile.php"><span class="icon-notifications mr-3"></span>Profile</a></li>
             <!--<li><a href="#"><span class="icon-location-arrow mr-3"></span>Direct</a></li>
             <li><a href="#"><span class="icon-pie-chart mr-3"></span>Stats</a></li>-->
             <li><a href="../frontend/outside_index.php"><span class="icon-sign-out mr-3"></span>Sign out</a></li>

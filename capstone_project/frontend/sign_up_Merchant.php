@@ -1,6 +1,8 @@
 <?php
 
-include "../includes/header.php";
+session_start();
+session_unset();
+
 //include (__DIR__ .'/../model/model_EmployeeLogins.php');
 include "../includes/functions.php";
 include "../Model/model_sign_ups.php";
@@ -8,8 +10,6 @@ include "../Model/model_logins.php";
 include "../Model/model_add_merchant_store.php";
 include "../Model/model_promotions.php";
 
-session_start();
-session_unset();
 
 
 
@@ -124,6 +124,11 @@ if((isset($_POST["login_btn"])))
 
 ?>
 
+<?php
+
+include "../includes/header_signup.php";
+
+?>
 
 
 
@@ -261,11 +266,11 @@ height: 230px;
 
 
 	    <!--   Big container   -->
-	    <div class="container">
+	    <div class="container2">
 	        <div class="row">
 		        <div class="col-sm-8 col-sm-offset-2">
 		            <!--      Wizard container        -->
-		            <div class="wizard-container" style="width:500px; margin-left:400px; margin-top:-50px;">
+		            <div class="wizard-container" style="width:500px; margin-left:470px;">
 		                <div class="card wizard-card" data-color="red" id="wizard" style=" height:750px;   border-style: solid; border-color: #3DEFCC;border-width: 2px; ">
 		                   
 		                <!--        You can switch " data-color="blue" "  with one of the next bright colors: "green", "orange", "red", "purple"             -->

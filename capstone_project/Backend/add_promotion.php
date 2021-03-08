@@ -1111,6 +1111,7 @@ display:none;
                                                         <div class="col-sm-7 ">
                                                           <select name="store_name_coupon" class="form-control" id="sel1">             <!--FORM ELEMENT *********************-->
                                                             <?php foreach ($all_owned_stores_array as $row): ?>
+                                                              <option value="None"> Select a Store</option></option>
                                                               <option value="<?php echo $row['store_name'];?>"><?php echo $row['store_name'];?></option>
                                                             <?php endforeach; ?>
                                                             
@@ -1120,7 +1121,7 @@ display:none;
                                                       </div>
 
                                                   
-                                                    <button name="coupon_submit" id="sign_up_btn_cus"  type="submit" class=" bg-success button_style_by_us"  href="#">Sign up</i></button>
+                                                    <button name="coupon_submit" id="sign_up_btn_cus"  type="submit" class=" bg-success button_style_by_us"  href="#">Create Promotion</i></button>
                                               
 
 
@@ -1204,6 +1205,7 @@ display:none;
                                                         <div class="col-sm-7 ">
                                                           <select name="store_name_big_sale" class="form-control" id="sel1">             <!--FORM ELEMENT *********************-->
                                                             <?php foreach ($all_owned_stores_array as $row): ?>
+                                                              <option value="None"> Select a Store</option></option>
                                                               <option value="<?php echo $row['store_name'];?>"><?php echo $row['store_name'];?></option>
                                                             <?php endforeach; ?>
                                                             
@@ -1270,6 +1272,7 @@ display:none;
                                                     <div class="col-sm-7 ">
                                                       <select name="store_name_info" class="form-control" id="sel1">             <!--FORM ELEMENT *********************-->
                                                         <?php foreach ($all_owned_stores_array as $row): ?>
+                                                          <option value="None"> Select a Store</option></option>
                                                           <option value="<?php echo $row['store_name'];?>"><?php echo $row['store_name'];?></option>
                                                         <?php endforeach; ?>
                                                         
