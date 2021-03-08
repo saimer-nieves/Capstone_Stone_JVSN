@@ -1,6 +1,6 @@
 <?php
 
-include "../includes/header.php";
+
 //include (__DIR__ .'/../model/model_EmployeeLogins.php');
 include "../includes/functions.php";
 include "../Model/model_sign_ups.php";
@@ -101,7 +101,11 @@ if((isset($_POST["login_btn"])))
 
 
 ?>
+<?php
 
+include "../includes/header_signup.php";
+
+?>
 
 
 
@@ -129,7 +133,7 @@ if((isset($_POST["login_btn"])))
    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- CSS Files -->
-	<link href="assets_login/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="assets_login/css/bootstrap.min.css" rel="stylesheet" /> <!-- -->
 	<link href="assets_login/css/material-bootstrap-wizard.css" rel="stylesheet" />
 
 	<!-- CSS Just for demo purpose, don't include it in your project -->
@@ -222,7 +226,7 @@ height: 230px;
     </style>
 </head>
 
-<body style="background-color:#E6FFFA ">
+<body style="background-color:#E6FFFA ;" >
 	<div style="background-color:#E6FFFA ">
 	   
     <img src="../images/cus_display2.png" alt="cus_login_photo" id="cus_photo_clean">
@@ -242,7 +246,7 @@ height: 230px;
 	        <div class="row">
 		        <div class="col-sm-8 col-sm-offset-2">
 		            <!--      Wizard container        -->
-		            <div class="wizard-container" style="width:500px; margin-left:400px; margin-top:-50px;">
+		            <div class="wizard-container" style="width:500px; margin-left:400px; ">
 		                <div class="card wizard-card" data-color="red" id="wizard" style=" height:750px;   border-style: solid; border-color: #3DEFCC;border-width: 2px; ">
 		                   
 		                <!--        You can switch " data-color="blue" "  with one of the next bright colors: "green", "orange", "red", "purple"             -->

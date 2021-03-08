@@ -28,9 +28,12 @@ function add_subscriber($subscription_active, $subscription_date,$subscription_e
 
 //stores 52 53 54 55//
 
-//$test = add_subscriber("true", date("Y-m-d"), null, 54, 5);
-////var_dump($test);
-//exit;
+// $test = add_subscriber("true", date("Y-m-d"), null, 53, 5);
+// $test = add_subscriber("true", date("Y-m-d"), null, 56, 5);
+ //$test = add_subscriber("true", date("Y-m-d"), null, 76, 5);
+ //$test = add_subscriber("true", date("Y-m-d"), null, 77, 5);
+// ////var_dump($test);
+// exit;
 
 //customer 5 6 7 
 

@@ -2,6 +2,7 @@
 session_start(); 
 
 include "../Model/model_add_merchant_store.php";
+include "../Model/model_promotions.php";
 
 $mer_ID= $_SESSION["mer_ID"];
 
@@ -75,6 +76,21 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
   $store_category = filter_input(INPUT_POST, 'store_category');
 
   $results = add_merchant_stores($store_name, $store_category,date("Y-m-d"), $fileName, $mer_ID);
+
+
+  $results_array = get_merchant_stores($_SESSION["mer_ID"]);
+  $number_of_stores =  count($results_array);
+  $_SESSION["number_of_stores"] =  $number_of_stores;
+  $number_of_active_promotions = 0;
+  foreach($results_array as $row)
+  {
+   $answer = get_promotions_active($row['store_ID']);
+ 
+   $temp_number = count($answer);
+ 
+   $number_of_active_promotions = $number_of_active_promotions + $temp_number;
+  }
+  $_SESSION["number_of_active_promotions"] =  $number_of_active_promotions;
 
 
 

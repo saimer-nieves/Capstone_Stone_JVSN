@@ -16,11 +16,11 @@ session_start();
  
   //echo $_SESSION["mer_ID"].$_SESSION["mer_fname"] .$_SESSION["mer_lname"] .$_SESSION["mer_email"] .$_SESSION["mer_phone"] ;
 
- $mer_ID= $_SESSION["mer_ID"];
- $mer_fname= $_SESSION["mer_fname"];
- $mer_lname= $_SESSION["mer_lname"];
- $mer_email= $_SESSION["mer_email"];
- $mer_phone= $_SESSION["mer_phone"];
+ $mer_ID= $_SESSION["cus_ID"];
+ $mer_fname= $_SESSION["cus_fname"];
+ $mer_lname= $_SESSION["cus_lname"];
+ $mer_email= $_SESSION["cus_email"];
+ $mer_phone= $_SESSION["cus_phone"];
 
 
  $results_array = get_merchant_stores($mer_ID);

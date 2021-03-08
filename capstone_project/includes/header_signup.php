@@ -46,6 +46,7 @@
     position: relative;
     display: inline-block;
     border-radius:20px;
+  
   }
 
   input:focus {
@@ -57,6 +58,8 @@
 {
   font-family: Arial, Helvetica;
   color:black;
+  height:40px;
+    background-color:red;
  
 }
 
@@ -146,9 +149,9 @@
   
 <header id="header" class="align-items-center" style="background-color:#53c68c; height:83.6px; ">
     <div class="container" style="background-color:#53c68c;">
-      <div class="header-container d-flex align-items-center" style="background-color:#53c68c; height:83.6px;  ">
-        <div class="logo mr-auto" style="background-color:#53c68c;">
-          <h1 class="text-light" style="padding-top:5px;"><a href="outside_index.php" ><span  >ORIGIN</span></a></h1>
+      <div class="header-container d-flex align-items-center" style="background-color:#53c68c; height:83.6px;">
+        <div class="logo mr-auto" style="background-color:#53c68c; width:152.1px; height:61.6px; padding-top:0px;">
+          <h1 class="text-light"><a href="outside_index.php" ><span >ORIGIN</span></a></h1>
           <!-- Uncomment below if you prefer to use an image logo -->
           <!-- <a href="index.html"><img src="../Backend/assets/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
@@ -168,8 +171,8 @@
                   </form>
                 </div>
             </li>
-            <li class="get-started " style="margin-left:120px; margin-top:10px;"><a href="sign_up_Customer.php" style="font-size:11px; width:150px;"> <center>Customer Login</center></a></li>
-            <li class="get-started " style="margin-top:10px;"><a href="sign_up_Merchant.php"  style="font-size:11px; width:150px;"> <center>Business Login</center></a></li>
+            <li class="get-started " style="margin-left:120px; margin-top:10px;"><a href="sign_up_Customer.php" style="font-size:11px; width:150px;  height:36px;"> <center>Customer Login</center></a></li>
+            <li class="get-started " style="margin-top:10px;"><a href="sign_up_Merchant.php"  style="font-size:11px; width:150px; height:36px;"> <center>Business Login</center></a></li>
           </ul>
         </nav><!-- .nav-menu -->
       </div><!-- End Header Container -->
