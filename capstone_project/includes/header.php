@@ -1,3 +1,24 @@
+<?php
+
+
+if((isset($_POST["search_btn"])))
+{
+
+
+      $store_searched_selected = filter_input(INPUT_POST, 'store_searched_selected');
+      
+   
+
+
+
+     
+     
+      header('Location: searchpage.php?selectedStore='.$store_searched_selected);
+
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -159,9 +180,9 @@
             <li>
                 <!-- SEARCH BAR-->
                 <div style="margin-top:10px;">
-                  <form autocomplete="off" action="/action_page.php">
+                <form method="post" action = "<?php $_PHP_SELF ?>">
                     <div class="autocomplete" style="width:300px;">
-                      <input id="myInput" type="text" name="myCountry" placeholder="search our stores">
+                      <input id="myInput" type="text" name="store_searched_selected" placeholder="search our stores">
                     </div>
                     <button type="submit" name="search_btn" class=" button_style_by_us2" > <img src="../images/search_logo.png" class="images_icon"></button>
                    

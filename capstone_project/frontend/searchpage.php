@@ -4,6 +4,15 @@
 include "../includes/header.php";
 
 //include (__DIR__ .'/../model/model_EmployeeLogins.php');
+
+
+$action_type = $_GET["selectedStore"];
+// var_dump($action_type);
+// exit;
+$answer_all_stores_array = 'function_get_allstores';
+
+
+
 ?>
 
 <!DOCTYPE html>

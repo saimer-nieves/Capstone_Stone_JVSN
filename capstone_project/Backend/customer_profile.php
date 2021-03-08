@@ -617,6 +617,9 @@ foreach ($all_owned_stores_array as $col):?>
                                 <?php if ($col['promotion_type'] == "big sale" ) :?>
                                   new_promotion_INNERSHELL.setAttribute('class','new_promotion_big_sale ') ;
                                 <?php endif;?>
+                                <?php if ($col['promotion_type'] == "info" ) :?>
+                                  new_promotion_INNERSHELL.setAttribute('class','new_promotion_big_sale ') ;
+                                <?php endif;?>
                                 new_promotion_text_div.setAttribute('class','new_store_text_div_promotion') ;
                                 new_promotion_text_div.innerHTML= "<?php echo $col['promotion_type'] ;?>  <br>   <?php echo $col['promotion_title'] ;?> <br>  <?php echo $index_store_number.  $col['store_ID'];?>"
                                 
