@@ -257,7 +257,7 @@ body
    height:550px;
    background-color:#FFFFFF;
    float:left;
-   margin-left:700px;
+   margin-left:600px;
    margin-top:100px;
 }
 
@@ -360,7 +360,7 @@ body
 
 .delete_btn_design
 {
-  padding: 0;
+padding: 0;
 border: none;
 background: none;
 border-radius:10px;
@@ -475,9 +475,9 @@ height:32px;
                                                
                                                
                                                 <div class="form-group row" style="margin-top:0px; padding-top:10px;">
-                                                    <label  class="col-sm-3 col-form-label our_text_font" style="color:black; font-size:11px;">All Customer Subscription: </label>
+                                                    <label  class="col-sm-3 col-form-label our_text_font" style="color:black; font-size:11px;">TOTAL SUBSCRIPTIONS: </label>
                                                     <div class="col-sm-6 ">
-                                                    <p class="p_styling">27 Customer subs</p>
+                                                    <p class="p_styling">27</p>
                                                   
                                                   
                                                     </div>
