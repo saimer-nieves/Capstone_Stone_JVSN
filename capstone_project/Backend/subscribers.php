@@ -62,8 +62,8 @@ height: 200px;
     position:absolute;
     float:left;
 width: 320px;
-height: 244px;
-margin-top:185px;
+height: 228px;
+margin-top:200px;
 background: #D5F317;
 }
 .total_subs_display
@@ -98,8 +98,69 @@ background: #20E5DA;
     background: #FD1313;
 }
 
+.subs_count_styling
+{
+    position:absolute;
+    font-family: Arial Black, Arial, Helvetica;
+    color:white;
+    font-size: 25px;
+  
+    text-align:center;
+    margin-left:66px;
+    margin-top:34px;
+    //text-transform: uppercase;
+}
+
+.store_logo_styling
+{
+    width:300px;
+    height:180px;
+    
+  
+float:left;
+    margin-left:20px;
+    margin-top:10px;
+
+    box-shadow: -5px 5px 5px black;
+/* Center and scale the image nicely */
+background-position: center  !important;
+background-repeat: no-repeat   !important;
+background-size: cover   !important;
+}
+
+.store_title_design
+{
+    float:left;
+    position:absolute;
+    font-family: Arial Black, Arial, Helvetica;
+    color:black;
+    font-size: 30px;
+
+  margin-left:370px;
+  margin-top:70px;
+    text-align:right;
+background-color:red;
+    text-transform: uppercase;
+    width:250px;
+}
+
+.u_title_large
+{
+    white-space: nowrap;
+    font-size: 0.6em;
+}
+
+.u_title_small
+{
+    white-space: nowrap;
+    font-size: 0.9em;
+}
+
+
 </style>
 <body>
+
+
 
 <div id="all_content"></div>
 
@@ -118,9 +179,34 @@ background: #20E5DA;
 
               var logo_top_div =  document.createElement("div");
               logo_top_div.setAttribute("class","logo_top_div"); //STORE TITLE
+                var logo_INNER_img_div =  document.createElement("div");
+                logo_INNER_img_div.setAttribute("class","sam"); //STORE TITLE
+                logo_INNER_img_div.innerHTML="<div class='store_logo_styling' style='background-image:url(uploaded_files/<?php echo $row['store_img_logo'];?>)'> </div>"; //STORE TITLE
+                logo_top_div.appendChild(logo_INNER_img_div);
+                var store_title_text_div =  document.createElement("div");
+                store_title_text_div.setAttribute("class","sam"); //STORE TITLE
+                var nameCount = '<?php echo $row['store_name'];?>';
+                console.log(nameCount.length)
+                if(nameCount.length >= 10)
+                {
+                    store_title_text_div.innerHTML="<h3 class='store_title_design'><u class='u_title_large'><?php echo $row['store_name'];?></u> <br> Subscripers</h3>"; //STORE TITLE
+                }
+                else
+                {
+                    store_title_text_div.innerHTML="<h3 class='store_title_design'><u class='u_title_small'><?php echo $row['store_name'];?></u> <br> Subscripers</h3>"; //STORE TITLE
+                }
+              
+               
+                logo_top_div.appendChild(store_title_text_div);
+
 
               var total_subs_display =  document.createElement("div");
               total_subs_display.setAttribute("class","total_subs_display");  // MIDDLE SECTION FOR TITLES
+                var total_subs_INNER_text =  document.createElement("h4");
+                total_subs_INNER_text.setAttribute("class","subs_count_styling"); //STORE TITLE
+                total_subs_INNER_text.innerHTML="Total <br> Subscribers: <br><br> 400,000"; //STORE TITLE
+                total_subs_display.appendChild(total_subs_INNER_text);
+
 
 
               var logo_bottom_div =  document.createElement("div");
@@ -134,6 +220,11 @@ background: #20E5DA;
 
               var lost_subs_display =  document.createElement("div");
               lost_subs_display.setAttribute("class","lost_subs_display"); //ACTIVE PROMOTION
+                var lost_subs_INNER_text =  document.createElement("h4");
+                lost_subs_INNER_text.setAttribute("class","subs_count_styling"); //STORE TITLE
+                lost_subs_INNER_text.innerHTML="Lost <br> Subscribers: <br><br> 587"; //STORE TITLE
+                lost_subs_display.appendChild(lost_subs_INNER_text);
+
 
               all_content_stores_div.appendChild(each_unique_store);
               each_unique_store.appendChild(logo_top_div);
