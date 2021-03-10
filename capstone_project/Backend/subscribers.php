@@ -136,10 +136,10 @@ background-size: cover   !important;
     color:black;
     font-size: 30px;
 
-  margin-left:370px;
-  margin-top:70px;
+    margin-left:370px;
+     margin-top:70px;
     text-align:right;
-background-color:red;
+    background-color: none;
     text-transform: uppercase;
     width:250px;
 }
@@ -156,11 +156,54 @@ background-color:red;
     font-size: 0.9em;
 }
 
+.storeTextInfo{
 
+    font-family: Arial Black, Arial, Helvetica;
+    color:black;
+    font-size: 10px;
+    
+    text-transform: uppercase;
+
+}
+
+.text_info_styling
+{
+    
+   
+    font-family: Arial Black, Arial, Helvetica;
+    color:black;
+    font-size: 10px;
+   
+  
+    text-transform: uppercase;
+   
+
+}
+
+td{ padding:10px;}
+
+.store_label
+{
+    text-align:right;
+   
+}
 </style>
 <body>
 
+<div  class="storeTextInfo">
 
+    <table>
+
+        <tr> <td class="store_label">store ID:</td>  <td class="text_info_styling">  52 </td></tr>
+        <tr> <td class="store_label">active promotions:</td>  <td class="text_info_styling" > 3 promotions   </td></tr>
+        <tr> <td class="store_label">store category:</td>  <td class="text_info_styling" > Clothing  </td></tr>
+        <tr> <td class="store_label">Days Running:</td>  <td class="text_info_styling" >  3 Days  </td></tr>
+
+    </table>
+   
+  
+
+</div>
 
 <div id="all_content"></div>
 
@@ -211,6 +254,10 @@ background-color:red;
 
               var logo_bottom_div =  document.createElement("div");
               logo_bottom_div.setAttribute("class","logo_bottom_div"); //ACTIVE TITLES
+              var storeINNER_textinfo =  document.createElement("div");
+              storeINNER_textinfo.innerHTML=" junior"; //STORE TITLE
+              logo_bottom_div.appendChild(storeINNER_textinfo);
+
 
               var a_tag =  document.createElement("a");
               a_tag.setAttribute("href","view_customers.php?store=<?php echo $row['store_ID'];?>"); //ACTIVE TITLES
