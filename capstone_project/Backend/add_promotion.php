@@ -181,7 +181,10 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
     <title>Document</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-   
+    <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+
 
     <style>
     body
@@ -219,15 +222,7 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
         }
         
        
-       
-      input[type="file"] {
-        position: absolute;
-        z-index: -1;
-        top: 10px;
-        left: 8px;
-        font-size: 17px;
-        color: black;
-      }
+     
       .button-wrap {
         position: relative;
       }
@@ -486,11 +481,11 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
 #selected_div
 {
   background-color:#e7fde2;
-  width:1480px;
+  width:1300px;
   height:530px;
   
   margin-top:100px;
-  padding:15px;
+  padding:20px;
   position:absolute;
   display:none;
   border: 2px solid black;
@@ -604,6 +599,16 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
   float:left;
   text-align:center;
   padding-top:200px;
+}
+.lbl_big_sale2
+{
+  background-color:#53C68C;
+  width:100%;
+  height:50px;
+
+  text-align:center;
+  
+  
 }
 .lbl_info
 {
@@ -735,8 +740,9 @@ display:none;
     width:340px;
     background-color:#ffffff;
     float:left;
-    margin-top:120px;
-    margin-left:20px;
+    position:absolute;
+    top:80px;
+    left:900px;
     padding:5px;
     border-style: solid;
     border-width: 5px;
@@ -750,7 +756,9 @@ display:none;
     width:340px;
     background-color:#ffffff;
     float:left;
-    margin-top:150px;
+    position:absolute;
+    top:80px;
+    left:900px;
     margin-left:20px;
     padding:5px;
     border-style: solid;
@@ -973,6 +981,149 @@ display:none;
   margin-top:-80px;
   width:180px;
 }
+
+.secret_name_inside_div
+{
+  text-transform:uppercase;
+  margin-left:100px;
+  margin-top:0px;
+  display:none;
+  height:40px;
+}
+
+.add_product_btn
+{
+  background-color:red;
+  cursor: pointer;
+}
+
+.add_products_page
+{
+  height:500px;
+   width:1200px;
+    background-color:red;
+    margin-top:50px;
+    
+}
+
+.big_sale_Produc_select
+{
+  height:300px;
+   width:100%;
+    background-color:yellow;
+   
+}
+
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+
+.product_title
+{
+  background-color:purple;
+  width:100%;
+  height:50px;
+
+  font-family: Arial Black, Arial, Helvetica;
+  color:white;
+  font-size: 30px;
+  text-align:center;
+}
+
+
+.product_details
+{
+  background-color:blue;
+  width:100%;
+  height:250px;
+
+  font-family: Arial Black, Arial, Helvetica;
+  color:white;
+  font-size: 30px;
+  text-align:center;
+}
+
+
+.card_header
+{
+  width:100%;
+  height:30px;
+  background-color:red;
+  float:left;
+}
+
+
+.picture_box
+{
+  height:220px;
+  width:200px;
+  background-color:green;
+  float:left;
+  justify-content:center; /* horizontally center */
+    align-items:center;    /* vertically center */
+    display:flex;
+}
+
+#blah
+{
+ 
+   
+    //object-fit: cover;
+    max-height: 220px;
+    max-width:100%;
+  
+}
+
+
+.product_info
+{
+  height:220px;
+  width:300px;
+  background-color:blue;
+  float:left;
+}
+
+.product_container
+{
+
+  height:500px;
+  width:500px;
+}
+
+
+
   </style>
 </head>
 <body style=" overflow:hidden;">
@@ -1051,6 +1202,7 @@ display:none;
               
     
     </li>
+
     <li style=" height: 100%; float: left; width:1400px; background-color:E6FFFA;">
     
     
@@ -1175,9 +1327,34 @@ display:none;
                                                     <div class="form-group row form_boxes">
                                                       <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">COUPON TITLE: </h5></label>
                                                       <div class="col-sm-7 ">
-                                                      <input type="text" maxlength = 80 class="form-control text_box"  name="big_sale_title" required>
+                                                      
+
+
+                                                      <select name="big_sale_title" class="form-control" id="sel1">             <!--FORM ELEMENT *********************-->
+                                                            <?php foreach ($all_owned_stores_array as $row): ?>
+                                                              <option value="None"> Select a Store</option></option>
+                                                              <option value="new big sale"> NEW BIG SALE</option></option>
+                                                              <option value="<?php echo $row['store_name'];?>"><?php echo $row['store_name'];?></option>
+                                                            <?php endforeach; ?>
+                                                            
+                                                              
+                                                          </select>
                                                       </div>
                                                     </div>
+
+
+                                                   
+
+                                                    <div class="form-group row form_boxes secret_name_inside_div">
+                                                        <label  class="col-sm-4 col-form-label" style="float:left;"> <h5 class="font_created_by_us">Big Sale Name: </h5></label>
+                                                        <div class="col-sm-6 "  style="float:left;">
+                                                        <input type="text"  class="form-control text_box" name="secret_new_sale_name" style="height:30px; margin-left:-70px;">
+                                                        </div>
+                                                    </div>
+                                                    
+                                               
+
+                                                    
                                          
                                                     <div class="form-group row form_boxes">
                                                       <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">VALID UNTIL:</h5></label>
@@ -1214,9 +1391,10 @@ display:none;
                                                         </div>
                                                       </div>
 
-
+                                                      
                                                     
-                                                      <button name="big_sale_submit" type="submit" class=" bg-success button_style_by_us"  href="#">CREATE PROMOTION</i></button>
+                                                      <a href="#" id="add_product_btn" ><div class=" bg-success  button_style_by_us"   style="position:fixed; top:500px; height:50px; width:200px;">Add Products</div></a>
+                                                      <button name="big_sale_submit" type="submit" class=" bg-success button_style_by_us"  href="#" style="position:fixed; top:600px;">CREATE PROMOTION</i></button>
                                                 
 
 
@@ -1371,6 +1549,55 @@ display:none;
     
     
     
+    </li>
+
+    <li style=" height: 100%; float: left; width:1400px; background-color:E6FFFA;">
+
+      <div class="add_products_page">
+        <div class="lbl_big_sale2" >
+                      <h4 class="text-light promotion_title">BIG SALE</h4>
+        </div>
+
+        <div class="big_sale_Produc_select">
+
+          <div class="product_container">
+
+            <div  style="float:left; width:500px; height:250px;margin:45px;">
+              <div  style="max-width: 540px; background-color:black; height:250px;">
+                
+                <div class="card_header"> Product 1</div>
+
+                <div class="picture_box"> 
+                <img id="blah" src="#" alt="your image" />
+    </div>
+
+
+                
+              <div class="product_info">
+                  
+                              <input type='file' onchange="readURL(this);" />
+                    
+              
+              
+               </div>
+
+              </div>
+            </div>
+
+
+            
+
+
+          </div>
+
+       
+
+        <a href="#" id="insert_product_btn" ><div class=" bg-success  button_style_by_us"   style="position:fixed; top:500px; height:50px; width:120px;"> + Products</div></a>
+        
+        </div>
+        
+      </div>
+
     </li>
     
   </ul>
@@ -1576,13 +1803,48 @@ prev.addEventListener("click", function() {
   
   prevSlide();
   all_promotions_div.classList.toggle('unfade');
-  prev.style.display="none";
+ 
   
   
 });
 
+  var add_product_btn = document.getElementById("add_product_btn")
+ add_product_btn.addEventListener("click", function() {
+
+  console.log("youppppp")
+  nextSlide(); //
+ });
+
+ var insert_product_btn = document.getElementById("insert_product_btn")
+  insert_product_btn.addEventListener("click", function() {
+
+    console.log("im adding new products")
+
+         
+
+   
+            
+
+              
+              
+            
+        
+        
+
+
+
+
+
+
+  });
+
+
 
 };
+
+
+
+
 
 window.onload = function() {
 responsiveSlider();  
@@ -1676,7 +1938,21 @@ function convertCurrency(value) {
   var title2 = document.querySelector("#title2"); //get variable to display text
     $('[name="big_sale_title"]').on('change keyup', function() { //variable that you are typing in
         value = $(this).val();
-        console.log(value);
+
+        var secret_container = document.querySelector(".secret_name_inside_div");
+        if (value == 'new big sale')
+        {
+  
+          console.log("Saimer We are in here");
+          $( ".secret_name_inside_div" ).slideDown( 400, function() {              });
+        }
+        if (value != 'new big sale')
+        {
+  
+          
+          $( ".secret_name_inside_div" ).slideUp( 400, function() {              });
+        }
+        
         title2.innerHTML = value; // variable you push to
     })
   //TITLE ENDS HERE
@@ -1770,5 +2046,41 @@ function convertCurrency(value) {
     })
   //code ENDS HERE
 //END COUPON SAMPLE
+
+</script>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+<script>
+
+function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width(200)
+                        
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
 
 </script>
