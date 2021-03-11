@@ -25,6 +25,7 @@ $mer_ID= $_SESSION["mer_ID"];
 include "../includes/back_side_nav.php";
 
 
+
 ?>
 
 
@@ -163,6 +164,7 @@ background-size: cover   !important;
     font-size: 10px;
     
     text-transform: uppercase;
+    padding-top:25px;
 
 }
 
@@ -187,30 +189,73 @@ td{ padding:10px;}
     text-align:right;
    
 }
+
+.view_table_btn_styling
+{
+    position:absolute;
+    font-family: Arial Black, Arial, Helvetica;
+    color:white;
+    font-size: 25px;
+  
+    text-align:left;
+  
+    //text-transform: uppercase;
+    height:100px;
+    width:200px;
+    background-color:none;
+    margin-left:45px;
+    margin-top:30px;
+
+
+}
+
+.next_arrow_design{
+
+    height:70px;
+    margin-top:120px;
+    margin-left:200px;
+
+}
 </style>
 <body>
 
-<div  class="storeTextInfo">
 
-    <table>
-
-        <tr> <td class="store_label">store ID:</td>  <td class="text_info_styling">  52 </td></tr>
-        <tr> <td class="store_label">active promotions:</td>  <td class="text_info_styling" > 3 promotions   </td></tr>
-        <tr> <td class="store_label">store category:</td>  <td class="text_info_styling" > Clothing  </td></tr>
-        <tr> <td class="store_label">Days Running:</td>  <td class="text_info_styling" >  3 Days  </td></tr>
-
-    </table>
-   
-  
-
-</div>
 
 <div id="all_content"></div>
 
 </body>
 </html>
 
-<?php foreach ($all_owned_stores_array as $row): ?>
+<?php foreach ($all_owned_stores_array as $row):
+    
+    
+    
+    $active_promotions_array_list = get_promotions_active($row['store_ID']);
+
+    $count_of_activePromotions =count($active_promotions_array_list);
+
+   
+    
+
+    $start_date = date_create(     $row['store_day_created']      );
+    $end_date   =  date_create(   date('Y-m-d H:m:s')     );
+    
+    //difference between two dates
+    $diff = date_diff($start_date,$end_date);
+
+
+
+    
+
+    
+ 
+  
+  
+    
+    
+    
+    
+    ?>
               
     
     <?php echo "saiemr";?>
@@ -255,8 +300,10 @@ td{ padding:10px;}
               var logo_bottom_div =  document.createElement("div");
               logo_bottom_div.setAttribute("class","logo_bottom_div"); //ACTIVE TITLES
               var storeINNER_textinfo =  document.createElement("div");
-              storeINNER_textinfo.innerHTML=" junior"; //STORE TITLE
+              storeINNER_textinfo.innerHTML=" <div  class='storeTextInfo'>      <table>     <tr> <td class='store_label'>store ID:</td>  <td class='text_info_styling'>  <?php echo $row['store_ID'];?> </td></tr>             <tr> <td class='store_label'>active promotions:</td>  <td class='text_info_styling' > <?php echo $count_of_activePromotions ;?> promotions   </td></tr>          <tr> <td class='store_label'>store category:</td>  <td class='text_info_styling' > <?php echo $row['store_category'];?>  </td></tr>           <tr> <td class='store_label'>Days Running:</td>  <td class='text_info_styling' > <?php echo $diff->format("%a"). " Days ";?> </td></tr>         </table>         </div>"; //STORE TITLE
               logo_bottom_div.appendChild(storeINNER_textinfo);
+
+           
 
 
               var a_tag =  document.createElement("a");
@@ -264,6 +311,7 @@ td{ padding:10px;}
 
               var view_all_customers =  document.createElement("div");
               view_all_customers.setAttribute("class","view_all_customers"); //INACTIVE TITLE
+              view_all_customers.innerHTML="<h4 class='view_table_btn_styling'> View All  <br>Customers <br> Table</h4>         <img src='../images/next_arrow.png' class='next_arrow_design'> "; //INACTIVE TITLE
 
               var lost_subs_display =  document.createElement("div");
               lost_subs_display.setAttribute("class","lost_subs_display"); //ACTIVE PROMOTION
