@@ -472,7 +472,7 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
   background-color:none;
   width:980px;
   height:530px;
-  margin-left:200px;
+  margin-left:250px;
   margin-top:100px;
   padding:15px;
   position:absolute;
@@ -1129,7 +1129,7 @@ display:none;
     transition: all 750ms ease;
     left: 0;"> 
    
-    <li style=" height: 100%; float: left;width:1360px; background-color:E6FFFA;   "> 
+    <li style=" height: 100%; float: left;width:1400px; background-color:E6FFFA;   margin-right:100px;"> 
               <div id="all_promotions">
 
           <!-- TESTING PURPOSES  <div style="background:#98bf21;height:100px;width:100px;position:absolute;"></div>  -->
@@ -1552,6 +1552,13 @@ display:none;
               <div class="product_info">
                   
                               <input type='file' onchange="readURL(this);" />
+                              <div class="form-group row form_boxes">
+                                    <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">Title: </h5></label>
+                                            <div class="col-sm-7 ">
+                                            <input type="text" maxlength = 80 class="form-control text_box"  name="coupon_title" required>
+                                    </div>
+                              </div>
+
                     
               
               
