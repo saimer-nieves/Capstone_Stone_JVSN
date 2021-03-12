@@ -205,17 +205,10 @@ td{ padding:10px;}
     background-color:none;
     margin-left:45px;
     margin-top:30px;
-<<<<<<< HEAD
 
 
 }
 
-=======
-
-
-}
-
->>>>>>> c44d558282be895e9ee5c5eb4d101bb9f4f80bff
 .next_arrow_design{
 
     height:70px;
