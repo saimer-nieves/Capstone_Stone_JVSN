@@ -26,6 +26,30 @@ var_dump($results);
 //var_dump($results[0]["store_category"]);
 exit;*/
 
+
+function get_One_promotion($promotion_ID) {
+    global $db;
+
+    $results = [];
+    
+    $stmt = $db->prepare("SELECT promotion_ID, promotion_type, promotion_title, promotion_exp_date, promotion_description, promotion_code, store_ID FROM promotions_tbl WHERE promotion_ID = :promotion_ID");
+
+    $stmt->bindValue(":promotion_ID", $promotion_ID);
+
+    if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);   
+    }
+
+    return $results;
+
+}
+
+
+
+
+
+
+
 function add_promotions( $promotion_type, $promotion_title, $promotion_subheading, $promotion_address, $promotion_exp_date, $promotion_description, $promotion_code, $store_ID) {
     global $db;
 
@@ -50,10 +74,10 @@ function add_promotions( $promotion_type, $promotion_title, $promotion_subheadin
 
     return $results; 
 }
-
-//$testing = add_promotions("Coupon","50% OFF SALE","only on your dreams",NULL , "2021-02-25","WE WILL HAVE A SLE OF 50 ONLY TOMOEEOW", "456 - 4156 - FG5G","52");
-//var_dump($testing);
-//exit;
+/*
+$testing = add_promotions("big sale","THIS SALE IS BIG","COOK",NULL , "2021-10-25","WE WILL HAVE A SLE OF 50 ONLY TOMOEEOW", "456 - 4156 - FG5G","53");
+var_dump($testing);
+exit;*/
 //46 47 48/*
 /*date("m/d/Y") this will help you set your time  */
 /*$testing = add_promotions("today", "Fall Big Sale", "2021-02-17", "Come buy fall color shirts 50%", 4561561210,52);
@@ -190,9 +214,34 @@ function get_promotions_active($store_ID) {
 
 }
 
-//$results = get_promotions_active(52);
-//var_dump($results);
-//exit;
+
+
+
+function get_most_recent_promotion($promotion_title, $store_ID, $promotion_address, $promotion_exp_date, $promotion_description) {
+    global $db;
+
+    $results = [];
+    
+    $stmt = $db->prepare("SELECT promotion_ID, promotion_type, promotion_title, promotion_subheading, promotion_address, promotion_exp_date, promotion_description, promotion_code, store_ID FROM promotions_tbl WHERE promotion_title = :promotion_title AND store_ID = :store_ID AND promotion_address = :promotion_address AND promotion_exp_date = :promotion_exp_date AND promotion_description = :promotion_description"); 
+                                                                                                                                                                                                                                                        //$promotion_title, $store_ID, $promotion_address, $promotion_exp_date, $promotion_description
+    $stmt->bindValue(":promotion_title", $promotion_title);
+    $stmt->bindValue(":store_ID", $store_ID);
+    $stmt->bindValue(":promotion_address", $promotion_address);
+    $stmt->bindValue(":promotion_exp_date", $promotion_exp_date);
+    $stmt->bindValue(":promotion_description", $promotion_description);
+
+    if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);   
+    }
+
+    return $results;
+
+}
+
+/*
+$results = get_most_recent_promotion('France Shop', 71 ,'first floor hospittal', '2021-03-26 00:00:00', 'we will sale new fruits');
+var_dump($results);
+exit;*/
 /*
 $results = get_promotions_active(46);
 var_dump($results);
@@ -220,6 +269,63 @@ function updatePromotions($promotion_ID) {
 
     return $results;
 }
+
+
+function get_active_Big_Sales($store_ID) {
+    global $db;
+
+    $results = [];
+    
+    $stmt = $db->prepare("SELECT promotion_ID, promotion_type, promotion_title, promotion_subheading, promotion_address, promotion_exp_date, promotion_description, promotion_code, store_ID FROM promotions_tbl WHERE store_ID = :store_ID AND promotion_exp_date > :promotion_exp_date AND promotion_type = :promotion_type");
+
+    $stmt->bindValue(":store_ID", $store_ID);
+    $stmt->bindValue(":promotion_exp_date", date("Y-m-d"));
+    $stmt->bindValue(":promotion_type", 'big sale');
+
+    if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);   
+    }
+
+    return $results;
+
+}
+
+
+
+
+function get_ONE_BIG_SALE($store_ID, $big_sale_title) {
+    global $db;
+
+    $results = [];
+    
+    $stmt = $db->prepare("SELECT promotion_ID, promotion_type, promotion_title, promotion_subheading, promotion_address, promotion_exp_date, promotion_description, promotion_code, store_ID FROM promotions_tbl WHERE store_ID = :store_ID AND promotion_exp_date > :promotion_exp_date AND promotion_title = :promotion_title");
+
+    $stmt->bindValue(":store_ID", $store_ID);
+    $stmt->bindValue(":promotion_exp_date", date("Y-m-d"));
+    $stmt->bindValue(":promotion_title", $big_sale_title);
+
+    if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);   
+    }
+
+    return $results;
+
+}
+
+/*
+$results =  get_ONE_BIG_SALE(53, 'Lambo BIGSL');
+var_dump($results);
+exit;*/
+
+
+/*
+$results = get_active_Big_Sales(53);
+var_dump($results);
+exit;*/
+
+
+
+
 
 
 
