@@ -234,77 +234,9 @@ body { font-family: sans-serif; }
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
 
-
-    <div id="main_store1"> 
-
-        <!-- Flickity HTML init -->
-        <div class="gallery js-flickity"
-          data-flickity-options='{ "wrapAround": true }'>
-         
-          <div class="gallery-cell galcel1">
-
-
-                <div class="store1 store_sizing"  onmouseover="mouseOver100()" onmouseout="fade_exit()" ></div>
-                <div class="store_detail">Jc Penny store</div>
-                
-                <div class="store2 store_sizing"  onmouseover="mouseOver100()" onmouseout="fade_exit()" ></div>
-                <div class="store_detail">Jc Penny store</div>
-              
-      
-
-
-
-
-
-
-          </div>
-          <div class="gallery-cell galcel3"></div>
-          <div class="gallery-cell galcel4"></div>
-          <div class="gallery-cell galcel5"></div>
-        </div>
-    
-      
-    </div>
  
   </section><!-- End Hero -->
 
-  <main id="main"  onmouseover="mouseOver1()">
-
-   
-   
-
-    
-
-    
-
-
-  </main><!-- End #main -->
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
- 
-  </section><!-- End Hero -->
-  <!-- ======= Footer ======= -->
-  
-
-  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="../Backend/assets/vendor/jquery/jquery.min.js"></script>
-  <script src="../Backend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../Backend/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="../Backend/assets/vendor/php-email-form/validate.js"></script>
-  <script src="../Backend/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-  <script src="../Backend/assets/vendor/counterup/counterup.min.js"></script>
-  <script src="../Backend/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="../Backend/assets/vendor/venobox/venobox.min.js"></script>
-  <script src="../Backend/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-  <script src="../Backend/assets/vendor/aos/aos.js"></script>
-  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.js"></script>
-
-
-  <!-- Template Main JS File -->
-  <script src="../Backend/assets/js/main.js"></script>
 
 </body>
 
@@ -325,6 +257,24 @@ body { font-family: sans-serif; }
 
 </script>
 
+
+  <!-- Vendor JS Files -->
+  <script src="../Backend/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../Backend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../Backend/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="../Backend/assets/vendor/php-email-form/validate.js"></script>
+  <script src="../Backend/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="../Backend/assets/vendor/counterup/counterup.min.js"></script>
+  <script src="../Backend/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../Backend/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="../Backend/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="../Backend/assets/vendor/aos/aos.js"></script>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.js"></script>
+
+
+  <!-- Template Main JS File -->
+  <script src="../Backend/assets/js/main.js"></script>
 
 
 

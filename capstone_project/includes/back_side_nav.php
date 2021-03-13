@@ -146,6 +146,14 @@ body
   padding-left: 10px;
 }
 
+.sidebar
+{
+
+  background-color:white;
+  
+  
+}
+
 
   </style>
 </head>

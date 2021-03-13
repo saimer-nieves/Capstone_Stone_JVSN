@@ -50,7 +50,7 @@
     <div class="container" style="background-color:#53c68c;">
       <div class="header-container d-flex align-items-center" style="background-color:#53c68c;">
         <div class="logo mr-auto" style="background-color:#53c68c;">
-          <h1 class="text-light"><a href="outside_index.php"><span>Junior Add Logo Here</span></a></h1>
+          <h1 class="text-light"><a href="outside_index.php"><span>ORIGIN</span></a></h1>
           <!-- Uncomment below if you prefer to use an image logo -->
           <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>

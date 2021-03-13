@@ -29,8 +29,8 @@ function get_products($promotion_ID) {
 /*
 $results = get_products(37);
 var_dump($results);
-exit;
-*/
+exit;*/
+
 
 
 

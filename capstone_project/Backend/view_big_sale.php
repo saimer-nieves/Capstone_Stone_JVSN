@@ -5,199 +5,29 @@ include "../Model/model_add_merchant_store.php";
 include "../Model/model_promotions.php";
 include "../Model/model_products_BIG_SALE.php";
 
+$promotion_ID_BG = $_GET["prID"];
+$promotion_title_name = $_GET["pn"];
 
-$all_owned_stores_array = get_merchant_stores($mer_ID);//get promotions for store 52
-$all_products_in_big_sale = get_products(53,'Lamborguini big sale'); //get promotions for store 52
+$all_products_in_big_sale = get_products($promotion_ID_BG); 
+$one_specific_sale_Array = get_One_promotion($promotion_ID_BG ) ;
+
+$store_ID_num = $one_specific_sale_Array[0]['store_ID'];
+$store_name = get_merchant_stores_with_storesID($store_ID_num);
+$store_letter_name =$store_name[0]['store_name'];
+
+$one_big_sale_exp_date = date("m-d-Y", strtotime( $one_specific_sale_Array[0]['promotion_exp_date']));  
 
 
-foreach($all_owned_stores_array as $row)
+$number_products = count($all_products_in_big_sale);
+if($number_products > 0)
 {
- 
-  $all_Big_sale_Promotions = get_active_Big_Sales($row['store_ID']);
-
+    $name_of_big_sale =$all_products_in_big_sale[0]['big_sale_title'];
 }
 
+$all_Big_sale_Promotions = get_active_Big_Sales(53);
 
 
 
-
-
-
-if (isset($_POST['big_sale_submit']) )
-{
-    //STORE ID 52 IS SAMPLE
-  //TODO MAKE SURE YOU CREATEA A SESSION VARUIABLE WITH THE USER id 
-    echo "big sale submit";
-
-
-    $promotion_type = "big sale";
-    $promotion_title = filter_input(INPUT_POST, 'big_sale_title');
-
-    if($promotion_title == 'new big sale')
-    {
-      $secret_new_sale_name = filter_input(INPUT_POST, 'secret_new_sale_name');
-      $promotion_subheading = NULL;
-      $promotion_address = filter_input(INPUT_POST, 'big_sale_address');
-      $promotion_exp_date = filter_input(INPUT_POST, 'big_sale_expire');
-  
-      $promotion_description = filter_input(INPUT_POST, 'big_sale_description');
-     
-      $promotion_code = NULL;
-      
-      $new_big_sake_store_name = filter_input(INPUT_POST, 'new_big_sake_store_name');
-      $store_ID = convert_storename_to_ID($new_big_sake_store_name,$mer_ID);
-      
-      
-      $results = add_promotions( $promotion_type, $secret_new_sale_name, $promotion_subheading, $promotion_address, $promotion_exp_date, $promotion_description, $promotion_code, $store_ID);
-    // $testing = add_promotions("today", "Fall Big Sale", "2021-02-17", "Come buy fall color shirts 50%", 4561561210,52);
-
-    $fresh_promotion = get_most_recent_promotion($secret_new_sale_name, $store_ID, $promotion_address, $promotion_exp_date, $promotion_description);
-
-    
-    $pID = $fresh_promotion[0]["promotion_ID"];
-    $pn = $fresh_promotion[0]["promotion_title"];
-    
-    header("Location:add_products.php?prID=" . $pID. "&pn=" . $pn);
-
-    }
-    if($promotion_title != 'new big sale')
-    {
-      
-      $promotion_title = filter_input(INPUT_POST, 'big_sale_title');
-
-    
-    $pID = $promotion_title;
-
-
-    
-    $fresh_promotion = get_One_promotion($pID);
-
-    
-    
-    $pn = $fresh_promotion[0]["promotion_title"];
-    
-    header("Location:add_products.php?prID=" . $pID. "&pn=" . $pn);
-    
-    }
-   
-
-  
-
-
-
-
-
-  $results_array = get_merchant_stores($_SESSION["mer_ID"]);
-  $number_of_stores =  count($results_array);
-  
-  $number_of_active_promotions = 0;
-  foreach($results_array as $row)
-  {
-   $answer = get_promotions_active($row['store_ID']);
- 
-   $temp_number = count($answer);
- 
-   $number_of_active_promotions = $number_of_active_promotions + $temp_number;
-  }
-  $_SESSION["number_of_active_promotions"] =  $number_of_active_promotions;
-
-}
-
-
-
-
-
-
-
-
-if (isset($_POST['coupon_submit']) )
-{
-    //STORE ID 52 IS SAMPLE
-  //TODO MAKE SURE YOU CREATEA A SESSION VARUIABLE WITH THE USER id 
-    echo "coupon submit";
-
-
-    $promotion_type = "coupon";
-    $promotion_title = filter_input(INPUT_POST, 'coupon_title');
-    $promotion_subheading = filter_input(INPUT_POST, 'coupon_subheading');
-    $promotion_address = NULL;
-    $promotion_exp_date = filter_input(INPUT_POST, 'coupon_expire');
-    $promotion_description = filter_input(INPUT_POST, 'coupon_description');
-    $promotion_code = filter_input(INPUT_POST, 'coupon_code');
-    $store_name = filter_input(INPUT_POST, 'store_name_coupon');
-    $store_ID = convert_storename_to_ID($store_name,$mer_ID);
-
-    
-    $results = add_promotions( $promotion_type, $promotion_title, $promotion_subheading, $promotion_address, $promotion_exp_date, $promotion_description, $promotion_code, $store_ID);
-  // $testing = add_promotions("today", "Fall Big Sale", "2021-02-17", "Come buy fall color shirts 50%", 4561561210,52);
-
-  // header("Location:promotions.php");
-
-
-  
-  $results_array = get_merchant_stores($_SESSION["mer_ID"]);
-  $number_of_stores =  count($results_array);
- 
-  $number_of_active_promotions = 0;
-  foreach($results_array as $row)
-  {
-   $answer = get_promotions_active($row['store_ID']);
- 
-   $temp_number = count($answer);
- 
-   $number_of_active_promotions = $number_of_active_promotions + $temp_number;
-  }
-  $_SESSION["number_of_active_promotions"] =  $number_of_active_promotions;
-}
-
-
-
-
-
-
-
-if (isset($_POST['info_submit']) )
-{
-  //STORE ID 52 IS SAMPLE
-  //TODO MAKE SURE YOU CREATEA A SESSION VARUIABLE WITH THE USER id 
-    echo "info submit button";
-
-
-    $promotion_type = "info";
-    $promotion_title = filter_input(INPUT_POST, 'info_title');
-    $promotion_subheading = NULL;
-    $promotion_address = filter_input(INPUT_POST, 'info_address');
-    $promotion_exp_date = filter_input(INPUT_POST, 'info_expire');
-    $promotion_description = filter_input(INPUT_POST, 'info_description');
-    $promotion_code = NULL;
-  
-    $store_name = filter_input(INPUT_POST, 'store_name_info');
-    $store_ID = convert_storename_to_ID($store_name,$mer_ID);
-
-    
-    $results = add_promotions( $promotion_type, $promotion_title, $promotion_subheading, $promotion_address, $promotion_exp_date, $promotion_description, $promotion_code, $store_ID);
-  // $testing = add_promotions("today", "Fall Big Sale", "2021-02-17", "Come buy fall color shirts 50%", 4561561210,52);
-
-  //header("Location:promotions.php");
-
-
-  
-  $results_array = get_merchant_stores($_SESSION["mer_ID"]);
-  $number_of_stores =  count($results_array);
- 
-  $number_of_active_promotions = 0;
-  foreach($results_array as $row)
-  {
-   $answer = get_promotions_active($row['store_ID']);
- 
-   $temp_number = count($answer);
- 
-   $number_of_active_promotions = $number_of_active_promotions + $temp_number;
-  }
-  $_SESSION["number_of_active_promotions"] =  $number_of_active_promotions;
-}
-
-$message = ''; 
 
 
 
@@ -268,11 +98,14 @@ if (isset($_POST['uploadBtn']) )
   
  //   $store_name = filter_input(INPUT_POST, 'store_name_coupon');
   // $store_ID = convert_storename_to_ID($store_name,$mer_ID);
-   $store_ID = 53;
+   $promotion_ID = $promotion_ID_BG;
+
+   $array_promotion = get_One_promotion($promotion_ID);
+   $big_sale_title = $array_promotion['promotion_title'];
 
     
-$results = add_products($store_ID, "Lamborguini big sale" , $product_title, $product_img, $product_price);
-header("Location:add_promotions.php#promotionBGS_panel");
+$results = add_products($promotion_ID, $big_sale_title , $product_title, $product_img, $product_price);
+header("Location:add_products.php?prID=$promotion_ID");
 
 
 }
@@ -291,9 +124,6 @@ header("Location:add_promotions.php#promotionBGS_panel");
 
 
 
-
-
-$_SESSION['message'] = $message;
 
 
 
@@ -741,7 +571,7 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
 {
   background-color:#53C68C;
   width:100%;
-  height:50px;
+  height:80px;
 
   text-align:center;
   
@@ -771,6 +601,15 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
 .promotion_title
 {
   
+    font-family: Arial Black, Arial, Helvetica;
+    color:white;
+    font-size: 15px;
+    padding:20px;
+    text-transform:uppercase;
+
+    
+ 
+ 
 }
 
 
@@ -1121,16 +960,10 @@ display:none;
 .secret_name_inside_div
 {
   text-transform:uppercase;
-  
-  display:none;
-  
-}
-
-.secret_information_boxes
-{margin-left:100px;
+  margin-left:100px;
   margin-top:0px;
+  display:none;
   height:40px;
-
 }
 
 .add_product_btn
@@ -1144,19 +977,19 @@ display:none;
   height:500px;
    width:1200px;
     background-color:none;
-    margin-top:50px;
+    margin-top:40px;
     
 }
 
 .big_sale_Produc_select
 {
  
-   padding:10px;
-   padding-top:150px;
+   
+   
     background-color:none;
     float:left;
     min-height:500px;
-    min-width:300px;
+    width:1200px;
    
 }
 
@@ -1234,6 +1067,7 @@ display:none;
    
     //object-fit: cover;
     max-height: 150px;
+    min-height:110px;
     max-width:100%;
     border-radius:20px;
   
@@ -1242,6 +1076,7 @@ display:none;
 .sample_pics
 {
   max-height: 150px;
+  min-height:110px;
     max-width:100%;
     border-radius:20px;
 }
@@ -1347,9 +1182,9 @@ margin-top:0;
 
 .unique_store_sample
 {
-  margin-top:30px;
+ 
   background-color:white;
-  width:550px;
+  width:450px;
   
   border-radius:20px;
   float:left;
@@ -1384,7 +1219,7 @@ margin-top:0;
 .sample_product_info
 {
   background-color:white;
-  width:330px;
+  width:230px;
   
   border-radius:0px;
   
@@ -1398,14 +1233,19 @@ margin-top:0;
 
 .database_products
 {
-  background-color:black;
-  width:600px;
+  background-color:RGBA(255,230,5,0.2);
+  width:1100px;
   border-radius:5px;
-  height:400px;
+  height:560px;
   float:left;
-  margin-top:20px;
+  margin-top:40px;
+  
+  padding:10px;
+  padding-top:0px;
   overflow-x: hidden;
   overflow-y: auto;
+  border-style: none dashed dashed none;
+  
 }
 
 .sample_title_product
@@ -1446,11 +1286,119 @@ margin-top:0;
   text-transform:uppercase;
 }
 
-
-.disable{
-    pointer-events: none ! important;
-    opacity: 0.4 ! important;
+.items_included_label
+{
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-left:20px;
+    padding-right:20px;
+    width:430px;
+    text-align:center;
+    position:absolute;
+    font-family: Arial Black, Arial, Helvetica;
+    color:block; /* this is just for good looks */
+    background-color:#FFE605;
+    transform: rotate(-90deg);
+    margin-left:405px;
+    margin-top:505px;
+    text-transform:uppercase;
+    
 }
+
+.items_top_label
+{
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-left:20px;
+    padding-right:20px;
+    width:900;
+    text-align:center;
+    position:absolute;
+    font-family: Arial Black, Arial, Helvetica;
+    color:block; /* this is just for good looks */
+    background-color:#FFE605;
+    
+    
+    text-transform:uppercase;
+    border-style: none none none solid;
+}
+
+.big_sale_title_box
+{
+    width:300px;
+    height:600px;
+    background-color:#53C68C;
+    float:left;
+
+    font-family: Arial , Arial, Helvetica;
+    color:white;
+    font-size: 25px;
+    padding:20px;
+    text-align:center;
+
+
+    
+}
+
+.products_container
+{
+    float:left;
+    background-color:none;
+    width:900px;
+}
+.big_sale_text_info
+{ background-color:none;
+    width:100%;
+    height:480px;
+    
+    align-items:center;    /* vertically center */
+   
+
+}
+.big_sale_name_displayed
+{
+    
+    font-family: Arial Black, Arial, Helvetica;
+    color:yellow;
+    font-size: 25px;
+    padding-top:100px;
+    text-shadow: -2px -2px 3px rgba(206,64,31,0.86);
+ 
+  
+}
+
+.big_sale_address_displayed
+{
+    
+    font-family: Arial , Arial, Helvetica;
+    color:white;
+    font-size: 10px;
+ 
+  
+}
+
+.big_sale_description_displayed
+{
+    
+    font-family: Arial black , Arial, Helvetica;
+    color:white;
+    font-size: 13px;
+    padding-bottom:100px;
+ 
+  
+}
+
+.each_box
+{
+    background-color:none;
+    height:160px;
+    width:500px;
+    padding:5px;
+    //border:solid 2px black;
+    float:left;
+}
+
+
   </style>
 </head>
 <body style=" overflow:hidden;">
@@ -1474,418 +1422,60 @@ margin-top:0;
   <ul id="slideWrap" style="position: relative;
     list-style: none;
     height: 100%;
-    width: 9999%;
+
     padding-left:0px;
     margin: 0;
     transition: all 750ms ease;
     left: 0;"> 
    
-    <li style=" height: 100%; float: left;width:1400px; background-color:E6FFFA;   margin-right:200px;"> 
-              <div id="all_promotions">
-
-          <!-- TESTING PURPOSES  <div style="background:#98bf21;height:100px;width:100px;position:absolute;"></div>  -->
-          <!--*****************************************************************************************-->
-          <a href="#" id="a_coupon" >
-              <div id="coupon">
-
-
-              <h4 class="text_display"> coupon</h4>
-
-
-              </div>
-            </a>
-          <!--*****************************************************************************************-->
-          <a href="#" id="a_big_sale">
-              <div id="Big_Sale">
-
-
-
-              <h4 class="text_display"> Big Sale</h4>
-
-              </div>
-          </a>
-
-            <!--*****************************************************************************************-->
-          <a href="#" id="a_info">
-              <div id="Info">
-
-
-
-
-              <h4 class="text_display"> Info</h4>
-
-              </div>
-          </a>
-          <!--*****************************************************************************************-->
-          </div>
-
-         
-
-              
-              
-              
-              
-              
-              
+    <li style=" height: 100%; float: left;width:1400px; background-color:E6FFFA;   margin-left:200px;"> 
+           
     
-    </li>
-
-    <li style=" height: 100%; float: left; width:1400px; background-color:E6FFFA; margin-right:200px;">
-    
-    
-              <div id="selected_div">
-
-
-          <div id="coupon_selected">
-            <div class = "main_promotion">
-                  <div class="lbl_coupon" >
-                  <h4 class="text-light promotion_title">Coupon</h4>
-                  </div>
-                  <div class="form_">
-
-                              <form method="post" action = "<?php $_PHP_SELF ?>">
-
-                      
-                                      
-                                      
-                                        
-                                                  
-                                                    <div class="form-group row form_boxes">
-                                                      <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">Title: </h5></label>
-                                                      <div class="col-sm-7 ">
-                                                      <input type="text" maxlength = 80 class="form-control text_box"  name="coupon_title" required>
-                                                      </div>
-                                                    </div>
-                                                    
-                                                    <div class="form-group row form_boxes">
-                                                      <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">Subheading  </h5></label>
-                                                      <div class="col-sm-7 ">
-                                                      <input type="text"  class="form-control text_box" name="coupon_subheading">
-                                                      </div>
-                                                    </div>
-                                                    
-                                                    <div class="form-group row form_boxes">
-                                                      <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">Expire</h5></label>
-                                                      <div class="col-sm-7 ">
-                                                      <input type="date"  class="form-control text_box" name="coupon_expire">
-                                                      </div>
-                                                    </div>
-
-                                                    <div class="form-group row form_boxes">
-                                                      <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">description </h5></label>
-                                                      <div class="col-sm-7 ">
-                                                      <input type="text" maxlength = 255 class="form-control text_box" name="coupon_description" >
-                                                      </div>
-                                                    </div>
-
-                                                    <div class="form-group row form_boxes">
-                                                      <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">code </h5></label>
-                                                      <div class="col-sm-7 ">
-                                                      <input type="text" maxlength = 255 class="form-control text_box" name="coupon_code" >
-                                                      </div>
-                                                    </div>
-
-                                                    <div class="form-group row form_boxes">
-                                                        <label for="sel1" class=" col-sm-2 col-form-label font_created_by_us">STORE:</label>
-                                                        <div class="col-sm-7 ">
-                                                          <select name="store_name_coupon" class="form-control" id="sel1" required>             <!--FORM ELEMENT *********************-->
-                                                            
-                                                              <option value=""> Select a Store</option>
-                                                            <?php foreach ($all_owned_stores_array as $row): ?>
-                                                              <option value="<?php echo $row['store_name'];?>"><?php echo $row['store_name'];?></option>
-                                                            <?php endforeach; ?>
-                                                            
-                                                              
-                                                          </select>
-                                                        </div>
-                                                      </div>
-
-                                                  
-                                                    <button name="coupon_submit" id="sign_up_btn_cus"  type="submit" class=" bg-success button_style_by_us"  href="#">Create Promotion</i></button>
-                                              
-
-
-                                                
-
-                                                
-                                
-                                          
-                                            
-                                          
-
-                            </form>
-                            </div>
-                            <div id="display_sample_coupon">
-                  <h5 id="store_name_coupon" name="store_name_coupon"> Store</h5>
-                  <h3 id="title">Title here</h3>
-                  
-                  <h5 id="subheading" name="coupon_subheading"> subheading</h5>
-                  <h6 id="expire" name="coupon_expire"> expire</h6>
-                  <h6 id="description" name="coupon_description"> DESCRIPTION</h6>
-                  <img src="../images/coupon_bar_bg_rem.png" id="coupon_bar">
-                  <h6 id="code" name="coupon_code"> code</h6>
-
-                  
-                </div>
-
-                        </div>
-
-            
-          </div>
-
-
+   
+ 
+     
+        <div class="add_products_page">
           
 
-          <div id="big_sale_selected">
+            <div class="big_sale_Produc_select">
 
-              <div class = "main_promotion">
-                    <div class="lbl_big_sale" >
-                    <h4 class="text-light promotion_title">BIG SALE</h4>
-                    </div>
-                    <div class="form_">
-
-                                <form method="post" action = "<?php $_PHP_SELF ?>">
-
+                <div class="big_sale_title_box"> <h4 class="text-light promotion_title">BIG SALE BY  <br> </bt></btr><?php echo $store_letter_name;?></h4>
+                <hr>
+                    <div class="big_sale_text_info">
+                        <h3  class="big_sale_name_displayed"> <?php echo $promotion_title_name;?></h3><hr>
+                        <h4 class="big_sale_description_displayed">ONLY IN YOUR DREAMS LITTLE HOMIE</h4><br>
+                        <h6 class="big_sale_address_displayed">99 NEIT AVE STREET PROVIDENCE RI 02801</h6><br>
                         
-                                        
-                                        
-                                          
+                    </div>
 
-                                                   
-                                                    <div class="form-group row form_boxes">
-                                                      <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">COUPON TITLE: </h5></label>
-                                                      <div class="col-sm-7 ">
-                                                      
-
-                                                     
-                                                      <select name="big_sale_title" class="form-control big_sale_BG_Value" id="sel1" required>             <!--FORM ELEMENT *********************-->
-                                                            
-                                                              <option value=""> Select a Big Sale</option></option>
-                                                              <option value="new big sale"> NEW BIG SALE</option></option>
-                                                            <?php foreach ($all_owned_stores_array as $row):    $all_Big_sale_Promotions = get_active_Big_Sales($row['store_ID']);?>
-                                                              <?php foreach ($all_Big_sale_Promotions as $big): ?>
-                                                                <option value="<?php echo $big['promotion_ID'];?>"><?php echo $big['promotion_title'];?></option>
-                                                              <?php endforeach; ?>
-                                                            <?php endforeach; ?>
-                                                              
-                                                          </select>
-                                                      </div>
-                                                    </div>
-
-
-                                                   
-
-                                                <div class="secret_name_inside_div">
-                                                    <div class="form-group row form_boxes secret_information_boxes">
-                                                        <label  class="col-sm-4 col-form-label" style="float:left;"> <h5 class="font_created_by_us">Big Sale Name: </h5></label>
-                                                        <div class="col-sm-6 "  style="float:left;">
-                                                        <input type="text"  class="form-control text_box  " name="secret_new_sale_name" style="height:30px; margin-left:-70px;">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row form_boxes secret_information_boxes">
-                                                    <label for="sel1" class=" col-sm-2 col-form-label font_created_by_us">STORE:</label>
-                                                    <div class="col-sm-7 ">
-                                                      <select name="new_big_sake_store_name" class="form-control" id="sel1">             <!--FORM ELEMENT *********************-->
-                                                       
-                                                          <option value=""> Select a Store</option>
-                                                        <?php foreach ($all_owned_stores_array as $row): ?>
-                                                          <option value="<?php echo $row['store_name'];?>"><?php echo $row['store_name'];?></option>
-                                                        <?php endforeach; ?>
-                                                        
-                                                          
-                                                      </select>
-                                                    </div>
-                                                  </div>
-                                                </div>
-                                                    
-                                               
-
-                                                    
-                                         
-                                                    <div class="form-group row form_boxes">
-                                                      <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">VALID UNTIL:</h5></label>
-                                                      <div class="col-sm-7 ">
-                                                      <input type="date"  class="form-control text_box   big_sale_BG_Date disable" name="big_sale_expire">
-                                                      </div>
-                                                    </div>
-
-                                                    <div class="form-group row form_boxes">
-                                                      <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">ADDRESS: </h5></label>
-                                                      <div class="col-sm-7 ">
-                                                      <input type="text" maxlength = 255 class="form-control text_box  big_sale_BG_Address disable" name="big_sale_address" >
-                                                      </div>
-                                                    </div>
-
-                                                    <div class="form-group row form_boxes">
-                                                      <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">DESCRIPTION: </h5></label>
-                                                      <div class="col-sm-7 ">
-                                                      <input type="text" maxlength = 255 class="form-control text_box   big_sale_BG_Description disable" name="big_sale_description" >
-                                                      </div>
-                                                    </div>
-
-                                                    
-
-                                                      
-                                                    
-                                                     
-                                                      <button name="big_sale_submit" type="submit" class=" bg-success button_style_by_us"  href="#" style="position:fixed; top:600px;">CREATE PROMOTION</i></button>
-                                                
-
-
-                                                  
-
-                                                  
-                                  
-                                            
-                                              
-                                            
-
-                              </form>
-                              </div>
-                              <div id="display_sample_big_sale">
-                    
-
-                                <h5 id="store2" name="big_sale_store"> Store</h5>
-                                <h3 id="title2" name="big_sale_title">Title here</h3>
-                                
-                                <h6 id="expire2" name="big_sale_expire"> expire</h6>
-                                <h6 id="description2" name="big_sale_description"> description</h6>
-
-                                
-                                
-                                  <h6 id="address2" name="big_sale_address"> address</h6>
-                              
-
-                                
-                              </div>
-
-                      </div>
-
-
-          </div>
-          
-
-
-          <div id="info_selected">
-
-            <div class = "main_promotion">
-                <div class="lbl_info" >
-                <h4 class="text-light promotion_title">INFO </h4>
+                   
                 </div>
-                <div class="form_">
-
-                            <form method="post" action = "<?php $_PHP_SELF ?>">
-
-                    
-                                    
-                                    
-                                                  <div class="form-group row form_boxes">
-                                                    <label for="sel1" class=" col-sm-2 col-form-label font_created_by_us">STORE:</label>
-                                                    <div class="col-sm-7 ">
-                                                      <select name="store_name_info" class="form-control" id="sel1">             <!--FORM ELEMENT *********************-->
-                                                        <?php foreach ($all_Big_sale_Promotions as $row):  ?>
-                                                          <option value="None"> Select a Store</option></option>
-                                                          <option value="<?php echo $row['store_name'];?>"><?php echo $row['store_name'];?></option>
-                                                        <?php endforeach; ?>
-                                                        
-                                                          
-                                                      </select>
-                                                    </div>
-                                                  </div>
-
-                                              
-                                                <div class="form-group row form_boxes">
-                                                  <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">INFO TICKET TITLE: </h5></label>
-                                                  <div class="col-sm-7 ">
-                                                  <input type="text" maxlength = 80 class="form-control text_box"  name="info_title" required>
-                                                  </div>
-                                                </div>
-
-                                                <div class="form-group row form_boxes">
-                                                  <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">ADDRESS: </h5></label>
-                                                  <div class="col-sm-7 ">
-                                                  <input type="text" maxlength = 255 class="form-control text_box" name="info_address" >
-                                                  </div>
-                                                </div>
-
-                                                <div class="form-group row form_boxes">
-                                                  <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">VALID UNTIL:</h5></label>
-                                                  <div class="col-sm-7 ">
-                                                  <input type="date"  class="form-control text_box" name="info_expire">
-                                                  </div>
-                                                </div>
-
-                                                
-
-                                                <div class="form-group row form_boxes">
-                                                  <label  class="col-sm-2 col-form-label"> <h5 class="font_created_by_us">DESCRIPTION: </h5></label>
-                                                  <div class="col-sm-7 ">
-                                                  <input type="text" maxlength = 255 class="form-control text_box" name="info_description" >
-                                                  </div>
-                                                </div>
-
-                                                  
 
 
-                                                
-                                                  <button name="info_submit" type="submit" class=" bg-success button_style_by_us"  href="#">CREATE PROMOTION</i></button>
-                                            
 
 
-                                              
-
-                                              
-                              
-                                        
-                                          
-                                        
-
-                          </form>
-                          </div>
-                          <div id="display_sample_big_sale">
-                
-                            <div style="background-color:#ff8080;">
-                              
-                              <h3 id="title3" name="big_sale_title">Title here</h3>
-                              <h5 id="store3" name="big_sale_store"> Store</h5> 
-                              <h6 id="address3" name="big_sale_address"> address</h6>
-                 
-                            </div>
-
-                            <div >
-
-                              <h6 id="description3" name="big_sale_description"> description</h6>
-
-                            </div>
-                            
-                             
-                          
-
-                            
-                          </div>
-
-                  </div>
 
 
-          </div>
 
 
-          <!--
-          <div id="ad">
 
-            <div class="lbl_"></div>
-            <div class="form_"></div>
 
-          </div>-->
-         
-    
-    
-    
-    
-    
+                <div class="products_container">
+                    <div class="items_top_label"> total items: <?php echo $number_products;?> | exp: <?php echo $one_big_sale_exp_date;?> </div>
+
+
+                    <div class="database_products">
+                       
+          
+                    </div>
+                </div>
+
+            </div>
+        </div> 
+
+     
+
     </li>
-
     
   </ul>
   <a id="prev" href="#">&#8810;</a>
@@ -1899,6 +1489,9 @@ margin-top:0;
 <div id="left_icon_container"><i class="fa fa-arrow-left fa-7x" id="return_menu_btn" aria-hidden="true" ></i></div>
 
 
+
+
+</li>
 
 
 
@@ -2248,43 +1841,17 @@ function convertCurrency(value) {
     $('[name="big_sale_title"]').on('change keyup', function() { //variable that you are typing in
         value = $(this).val();
 
-
-        
-
-        var big_sale_BG_Date = document.querySelector(".big_sale_BG_Date")
-        var big_sale_BG_Address = document.querySelector(".big_sale_BG_Address")
-        var big_sale_BG_Description = document.querySelector(".big_sale_BG_Description")
-   
-
-
-
-
-
         var secret_container = document.querySelector(".secret_name_inside_div");
         if (value == 'new big sale')
         {
-
-          big_sale_BG_Date.classList.remove("disable");
-          big_sale_BG_Address.classList.remove("disable");
-          big_sale_BG_Description.classList.remove("disable");
-       
+  
           console.log("Saimer We are in here");
           $( ".secret_name_inside_div" ).slideDown( 400, function() {              });
-
-          
-
-
-
-
-
-
         }
         if (value != 'new big sale')
         {
   
-          big_sale_BG_Date.classList.add("disable");
-          big_sale_BG_Address.classList.add("disable");
-          big_sale_BG_Description.classList.add("disable");
+          
           $( ".secret_name_inside_div" ).slideUp( 400, function() {              });
         }
         
@@ -2446,7 +2013,9 @@ var sample_title_product = document.querySelector(".sample_title_product"); //ge
 
   var product_big_box = document.querySelector(".database_products")
   var new_div = document.createElement("div")
-  new_div.innerHTML += " <div class='unique_store_sample'> <div class='sample_pic_div'> <img class='sample_pics' src='../Backend/uploaded_products/<?php echo $row['product_img'];?>' alt='your image' class='sample_pics' /> </div> <div class='sample_product_info'> <h3 class='sample_title_product_styling'><?php echo $row['product_title'];?></h3> <h5 class='sample_price_title'> $<?php echo $row['product_price'];?></h5> </div> </div> "
+
+  new_div.setAttribute("class", "each_box")
+  new_div.innerHTML += " <div class='unique_store_sample'> <div class='sample_pic_div'> <img class='sample_pics' src='../Backend/uploaded_products/<?php echo $row['product_img'];?>' alt='your image' class='sample_pics' /> </div> <div class='sample_product_info'> <h3 class='sample_title_product_styling'><u><?php echo $row['product_title'];?></u></h3> <h5 class='sample_price_title'> $<?php echo $row['product_price'];?></h5> </div> </div> "
 
   product_big_box.appendChild(new_div);
 </script>
