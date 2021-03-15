@@ -6,10 +6,19 @@ include "../Model/model_promotions.php";
 include "../Model/model_products_BIG_SALE.php";
 
 $promotion_ID_BG = $_GET["prID"];
+$promotion_title_name = $_GET["pn"];
 
 $all_products_in_big_sale = get_products($promotion_ID_BG); 
+$one_specific_sale_Array = get_One_promotion($promotion_ID_BG ) ;
+
+$one_big_sale_exp_date = date("m-d-Y", strtotime( $one_specific_sale_Array[0]['promotion_exp_date']));  
 
 
+$number_products = count($all_products_in_big_sale);
+if($number_products > 0)
+{
+    $name_of_big_sale =$all_products_in_big_sale[0]['big_sale_title'];
+}
 
 $all_Big_sale_Promotions = get_active_Big_Sales(53);
 
@@ -88,11 +97,11 @@ if (isset($_POST['uploadBtn']) )
    $promotion_ID = $promotion_ID_BG;
 
    $array_promotion = get_One_promotion($promotion_ID);
-   $big_sale_title = $array_promotion['promotion_title'];
+   $big_sale_title = $array_promotion[0]['promotion_title'];
 
     
 $results = add_products($promotion_ID, $big_sale_title , $product_title, $product_img, $product_price);
-header("Location:add_products.php?prID=$promotion_ID");
+header("Location:add_products.php?prID=" . $promotion_ID. "&pn=" . $big_sale_title);
 
 
 }
@@ -389,9 +398,10 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
 
     #uploading_btn
     {
-      margin-left:70px;
-      margin-top:70px;
-      width:200px;
+      margin-left:-200px;
+      margin-top:24px;
+      width:540px;
+      color:white;
     }
 
     .upload
@@ -558,7 +568,7 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
 {
   background-color:#53C68C;
   width:100%;
-  height:50px;
+  height:80px;
 
   text-align:center;
   
@@ -588,6 +598,10 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
 .promotion_title
 {
   
+    font-family: Arial Black, Arial, Helvetica;
+    color:white;
+    font-size: 25px;
+    padding:20px;
 }
 
 
@@ -955,7 +969,7 @@ display:none;
   height:500px;
    width:1200px;
     background-color:none;
-    margin-top:50px;
+    margin-top:40px;
     
 }
 
@@ -963,7 +977,7 @@ display:none;
 {
  
    padding:10px;
-   padding-top:150px;
+   padding-top:50px;
     background-color:none;
     float:left;
     min-height:500px;
@@ -1015,11 +1029,18 @@ display:none;
   
   background-color:#53C68C;
   float:left;
-  font-family: Arial Black, Arial, Helvetica;
-  color:white;
+  
   font-size: 30px;
   text-align:center;
   padding:15px;
+  
+
+
+  font-family: Arial Black, Arial, Helvetica;
+    color:white;
+   
+   
+ //   text-shadow: -2px -2px 3px rgba(206,64,31,0.86);
 }
 
 
@@ -1045,6 +1066,7 @@ display:none;
    
     //object-fit: cover;
     max-height: 150px;
+    min-height:110px;
     max-width:100%;
     border-radius:20px;
   
@@ -1053,6 +1075,7 @@ display:none;
 .sample_pics
 {
   max-height: 150px;
+  min-height:110px;
     max-width:100%;
     border-radius:20px;
 }
@@ -1076,7 +1099,7 @@ display:none;
 .product_container
 {
 
- background-color:yellow;
+ background-color:none;
  width:100%;
  height:100%;
  
@@ -1122,9 +1145,9 @@ display:none;
   font-family: Arial Black, Arial, Helvetica;
   color:white;
   background-color:#53C68C;
-  font-size: 12px;
-  border-radius:20px;
-
+  font-size: 15px;
+  border-radius:5px;
+text-transform:uppercase;
   padding:20px;
   border: none;
   outline:none;
@@ -1156,9 +1179,27 @@ margin-top:0;
 
 
 
+.unique_store_sample_DISPLAY
+{
+  margin-top:100px;
+  background-color:white;
+  width:550px;
+  
+  border-radius:20px;
+  float:left;
+
+ 
+  border: 2px solid #53C68C;
+
+  box-shadow: 8px 10px 6px -9px rgba(13,23,19,0.9);
+-webkit-box-shadow: 8px 10px 6px -9px rgba(13,23,19,0.9);
+-moz-box-shadow: 8px 10px 6px -9px rgba(13,23,19,0.9);
+}
+
+
 .unique_store_sample
 {
-  margin-top:30px;
+  margin-top:15px;
   background-color:white;
   width:550px;
   
@@ -1209,14 +1250,19 @@ margin-top:0;
 
 .database_products
 {
-  background-color:black;
-  width:600px;
+  background-color:RGBA(255,230,5,0.2);
+  width:575px;
   border-radius:5px;
-  height:400px;
+  height:530px;
   float:left;
-  margin-top:20px;
+  margin-top:80px;
+  margin-left:30px;
+  padding:10px;
+  padding-top:0px;
   overflow-x: hidden;
   overflow-y: auto;
+  border-style: none dashed dashed none;
+  
 }
 
 .sample_title_product
@@ -1257,6 +1303,46 @@ margin-top:0;
   text-transform:uppercase;
 }
 
+.items_included_label
+{
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-left:20px;
+    padding-right:20px;
+    width:550px;
+    text-align:center;
+    position:absolute;
+    font-family: Arial Black, Arial, Helvetica;
+    color:block; /* this is just for good looks */
+    background-color:#FFE605;
+    transform: rotate(-90deg);
+    margin-left:340px;
+    margin-top:427px;
+    text-transform:uppercase;
+    
+}
+
+.items_top_label
+{
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-left:20px;
+    padding-right:20px;
+    width:572px;
+    text-align:center;
+    position:absolute;
+    font-family: Arial Black, Arial, Helvetica;
+    color:block; /* this is just for good looks */
+    background-color:#FFE605;
+    
+    margin-left:630px;
+    margin-top:170px;
+    text-transform:uppercase;
+    border-style: none none none solid;
+}
+
+
+
   </style>
 </head>
 <body style=" overflow:hidden;">
@@ -1290,21 +1376,25 @@ margin-top:0;
            
     
    
+      <div class="items_included_label"> items  included in sale  </div>
+      <div class="items_top_label"> total items: <?php echo $number_products;?> | exp: <?php echo $one_big_sale_exp_date;?> </div>
       <div class="add_products_page">
         <div class="lbl_big_sale2" >
-                      <h4 class="text-light promotion_title">BIG SALE</h4>
+                      <h4 class="text-light promotion_title">BIG SALE: <?php echo $promotion_title_name;?></h4>
         </div>
 
         <div class="big_sale_Produc_select">
 
 
-        <div class='product_container'> <div style='max-width: 540px; background-color:black; height:250px;'> <div class='card_header'> Product 1</div> <div class='picture_box'> <img class='blah ' src='../images/sample_pic_placeholder.PNG' alt='your image' /> </div> <div class='product_info'>  <form method="post" action = "<?php  $_PHP_SELF ?>"    enctype="multipart/form-data"> <div class='form-group row product_form_div'> <label class='col-sm-3 col-form-label'> <h5 class='store_product_lbl'>Title: </h5></label> <div class='col-sm-6 '> <input type='text' maxlength = 80 class='form-control text_box store_product_txt' name='product_title' required> </div> </div> <div class='form-group row product_form_div'> <label class='col-sm-2 col-form-label'> <h5 class='store_product_lbl'>Image: </h5></label> <div class='col-sm-5 ' style='margin-left:30px;'> <input type='file' onchange='readURL(this);' id="upload" name="uploadedFile">  </div> </div> <div class='form-group row product_form_div'> <label class='col-sm-4 col-form-label'> <h5 class='store_product_lbl'>Price: $</h5></label> <div class='col-sm-4 '> <input type='text' maxlength = 80 class='form-control text_box store_product_txt' placeholder='price' name='product_price' required style='width:100px; margin-left:-20px;'> </div> </div> <input type='submit' class=' bg-success product_push_btn product_push_btn' name="uploadBtn" value="Upload" id="uploading_btn" ></div> </form> </div>  </div>
-           
+        <div class='product_container'> <div style='max-width: 540px; background-color:black; height:250px;'> <div class='card_header'>Add a New Product</div> <div class='picture_box'> <img class='blah ' src='../images/sample_pic_placeholder.PNG' alt='your image' /> </div> <div class='product_info'>  <form method="post" action = "<?php  $_PHP_SELF ?>"    enctype="multipart/form-data"> <div class='form-group row product_form_div'> <label class='col-sm-3 col-form-label'> <h5 class='store_product_lbl'>Title: </h5></label> <div class='col-sm-6 '> <input type='text' maxlength = 80 class='form-control text_box store_product_txt' name='product_title' required> </div> </div> <div class='form-group row product_form_div'> <label class='col-sm-2 col-form-label'> <h5 class='store_product_lbl'>Image: </h5></label> <div class='col-sm-5 ' style='margin-left:30px;'> <input type='file' onchange='readURL(this);' id="upload" name="uploadedFile">  </div> </div> <div class='form-group row product_form_div'> <label class='col-sm-4 col-form-label'> <h5 class='store_product_lbl'>Price: $</h5></label> <div class='col-sm-4 '> <input type='text' maxlength = 80 class='form-control text_box store_product_txt' placeholder='price' name='product_price' required style='width:100px; margin-left:-20px;'> </div> </div> <input type='submit' class=' bg-success product_push_btn product_push_btn' name="uploadBtn" value="Upload" id="uploading_btn" ></div> </form> </div>  </div>
+        <div class='unique_store_sample_DISPLAY'> <div class='sample_pic_div'> <img class='blah ' src='../images/sample_pic_placeholder.PNG' alt='your image' /> </div> <div class='sample_product_info'> <h3 class='sample_title_product'><u>title will show here</u></h3> <h5 id='sample_price_title'> will show here price</h5> </div> </div> 
+          
         </div>
         <div class="product_sample_display_div">
         
-          <div class='unique_store_sample'> <div class='sample_pic_div'> <img class='blah ' src='../images/sample_pic_placeholder.PNG' alt='your image' /> </div> <div class='sample_product_info'> <h3 class='sample_title_product'><u>title will show here</u></h3> <h5 id='sample_price_title'> will show here price</h5> </div> </div> 
-          
+         
+
+
           <div class="database_products">
            
           </div>
@@ -1313,8 +1403,7 @@ margin-top:0;
 
       </div>
 
-      <a href="#" id="insert_product_btn" ><div class=" bg-success  button_style_by_us"   style=" height:50px; width:120px;"> + Products</div></a>
-        
+     
 
     </li>
     
@@ -1843,7 +1932,7 @@ var sample_title_product = document.querySelector(".sample_title_product"); //ge
     $('[name="product_price"]').on('change keyup', function() { //variable that you are typing in
         value = $(this).val();
         console.log(value);
-        sample_price_title.innerHTML = value; // variable you push to
+        sample_price_title.innerHTML = "$"+value; // variable you push to
     })
 
 

@@ -223,6 +223,12 @@ height: 230px;
 
 }
 
+.validation_text
+{
+  position:absolute;
+  color:red;
+}
+
     
     
     </style>
@@ -312,48 +318,54 @@ height: 230px;
                                           <div class="form-group row">
                                               <label  class="col-sm-3 col-form-label" >FIRSTNAME: </label>
                                               <div class="col-sm-8">
-                                              <input type="text" class="form-control our_textbox_sizing"  placeholder="Firstname" name="cus_fname" >
+                                              <input type="text" class="form-control our_textbox_sizing firstnametxtbox"  placeholder="Firstname" name="cus_fname" >
+                                              <label class='validation_text errorFirstNamelbl' style='color:red;'></label>
                                               </div>
                                           </div>
                                           <div class="form-group row">
                                               <label  class="col-sm-3 col-form-label" >Lastname: </label>
                                               <div class="col-sm-8">
-                                              <input type="text" class="form-control our_textbox_sizing"  placeholder="Lastname" name="cus_lname" >
+                                              <input type="text" class="form-control our_textbox_sizing lastnametxtbox"  placeholder="Lastname" name="cus_lname" >
+                                              <label class='validation_text errorLastNamelbl'   style='color:red;'></label>
                                               </div>
                                           </div>
 
                                           <div class="form-group row">
                                               <label  class="col-sm-3 col-form-label" >Email: </label>
                                               <div class="col-sm-8">
-                                              <input type="text" class="form-control our_textbox_sizing" placeholder="Email"  name="cus_email" pattern ='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' >
+                                              <input type="text" class="form-control our_textbox_sizing emailtxtbox" placeholder="Email"  name="cus_email" pattern ='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' >
+                                              <label class='validation_text errorEmaillbl'   style='color:red;'></label>
                                               </div>
                                           </div>
 
                                           <div class="form-group row">
                                               <label  class="col-sm-3 col-form-label" >Phone: </label>
                                               <div class="col-sm-8">
-                                              <input type="phone" class="form-control our_textbox_sizing"  placeholder="Phone"  name="cus_phone" >
+                                              <input type="phone" class="form-control our_textbox_sizing phonetxtbox"  placeholder="Phone"  name="cus_phone" >
+                                              <label class='validation_text errorPhonelbl'   style='color:red;'></label>
                                               </div>
                                           </div>
 
                                           <div class="form-group row">
                                               <label class="col-sm-3 col-form-label" >Password: </label>
                                               <div class="col-sm-8">
-                                              <input type="password"  maxlength = 255 class="form-control our_textbox_sizing" placeholder="Password"  name="cus_password" >
+                                              <input type="password"  maxlength = 255 class="form-control our_textbox_sizing passwordtxtbox" placeholder="Password"  name="cus_password" >
+                                              <label class='validation_text errorPasswordlbl'   style='color:red;'></label>
                                               </div>
                                           </div>
 
                                           <div class="form-group row">
                                               <label class="col-sm-3 col-form-label" >Confirm-Password: </label>
                                               <div class="col-sm-8">
-                                              <input type="password" maxlength = 255 class="form-control our_textbox_sizing"  placeholder="ConfirmPassword" name="cus_password_confirmed" >
+                                              <input type="password" maxlength = 255 class="form-control our_textbox_sizing confirmPasswordtxtbox"  placeholder="ConfirmPassword" name="cus_password_confirmed" >
+                                              <label class='validation_text errorConfirmPasswordlbl'   style='color:red;'></label>
                                               </div>
                                           </div>
                                         
 
 
-
-                                          <button name="sign_up_btn_cus" type="submit" class=" bg-success button_style_by_us" style="margin-top:50px; margin-left:180px; width:150px;" href="#">Sign up</i></button>
+                                          <input type='button' value='javacsript' class='button_style_by_us javascript_submit_btn'>
+                                          <button name="sign_up_btn_cus" type="submit" class=" bg-success button_style_by_us submit_btn" style="margin-top:50px; margin-left:180px; width:150px;" href="#">Sign up</i></button>
                                                   
 
                                   </form>
@@ -412,3 +424,119 @@ height: 230px;
 	<!--  More information about jquery.validate here: http://jqueryvalidation.org/	 -->
 	<script src="assets_login/js/jquery.validate.min.js"></script>
 </html>
+
+<script>
+
+    var firstnametxt = document.querySelector(".firstnametxtbox");
+    var lastnametxt = document.querySelector(".lastnametxtbox");
+    var emailtxt = document.querySelector(".emailtxtbox");
+    var phonetxt = document.querySelector(".phonetxtbox");
+    var passwordtxt = document.querySelector(".passwordtxtbox");
+    var confirmPasswordtxt = document.querySelector(".confirmPasswordtxtbox");
+    var javascript_submit_btn = document.querySelector(".javascript_submit_btn")
+
+
+    var errorFirstNamelbl = document.querySelector(".errorFirstNamelbl");
+    var errorLastNamelbl = document.querySelector(".errorLastNamelbl");
+    var errorEmaillbl = document.querySelector(".errorEmaillbl");
+    var errorPhonelbl = document.querySelector(".errorPhonelbl");
+    var errorPasswordlbl = document.querySelector(".errorPasswordlbl");
+    var errorConfirmPasswordlbl = document.querySelector(".errorConfirmPasswordlbl");
+    var javascript_submit_btn = document.querySelector(".javascript_submit_btn")
+
+
+    javascript_submit_btn.addEventListener("click", function()
+    {
+      console.log(firstnametxt.value.length)
+
+      if(firstnametxt.value.length == 0)
+      {
+        errorFirstNamelbl.innerText = '*ERROR ADD FIRST NAME'
+      }
+      else
+      {
+        errorFirstNamelbl.innerText = ''
+      }
+
+      if(lastnametxt.value.length == 0)
+      {
+        errorLastNamelbl.innerText = '*ERROR ADD LAST NAME'
+      }
+      else
+      {
+        errorLastNamelbl.innerText = ''
+      }
+
+
+      if(emailtxt.value.length == 0)
+      {
+        errorEmaillbl.innerText = '*ERROR ADD EMAIL '
+      }
+      else
+      {
+        errorEmaillbl.innerText = ''
+      }
+      
+
+
+
+
+
+      if(phonetxt.value.length == 0)
+      {
+        errorPhonelbl.innerText = '*ERROR ADD PHONE'
+      }
+      else
+      {
+        errorPhonelbl.innerText = ''
+      }
+      
+      if(passwordtxt.value.length == 0)
+      {
+        errorPasswordlbl.innerText = '*ERROR ADD PASSWORD'
+      }
+      else
+      {
+        errorPasswordlbl.innerText = ''
+      }
+
+
+
+
+      if(confirmPasswordtxt.value.length == 0)
+      {
+        errorConfirmPasswordlbl.innerText = '*ERROR ADD CONFIRM-PASSWORD'
+      }
+      else
+      {
+        errorConfirmPasswordlbl.innerText = ''
+      }
+
+
+      if((passwordtxt.value  != confirmPasswordtxt.value))
+      {
+        errorPasswordlbl.innerText = '*ERROR MAKE SURE PASSWORDS MATCH'
+        errorConfirmPasswordlbl.innerText = '*ERROR MAKE SURE PASSWORDS MATCH'
+      }
+      else if((confirmPasswordtxt.value.length == 0) && (passwordtxt.value.length == 0))
+      {
+        errorPasswordlbl.innerText = '*ERROR ADD PASSWORD'
+        errorConfirmPasswordlbl.innerText = '*ERROR ADD CONFIRM-PASSWORD'
+      }
+      else
+      {
+        errorPasswordlbl.innerText = ''
+        errorConfirmPasswordlbl.innerText = ''
+      }
+    
+
+
+
+   
+
+
+    }
+    );
+    
+
+</script>

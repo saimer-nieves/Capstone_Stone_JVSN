@@ -260,3 +260,14 @@ CREATE TABLE IF NOT EXISTS products_library_BG
         product_price NVARCHAR(255),
         FOREIGN KEY (store_ID) REFERENCES merchant_stores_tbl(store_ID) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
+
+
+CREATE TABLE IF NOT EXISTS admin_stores_tbl
+ (
+		admin_store_ID INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+		  `store_name` NVARCHAR(255) ,
+		  `store_category` NVARCHAR(255) ,
+		  `store_day_created` DATETIME ,
+		  `store_img_logo` NVARCHAR(255) 
+       
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;

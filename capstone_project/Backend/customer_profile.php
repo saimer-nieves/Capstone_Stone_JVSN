@@ -1141,7 +1141,9 @@ function myborder_bottom() {
                                 var btn_form_ = document.querySelector('.form_box_container')
                                 var new_promotion_OUTERSHELL =  document.createElement("div");
                                 var a_tag_bridge = document.createElement("a");
-
+                                var hidden_input = document.createElement("input");
+                                var hidden_p_tag = document.createElement("p");
+                                var new_store_delete_div =  document.createElement("div");
                                 a_tag_bridge.setAttribute("class","a_tags_to_view<?php echo $index_promotion_count;?> mouse_will_be_hand");
                                 a_tag_bridge.setAttribute("id","a_id<?php echo $index_promotion_count;?>");
 
@@ -1155,7 +1157,8 @@ function myborder_bottom() {
                                 var hidden_p_exp_date = document.createElement("p");
                                 var hidden_p_description = document.createElement("p");
                                 var hidden_p_code = document.createElement("p");
-                                    
+                                var hidden_p_tag = document.createElement("p");
+                                hidden_p_tag.setAttribute("class","hidden_p<?php echo $index_promotion_count;?>");
 
                                     hidden_p_Promotion_type.setAttribute("class","hidden_Promotion_type<?php echo $index_promotion_count;?>  make_hidden");
                                 hidden_p_Promotion_Title.setAttribute("class","hidden_promotion_title<?php echo $index_promotion_count;?> make_hidden");
@@ -1181,6 +1184,12 @@ function myborder_bottom() {
                                 btn_form_.appendChild(hidden_p_exp_date);
                                 btn_form_.appendChild(hidden_p_description);
                                 btn_form_.appendChild(hidden_p_code);
+                                hidden_input.setAttribute("type","hidden");
+                              hidden_input.setAttribute("name","hidden_PromoteID");
+                              hidden_p_tag.setAttribute("class","hidden_p<?php echo $index_promotion_count;?>");
+                              hidden_input.setAttribute("value","<?php echo $col['promotion_ID'];?>");
+                            hidden_input.setAttribute("class","hidden_P_ID<?php echo $index_promotion_count;?>");
+                            hidden_p_tag.innerHTML = "<?php echo $col['promotion_ID'];?>";
 
 
 
@@ -1197,11 +1206,14 @@ function myborder_bottom() {
                                   new_promotion_INNERSHELL.setAttribute('class','new_promotion_info ') ;
                                 <?php endif;?>
                                 new_promotion_text_div.setAttribute('class','new_store_text_div_promotion') ;
+                                new_store_delete_div.setAttribute("class","new_store_delete_div");
                                 new_promotion_text_div.innerHTML= "<?php echo $col['promotion_type'] ;?>  <br>   <?php echo $col['promotion_title'] ;?> <br>  <?php echo $index_store_number.  $col['store_ID'];?>"
                                 
                                 
-
-                                console.log(all_new_active_promotion)
+                                btn_form_.appendChild(hidden_input);
+                                
+                                new_store_delete_div.appendChild(btn_form_);
+                                new_promotion_INNERSHELL.appendChild(new_store_delete_div);
                                 new_promotion_INNERSHELL.appendChild(new_promotion_text_div);
                                 a_tag_bridge.appendChild(new_promotion_INNERSHELL);
                                 new_promotion_OUTERSHELL.appendChild(a_tag_bridge);
@@ -1257,117 +1269,141 @@ var hidden_ID_value = document.querySelectorAll(".all_new_active_promotion");
 var n = 0;
 
 
+
 $(document).ready(function(){
           var count = 0;
           $(".a_tags_to_view<?php echo $x;?>").click(function(){
 
-            
-            flip_card_front.innerHTML = all_new_active_promotion_array_OUTERSHELL["<?php echo $x;?>"].innerHTML;
-            center_view_flip.style.display="block";
-            flip_close_div.style.display="block";
-
-            var p_tag_ID =  document.querySelector(".hidden_p<?php echo $x;?>");
             var p_tag_Type =  document.querySelector(".hidden_Promotion_type<?php echo $x;?>");
-            var p_tag_Title =  document.querySelector(".hidden_promotion_title<?php echo $x;?>");
-            var p_tag_Subheading =  document.querySelector(".hidden_promotion_subheading<?php echo $x;?>");
-            var p_tag_Address =  document.querySelector(".hidden_promotion_address<?php echo $x;?>");
-            var p_tag_Date =  document.querySelector(".hidden_promotion_date<?php echo $x;?>");
-            var p_tag_Description =  document.querySelector(".hidden_promotion_description<?php echo $x;?>");
-            var p_tag_Code =  document.querySelector(".hidden_promotion_code<?php echo $x;?>");
-
-
-
-           var promotion_type = p_tag_Type.innerHTML;
-
-           if(promotion_type == "coupon")
-           {
-
-            var info_template =  document.querySelector("#display_sample_info");
-            var coupon_template =  document.querySelector("#display_sample_coupon");
-            coupon_template.style.display="block"
-            var big_sale_template =  document.querySelector("#display_sample_big_sale");
-            big_sale_template.style.display="none";
-            info_template.style.display="none";
-
-
-
-
-            var title =  document.querySelector("#title");
-            var subheading =  document.querySelector("#subheading");
-            var expire =  document.querySelector("#expire");
-            var description =  document.querySelector("#description");
-            var code =  document.querySelector("#code");
-           
-            title.innerHTML= p_tag_Title.innerHTML;
-            subheading.innerHTML= p_tag_Subheading.innerHTML;
-            expire.innerHTML= p_tag_Date.innerHTML;
-            description.innerHTML= p_tag_Description.innerHTML;
-            code.innerHTML= p_tag_Code.innerHTML;
-           
-           }
-
-
-
-           if(promotion_type == "big sale")
-           {
-            var info_template =  document.querySelector("#display_sample_info");
-            var coupon_template =  document.querySelector("#display_sample_coupon");
-            var big_sale_template =  document.querySelector("#display_sample_big_sale");
-            big_sale_template.style.display="block";
-            coupon_template.style.display="none";
-            info_template.style.display="none";
-
-
-
-
-        
-            var title2 =  document.querySelector("#title2");
-           
-            var expire2 =  document.querySelector("#expire2");
-            var description2 =  document.querySelector("#description2");
-            var address2 =  document.querySelector("#address2");
-           
+            var promotion_type = p_tag_Type.innerHTML;
             
-            title2.innerHTML= p_tag_Title.innerHTML;
-            expire2.innerHTML= p_tag_Date.innerHTML;
-            description2.innerHTML= p_tag_Description.innerHTML;
-            address2.innerHTML= p_tag_Address.innerHTML;
-           
-           }
-
-
-
-
-           if(promotion_type == "info")
-           {
-
-            var info_template =  document.querySelector("#display_sample_info");
-            var coupon_template =  document.querySelector("#display_sample_coupon");
-            var big_sale_template =  document.querySelector("#display_sample_big_sale");
-            info_template.style.display="block";
-            big_sale_template.style.display="none";
-            coupon_template.style.display="none";
-
-
-
-
-        
-            var title3 =  document.querySelector("#title3");
-           
             
-            var address3 =  document.querySelector("#address3");
-            var description3 =  document.querySelector("#description3");
-           
+
+              var p_tag_ID =  document.querySelector(".hidden_p<?php echo $x;?>");
+              var promotion_ID =  document.querySelector(".hidden_P_ID<?php echo $x;?>");
+              
+              var p_tag_Type =  document.querySelector(".hidden_Promotion_type<?php echo $x;?>");
+              var p_tag_Title =  document.querySelector(".hidden_promotion_title<?php echo $x;?>");  
+              var p_tag_Subheading =  document.querySelector(".hidden_promotion_subheading<?php echo $x;?>");
+              var p_tag_Address =  document.querySelector(".hidden_promotion_address<?php echo $x;?>");
+              var p_tag_Date =  document.querySelector(".hidden_promotion_date<?php echo $x;?>");
+              var p_tag_Description =  document.querySelector(".hidden_promotion_description<?php echo $x;?>");
+              var p_tag_Code =  document.querySelector(".hidden_promotion_code<?php echo $x;?>");
+              
+
+
+            var promotion_type = p_tag_Type.innerHTML;
+
+            if(promotion_type == "coupon")
+            {
+
+              flip_card_front.innerHTML = all_new_active_promotion_array_OUTERSHELL["<?php echo $x;?>"].innerHTML;
+              center_view_flip.style.display="block";
+              flip_close_div.style.display="block";
+              var info_template =  document.querySelector("#display_sample_info");
+              var coupon_template =  document.querySelector("#display_sample_coupon");
+              coupon_template.style.display="block"
+              var big_sale_template =  document.querySelector("#display_sample_big_sale");
+              big_sale_template.style.display="none";
+              info_template.style.display="none";
+
+
+
+
+              var title =  document.querySelector("#title");
+              var subheading =  document.querySelector("#subheading");
+              var expire =  document.querySelector("#expire");
+              var description =  document.querySelector("#description");
+              var code =  document.querySelector("#code");
             
-            title3.innerHTML= p_tag_Title.innerHTML;
+              title.innerHTML= p_tag_Title.innerHTML;
+              subheading.innerHTML= p_tag_Subheading.innerHTML;
+              expire.innerHTML= p_tag_Date.innerHTML;
+              description.innerHTML= p_tag_Description.innerHTML;
+              code.innerHTML= p_tag_Code.innerHTML;
             
-            address3.innerHTML= p_tag_Address.innerHTML;
-            description3.innerHTML= p_tag_Description.innerHTML;
-           
-           }
-          });
+            }
+
+
+
+            if(promotion_type == "big sale")
+            {
+              var info_template =  document.querySelector("#display_sample_info");
+              var coupon_template =  document.querySelector("#display_sample_coupon");
+              var big_sale_template =  document.querySelector("#display_sample_big_sale");
+              
+              coupon_template.style.display="none";
+              info_template.style.display="none";
+              big_sale_template.style.display="block";
+              center_view_flip.style.display="block";
+              flip_close_div.style.display="block";
+
+
+
+
 
           
+              var title2 =  document.querySelector("#title2");
+            
+              var expire2 =  document.querySelector("#expire2");
+              var description2 =  document.querySelector("#description2");
+              var address2 =  document.querySelector("#address2");
+            
+              
+              title2.innerHTML= p_tag_Title.innerHTML;
+              expire2.innerHTML= p_tag_Date.innerHTML;
+              description2.innerHTML= p_tag_Description.innerHTML;
+              address2.innerHTML= p_tag_Address.innerHTML;
+
+             // console.log(promotion_ID.value) //WORKING HERE
+              window.location = "../Backend/view_big_sale.php?prID=" + promotion_ID.value + "&pn=" + p_tag_Title.innerHTML;
+              //header("Location:add_products.php?prID=" . $pID. "&pn=" . $pn);
+              
+              
+
+            
+            }
+
+
+
+
+            if(promotion_type == "info")
+            {
+
+              flip_card_front.innerHTML = all_new_active_promotion_array_OUTERSHELL["<?php echo $x;?>"].innerHTML;
+              center_view_flip.style.display="block";
+              flip_close_div.style.display="block";
+
+              var info_template =  document.querySelector("#display_sample_info");
+              var coupon_template =  document.querySelector("#display_sample_coupon");
+              var big_sale_template =  document.querySelector("#display_sample_big_sale");
+              info_template.style.display="block";
+              big_sale_template.style.display="none";
+              coupon_template.style.display="none";
+
+
+
+
+          
+              var title3 =  document.querySelector("#title3");
+            
+              
+              var address3 =  document.querySelector("#address3");
+              var description3 =  document.querySelector("#description3");
+            
+              
+              title3.innerHTML= p_tag_Title.innerHTML;
+              
+              address3.innerHTML= p_tag_Address.innerHTML;
+              description3.innerHTML= p_tag_Description.innerHTML;
+            
+            }
+
+          
+
+          });
+
+        
         
         
         })
@@ -1387,7 +1423,6 @@ $(document).ready(function(){
         })
 
 </script>
-
 <?php endfor;?>
 
 
