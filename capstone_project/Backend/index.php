@@ -5,8 +5,12 @@
 session_start(); 
 
 include "../Model/model_add_merchant_store.php";
- $index_num = 0;
-$all_manual_stores = get_merchant_stores(4);
+
+include "../Model/model_promotions.php";
+include "../Model/model_subscriptions.php";
+
+$all_manual_stores = get_all_admin_stores(0);
+
 
 
 
@@ -220,9 +224,119 @@ body { font-family: sans-serif; }
 }
 
 
+.all_store_container
+{
+
+  background-color:red;
+  width:1500px;
+  height:500px;
+  margin-left:60px;
+  position:absolute;
+}
+
+
+
+.unique_store_OUTER
+{
+  background-color:green;
+  padding:10px;
+  margin-right:35px;
+  float:left;
+  margin:10px;
+  position:relative;
+  height:200px;
+  width:330px;
+  margin-top:15px;
+  margin-left:0px;
+}
+.unique_store
+{
+  background-color:blue;
+  width:300px;
+  height:180px;
+  float:left;
+  display: block;
+  position:absolute;
+    z-index: 5;
+
+    
+/* Center and scale the image nicely */
+background-position: center  !important;
+background-repeat: no-repeat   !important;
+background-size: cover   !important;
+    
+}
+
+.store_info_box
+{
+  width:250px;
+  height:100px;
+  background-color:yellow;
+  
+  
+  margin-left:0;
+position:absolute;
+  display: block;
+    z-index: 4;
+
+
+}
+
+
+.next_slide
+{
+  background-color:green;
+  height:100px;
+  width:100px;
+  border-radius:50px;
+  position:absolute;
+  margin-left:1300px;
+}
+
+
+.prev_slide
+{
+  background-color:blue;
+  height:100px;
+  width:100px;
+  border-radius:50px;
+  position:absolute;
+  margin-left:1100px;
+}
+
+
+.text_info0
+{
+  text-transform:uppercase;
+
+
+}
+
+
+.unique_logo_display
+{
+  margin: 0;
+ 
+  
+
+}
+
+
+
 
   </style>
 </head>
+
+
+
+
+
+
+
+
+
+
+
 
 <body>
 
@@ -232,24 +346,191 @@ body { font-family: sans-serif; }
 
   ?>
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
+
+
+
+<div id="slider">
+  <ul id="slideWrap" style="position: relative;
+    list-style: none;
+    height: 100%;
+    width: 400%;
+    padding-left:0px;
+    margin: 0;
+    transition: all 750ms ease;
+    left: 0;"> 
+
+
+  <li style=" height: 100%; float: left; width:1580px; background-color:E6FFFA; margin-right:0px;">
+
+    <section id="hero" class="d-flex align-items-center">
+
+    
+
+    <div class="all_store_container">
+
 
  
-  </section><!-- End Hero -->
+    
+    </div>
+     <div id="next_slide"> </div>
+ 
+ 
+    </section><!-- End Hero -->
+
+  </li>
+  <li style=" height: 100%; float: left; width:1600px; background-color:E6FFFA; ">
+
+    <section id="hero" class="d-flex align-items-center">
+
+    
+
+    <div class="all_store_container">
+
+      
+      
+    
+    </div>
+     <div clss="next_slide"> </div>
+     <div clss="prev_slide"> </div>
+ 
+ 
+    </section><!-- End Hero -->
+
+  </li>
+  <li style=" height: 100%; float: left; width:1600px; background-color:E6FFFA; margin-right:200px;">
+
+    <section id="hero" class="d-flex align-items-center">
+
+    
+
+   
+    
+    </div>
+    
+ 
+ 
+    </section><!-- End Hero -->
+
+  </li>
+
+</ul>
+<a id="prev" href="#">&#8810;</a>
+  <a id="next" href="#">&#8811;</a>
+</div>
 
 
+<div class="next_slide"> </div>
+<div class="prev_slide"> </div>
 </body>
 
 </html>
 
+<?php  $index_num = 0; ;?>
+<?php  $z_index_num = 1000;?>
+
+<?php  foreach($all_manual_stores as $row) : ?>
+
+
+  <script>
+//PASTER HERE
+    var all_container = document.querySelector(".all_store_container")
+
+   
+    all_container.innerHTML += " <div class='unique_store_OUTER'> <div class='unique_store uniqueStore<?php echo $index_num;?>  unique_logo_display' style='background-image:url(../images/<?php echo $row['store_img_logo'];?>); ' ></div> <div class='store_info_box store_info_box<?php echo $index_num;?> text_info<?php echo $index_num;?>'> Saimer</div> </div> "
+
+   var box =  document.querySelector(".uniqueStore<?php echo $index_num;?>");
+  box.style.zIndex = "<?php echo $z_index_num;?>";
+
+  <?php  $z_index_num--;?>
+
+   var info_box =  document.querySelector(".store_info_box<?php echo $index_num;?>");
+   info_box.style.zIndex = "<?php echo $z_index_num;?>";
+
+  </script>
+
+<?php  $z_index_num--;?>
+<?php  $index_num++;?>
+
+<?php endforeach;?>
+
+
+
+
+
+
+
+
+
+<?php  $index_num_for = 0; ;?>
+<?php  foreach($all_manual_stores as $row) : ?>
+
 
 <script>
 
-      var store1= document.querySelector(".galcel1");
-      var store_box =  document.createElement("div");
-      store_box.setAttribute("class","store1 store_sizing ");
+var store_info_box = document.querySelector(".store_info_box<?php echo $index_num_for;?>")
+var text_info = document.querySelector(".text_info0")
+      $('.uniqueStore<?php echo $index_num_for;?>').hover(function(e) {
 
-          console.log(store1)
+        console.log("saimer right")
+        store_info_box.style.display = "block"
+      
+
+                  e.preventDefault();
+                  $('.store_info_box<?php echo $index_num_for;?>').animate(
+                    {
+                      'margin-left' : '300px' ,
+                    
+                      
+                    },
+                    {
+                      easing: 'linear',
+                      duration: 200,
+                      complete: console.log("completed completed")
+
+                    }
+                  );
+                
+                
+
+      } ,
+      
+      
+          function(e) {
+
+      console.log("saimer right")
+      store_info_box.style.display = "block"
+                e.preventDefault();
+                $('.store_info_box<?php echo $index_num_for;?>').animate(
+                  {
+                  
+                    'margin-left' : '0' 
+                  },
+                  {
+                    easing: 'linear',
+                    duration: 200,
+                    complete: console.log("completed completed")
+
+                  }
+                );
+              
+              
+
+      } 
+      
+      );
+
+
+
+
+
+
+</script>
+
+
+<?php  $index_num_for++;?>
+<?php endforeach;?>
+
+  
       
    
 
@@ -290,72 +571,136 @@ body { font-family: sans-serif; }
 
 
 
-function mouseOver10() {
-  $(".new_promotion").slideDown(500);
-}
+
+var slider = document.getElementById("slider");
+var sliderWidth = slider.offsetWidth;
+var slideList = document.getElementById("slideWrap");
+var count = 1;
+var items = slideList.querySelectorAll("li").length;
+var prev = document.getElementById("prev");
+var next_slide_btn = document.querySelector(".next_slide");
+var prev_slide_btn = document.querySelector(".prev_slide");
+
+window.addEventListener('resize', function() {
+  sliderWidth = slider.offsetWidth;
+}); 
+
+
+var prevSlide = function() {
+  if(count > 1) {
+    count = count - 2;
+    slideList.style.left = "-" + count * sliderWidth + "px";
+    count++;
+  }
+  else if(count = 1) {
+    count = items - 1;
+    slideList.style.left = "-" + count * sliderWidth + "px";
+    count++;
+  }
+};
+
+
+
+
+var nextSlide = function() {
+  if(count < items) {
+    slideList.style.left = "-" + count * sliderWidth + "px";
+    count++;
+    
+  }
+  else if(count = items) {
+    slideList.style.left = "0px";
+    count = 1;
+    
+  }
+};
+
+
+
+
+
+next_slide_btn.addEventListener("click", function() {
+  
+  nextSlide();
+
+console.log("saimer")
+  
+  
+});
+prev_slide_btn.addEventListener("click", function() {
+  
+  prevSlide();
+
+console.log("saimer")
+  
+  
+});
+
 
 
 
 </script>
 
 
-<?php for ( $x=0; $x<10; $x++):?>
-      <script>  
 
-      var new_promotion_box = document.querySelector(".new_promotion");
-        $(document).ready(function(){
-          var count = 0;
-          $(".bid<?php echo $x;?>").click(function(){
-            
-            $(".all_pid").slideUp();
-            
-            
-            if(count == 0)
-            {
-            
-              $(".new_promotion").slideDown(500);
-              $(".new_store_text_div").slideDown(500);
-              $(".pid<?php echo $x;?>").slideDown(500);
-              $("#promotion_div_box").slideDown(500);
-              
-              
-              
-              if(new_promotion_box.style.opacity < 1)
-              {
-                var opacity= opacity + 0.01;
-                new_promotion_box.style.opacity= opacity;
-              }
-              
-              
-              
-              
-              
-              count++;
+<script>
 
 
 
 
 
-            }
-            else if(count == 1)
-            {
-            
-              if(new_promotion_box.style.opacity > 0)
-              {
-                var opacity= opacity - 0.1;
-                new_promotion_box.style.opacity= opacity;
-              }
-              $(".new_promotion").slideUp(500);
-              $(".new_store_text_div").slideUp(500);
-              $(".pid<?php echo $x;?>").slideUp();
-              $("#promotion_div_box").slideUp();
-              count--;
-            }
-          });
 
-          
-        
-        
-        })
-        </script>
-<?php endfor;?>
+// var nextSlide = function() {
+//   if(count < items) {
+//     slideList.style.left = "-" + count * sliderWidth + "px";
+//     count++;
+    
+//   }
+//   else if(count = items) {
+//     slideList.style.left = "0px";
+//     count = 1;
+    
+//   }
+// };
+
+
+// var next_slide_btn = document.getElementById("next_slide");
+// next_slide_btn.addEventListener("click", function() {
+//   console.log("homie")
+//  // nextSlide();
+
+  
+
+
+  
+  
+// });
+
+
+// prev.addEventListener("click", function() {
+  
+  
+//   //prevSlide();
+//   console.log("homie prev")
+ 
+  
+  
+// });
+
+
+
+// };
+
+
+
+
+
+
+
+  
+ 
+
+
+
+
+</script>

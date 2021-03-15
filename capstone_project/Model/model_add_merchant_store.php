@@ -113,3 +113,59 @@ function get_searched_stores($store_name) {
 // $answer = get_searched_stores("am store");
 // var_dump($answer);
 // exit;
+
+
+
+function add_admin_stores($store_name, $store_category, $store_day_created, $store_img_logo) {
+    global $db;
+
+    $results = 0;
+
+    $stmt = $db->prepare("INSERT INTO admin_stores_tbl SET store_name = :store_name, store_category = :store_category, store_day_created = :store_day_created, store_img_logo = :store_img_logo");
+
+    $binds = array (
+        ":store_name" => $store_name,
+        ":store_category" => $store_category,
+        ":store_day_created" => $store_day_created,
+        ":store_img_logo" => $store_img_logo
+    );
+
+    if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+        $results = 1;
+    }
+
+    return $results; 
+}
+/*
+$testing_this = add_admin_stores('American Eagle', 'Clothes', date('Y-m-d'), 'ae_logo.png');
+$testing_this1 = add_admin_stores('The Cheesecake Factory', 'Arcade & Family', date('Y-m-d'), 'cheesecake_logo.jpg');
+$testing_this2 = add_admin_stores("The Children's Place", 'Restaurant', date('Y-m-d'), 'childrenplace_logo.jpg');
+
+
+/*
+var_dump($testing_this);
+exit;*/
+
+
+
+function get_all_admin_stores($admin_store_ID_minimum) {
+    global $db;
+
+    $results = [];
+    
+    $stmt = $db->prepare("SELECT admin_store_ID, store_name, store_category, store_day_created, store_img_logo FROM admin_stores_tbl WHERE admin_store_ID > :admin_store_ID_minimum");
+
+    $stmt->bindValue(":admin_store_ID_minimum", $admin_store_ID_minimum);
+
+    if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);   
+    }
+
+    return $results;
+
+}
+
+/*
+$mee = get_all_admin_stores(0);
+var_dump($mee);
+exit;*/
