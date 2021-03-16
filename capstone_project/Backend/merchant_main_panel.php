@@ -438,7 +438,7 @@ height:32px;
                                                 <div class="form-group row" style="margin-top:0px; padding-top:10px;">
                                                     <label  class="col-sm-3 col-form-label our_text_font" style="color:white; font-size:11px;">FIRSTNAME: </label>
                                                     <div class="col-sm-6 our_textbox_sizing">
-                                                    <input type="text" class="form-control "  value="<?php echo $mer_fname;?>"  placeholder="email" name="mer_fname" id="username">
+                                                    <input type="text" maxlength = 15 class="form-control "  value="<?php echo $mer_fname;?>"  placeholder="fname" name="mer_fname" id="username">
                                                   
                                                     </div>
                                                 </div>
@@ -447,7 +447,7 @@ height:32px;
                                                 <div class="form-group row" style="margin-top:0px; padding-top:10px;">
                                                     <label  class="col-sm-3 col-form-label our_text_font" style="color:white; font-size:11px;">LASTNAME: </label>
                                                     <div class="col-sm-6 our_textbox_sizing">
-                                                    <input type="text" class="form-control "  value="<?php echo $mer_lname;?>" name="mer_lname" id="username">
+                                                    <input type="text" maxlength = 15 class="form-control "  value="<?php echo $mer_lname;?>" placeholder="lname" name="mer_lname" id="username">
                                                   
                                                     </div>
                                                 </div>
@@ -466,7 +466,7 @@ height:32px;
                                                 <div class="form-group row" style="margin-top:0px; padding-top:10px;">
                                                     <label  class="col-sm-3 col-form-label our_text_font" style="color:white; font-size:11px;">PHONE: </label>
                                                     <div class="col-sm-6 our_textbox_sizing">
-                                                    <input type="text" class="form-control " value="<?php echo $mer_phone;?>"  placeholder="email" name="mer_phone" id="username">
+                                                    <input type="text" maxlength = 12 class="form-control " value="<?php echo $mer_phone;?>"  placeholder="phone" name="mer_phone" id="username">
                                                   
                                                     </div>
                                                 </div>
