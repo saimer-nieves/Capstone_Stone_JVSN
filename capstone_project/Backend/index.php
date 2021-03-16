@@ -227,9 +227,19 @@ body { font-family: sans-serif; }
 .all_store_container
 {
 
-  background-color:red;
-  width:1500px;
-  height:500px;
+  background-color:none;
+  width:1200px;
+  height:420px;
+  margin-left:60px;
+  position:absolute;
+}
+
+.all_created_store_container
+{
+
+  background-color:none;
+  width:1200px;
+  height:420px;
   margin-left:60px;
   position:absolute;
 }
@@ -238,22 +248,22 @@ body { font-family: sans-serif; }
 
 .unique_store_OUTER
 {
-  background-color:green;
+  background-color:none;
   padding:10px;
   margin-right:35px;
   float:left;
   margin:10px;
   position:relative;
-  height:200px;
-  width:330px;
+  height:180px;
+  width:290px;
   margin-top:15px;
   margin-left:0px;
 }
 .unique_store
 {
-  background-color:blue;
-  width:300px;
-  height:180px;
+  background-color:none;
+  width:250px;
+  height:150px;
   float:left;
   display: block;
   position:absolute;
@@ -335,6 +345,15 @@ position:absolute;
 }
 
 
+.description
+{
+  font-family: Arial Black, Arial, Helvetica;
+  color:white;
+
+  font-size: 15px;
+}
+
+
 
   </style>
 </head>
@@ -350,7 +369,7 @@ position:absolute;
 
 
 
-<body>
+<body style=' background-color:rgb(0,0,0,0.75); height:auto;'>
 
   <!-- ======= Header ======= -->
   <?php 
@@ -372,7 +391,7 @@ position:absolute;
     left: 0;"> 
 
 
-  <li style=" height: 100%; float: left; width:1580px; background-color:E6FFFA; margin-right:0px;">
+  <li style=" height: 100%; float: left; width:1380px; background-color:none; margin-right:0px;">
 
     <section id="hero" class="d-flex align-items-center">
 
@@ -390,7 +409,7 @@ position:absolute;
     </section><!-- End Hero -->
 
   </li>
-  <li style=" height: 100%; float: left; width:1580px; background-color:E6FFFA; margin-right:0px;">
+  <li style=" height: 100%; float: left; width:1280px; background-color:none; margin-right:0px;">
 
     <section id="hero" class="d-flex align-items-center">
 
@@ -409,7 +428,7 @@ position:absolute;
 
   </li>
 
-  <li style=" height: 100%; float: left; width:1580px; background-color:E6FFFA; margin-right:0px;">
+  <li style=" height: 100%; float: left; width:1580px; background-color:none; margin-right:0px;">
 
 <section id="hero" class="d-flex align-items-center">
 
@@ -451,44 +470,10 @@ position:absolute;
 
 
 <!--NEXT SECTION-->
-<section id="about" class="about" style="background-color:red;padding:none; height:auto; width:100%;">
+<section id="about" class="about" style="padding:none; height:auto; width:100%; background-color:rgba(0,0,0,0.5);">
 
-  <div style='background-color:blue; height:600px; width:750px; float:left;'>
-  <div id="carouselExampleIndicators" class="carousel slide here_container" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-item active" style="background-image: url('https://source.unsplash.com/LAaSoL0LrYs/1920x1080')">
-        <div class="carousel-caption d-none d-md-block">
-          <h2 class="display-4">First Slide</h2>
-          <p class="lead">This is a description for the first slide.</p>
-        </div>
-      </div>
-      <!-- Slide Two - Set the background image for this slide in the line below -->
-      <div class="carousel-item" style="background-image: url('https://source.unsplash.com/bF2vsubyHcQ/1920x1080')">
-        <div class="carousel-caption d-none d-md-block">
-          <h2 class="display-4">Second Slide</h2>
-          <p class="lead">This is a description for the second slide.</p>
-        </div>
-      </div>
-      <!-- Slide Three - Set the background image for this slide in the line below -->
-      <div class="carousel-item" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080')">
-        <div class="carousel-caption d-none d-md-block">
-          <h2 class="display-4">Third Slide</h2>
-          <p class="lead">This is a description for the third slide.</p>
-        </div>
-      </div>
-
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+  <div style='background-color:blue; margin:20px; height:360px; width:610px; float:left; background-position: center  !important; background-repeat: no-repeat   !important; background-size: cover   !important; background-image:url(../images/promotion_photo.jpg)'>
+  
   </div>
   
   
@@ -500,7 +485,18 @@ position:absolute;
 
 
 
-  <div style='background-color:yellow; height:600px; width:750px; float:left;'></div>
+  <div style=' height:400px; width:650px; float:left;' class='description'>
+
+    <h4 >
+
+     <h2> Where does it come from?</h2>
+Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and E
+<br><br>
+Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cite
+      
+    </h4>
+
+  </div>
 
 
 </section><!-- End About Section -->
@@ -534,13 +530,13 @@ position:absolute;
     left: 0;"> 
 
 
-  <li style=" height: 100%; float: left; width:1580px; background-color:E6FFFA; margin-right:0px;">
+  <li style=" height: auto; float: left; width:1400px; background-color:E6FFFA; margin-right:0px;">
 
     <section id="hero" class="d-flex align-items-center">
 
     
 
-    <div class="all_store_container">
+    <div class="all_created_store_container " style='width:1200px; background-color:red;'>
 
 
  
@@ -557,8 +553,6 @@ position:absolute;
 </ul>
 
 
-<div class="next_slide2"> </div>
-<div class="prev_slide2"> </div>
 </div>
 
 </div>
@@ -635,6 +629,45 @@ position:absolute;
 
 
 
+     
+<?php  $created_index_num = 0; ?>
+<?php  $created_store_container = 0; ?>
+<?php  $created_z_index_num = 1000;?>
+
+
+
+  
+<?php  foreach($all_manual_stores as $row) : ?>
+    
+        var created_all_container1 = document.querySelector(".all_created_store_container")
+       
+        created_all_container1.innerHTML += " <div class='unique_store_OUTER'> <div class='unique_store uniqueStore<?php echo $index_num;?>  unique_logo_display' style='background-image:url(../images/<?php echo $row['store_img_logo'];?>); ' ></div> <div class='store_info_box store_info_box<?php echo $index_num;?> text_info<?php echo $index_num;?>'> Saimer</div> </div> "
+
+ 
+
+
+      var created_box =  document.querySelector(".uniqueStore<?php echo $created_index_num;?>");
+      created_box.style.zIndex = "<?php echo $created_z_index_num;?>";
+
+      <?php  $created_z_index_num--;?>
+
+      var created_info_box =  document.querySelector(".store_info_box<?php echo $created_index_num;?>");
+      created_info_box.style.zIndex = "<?php echo $created_z_index_num;?>";
+
+
+
+    <?php  $created_z_index_num--;?>
+    <?php  $created_index_num++;?>
+
+    <?php endforeach;?>
+
+
+
+
+
+
+
+
 
 
 
@@ -684,7 +717,7 @@ var text_info = document.querySelector(".text_info0")
                   e.preventDefault();
                   $('.store_info_box<?php echo $index_num_for;?>').animate(
                     {
-                      'margin-left' : '300px' ,
+                      'margin-left' : '252px' ,
                     
                       
                     },
@@ -734,6 +767,80 @@ var text_info = document.querySelector(".text_info0")
 
 
 <?php  $index_num_for++;?>
+<?php endforeach;?>
+
+  
+      
+  
+
+
+<?php  $created_index_num_for = 0; ;?>
+<?php  foreach($all_manual_stores as $row) : ?>
+
+
+<script>
+
+var $created_store_info_box = document.querySelector(".store_info_box<?php echo $$created_index_num_for;?>")
+var $created_text_info = document.querySelector(".text_info0")
+      $('.uniqueStore<?php echo $$created_index_num_for;?>').hover(function(e) {
+
+        console.log("saimer right")
+        $created_store_info_box.style.display = "block"
+      
+
+                  e.preventDefault();
+                  $('.store_info_box<?php echo $$created_index_num_for;?>').animate(
+                    {
+                      'margin-left' : '252px' ,
+                    
+                      
+                    },
+                    {
+                      easing: 'linear',
+                      duration: 200,
+                      complete: console.log("completed completed")
+
+                    }
+                  );
+                
+                
+
+      } ,
+      
+      
+          function(e) {
+
+      console.log("saimer right")
+      $created_store_info_box.style.display = "block"
+                e.preventDefault();
+                $('.store_info_box<?php echo $$created_index_num_for;?>').animate(
+                  {
+                  
+                    'margin-left' : '0' 
+                  },
+                  {
+                    easing: 'linear',
+                    duration: 200,
+                    complete: console.log("completed completed")
+
+                  }
+                );
+              
+              
+
+      } 
+      
+      );
+
+
+
+
+
+
+</script>
+
+
+<?php  $$created_index_num_for++;?>
 <?php endforeach;?>
 
   
