@@ -133,8 +133,7 @@ $promotion_btn_num = 0;
 
   }
   .all_container
-  {
-    background-color:none;
+  {  background-color:rgba(153,241,197,0.2);
  
     width:1070px;
     height:149px;
@@ -151,7 +150,7 @@ $promotion_btn_num = 0;
     float:left;
     margin-top:10px;
     margin-bottom:10px;
-
+    background-color:rgba(153,241,197,0.2);
     
   }
   #all_container_test
@@ -168,8 +167,8 @@ $promotion_btn_num = 0;
   {
     margin-left:150px;
     width:1070px;
-    height:800px;
-    background-color:none;
+    min-height:700px;
+  
     
 
   }
@@ -765,7 +764,7 @@ background-size: cover   !important;
   
   </style>
 </head>
-<body>
+<body style='background-image: url(../images/bg_green_darken.png) ; background-size:cover;'>
 
 
 
@@ -866,7 +865,7 @@ background-size: cover   !important;
 <div id="box">
 
 
-  <div class="all_container">
+  <div class="all_container ">
   
 
    
@@ -947,6 +946,7 @@ var clicks<?php echo $index_number;?>= 0;
          unique_inner_promotions.setAttribute("class","unique_inner_promotions<?php echo $index_number;?> unique_inner_promotions_styling");
          
          subscribed_store_div.setAttribute("class","store_p_btn<?php echo $index_number;?> promotion_div_btn<?php echo $promotion_btn_num;?> store_p_btn_styling");
+     
          
 
 
@@ -982,8 +982,8 @@ var clicks<?php echo $index_number;?>= 0;
           function() {
             
 
-
-            
+            var store = document.querySelector(".store_p_btn<?php echo $index_number;?>")
+     
 
              
       
@@ -997,8 +997,13 @@ var clicks<?php echo $index_number;?>= 0;
 
 
                           if(clicks<?php echo $index_number;?> == 0)
-                          {
-                            
+                          {var all_stores = document.querySelector('.store_p_btn_styling')
+                            all_stores.style.borderBottom = "solid 0px black";
+                            all_stores.style.boxShadow = "";
+
+
+                            store.style.borderBottom = "solid 15px #3DEFCC";
+                            store.style.boxShadow = "-0px 15px 15px #53c68c";
 
                             $( ".unique_inner_promotions_styling" ).slideUp( 200, function() {
 
@@ -1038,6 +1043,10 @@ var clicks<?php echo $index_number;?>= 0;
                           }
                           else
                           {
+
+                            var all_stores = document.querySelectorAll('.store_p_btn_styling')
+                            all_stores[<?php echo $index_number;?>].style.borderBottom = "solid 0px black";
+                            all_stores[<?php echo $index_number;?>].style.boxShadow = "";
                             console.log("clicks is not zero <?php echo $index_number;?>")
 
                               

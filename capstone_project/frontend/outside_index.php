@@ -446,14 +446,7 @@ Luisa Martinez
         <div class="row content">
         
           <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left" data-aos-delay="200" style="position:absolute; left:700px;">
-          <div class="form-group row">
-                                                    <label  class="col-sm-3 col-form-label" >PASSWORD: </label>
-                                                    <div class="col-sm-8">
-                                                    <input type="password" class="form-control our_textbox_sizing" " placeholder="password" name="txt_password" id="password">
-                                                    <span id="password_error"><?= $login_error;?></span>
-                                                    </div>
-                                                </div>
-          </div>
+         
         </div>
 
       </div>

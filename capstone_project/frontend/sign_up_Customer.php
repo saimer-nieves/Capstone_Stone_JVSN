@@ -282,14 +282,14 @@ height: 230px;
                                                     <label  class="col-sm-3 col-form-label" >EMAIL: </label>
                                                     <div class="col-sm-8">
                                                     <input type="text" class="form-control our_textbox_sizing"  placeholder="email" name="txt_email" id="username">
-                                                    <span id="email_error" ><?= $login_error;?></span> 
+                                                    <span id="email_error" style='color:red; font-family:arial black, arial;' ><?= $login_error;?></span> 
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label  class="col-sm-3 col-form-label" >PASSWORD: </label>
                                                     <div class="col-sm-8">
-                                                    <input type="password" class="form-control our_textbox_sizing" " placeholder="password" name="txt_password" id="password">
-                                                    <span id="password_error"><?= $login_error;?></span>
+                                                    <input type="password" class="form-control our_textbox_sizing" placeholder="password" name="txt_password" id="password">
+                                                    <span id="password_error" style='color:red; font-family:arial black, arial;'><?= $login_error;?></span>
                                                     </div>
                                                 </div>
 
@@ -364,8 +364,8 @@ height: 230px;
                                         
 
 
-                                          <input type='button' value='javacsript' class='button_style_by_us javascript_submit_btn'>
-                                          <button name="sign_up_btn_cus" type="submit" class=" bg-success button_style_by_us submit_btn" style="margin-top:50px; margin-left:180px; width:150px;" href="#">Sign up</i></button>
+                                          <input type='button' value='Sign Up' class='button_style_by_us javascript_submit_btn' style='background-color:#28a745; margin-top:50px; margin-left:180px; width:150px; padding:8px;'>
+                                          <button name="sign_up_btn_cus" type="submit" class=" bg-success button_style_by_us submit_btn" style="margin-top:50px; margin-left:180px; width:150px; display:none;" href="#">Sign up</i></button>
                                                   
 
                                   </form>
@@ -527,6 +527,19 @@ height: 230px;
       {
         errorPasswordlbl.innerText = ''
         errorConfirmPasswordlbl.innerText = ''
+      }
+
+
+      if(errorFirstNamelbl.innerText.length == 0 && errorLastNamelbl.innerText.length == 0 && errorEmaillbl.innerText.length == 0 && errorPhonelbl.innerText.length == 0 && errorPasswordlbl.innerText.length == 0 && errorConfirmPasswordlbl.innerText.length == 0)
+      {
+
+        //submit button will be here
+
+        var button = document.querySelector('.submit_btn')
+
+         button.click(); 
+
+        console.log(button)
       }
     
 

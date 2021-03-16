@@ -283,25 +283,29 @@ position:absolute;
 }
 
 
-.next_slide
+.next_slide , .next_slide2
 {
   background-color:green;
   height:100px;
   width:100px;
   border-radius:50px;
   position:absolute;
-  margin-left:1300px;
+  margin-top:270px;
+  margin-left:1450px;
+  z-index:1001;
 }
 
 
-.prev_slide
+.prev_slide , .prev_slide2
 {
   background-color:blue;
   height:100px;
   width:100px;
   border-radius:50px;
   position:absolute;
-  margin-left:1100px;
+  margin-top:270px;
+  margin-left:0px;
+  z-index:1001;
 }
 
 
@@ -320,7 +324,15 @@ position:absolute;
   
 
 }
-
+.carousel-item {
+  height: 47vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 
 
@@ -366,94 +378,288 @@ position:absolute;
 
     
 
-    <div class="all_store_container">
+    <div class="all_store_container all_store_container0">
 
 
  
     
     </div>
-     <div id="next_slide"> </div>
+     
  
  
     </section><!-- End Hero -->
 
   </li>
-  <li style=" height: 100%; float: left; width:1600px; background-color:E6FFFA; ">
+  <li style=" height: 100%; float: left; width:1580px; background-color:E6FFFA; margin-right:0px;">
 
     <section id="hero" class="d-flex align-items-center">
 
     
 
-    <div class="all_store_container">
+    <div class="all_store_container all_store_container1">
 
-      
-      
+
+ 
     
     </div>
-     <div clss="next_slide"> </div>
-     <div clss="prev_slide"> </div>
+     
  
  
     </section><!-- End Hero -->
 
   </li>
-  <li style=" height: 100%; float: left; width:1600px; background-color:E6FFFA; margin-right:200px;">
 
-    <section id="hero" class="d-flex align-items-center">
+  <li style=" height: 100%; float: left; width:1580px; background-color:E6FFFA; margin-right:0px;">
 
-    
+<section id="hero" class="d-flex align-items-center">
 
-   
-    
-    </div>
-    
+
+
+<div class="all_store_container all_store_container2">
+
+
+
+
+</div>
  
- 
-    </section><!-- End Hero -->
 
-  </li>
+
+</section><!-- End Hero -->
+
+</li>
+  
 
 </ul>
-<a id="prev" href="#">&#8810;</a>
-  <a id="next" href="#">&#8811;</a>
-</div>
-
 
 <div class="next_slide"> </div>
 <div class="prev_slide"> </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--NEXT SECTION-->
+<section id="about" class="about" style="background-color:red;padding:none; height:auto; width:100%;">
+
+  <div style='background-color:blue; height:600px; width:750px; float:left;'>
+  <div id="carouselExampleIndicators" class="carousel slide here_container" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-item active" style="background-image: url('https://source.unsplash.com/LAaSoL0LrYs/1920x1080')">
+        <div class="carousel-caption d-none d-md-block">
+          <h2 class="display-4">First Slide</h2>
+          <p class="lead">This is a description for the first slide.</p>
+        </div>
+      </div>
+      <!-- Slide Two - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('https://source.unsplash.com/bF2vsubyHcQ/1920x1080')">
+        <div class="carousel-caption d-none d-md-block">
+          <h2 class="display-4">Second Slide</h2>
+          <p class="lead">This is a description for the second slide.</p>
+        </div>
+      </div>
+      <!-- Slide Three - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080')">
+        <div class="carousel-caption d-none d-md-block">
+          <h2 class="display-4">Third Slide</h2>
+          <p class="lead">This is a description for the third slide.</p>
+        </div>
+      </div>
+
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+  </div>
+  
+  
+  </div>
+
+
+
+
+
+
+
+  <div style='background-color:yellow; height:600px; width:750px; float:left;'></div>
+
+
+</section><!-- End About Section -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="slider2">
+<ul id="slideWrap2" style="position: relative;
+    list-style: none;
+    height: 100%;
+    width: 400%;
+    padding-left:0px;
+    margin: 0;
+    transition: all 750ms ease;
+    left: 0;"> 
+
+
+  <li style=" height: 100%; float: left; width:1580px; background-color:E6FFFA; margin-right:0px;">
+
+    <section id="hero" class="d-flex align-items-center">
+
+    
+
+    <div class="all_store_container">
+
+
+ 
+    
+    </div>
+     
+ 
+ 
+    </section><!-- End Hero -->
+
+  </li>
+  
+  
+</ul>
+
+
+<div class="next_slide2"> </div>
+<div class="prev_slide2"> </div>
+</div>
+
+</div>
+
+
 </body>
 
 </html>
 
-<?php  $index_num = 0; ;?>
-<?php  $z_index_num = 1000;?>
 
-<?php  foreach($all_manual_stores as $row) : ?>
+
 
 
   <script>
 //PASTER HERE
-    var all_container = document.querySelector(".all_store_container")
 
-   
-    all_container.innerHTML += " <div class='unique_store_OUTER'> <div class='unique_store uniqueStore<?php echo $index_num;?>  unique_logo_display' style='background-image:url(../images/<?php echo $row['store_img_logo'];?>); ' ></div> <div class='store_info_box store_info_box<?php echo $index_num;?> text_info<?php echo $index_num;?>'> Saimer</div> </div> "
 
-   var box =  document.querySelector(".uniqueStore<?php echo $index_num;?>");
-  box.style.zIndex = "<?php echo $z_index_num;?>";
 
-  <?php  $z_index_num--;?>
 
-   var info_box =  document.querySelector(".store_info_box<?php echo $index_num;?>");
-   info_box.style.zIndex = "<?php echo $z_index_num;?>";
+
+  
+<?php  $index_num = 0; ?>
+<?php  $store_container = 0; ?>
+<?php  $z_index_num = 1000;?>
+
+
+
+  
+<?php  foreach($all_manual_stores as $row) : ?>
+    <?php if( $index_num < 8 ):?>
+        var all_container1 = document.querySelector(".all_store_container0")
+        all_container = all_container1
+        all_container.innerHTML += " <div class='unique_store_OUTER'> <div class='unique_store uniqueStore<?php echo $index_num;?>  unique_logo_display' style='background-image:url(../images/<?php echo $row['store_img_logo'];?>); ' ></div> <div class='store_info_box store_info_box<?php echo $index_num;?> text_info<?php echo $index_num;?>'> Saimer</div> </div> "
+
+      <?php endif;?>
+
+      
+    <?php if( $index_num < 16 &&  $index_num >= 8):?>
+      var all_container2 = document.querySelector(".all_store_container1")
+        all_container = all_container2
+        all_container.innerHTML += " <div class='unique_store_OUTER'> <div class='unique_store uniqueStore<?php echo $index_num;?>  unique_logo_display'  style='background-image:url(../images/<?php echo $row['store_img_logo'];?>); ' ></div> <div class='store_info_box store_info_box<?php echo $index_num;?> text_info<?php echo $index_num;?>'> Saimer</div> </div> "
+
+    <?php endif;?>
+     
+    <?php if( $index_num < 24 &&  $index_num >= 16):?>
+    var all_container3 = document.querySelector(".all_store_container2")
+
+  
+  
+    <?php endif;?>
+
+
+
+
+      var box =  document.querySelector(".uniqueStore<?php echo $index_num;?>");
+      box.style.zIndex = "<?php echo $z_index_num;?>";
+
+      <?php  $z_index_num--;?>
+
+      var info_box =  document.querySelector(".store_info_box<?php echo $index_num;?>");
+      info_box.style.zIndex = "<?php echo $z_index_num;?>";
+
+
+
+    <?php  $z_index_num--;?>
+    <?php  $index_num++;?>
+
+    <?php endforeach;?>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+ 
+    
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   </script>
-
-<?php  $z_index_num--;?>
-<?php  $index_num++;?>
-
-<?php endforeach;?>
-
-
 
 
 
@@ -702,5 +908,91 @@ console.log("saimer")
 
 
 
+
+</script>
+
+
+
+<script>
+
+
+
+
+var slider2 = document.getElementById("slider2");
+var sliderWidth2 = slider2.offsetWidth;
+var slideList2 = document.getElementById("slideWrap2");
+var count2 = 1;
+var items2 = slideList.querySelectorAll("li").length;
+var prev2 = document.getElementById("prev2");
+var next_slide_btn2 = document.querySelector(".next_slide2");
+var prev_slide_btn2 = document.querySelector(".prev_slide2");
+
+window.addEventListener('resize', function() {
+  sliderWidth2 = slider2.offsetWidth;
+}); 
+
+
+var prevSlide2 = function() {
+  if(count2 > 1) {
+    count2 = count2 - 2;
+    slideList2.style.left = "-" + count2 * sliderWidth2 + "px";
+    count2++;
+  }
+  else if(count = 1) {
+    count2 = items2 - 1;
+    slideList2.style.left = "-" + count2 * sliderWidth2 + "px";
+    count2++;
+  }
+};
+
+
+
+
+var nextSlide2 = function() {
+  if(count2 < items2) {
+    slideList2.style.left = "-" + count2 * sliderWidth2 + "px";
+    count2++;
+    
+  }
+  else if(count2 = items2) {
+    slideList2.style.left = "0px";
+    count2 = 1;
+    
+  }
+};
+
+
+
+
+
+next_slide_btn2.addEventListener("click", function() {
+  
+  nextSlide2();
+
+console.log("saimer")
+  
+  
+});
+prev_slide_btn2.addEventListener("click", function() {
+  
+  prevSlide2();
+
+console.log("saimer")
+  
+  
+});
+
+
+
+
+</script>
+
+
+<script>
+var container = document.querySelector('.here_container')
+
+<?php foreach($all_manual_stores as $row):?>
+    //container.innerHTML += " <div class='carousel-inner' role='listbox'> <!-- Slide One - Set the background image for this slide in the line below --> <div class='carousel-item active' style='background-image: url('https://source.unsplash.com/LAaSoL0LrYs/1920x1080')'> <div class='carousel-caption d-none d-md-block'> <h2 class='display-4'>First Slide</h2> <p class='lead'>This is a description for the first slide.</p> </div> </div>"
+<?php endforeach;?>
 
 </script>

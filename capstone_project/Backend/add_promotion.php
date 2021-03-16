@@ -1784,9 +1784,10 @@ margin-top:0;
                                                     <label for="sel1" class=" col-sm-2 col-form-label font_created_by_us">STORE:</label>
                                                     <div class="col-sm-7 ">
                                                       <select name="store_name_info" class="form-control" id="sel1">             <!--FORM ELEMENT *********************-->
-                                                        <?php foreach ($all_Big_sale_Promotions as $row):  ?>
+                                                       
                                                           <option value="None"> Select a Store</option></option>
-                                                          <option value="<?php echo $row['store_name'];?>"><?php echo $row['store_name'];?></option>
+                                                        <?php foreach ($all_owned_stores_array as $row): ?>
+                                                              <option value="<?php echo $row['store_name'];?>"><?php echo $row['store_name'];?></option>
                                                         <?php endforeach; ?>
                                                         
                                                           

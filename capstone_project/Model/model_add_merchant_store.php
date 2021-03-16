@@ -137,10 +137,12 @@ function add_admin_stores($store_name, $store_category, $store_day_created, $sto
     return $results; 
 }
 /*
-$testing_this = add_admin_stores('American Eagle', 'Clothes', date('Y-m-d'), 'ae_logo.png');
-$testing_this1 = add_admin_stores('The Cheesecake Factory', 'Arcade & Family', date('Y-m-d'), 'cheesecake_logo.jpg');
-$testing_this2 = add_admin_stores("The Children's Place", 'Restaurant', date('Y-m-d'), 'childrenplace_logo.jpg');
-
+$testing_this = add_admin_stores('Cured Collection', 'Clothing', date('Y-m-d'), 'cured_collection_logo.jpg');
+$testing_this1 = add_admin_stores('Gamestop', 'Video Games', date('Y-m-d'), 'gamestop_logo.png');
+$testing_this2 = add_admin_stores("Finish Line", 'Shoes', date('Y-m-d'), 'finish_line_logo.jpeg');
+$testing_this3 = add_admin_stores("GAP", 'Clothing', date('Y-m-d'), 'gap_logo.jpeg');
+$testing_this4 = add_admin_stores("Macy's", 'Restaurant', date('Y-m-d'), 'macy_logo.png');
+*/
 
 /*
 var_dump($testing_this);
