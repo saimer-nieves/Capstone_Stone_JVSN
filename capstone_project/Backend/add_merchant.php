@@ -448,18 +448,20 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
 
           <div id="text_boxes_div">
             <div class="form-group">
-              <label for="usr" >Name:</label>
-                <input type="text" class="form-control" id="store_name"  name ="store_name">      <!--FORM ELEMENT *********************-->
+              <label for="usr" >Sotore ID:</label>
+                <input type="text" maxlength = 16 class="form-control" id="store_name"  name ="store_name">      <!--FORM ELEMENT *********************-->
             </div>
 
             
             <div class="form-group">
               <label for="sel1">Select list:</label>
               <select name="store_category" class="form-control" id="sel1">             <!--FORM ELEMENT *********************-->
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+                <option>Video Game </option>
+                <option>Cloth</option>
+                <option>Bar</option>
+                <option>Bible Study</option>
+                <option>IT</option>
+                <option>Lambo</option>
               </select>
             </div>
 

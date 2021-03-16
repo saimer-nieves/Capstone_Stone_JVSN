@@ -244,8 +244,10 @@ height: 230px;
 
 }
 
-.validation_text{
-  position: absolute;
+.validation_text
+{
+  position:absolute;
+  color:red;
 }
 
     
@@ -338,16 +340,16 @@ height: 230px;
                                           <div class="form-group row">
                                               <label  class="col-sm-3 col-form-label" >FIRSTNAME: </label>
                                               <div class="col-sm-8">
-                                              <input type="text" class="form-control our_textbox_sizing firstnametxtbox"  placeholder="Firstname" name="mer_fname"  required >
+                                              <input type="text" maxlength = 15 class="form-control our_textbox_sizing firstnametxtbox"  placeholder="Firstname" name="mer_fname"  required >
                                             
-                                              <label class="validation_text errorFirstNameLbl">junior</label>
+                                              <label class="validation_text errorFirstNamelbl"></label>
                                               </div>
                                           </div>
                                           <div class="form-group row">
                                               <label  class="col-sm-3 col-form-label" >Lastname: </label>
                                               <div class="col-sm-8">
-                                              <input type="text" class="form-control our_textbox_sizing lastnametxtbox"  placeholder="Lastname" name="mer_lname" >
-                                              <label class="validation_text  errorLastNameLbl">junior</label>
+                                              <input type="text" maxlength = 15 class="form-control our_textbox_sizing lastnametxtbox"  placeholder="Lastname" name="mer_lname" >
+                                              <label class="validation_text  errorLastNamelbl"></label>
                                               </div>
                                           </div>
 
@@ -355,15 +357,15 @@ height: 230px;
                                               <label  class="col-sm-3 col-form-label" >Email: </label>
                                               <div class="col-sm-8">
                                               <input type="text" class="form-control our_textbox_sizing emailtxtbox" placeholder="Email"  name="mer_email" pattern ='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' >
-                                              <label class="validation_text  errorEmailLbl">junior</label>
+                                              <label class="validation_text  errorEmaillbl"></label>
                                               </div>
                                           </div>
 
                                           <div class="form-group row">
                                               <label  class="col-sm-3 col-form-label" >Phone: </label>
-                                              <div class="col-sm-8">
-                                              <input type="phone" class="form-control our_textbox_sizing phonetxtbox"  placeholder="Phone"  name="mer_phone" >
-                                              <label class="validation_text  errorPhoneLbl">junior</label>
+                                              <div class="col-sm-8"> 
+                                              <input type="phone" maxlength="12" class="form-control our_textbox_sizing phonetxtbox"  placeholder="Phone"  name="mer_phone" >
+                                              <label class="validation_text  errorPhonelbl"></label>
                                               </div>
                                           </div>
 
@@ -371,22 +373,22 @@ height: 230px;
                                               <label class="col-sm-3 col-form-label" >Password: </label>
                                               <div class="col-sm-8">
                                               <input type="password"  maxlength = 255 class="form-control our_textbox_sizing passwordtxtbox" placeholder="Password"  name="mer_password" >
-                                              <label class="validation_text errorPasswordLbl">junior</label>
+                                              <label class="validation_text errorPasswordlbl"></label>
                                               </div>
                                           </div>
 
                                           <div class="form-group row">
                                               <label class="col-sm-3 col-form-label" >Confirm-Password: </label>
                                               <div class="col-sm-8">
-                                              <input type="password" maxlength = 255 class="form-control our_textbox_sizing confirmpasswordtxtbox"  placeholder="ConfirmPassword" name="mer_password_confirmed" >
-                                              <label class="validation_text errorConfirmPasswordLbl">junior</label>
+                                              <input type="password" maxlength = 255 class="form-control our_textbox_sizing confirmPasswordtxtbox"  placeholder="ConfirmPassword" name="mer_password_confirmed" >
+                                              <label class="validation_text errorConfirmPasswordlbl"></label>
                                               </div>
                                           </div>
                                         
 
 
-
-                                          <button name="sign_up_btn_mer" type="submit" class=" button_style_by_us" style="margin-top:50px; margin-left:180px; width:150px;" href="#">Sign up</i></button>
+                                          <input type='button' value='Sign Up' class='button_style_by_us javascript_submit_btn' style='background-color:#28a745; margin-top:50px; margin-left:180px; width:150px; padding:8px;'>
+                                          <button name="sign_up_btn_mer" type="submit" class=" button_style_by_us submit_btn" style="margin-top:50px; margin-left:180px; width:150px; display:none;" href="#">Sign up</i></button>
                                                   
 
                                   </form>
@@ -447,7 +449,7 @@ height: 230px;
 </html>
 
 <script>
- var firstnametxt = document.querySelector(".firstnametxtbox");
+     var firstnametxt = document.querySelector(".firstnametxtbox");
     var lastnametxt = document.querySelector(".lastnametxtbox");
     var emailtxt = document.querySelector(".emailtxtbox");
     var phonetxt = document.querySelector(".phonetxtbox");
@@ -547,6 +549,19 @@ height: 230px;
       {
         errorPasswordlbl.innerText = ''
         errorConfirmPasswordlbl.innerText = ''
+      }
+
+
+      if(errorFirstNamelbl.innerText.length == 0 && errorLastNamelbl.innerText.length == 0 && errorEmaillbl.innerText.length == 0 && errorPhonelbl.innerText.length == 0 && errorPasswordlbl.innerText.length == 0 && errorConfirmPasswordlbl.innerText.length == 0)
+      {
+
+        //submit button will be here
+
+        var button = document.querySelector('.submit_btn')
+
+         button.click(); 
+
+        console.log(button)
       }
     
 

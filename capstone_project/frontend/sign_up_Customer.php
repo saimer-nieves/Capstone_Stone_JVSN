@@ -318,14 +318,14 @@ height: 230px;
                                           <div class="form-group row">
                                               <label  class="col-sm-3 col-form-label" >FIRSTNAME: </label>
                                               <div class="col-sm-8">
-                                              <input type="text" class="form-control our_textbox_sizing firstnametxtbox"  placeholder="Firstname" name="cus_fname" >
+                                              <input type="text" maxlength = 15 class="form-control our_textbox_sizing firstnametxtbox"  placeholder="Firstname" name="cus_fname" >
                                               <label class='validation_text errorFirstNamelbl' style='color:red;'></label>
                                               </div>
                                           </div>
                                           <div class="form-group row">
                                               <label  class="col-sm-3 col-form-label" >Lastname: </label>
                                               <div class="col-sm-8">
-                                              <input type="text" class="form-control our_textbox_sizing lastnametxtbox"  placeholder="Lastname" name="cus_lname" >
+                                              <input type="text" maxlength = 15 class="form-control our_textbox_sizing lastnametxtbox"  placeholder="Lastname" name="cus_lname" >
                                               <label class='validation_text errorLastNamelbl'   style='color:red;'></label>
                                               </div>
                                           </div>
@@ -341,7 +341,7 @@ height: 230px;
                                           <div class="form-group row">
                                               <label  class="col-sm-3 col-form-label" >Phone: </label>
                                               <div class="col-sm-8">
-                                              <input type="phone" class="form-control our_textbox_sizing phonetxtbox"  placeholder="Phone"  name="cus_phone" >
+                                              <input type="phone" maxlength = 12 class="form-control our_textbox_sizing phonetxtbox"  placeholder="Phone"  name="cus_phone" >
                                               <label class='validation_text errorPhonelbl'   style='color:red;'></label>
                                               </div>
                                           </div>
