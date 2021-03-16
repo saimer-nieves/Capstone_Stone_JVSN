@@ -10,6 +10,7 @@ include "../Model/model_promotions.php";
 include "../Model/model_subscriptions.php";
 
 $all_manual_stores = get_all_admin_stores(0);
+$all_created_stores = get_all_stores(0);
 
 
 
@@ -354,6 +355,206 @@ position:absolute;
 }
 
 
+.app-coverbtn
+{
+    position: absolute;
+  
+    width: 50px;
+    height: 50px;
+    margin:0px;
+    background-color: .fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 8px .feeeed;
+    overflow: hidden;
+    z-index:9999;
+}
+
+.checkboxbtn
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    z-index: 3;
+    background-color:red;
+}
+
+.bin-iconbtn
+{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    width: 42px;
+    height: 58px;
+    margin: -29px auto 0 auto;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.lidbtn
+{
+    position: relative;
+    width: 50px;
+    height: 4px;
+    left: -4px;
+    border-radius: 4px;
+}
+
+.lidbtn:before
+{
+    content: '';
+    position: absolute;
+    top: -4px;
+    right: 0;
+    left: 0;
+    width: 10px;
+    height: 6px;
+    margin: 0 auto;
+    border-radius: 10px 10px 0 0;
+}
+
+.boxbtn
+{
+    position: relative;
+    height: 52px;
+    margin-top: 2px;
+    border-radius: 0 0 8px 8px;
+  
+}
+
+.box-innerbtn
+{
+    position: relative;
+    top: 4px;
+    width: 34px;
+    height: 44px;
+    margin: 0 auto;
+    background-color: .fff;
+    border-radius: 0 0 5px 5px;
+}
+
+.bin-linesbtn
+{
+    position: relative;
+    top: 7px;
+    margin: 0 auto;
+}
+
+.bin-linesbtn, .bin-linesbtn:before, .bin-linesbtn:after
+{
+    width: 3px;
+    height: 30px;
+    border-radius: 4px;
+}
+
+.bin-linesbtn:before, .bin-linesbtn:after
+{
+    content: '';
+    position: absolute;
+}
+
+.bin-linesbtn:before
+{
+    left: -10px;
+}
+
+.bin-linesbtn:after
+{
+    left: 10px;
+}
+
+.layerbtn
+{
+    position: absolute;
+    right: -0;
+
+    width: 0;
+    height: 0;
+    background-image: url('../images/minus_unsub.png');
+    background-size:50px;
+    border-radius: 50%;
+    transition: 0.25s ease all;
+    
+}
+
+.lidbtn, .lidbtn:before, .boxbtn, .bin-linesbtn, .bin-linesbtn:before, .bin-linesbtn:after
+{
+    background-color: .F44336;
+    transition: 0.2s ease background-color;
+}
+
+.checkboxbtn:checked ~ .bin-iconbtn .lidbtn, .checkboxbtn:checked ~ .bin-iconbtn .lidbtn:before, .checkboxbtn:checked ~ .bin-iconbtn .boxbtn, .checkboxbtn:checked ~ .bin-icon .box-innerbtn
+{
+    background-color: .fff;
+}
+
+.checkboxbtn:checked ~ .bin-iconbtn .bin-linesbtn, .checkboxbtn:checked ~ .bin-iconbtn .bin-linesbtn:before, .checkboxbtn:checked ~ .bin-iconbtn .bin-linesbtn:after
+{
+    background-color: .03A9F4;
+}
+
+.checkboxbtn:checked + .bin-iconbtn .boxbtn
+{
+    animation: shake 0.2s ease 0.1s;
+}
+
+.checkboxbtn:checked + .bin-iconbtn .lidbtn
+{
+    animation: lift-up 0.8s ease 0.1s, shake_u 0.8s ease 0.1s, shake_l 0.2s ease 0.8s;
+}
+
+.checkboxbtn:checked ~ .layerbtn
+{
+    width: 50px;
+    height: 60px;
+}
+
+@keyframes shake
+{
+    0%{  transform: rotateZ(3deg); }
+    25%{  transform: rotateZ(0);}
+    75%{ transform: rotateZ(-3deg); }
+    100%{ transform: rotateZ(0); }
+}
+
+@keyframes lift-up
+{
+    0%{ top:0; }
+    50%{ top:-35px;}
+    100%{ top:0; }
+}
+
+@keyframes shake_u
+{
+    0%{ transform: rotateZ(0); }
+    25%{ transform:rotateZ(-15deg); }
+    50%{ transform:rotateZ(0deg); }
+    75%{ transform:rotateZ(15deg); }
+    100%{ transform:rotateZ(0); }
+}
+
+@keyframes shake_l
+{
+    0%{ transform:rotateZ(0); }
+    80%{ transform:rotateZ(3deg); }
+    90%{ transform:rotateZ(-3deg); }
+    100%{ transform:rotateZ(0); }
+}
+
+.unsub_content
+{
+
+}
+
+.all_created_store_container {
+  margin-top:700px;
+}
 
   </style>
 </head>
@@ -585,7 +786,7 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
     <?php if( $index_num < 8 ):?>
         var all_container1 = document.querySelector(".all_store_container0")
         all_container = all_container1
-        all_container.innerHTML += " <div class='unique_store_OUTER'> <div class='unique_store uniqueStore<?php echo $index_num;?>  unique_logo_display' style='background-image:url(../images/<?php echo $row['store_img_logo'];?>); ' ></div> <div class='store_info_box store_info_box<?php echo $index_num;?> text_info<?php echo $index_num;?>'> Saimer</div> </div> "
+        all_container.innerHTML += " <div class='unique_store_OUTER'> <div class='unique_store uniqueStore<?php echo $index_num;?>  unique_logo_display' style='background-image:url(../images/<?php echo $row['store_img_logo'];?>); ' ></div> <div class='store_info_box store_info_box<?php echo $index_num;?> text_info<?php echo $index_num;?>'> <input type='text' class='pressed_btn_txt pressed_btn_txt<?php echo $index_num;?>' value='0'> <div class='subscribe_outershell subscribe_outershell<?php echo $index_num;?>'> <div class='app-coverbtn app-coverbtn<?php echo $index_num;?>'> <div class='unsub_content unsub_content<?php echo $index_num;?>'> <input type='checkbox' class='checkboxbtn checkboxbtn<?php echo $index_num;?>'> <img src='../images/subscribe_plus.png' alt='plus' class ='plus_pic' style='position:absolute; height:50px;'> <div class='layerbtn layerbtn<?php echo $index_num;?>'></div> </div></div></div></div> </div> "
 
       <?php endif;?>
 
@@ -593,7 +794,7 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
     <?php if( $index_num < 16 &&  $index_num >= 8):?>
       var all_container2 = document.querySelector(".all_store_container1")
         all_container = all_container2
-        all_container.innerHTML += " <div class='unique_store_OUTER'> <div class='unique_store uniqueStore<?php echo $index_num;?>  unique_logo_display'  style='background-image:url(../images/<?php echo $row['store_img_logo'];?>); ' ></div> <div class='store_info_box store_info_box<?php echo $index_num;?> text_info<?php echo $index_num;?>'> Saimer</div> </div> "
+        all_container.innerHTML += " <div class='unique_store_OUTER'> <div class='unique_store uniqueStore<?php echo $index_num;?>  unique_logo_display' style='background-image:url(../images/<?php echo $row['store_img_logo'];?>); ' ></div> <div class='store_info_box store_info_box<?php echo $index_num;?> text_info<?php echo $index_num;?>'> <input type='text' class='pressed_btn_txt pressed_btn_txt<?php echo $index_num;?>' value='0'> <div class='subscribe_outershell subscribe_outershell<?php echo $index_num;?>'> <div class='app-coverbtn app-coverbtn<?php echo $index_num;?>'> <div class='unsub_content unsub_content<?php echo $index_num;?>'> <input type='checkbox' class='checkboxbtn checkboxbtn<?php echo $index_num;?>'> <img src='../images/subscribe_plus.png' alt='plus' class ='plus_pic' style='position:absolute; height:50px;'> <div class='layerbtn layerbtn<?php echo $index_num;?>'></div> </div></div></div></div> </div> "
 
     <?php endif;?>
      
@@ -617,6 +818,17 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
 
 
 
+
+
+
+
+
+
+
+
+
+   
+
     <?php  $z_index_num--;?>
     <?php  $index_num++;?>
 
@@ -633,31 +845,35 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
 <?php  $created_index_num = 0; ?>
 <?php  $created_store_container = 0; ?>
 <?php  $created_z_index_num = 1000;?>
-
+<?php $box_sizing = 420;?>
 
 
   
-<?php  foreach($all_manual_stores as $row) : ?>
+<?php  foreach($all_created_stores as $row) : ?>
     
         var created_all_container1 = document.querySelector(".all_created_store_container")
-       
-        created_all_container1.innerHTML += " <div class='unique_store_OUTER'> <div class='unique_store uniqueStore<?php echo $index_num;?>  unique_logo_display' style='background-image:url(../images/<?php echo $row['store_img_logo'];?>); ' ></div> <div class='store_info_box store_info_box<?php echo $index_num;?> text_info<?php echo $index_num;?>'> Saimer</div> </div> "
+        created_all_container1.style.height= '<?php echo $box_sizing;?>px'
+      //  all_container.innerHTML += " <div class='unique_store_OUTER'> <div class='unique_store uniqueStore<?php echo $index_num;?>  unique_logo_display' style='background-image:url(../images/<?php echo $row['store_img_logo'];?>); ' ></div> <div class='store_info_box store_info_box<?php echo $index_num;?> text_info<?php echo $index_num;?>'> </div> </div> "
+
+        created_all_container1.innerHTML += " <div class='unique_store_OUTER'> <div class='unique_store created_uniqueStore<?php echo $created_index_num;?>  unique_logo_display' style='background-image:url(../Backend/uploaded_files/<?php echo $row['store_img_logo'];?>); ' ></div> <div class='store_info_box created_store_info_box<?php echo $created_index_num;?> created_text_info<?php echo $created_index_num;?>'> <input type='text' class='pressed_btn_txt created_pressed_btn_txt<?php echo $created_index_num;?>' value='0'> <div class='subscribe_outershell subscribe_outershell<?php echo $created_index_num;?>'> <div class='app-coverbtn created_app-coverbtn<?php echo $created_index_num;?>'> <div class='unsub_content created_unsub_content<?php echo $created_index_num;?>'> <input type='checkbox' class='checkboxbtn checkboxbtn<?php echo $created_index_num;?>'> <img src='../images/subscribe_plus.png' alt='plus' class ='plus_pic' style='position:absolute; height:50px;'> <div class='layerbtn layerbtn<?php echo $created_index_num;?>'></div> </div></div></div></div> </div> "
+                                        
 
  
 
 
-      var created_box =  document.querySelector(".uniqueStore<?php echo $created_index_num;?>");
+      var created_box =  document.querySelector(".created_uniqueStore<?php echo $created_index_num;?>");
       created_box.style.zIndex = "<?php echo $created_z_index_num;?>";
 
       <?php  $created_z_index_num--;?>
 
-      var created_info_box =  document.querySelector(".store_info_box<?php echo $created_index_num;?>");
+      var created_info_box =  document.querySelector(".created_store_info_box<?php echo $created_index_num;?>");
       created_info_box.style.zIndex = "<?php echo $created_z_index_num;?>";
 
 
 
     <?php  $created_z_index_num--;?>
     <?php  $created_index_num++;?>
+    <?php $box_sizing = $box_sizing + 50;?>
 
     <?php endforeach;?>
 
@@ -700,11 +916,12 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
 
 
 
-<?php  $index_num_for = 0; ;?>
-<?php  foreach($all_manual_stores as $row) : ?>
 
 
 <script>
+
+<?php  $index_num_for = 0; ;?>
+<?php  foreach($all_manual_stores as $row) : ?>
 
 var store_info_box = document.querySelector(".store_info_box<?php echo $index_num_for;?>")
 var text_info = document.querySelector(".text_info0")
@@ -724,72 +941,91 @@ var text_info = document.querySelector(".text_info0")
                     {
                       easing: 'linear',
                       duration: 200,
-                      complete: console.log("completed completed")
+                      complete: console.log("completed inside store logo")
 
                     }
                   );
                 
                 
 
-      } ,
-      
-      
-          function(e) {
-
-      console.log("saimer right")
-      store_info_box.style.display = "block"
-                e.preventDefault();
-                $('.store_info_box<?php echo $index_num_for;?>').animate(
-                  {
-                  
-                    'margin-left' : '0' 
-                  },
-                  {
-                    easing: 'linear',
-                    duration: 200,
-                    complete: console.log("completed completed")
-
-                  }
-                );
-              
-              
-
       } 
-      
+
       );
 
+      $('.store_info_box<?php echo $index_num_for;?>').hover(function(e) {
+
+      console.log("saimer inside info from info")
+      store_info_box.style.display = "block"
+
+              
+              
+
+      } ,
+
+
+function(e) {
+
+
+console.log("saimer right")
+store_info_box.style.display = "block"
+
+
+          e.preventDefault();
+          $('.store_info_box<?php echo $index_num_for;?>').animate(
+            {
+              'margin-left' : '0px' ,
+            
+              
+            },
+            {
+              easing: 'linear',
+              duration: 200,
+              complete: console.log("completed inside info")
+
+            }
+          );
+        
+        
+
+} 
+
+
+);
 
 
 
+
+      <?php  $index_num_for++;?>
+<?php endforeach;?>
 
 
 </script>
 
 
-<?php  $index_num_for++;?>
-<?php endforeach;?>
 
   
       
   
 
 
-<?php  $created_index_num_for = 0; ;?>
-<?php  foreach($all_manual_stores as $row) : ?>
+<?php  $created_index_num_for = 0;?>
+
+
+<?php  foreach($all_created_stores as $row) : ?>
 
 
 <script>
 
-var $created_store_info_box = document.querySelector(".store_info_box<?php echo $$created_index_num_for;?>")
-var $created_text_info = document.querySelector(".text_info0")
-      $('.uniqueStore<?php echo $$created_index_num_for;?>').hover(function(e) {
+var created_store_info_box = document.querySelector(".created_store_info_box<?php echo $created_index_num_for;?>")
+var created_text_info = document.querySelector(".created_text_info<?php echo $created_index_num_for;?>")
+      $('.created_uniqueStore<?php echo $created_index_num_for;?>').hover(function(e) {
 
-        console.log("saimer right")
-        $created_store_info_box.style.display = "block"
+        console.log("saimer on the new store")
+        created_store_info_box.style.display = "block"
       
 
                   e.preventDefault();
-                  $('.store_info_box<?php echo $$created_index_num_for;?>').animate(
+                  $('.created_store_info_box<?php echo $created_index_num_for;?>').animate(
                     {
                       'margin-left' : '252px' ,
                     
@@ -798,22 +1034,52 @@ var $created_text_info = document.querySelector(".text_info0")
                     {
                       easing: 'linear',
                       duration: 200,
-                      complete: console.log("completed completed")
+                      complete: console.log("completed inside store")
 
                     }
                   );
                 
                 
 
-      } ,
+      } 
+      );
+
+
+//--------------------------------
+$('.created_store_info_box<?php echo $created_index_num_for;?>').hover(function(e) {
+
+console.log("saimer on the new store")
+created_store_info_box.style.display = "block"
+
+
+          e.preventDefault();
+          $('.created_store_info_box<?php echo $created_index_num_for;?>').animate(
+            {
+              'margin-left' : '252px' ,
+            
+              
+            },
+            {
+              easing: 'linear',
+              duration: 200,
+              complete: console.log("completed inside info")
+
+            }
+          );
+        
+        
+
+        }
+
+        ,
       
       
           function(e) {
 
       console.log("saimer right")
-      $created_store_info_box.style.display = "block"
+      created_store_info_box.style.display = "block"
                 e.preventDefault();
-                $('.store_info_box<?php echo $$created_index_num_for;?>').animate(
+                $('.created_store_info_box<?php echo $created_index_num_for;?>').animate(
                   {
                   
                     'margin-left' : '0' 
@@ -830,7 +1096,10 @@ var $created_text_info = document.querySelector(".text_info0")
 
       } 
       
-      );
+);
+
+
+
 
 
 
@@ -840,7 +1109,7 @@ var $created_text_info = document.querySelector(".text_info0")
 </script>
 
 
-<?php  $$created_index_num_for++;?>
+<?php  $created_index_num_for++;?>
 <?php endforeach;?>
 
   
@@ -1098,8 +1367,137 @@ console.log("saimer")
 <script>
 var container = document.querySelector('.here_container')
 
-<?php foreach($all_manual_stores as $row):?>
+
     //container.innerHTML += " <div class='carousel-inner' role='listbox'> <!-- Slide One - Set the background image for this slide in the line below --> <div class='carousel-item active' style='background-image: url('https://source.unsplash.com/LAaSoL0LrYs/1920x1080')'> <div class='carousel-caption d-none d-md-block'> <h2 class='display-4'>First Slide</h2> <p class='lead'>This is a description for the first slide.</p> </div> </div>"
-<?php endforeach;?>
+
 
 </script>
+
+
+  
+<?php  $our_index_num = 0; ?>
+<?php  $store_container = 0; ?>
+<?php  $z_index_num = 1000;?>
+
+
+<?php foreach($all_manual_stores as $row):?>
+<script>
+
+
+
+var checkbox<?php echo $our_index_num;?>  = document.querySelector(".app-coverbtn<?php echo $our_index_num;?> ");
+console.log(checkbox<?php echo $our_index_num;?> )
+var pressed_btn_txt<?php echo $our_index_num;?>  = document.querySelector(".pressed_btn_txt<?php echo $our_index_num;?> ");
+console.log(pressed_btn_txt<?php echo $our_index_num;?> )
+var unsub_content<?php echo $our_index_num;?>  = document.querySelector(".unsub_content<?php echo $our_index_num;?> ");
+var plus_pic<?php echo $our_index_num;?>  = document.querySelector(".plus_pic<?php echo $our_index_num;?> ");
+
+
+  checkbox<?php echo $our_index_num;?>.addEventListener('click', function() {
+
+    if(pressed_btn_txt<?php echo $our_index_num;?>.value == 0)
+    {
+   
+      pressed_btn_txt<?php echo $our_index_num;?>.value = 1
+      console.log('here1')
+      unsub_content<?php echo $our_index_num;?>.style.display = 'block'
+      return
+    }
+
+    if(pressed_btn_txt<?php echo $our_index_num;?>.value == 1)
+    {
+   
+      pressed_btn_txt<?php echo $our_index_num;?>.value = 0
+      console.log('here2')
+   
+
+    }
+   
+   
+
+});
+
+
+
+
+
+</script>
+
+<?php  $our_index_num++;?>
+
+<?php endforeach;?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php  $ourcreated__index_num = 0; ?>
+<?php  $store_container = 0; ?>
+<?php  $z_index_num = 1000;?>
+
+
+<?php foreach($all_manual_stores as $row):?>
+<script>
+
+
+
+var created_checkbox<?php echo $ourcreated__index_num;?>  = document.querySelector(".created_app-coverbtn<?php echo $ourcreated__index_num;?> ");
+
+var created_pressed_btn_txt<?php echo $ourcreated__index_num;?>  = document.querySelector(".created_pressed_btn_txt<?php echo $ourcreated__index_num;?> ");
+
+var created_unsub_content<?php echo $ourcreated__index_num;?>  = document.querySelector(".created_unsub_content<?php echo $ourcreated__index_num;?> ");
+var plus_pic<?php echo $ourcreated__index_num;?>  = document.querySelector(".plus_pic<?php echo $ourcreated__index_num;?> ");
+
+
+created_checkbox<?php echo $ourcreated__index_num;?>.addEventListener('click', function() {
+
+    if(created_pressed_btn_txt<?php echo $ourcreated__index_num;?>.value == 0)
+    {
+   
+      created_pressed_btn_txt<?php echo $ourcreated__index_num;?>.value = 1
+      console.log('here1')
+      created_unsub_content<?php echo $ourcreated__index_num;?>.style.display = 'block'
+      return
+    }
+
+    if(created_pressed_btn_txt<?php echo $ourcreated__index_num;?>.value == 1)
+    {
+   
+      created_pressed_btn_txt<?php echo $ourcreated__index_num;?>.value = 0
+      console.log('here2')
+   
+
+    }
+   
+   
+
+});
+
+
+
+
+
+</script>
+
+<?php  $ourcreated__index_num++;?>
+
+<?php endforeach;?>
