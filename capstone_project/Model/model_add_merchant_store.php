@@ -167,7 +167,24 @@ function get_all_admin_stores($admin_store_ID_minimum) {
 
 }
 
+function get_all_stores($store_ID) {
+    global $db;
+
+    $results = [];
+    
+    $stmt = $db->prepare("SELECT store_ID, store_name, store_category, store_day_created, store_img_logo, mer_ID FROM merchant_stores_tbl WHERE store_ID > :store_ID");
+
+    $stmt->bindValue(":store_ID", $store_ID);
+
+    if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);   
+    }
+
+    return $results;
+
+}
+
 /*
-$mee = get_all_admin_stores(0);
+$mee = get_all_stores(0);
 var_dump($mee);
 exit;*/

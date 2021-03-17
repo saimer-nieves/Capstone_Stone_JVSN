@@ -385,6 +385,7 @@ box-shadow: -10px 15px 25px black;
 
  <!-- ======= Header ======= -->
  
+
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
 
@@ -405,7 +406,7 @@ box-shadow: -10px 15px 25px black;
   
 -->
         <div id="all_store_logos">
-
+        <h3 class='title'>Promotion at Ease</h3>
             <div class="angle_form " id="store1"> <img src="../images/jc_2.jpg" style="width:380px; Height:220px;"></div>
             <div class="angle_form" id="store2"> <img src="../images/ae_logo.png" style="width:350px; Height:220px;"></div>
             <div class="angle_form" id="store3"> <img src="../images/gamestop_logo.png" style="width:380px;height:220px;"></div>
