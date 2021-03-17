@@ -133,6 +133,9 @@ $answer_all_stores_array = get_searched_stores($store_name_searched);
 
       
     </div>
+    <?php
+        include "../includes/footer.php";
+    ?>
 </body>
 </html>
 <?php foreach ($answer_all_stores_array as $col):?>                  

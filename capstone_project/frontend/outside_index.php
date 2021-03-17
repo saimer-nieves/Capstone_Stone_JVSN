@@ -364,6 +364,20 @@ box-shadow: -10px 15px 25px black;
     height:60px;
     margin-bottom:10px;
 }
+
+.info_text{
+  background-color: red;
+  width: 500px;
+  height: 400px;
+  margin-left: 200px;
+  position: absolute;
+  float: left;
+  margin-left: 900px;
+  margin-top: 30px;
+}
+
+
+
   </style>
 </head>
 
@@ -430,12 +444,15 @@ Luisa Martinez
 
 
 
- 
+
   </section><!-- End Hero -->
   <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100" style="position:absolute; right:740px; top:698px;">
             
-            <img src="../images/front_index_pic.PNG" style="width:700px; height:400px; margin-top:80px; margin-left:20px;">
-
+            <img src="../images/front_index_pic.PNG" style="width:700px; height:400px; margin-top:30px; margin-left:20px; float:left;">
+<div  class="info_text">
+  <h4><center><b>About us</b></center></h4>
+  <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+</div>
         
       </div>
   <div class="divider"></div>
@@ -451,7 +468,7 @@ Luisa Martinez
 
       </div>
     </section><!-- End About Section -->
-    <div class="divider"></div>
+    
   <main id="main"  onmouseover="mouseOver1()">
 
    
@@ -463,37 +480,9 @@ Luisa Martinez
 
   </main><!-- End #main -->
   
-  <footer id="footer">
-
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-
-         
-
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h3 style="font-family:arial black;">ORIGIN</h3>
-            <h7 style="font-family:arial black;">99 NEIT ST ,
-PROVIDENCE , RI 02860
-USA</h7>
-           
-          </div>
-
-         
-         
-
-        </div>
-      </div>
-    </div>
-
-    <div class="container d-md-flex py-4">
-
-      <div class="mr-md-auto text-center text-md-left">
-      
-      </div>
-     
-    </div>
-  </footer><!-- End Footer -->
+  <?php
+    include "../includes/footer.php";
+  ?>
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
