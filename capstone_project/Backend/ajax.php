@@ -1,16 +1,27 @@
 <?php
 session_start(); 
-include '../Model/model_add_merchant_store.php';
+include '../Model/model_subscriptions.php';
 
 
+// if(isset($_POST['data1'])&& isset($_POST['data2')&&isset($_POST['data3'])) {
+    
+    /*
+    Author: Javed Ur Rehman
+    Website: https://www.allphptricks.com
+    */
+    
 
-$testing_this = add_admin_stores('jess Collection', 'Clothing', date('Y-m-d'), 'cured_collection_logo.jpg');
-
+$name = $_POST['name'];
+ 
+  
+    
+  
+$testing_this = $test = add_subscriber($name, date("Y-m-d"), null,$name, 5);
 
 
 // if ( ($_POST['name']!="") && ($_POST['email']!="")){
  
-// $name = $_POST['name'];
+// 
 // $email = $_POST['email'];
 // $message = $_POST['message'];
 

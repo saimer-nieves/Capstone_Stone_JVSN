@@ -51,7 +51,8 @@ $all_created_stores = get_all_stores(0);
   <link href="../Backend/assets/vendor/owl.carousel/../Backend/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="../Backend/assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   <!-- Template Main CSS File -->
   <link href="../Backend/assets/css/style.css" rel="stylesheet">
 
@@ -553,9 +554,32 @@ position:absolute;
 }
 
 .all_created_store_container {
-  margin-top:700px;
+  margin-top:900px;
 }
 
+
+.pressed_btn_txt 
+{
+  display:none;
+}
+
+
+.name_box_txt{
+  display:none;
+}
+
+
+
+.store_ID
+{
+  display:none;
+}
+
+
+.button_son 
+{
+  display:none;
+}
   </style>
 </head>
 
@@ -737,7 +761,7 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
 
     
 
-    <div class="all_created_store_container " style='width:1200px; background-color:red;'>
+    <div class="all_created_store_container " style='width:1200px; background-color:none;'>
 
 
  
@@ -757,6 +781,37 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
 </div>
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </body>
@@ -786,7 +841,7 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
     <?php if( $index_num < 8 ):?>
         var all_container1 = document.querySelector(".all_store_container0")
         all_container = all_container1
-        all_container.innerHTML += " <div class='unique_store_OUTER'> <div class='unique_store uniqueStore<?php echo $index_num;?>  unique_logo_display' style='background-image:url(../images/<?php echo $row['store_img_logo'];?>); ' ></div> <div class='store_info_box store_info_box<?php echo $index_num;?> text_info<?php echo $index_num;?>'> <input type='text' class='pressed_btn_txt pressed_btn_txt<?php echo $index_num;?>' value='0'> <div class='subscribe_outershell subscribe_outershell<?php echo $index_num;?>'> <div class='app-coverbtn app-coverbtn<?php echo $index_num;?>'> <div class='unsub_content unsub_content<?php echo $index_num;?>'> <input type='checkbox' class='checkboxbtn checkboxbtn<?php echo $index_num;?>'> <img src='../images/subscribe_plus.png' alt='plus' class ='plus_pic' style='position:absolute; height:50px;'> <div class='layerbtn layerbtn<?php echo $index_num;?>'></div> </div></div></div></div> </div> "
+        all_container.innerHTML += " <div class='unique_store_OUTER'> <div class='unique_store uniqueStore<?php echo $index_num;?>  unique_logo_display' style='background-image:url(../images/<?php echo $row['store_img_logo'];?>); ' ></div> <div class='store_info_box store_info_box<?php echo $index_num;?> text_info<?php echo $index_num;?>'><form name='ContactForm' method='post' action=''> <div class='form-group'> <label for='name' style='display:none;'>Name:</label> <input type='text' style='display:none;' class='form-control name_box_txt'> </div> <button type='submit'  style='display:none;'  class='btn button_son btn-default<?php echo $index_num;?>'>Submit</button> <input type='text' class='pressed_btn_txt pressed_btn_txt<?php echo $index_num;?>  name<?php echo $index_num;?>' value='0'>  <input type='text' class='store_ID admin_store_ID<?php echo $index_num;?>' value=<?php echo $row['admin_store_ID'];?> > <div class='subscribe_outershell subscribe_outershell<?php echo $index_num;?>'> <div class='app-coverbtn app-coverbtn<?php echo $index_num;?>'> <div class='unsub_content unsub_content<?php echo $index_num;?>'> <input type='checkbox' class='checkboxbtn checkboxbtn<?php echo $index_num;?>'> <img src='../images/subscribe_plus.png' alt='plus' class ='plus_pic' style='position:absolute; height:50px;'> <div class='layerbtn layerbtn<?php echo $index_num;?>'></div> </div></div></div></form></div> </div> "
 
       <?php endif;?>
 
@@ -794,7 +849,7 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
     <?php if( $index_num < 16 &&  $index_num >= 8):?>
       var all_container2 = document.querySelector(".all_store_container1")
         all_container = all_container2
-        all_container.innerHTML += " <div class='unique_store_OUTER'> <div class='unique_store uniqueStore<?php echo $index_num;?>  unique_logo_display' style='background-image:url(../images/<?php echo $row['store_img_logo'];?>); ' ></div> <div class='store_info_box store_info_box<?php echo $index_num;?> text_info<?php echo $index_num;?>'> <input type='text' class='pressed_btn_txt pressed_btn_txt<?php echo $index_num;?>' value='0'> <div class='subscribe_outershell subscribe_outershell<?php echo $index_num;?>'> <div class='app-coverbtn app-coverbtn<?php echo $index_num;?>'> <div class='unsub_content unsub_content<?php echo $index_num;?>'> <input type='checkbox' class='checkboxbtn checkboxbtn<?php echo $index_num;?>'> <img src='../images/subscribe_plus.png' alt='plus' class ='plus_pic' style='position:absolute; height:50px;'> <div class='layerbtn layerbtn<?php echo $index_num;?>'></div> </div></div></div></div> </div> "
+        all_container.innerHTML += " <div class='unique_store_OUTER'> <div class='unique_store uniqueStore<?php echo $index_num;?>  unique_logo_display' style='background-image:url(../images/<?php echo $row['store_img_logo'];?>); ' ></div> <div class='store_info_box store_info_box<?php echo $index_num;?> text_info<?php echo $index_num;?>'><form name='ContactForm' method='post' action=''> <div class='form-group'> <label style='display:none;' for='name'>Name:</label> <input style='display:none;' type='text' class='form-control name_box_txt'> </div> <button type='submit'  style='display:none;'  class='btn button_son btn-default<?php echo $index_num;?>'>Submit</button> <input type='text' class='pressed_btn_txt pressed_btn_txt<?php echo $index_num;?>  name<?php echo $index_num;?>' value='0'>  <input type='text' class='store_ID admin_store_ID<?php echo $index_num;?>' value=<?php echo $row['admin_store_ID'];?> > <div class='subscribe_outershell subscribe_outershell<?php echo $index_num;?>'> <div class='app-coverbtn app-coverbtn<?php echo $index_num;?>'> <div class='unsub_content unsub_content<?php echo $index_num;?>'> <input type='checkbox' class='checkboxbtn checkboxbtn<?php echo $index_num;?>'> <img src='../images/subscribe_plus.png' alt='plus' class ='plus_pic' style='position:absolute; height:50px;'> <div class='layerbtn layerbtn<?php echo $index_num;?>'></div> </div></div></div></form></div> </div> "
 
     <?php endif;?>
      
@@ -845,7 +900,7 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
 <?php  $created_index_num = 0; ?>
 <?php  $created_store_container = 0; ?>
 <?php  $created_z_index_num = 1000;?>
-<?php $box_sizing = 420;?>
+<?php $box_sizing = 820;?>
 
 
   
@@ -1500,4 +1555,62 @@ created_checkbox<?php echo $ourcreated__index_num;?>.addEventListener('click', f
 
 <?php  $ourcreated__index_num++;?>
 
+<?php endforeach;?>
+
+
+
+
+
+<?php  $ajax_index_num = 0; ?>
+
+
+
+
+  
+<?php  foreach($all_manual_stores as $row) : ?>
+
+<script>
+$(document).ready(function() {
+	var delay = 2000;
+	$('.btn-default<?php echo $ajax_index_num;?>').click(function(e){
+		e.preventDefault();
+    console.log('you ajax me')
+		var name<?php echo $ajax_index_num;?> = $('.name<?php echo $ajax_index_num;?>').val();
+		var admin<?php echo $ajax_index_num;?> = $('.admin_store_ID<?php echo $ajax_index_num;?>').val();
+
+    console.log('inside ajax')
+    console.log(admin<?php echo $ajax_index_num;?>)
+    
+		
+					
+			$.ajax
+			({
+             type: "POST",
+			 url: "ajax.php",
+       data: 'name=' + 'saimer' ,
+            
+			 beforeSend: function() {
+		
+			 },		 
+             success: function(data)
+			 {
+				 setTimeout(function() {
+                  
+                }, delay);
+			
+             }
+			 });
+		
+	});
+
+			
+});
+
+//Email validation Function	
+// function isValidEmailAddress(emailAddress) {
+//     var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+//     return pattern.test(emailAddress);
+// };
+</script>
+<?php  $ajax_index_num++; ?>
 <?php endforeach;?>
