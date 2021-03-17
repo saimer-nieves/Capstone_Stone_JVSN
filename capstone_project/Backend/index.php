@@ -298,12 +298,12 @@ position:absolute;
 .next_slide , .next_slide2
 {
   background-color:green;
-  height:100px;
-  width:100px;
+  height:60px;
+  width:50px;
   border-radius:50px;
   position:absolute;
   margin-top:270px;
-  margin-left:1450px;
+  margin-left:1250px;
   z-index:1001;
 }
 
@@ -311,8 +311,8 @@ position:absolute;
 .prev_slide , .prev_slide2
 {
   background-color:blue;
-  height:100px;
-  width:100px;
+  height:50px;
+  width:50px;
   border-radius:50px;
   position:absolute;
   margin-top:270px;

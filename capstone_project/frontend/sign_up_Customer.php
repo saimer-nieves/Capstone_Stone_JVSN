@@ -234,7 +234,7 @@ height: 230px;
     </style>
 </head>
 
-<body style="background-color:#E6FFFA ;" >
+<body style="background-color:#53C68C ;" >
 	<div style="background-color:#E6FFFA ">
 	   
     <img src="../images/cus_display2.png" alt="cus_login_photo" id="cus_photo_clean">

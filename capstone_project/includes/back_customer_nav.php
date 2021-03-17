@@ -150,7 +150,7 @@ body
   </style>
 </head>
 
-<aside class="sidebar">
+<aside class="sidebar" style='z-index:9999;'>
       <div class="toggle">
         <a href="#" class="burger js-menu-toggle" data-toggle="collapse" data-target="#main-navbar">
               <span></span>
@@ -160,30 +160,24 @@ body
 
         <div class="profile">
           <!--<img src="images/person_profile.jpg" alt="Image" class="img-fluid">-->
-          <h3 class="name">Sam Nieves</h3>
-          <span class="country">sam@gmail.com</span>
+          <h3 class="name">michael jordan</h3>
+        
         </div>
 
         <div class="counter d-flex justify-content-center">
           <!-- <div class="row justify-content-center"> -->
+         
             <div class="col">
-              <strong class="number">892</strong>
-              <span class="number-label">Stores</span>
+              <strong class="number">7</strong>
+              <span class="number-label">Subscriptions</span>
             </div>
-            <div class="col">
-              <strong class="number">22.5k</strong>
-              <span class="number-label">Subscribers</span>
-            </div>
-            <div class="col">
-              <strong class="number">150</strong>
-              <span class="number-label">Days</span>
-            </div>
+          
           <!-- </div> -->
         </div>
         
         <div class="nav-menu">
           <ul>
-            <li class="active"><a href="merchant_main_panel.php"><span class="icon-home mr-3"></span>Main Subscriptions</a></li>
+            <li class="active"><a href="customer_profile.php"><span class="icon-home mr-3"></span>Main Subscriptions</a></li>
             <li><a href="../Backend/index.php"><span class="icon-search2 mr-3"></span>Search Subscriptions</a></li>
             <li><a href="../Backend/ActualCusProfile.php"><span class="icon-notifications mr-3"></span>Profile</a></li>
             <!--<li><a href="#"><span class="icon-location-arrow mr-3"></span>Direct</a></li>

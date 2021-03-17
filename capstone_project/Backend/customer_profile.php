@@ -247,6 +247,7 @@ $promotion_btn_num = 0;
 
 .delete_btn_design
 {
+  display:none;
   padding: 7px;
 border: none;
 background: #53C68C;
@@ -265,6 +266,7 @@ font-family: Arial Black, Arial, Helvetica;
 
 .delete_btn_design_unsub
 {
+  display:none;
   padding: 10px;
 border: none;
 background: #FD4141;
@@ -428,7 +430,7 @@ background-size: cover   !important;
 }
 
 .flip-card-front {
-  background-color:#53C68C ;
+  background-color:white ;
   color: black;
 }
 
@@ -1216,7 +1218,7 @@ function myborder_bottom() {
                                 <?php endif;?>
                                 new_promotion_text_div.setAttribute('class','new_store_text_div_promotion') ;
                                 new_store_delete_div.setAttribute("class","new_store_delete_div");
-                                new_promotion_text_div.innerHTML= "<?php echo $col['promotion_type'] ;?>  <br>   <?php echo $col['promotion_title'] ;?> <br>  <?php echo $index_store_number.  $col['store_ID'];?>"
+                                new_promotion_text_div.innerHTML= "<?php echo $col['promotion_title'] ;?> <br>  <?php echo $index_store_number.  $col['store_ID'];?>"
                                 
                                 
                                 btn_form_.appendChild(hidden_input);
@@ -1343,9 +1345,9 @@ $(document).ready(function(){
               
               coupon_template.style.display="none";
               info_template.style.display="none";
-              big_sale_template.style.display="block";
-              center_view_flip.style.display="block";
-              flip_close_div.style.display="block";
+              big_sale_template.style.display="none";
+              center_view_flip.style.display="none";
+              flip_close_div.style.display="none";
 
 
 

@@ -16,24 +16,6 @@ session_start();
  
   //echo $_SESSION["mer_ID"].$_SESSION["mer_fname"] .$_SESSION["mer_lname"] .$_SESSION["mer_email"] .$_SESSION["mer_phone"] ;
 
- $mer_ID= $_SESSION["cus_ID"];
- $mer_fname= $_SESSION["cus_fname"];
- $mer_lname= $_SESSION["cus_lname"];
- $mer_email= $_SESSION["cus_email"];
- $mer_phone= $_SESSION["cus_phone"];
-
-
- $results_array = get_merchant_stores($mer_ID);
- $number_of_stores =  count($results_array);
- $number_of_active_promotions = 0;
- foreach($results_array as $row)
- {
-  $answer = get_promotions_active($row['store_ID']);
-
-  $temp_number = count($answer);
-
-  $number_of_active_promotions = $number_of_active_promotions + $temp_number;
- }
  //var_dump($results_array);
 
 
@@ -97,7 +79,7 @@ session_start();
 
 <?php $index_num = 0;?>
 <?php 
-include "../includes/back_side_nav.php"; // this outputs information and has to be below the header or it wont work
+include "../includes/back_customer_nav.php"; // this outputs information and has to be below the header or it wont work
 
 ?>
 
@@ -438,7 +420,7 @@ height:32px;
                                                 <div class="form-group row" style="margin-top:0px; padding-top:10px;">
                                                     <label  class="col-sm-3 col-form-label our_text_font" style="color:black; font-size:11px;">FIRSTNAME: </label>
                                                     <div class="col-sm-6 our_textbox_sizing">
-                                                    <input type="text" maxlength = 15 class="form-control "  placeholder="Firstname" name="mer_fname" id="username">
+                                                    <input type="text" maxlength = 15 class="form-control " value='michael' placeholder="Firstname" name="mer_fname" id="username">
                                                   
                                                     </div>
                                                 </div>
@@ -447,7 +429,7 @@ height:32px;
                                                 <div class="form-group row" style="margin-top:0px; padding-top:10px;">
                                                     <label  class="col-sm-3 col-form-label our_text_font" style="color:black; font-size:11px;">LASTNAME: </label>
                                                     <div class="col-sm-6 our_textbox_sizing">
-                                                    <input type="text" maxlength = 15 class="form-control "   placeholder="Lastname" name="mer_lname" id="lastname">
+                                                    <input type="text" maxlength = 15 class="form-control "  value='jordan'  placeholder="Lastname" name="mer_lname" id="lastname">
                                                   
                                                     </div>
                                                 </div>
@@ -459,14 +441,14 @@ height:32px;
                                                 <div class="form-group row" style="margin-top:0px; padding-top:50px;">
                                                     <label  class="col-sm-3 col-form-label our_text_font" style="color:black; font-size:11px;">EMAIL: </label>
                                                     <div class="col-sm-6 our_textbox_sizing">
-                                                    <input type="text" class="form-control "  value="<?php echo $mer_email;?>" placeholder="email" name="mer_email" id="username">
+                                                    <input type="text" class="form-control "  value="0000@gmail.com" placeholder="email" name="mer_email" id="username">
                                                   
                                                     </div>
                                                 </div>
                                                 <div class="form-group row" style="margin-top:0px; padding-top:10px;">
                                                     <label  class="col-sm-3 col-form-label our_text_font" style="color:black; font-size:11px;">PHONE: </label>
                                                     <div class="col-sm-6 our_textbox_sizing">
-                                                    <input type="text" maxlength = 12 class="form-control " value="<?php echo $mer_phone;?>"  placeholder="phone" name="mer_phone" id="username">
+                                                    <input type="text" maxlength = 12 class="form-control " value="000-000-0000"  placeholder="phone" name="mer_phone" id="username">
                                                   
                                                     </div>
                                                 </div>
@@ -477,7 +459,7 @@ height:32px;
                                                 <div class="form-group row" style="margin-top:0px; padding-top:10px;">
                                                     <label  class="col-sm-3 col-form-label our_text_font" style="color:black; font-size:11px;">TOTAL SUBSCRIPTIONS: </label>
                                                     <div class="col-sm-6 ">
-                                                    <p class="p_styling">27</p>
+                                                    <p class="p_styling">7</p>
                                                   
                                                   
                                                     </div>
@@ -485,7 +467,7 @@ height:32px;
                                               
                                                 
 
-                                                <button name="update_profile_btn" type="submit" class=" button_style_by_us" href="#" style="width:150px;   margin-left:130px; margin-top:20px;" pb-role="submit">UPDATE PROFILE</button>
+                                                <button name="update_profile_btn" type="submit" class=" button_style_by_us" href="#" style="width:150px;   margin-left:230px; margin-top:20px;" pb-role="submit">UPDATE PROFILE</button>
 
                                                
 		

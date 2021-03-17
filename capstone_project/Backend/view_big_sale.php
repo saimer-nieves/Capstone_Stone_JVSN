@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-$mer_ID= $_SESSION["mer_ID"];
+
 include "../Model/model_add_merchant_store.php";
 include "../Model/model_promotions.php";
 include "../Model/model_products_BIG_SALE.php";
@@ -131,7 +131,7 @@ header("Location:add_products.php?prID=$promotion_ID");
 ?>
 
 <?php 
-include "../includes/back_side_nav.php"; // this outputs information and has to be below the header or it wont work
+include "../includes/back_customer_nav.php"; // this outputs information and has to be below the header or it wont work
 
 ?>
 <!DOCTYPE html>
@@ -1428,7 +1428,7 @@ margin-top:0;
     transition: all 750ms ease;
     left: 0;"> 
    
-    <li style=" height: 100%; float: left;width:1400px; background-color:E6FFFA;   margin-left:200px;"> 
+    <li style=" height: 100%; float: left;width:1400px; background-color:E6FFFA;   margin-left:100px;"> 
            
     
    

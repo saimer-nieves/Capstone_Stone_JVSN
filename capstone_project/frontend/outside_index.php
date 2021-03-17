@@ -2,6 +2,16 @@
 
 include "../includes/header.php";
 
+
+
+if (isset($_POST['redirect_page']) )
+{
+
+  header('Location: sign_up_Customer.php');
+
+}
+
+
 ?>
 
 
@@ -41,7 +51,8 @@ include "../includes/header.php";
   <style>
 
 body
-{}
+{ background-color:#53c68c;}
+#main{background-color:#e6fffa}
 #hero
 {
     background-image:url("../images/main_back2.png");
@@ -387,7 +398,11 @@ box-shadow: -10px 15px 25px black;
   margin-top: 30px;
 }
 
-
+.image_logo_center
+{
+  width:200px;
+  
+}
 
 
   </style>
@@ -418,9 +433,11 @@ box-shadow: -10px 15px 25px black;
   
 -->
         <div id="all_store_logos">
-        <h3 class='title_lbl'>Promotion at Ease</h3>
-        <button name="sign_up_btn_cus" type="submit" class=" bg-success button_style_by_us submit_btn" style=" width:150px; margin-left:50px; text-transform:uppercase; font-size:15px;" href="#"><b>get started<b></i></button>
-                                         
+        <form method="post" action = "sign_up_customer.php">
+            <h3 class='title_lbl'>Promotion at Ease</h3>
+        
+        <button name="sign_up_btn_cus" type="submit" name='redirect_page' class=" bg-success button_style_by_us submit_btn" style=" width:150px; margin-left:50px; text-transform:uppercase; font-size:15px;" href="#"><b>get started<b></i></button>
+        </form>                       
             <div class="angle_form " id="store1"> <img src="../images/jc_2.jpg" style="width:380px; Height:220px;"></div>
             <div class="angle_form" id="store2"> <img src="../images/ae_logo.png" style="width:350px; Height:220px;"></div>
             <div class="angle_form" id="store3"> <img src="../images/gamestop_logo.png" style="width:380px;height:220px;"></div>
@@ -479,6 +496,9 @@ Luisa Martinez
         
           <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left" data-aos-delay="200" style="position:absolute; left:700px;">
          
+
+
+
         </div>
 
       </div>
@@ -488,7 +508,7 @@ Luisa Martinez
 
    
    
-
+      
 
     
 
