@@ -364,6 +364,16 @@ box-shadow: -10px 15px 25px black;
     height:60px;
     margin-bottom:10px;
 }
+
+
+.title_lbl
+{
+  font-family: Arial Black, Arial, Helvetica;
+    color:black; /* this is just for good looks */
+    font-size: 45px;
+    margin-top:300px;
+    margin-left:50px;
+}
   </style>
 </head>
 
@@ -392,7 +402,9 @@ box-shadow: -10px 15px 25px black;
   
 -->
         <div id="all_store_logos">
-        <h3 class='title'>Promotion at Ease</h3>
+        <h3 class='title_lbl'>Promotion at Ease</h3>
+        <button name="sign_up_btn_cus" type="submit" class=" bg-success button_style_by_us submit_btn" style=" width:150px; margin-left:50px; text-transform:uppercase; font-size:15px;" href="#"><b>get started<b></i></button>
+                                         
             <div class="angle_form " id="store1"> <img src="../images/jc_2.jpg" style="width:380px; Height:220px;"></div>
             <div class="angle_form" id="store2"> <img src="../images/ae_logo.png" style="width:350px; Height:220px;"></div>
             <div class="angle_form" id="store3"> <img src="../images/gamestop_logo.png" style="width:380px;height:220px;"></div>
