@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include "../includes/back_side_nav.php";
 
@@ -16,10 +17,11 @@ include "../includes/back_side_nav.php";
     <style>
     #table_box {
 
-        width: 800px;
-        margin-left: 400px;
+        width: 1000px;
+        margin-left: 200px;
         border: #000000;
         background-color: white;
+        margin-top:200px;
         
     }
 
@@ -46,11 +48,12 @@ include "../includes/back_side_nav.php";
 </head>
 <body>
 
-<div id="table_title"></div>
-    
+<div style='width:270px; height:100px; background-color:#53c68c; margin-top:90px;margin-left:930px; position:absolute;'> <h4 style='font-family: Arial Black, Arial, Helvetica;color:white;font-size: 20px;text-align:center; padding-top:20px'>Your Subscribers</h4></div>
+
+
 <div id="table_box">
 
-    <table class="table table-sm">
+    <table class="table table-sm" style='width:1000px; '>
     <thead>
         <tr>
         <th scope="col">Firstname</th>
@@ -61,29 +64,95 @@ include "../includes/back_side_nav.php";
         </tr>
     </thead>
     <tbody>
-        <tr>
-        <td scope="row">1</td>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>Otto</td>
-       
-        </tr>
-        <tr>
-        <td scope="row">2</td>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-        <td>Otto</td>
-        
-        </tr>
-        <tr>
-        <td scope="row">3</td>
-        <td colspan="2">Larry</td>
-        <td>@twitter</td>
-        <td>Otto</td>
-        
-        </tr>
+    <tr>
+    
+    <td>Mark</td>
+    <td>Otto</td>
+    <td>Junior@gmail.com</td>
+    <td>401-999-4521</td>
+    <td>2021-02-25</td>
+   
+    </tr> <tr>
+    
+    <td>Mark</td>
+    <td>Otto</td>
+    <td>Junior@gmail.com</td>
+    <td>401-999-4521</td>
+    <td>2021-02-25</td>
+   
+    </tr> <tr>
+    
+    <td>Mark</td>
+    <td>Otto</td>
+    <td>Junior@gmail.com</td>
+    <td>401-999-4521</td>
+    <td>2021-02-25</td>
+   
+    </tr> <tr>
+    
+    <td>Mark</td>
+    <td>Otto</td>
+    <td>Junior@gmail.com</td>
+    <td>401-999-4521</td>
+    <td>2021-02-25</td>
+   
+    </tr> <tr>
+    
+    <td>Mark</td>
+    <td>Otto</td>
+    <td>Junior@gmail.com</td>
+    <td>401-999-4521</td>
+    <td>2021-02-25</td>
+   
+    </tr> <tr>
+    
+    <td>Mark</td>
+    <td>Otto</td>
+    <td>Junior@gmail.com</td>
+    <td>401-999-4521</td>
+    <td>2021-02-25</td>
+   
+    </tr> <tr>
+    
+    <td>Mark</td>
+    <td>Otto</td>
+    <td>Junior@gmail.com</td>
+    <td>401-999-4521</td>
+    <td>2021-02-25</td>
+   
+    </tr> <tr>
+    
+    <td>Mark</td>
+    <td>Otto</td>
+    <td>Junior@gmail.com</td>
+    <td>401-999-4521</td>
+    <td>2021-02-25</td>
+   
+    </tr> <tr>
+    
+    <td>Mark</td>
+    <td>Otto</td>
+    <td>Junior@gmail.com</td>
+    <td>401-999-4521</td>
+    <td>2021-02-25</td>
+   
+    </tr> <tr>
+    
+    <td>Mark</td>
+    <td>Otto</td>
+    <td>Junior@gmail.com</td>
+    <td>401-999-4521</td>
+    <td>2021-02-25</td>
+   
+    </tr> <tr>
+    
+    <td>Mark</td>
+    <td>Otto</td>
+    <td>Junior@gmail.com</td>
+    <td>401-999-4521</td>
+    <td>2021-02-25</td>
+   
+    </tr>
     </tbody>
     </table>
 </div>

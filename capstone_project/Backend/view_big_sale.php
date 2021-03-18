@@ -1,6 +1,13 @@
 <?php
 session_start(); 
 
+if (isset($_SESSION["mer_ID"])) {
+  $mer_ID = $_SESSION["mer_ID"];    
+} else {    
+  $_SESSION["mer_ID"] = '';
+}
+
+
 include "../Model/model_add_merchant_store.php";
 include "../Model/model_promotions.php";
 include "../Model/model_products_BIG_SALE.php";
@@ -131,7 +138,20 @@ header("Location:add_products.php?prID=$promotion_ID");
 ?>
 
 <?php 
-include "../includes/back_customer_nav.php"; // this outputs information and has to be below the header or it wont work
+
+
+if (isset($_SESSION["mer_ID"])) {
+ 
+  include "../includes/back_side_nav.php";
+  // this outputs information and has to be below the header or it wont work
+ 
+} else {
+  session_unset();
+  $_SESSION["mer_ID"] = '';
+
+    // this outputs information and has to be below the header or it wont work
+    include "../includes/back_customer_nav.php";
+}
 
 ?>
 <!DOCTYPE html>
@@ -979,6 +999,7 @@ display:none;
     background-color:none;
     margin-top:40px;
     
+    
 }
 
 .big_sale_Produc_select
@@ -1234,7 +1255,7 @@ margin-top:0;
 .database_products
 {
   background-color:RGBA(255,230,5,0.2);
-  width:1100px;
+  width:1050px;
   border-radius:5px;
   height:560px;
   float:left;
@@ -1428,7 +1449,7 @@ margin-top:0;
     transition: all 750ms ease;
     left: 0;"> 
    
-    <li style=" height: 100%; float: left;width:1400px; background-color:E6FFFA;   margin-left:100px;"> 
+    <li style=" height: 100%; float: left;width:1400px; background-color:E6FFFA;   margin-left:50px;"> 
            
     
    
@@ -1443,7 +1464,7 @@ margin-top:0;
                 <hr>
                     <div class="big_sale_text_info">
                         <h3  class="big_sale_name_displayed"> <?php echo $promotion_title_name;?></h3><hr>
-                        <h4 class="big_sale_description_displayed">ONLY IN YOUR DREAMS LITTLE HOMIE</h4><br>
+                        <h4 class="big_sale_description_displayed">TAKE ADVANTAGE OF THIS SALE</h4><br>
                         <h6 class="big_sale_address_displayed">99 NEIT AVE STREET PROVIDENCE RI 02801</h6><br>
                         
                     </div>

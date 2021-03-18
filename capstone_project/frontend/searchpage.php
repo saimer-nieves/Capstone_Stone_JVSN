@@ -7,9 +7,11 @@ include "../includes/header.php";
 
 
 $store_name_searched = $_GET["selectedStore"];
-// var_dump($action_type);
-// exit;
+
+
+
 $answer_all_stores_array = get_searched_stores($store_name_searched);
+$answer_all_admin_stores_array = get_searched_admin_stores($store_name_searched);
 
 
 
@@ -24,9 +26,14 @@ $answer_all_stores_array = get_searched_stores($store_name_searched);
     <title>Document</title>
 
     <style>
+
+    body
+    {
+        
+    }
     .allSearch_result
     {
-    background-color: red;
+    background-color: none;
     width: 100%;
     height: 600px;
     margin-top: 200px;
@@ -35,7 +42,7 @@ $answer_all_stores_array = get_searched_stores($store_name_searched);
    .oneSearch_result
    {
     border-top: 20px solid #53C68C;
-    background-color: yellow;
+    background-color: none;
     width: 100%;
     height: 300px;
     float:left;
@@ -43,7 +50,7 @@ $answer_all_stores_array = get_searched_stores($store_name_searched);
 
    .leftStoreContent
 {
-    background-color: pink;
+    background-color: none;
     width: 800px;
     height: 100%;
     float:  left;
@@ -51,7 +58,7 @@ $answer_all_stores_array = get_searched_stores($store_name_searched);
 
 .rightStoreContent
 {
-    background-color: brown;
+    background-color: none;
     width: 400px;
     height: 100%;
     float:  left;
@@ -133,12 +140,10 @@ $answer_all_stores_array = get_searched_stores($store_name_searched);
 
       
     </div>
-    <?php
-        include "../includes/footer.php";
-    ?>
+  
 </body>
 </html>
-<?php foreach ($answer_all_stores_array as $col):?>                  
+<?php foreach ($answer_all_stores_array as $col): echo 'saimer';?>                  
 
     <script>
         var allSearch_result = document.querySelector(".allSearch_result");
@@ -190,7 +195,95 @@ $answer_all_stores_array = get_searched_stores($store_name_searched);
 
         allSearch_result.appendChild(oneSearch_result);
 
+        
+
+
 
     </script>
 
+
+<script>
+
+    var delete_btn_design = document.querySelector('.delete_btn_design');
+    delete_btn_design.addEventListener('click',function(){
+        console.log('its meeee')
+        window.location.replace("sign_up_Customer.php");
+    })
+
+
+</script>
 <?php endforeach;?>
+</html>
+<?php foreach ($answer_all_admin_stores_array as $col): echo 'saimer';?>                  
+
+    <script>
+        var allSearch_result = document.querySelector(".allSearch_result");
+        var oneSearch_result = document.createElement("div");
+        oneSearch_result.setAttribute("class","oneSearch_result");
+
+        var leftStoreContent =  document.createElement("div");
+        leftStoreContent.setAttribute("class","leftStoreContent");
+
+            var store_logo_img =  document.createElement("img");
+            store_logo_img.setAttribute("src","../images/<?php echo $col['store_img_logo'];?>");
+            store_logo_img.setAttribute("class","storeFoundLogo");
+
+            var textContent_div =  document.createElement("div");
+            textContent_div.setAttribute("class","textContent");
+
+                var h5_storeTitle =  document.createElement("div");
+                h5_storeTitle.setAttribute("class","storeTitle");
+                h5_storeTitle.innerHTML = '<?php echo $col['store_name'];?>';
+
+
+                var h6_storeType =  document.createElement("div");
+                h6_storeType.setAttribute("class","storeType");
+                h6_storeType.innerHTML = '<?php echo $col['store_category'];?>';
+
+
+
+        var rightStoreContent =  document.createElement("div");
+        rightStoreContent.setAttribute("class","rightStoreContent");
+
+        var subscription_btn =  document.createElement("button");
+        subscription_btn.setAttribute("name","unsubscribe_btn");
+        subscription_btn.setAttribute("class","delete_btn_design");
+        subscription_btn.innerHTML = "Subscribe <img src='../images/plus_icon.png' class='trash_img'>"
+
+
+
+        leftStoreContent.appendChild(store_logo_img);
+        leftStoreContent.appendChild(textContent_div);
+            textContent_div.appendChild(h5_storeTitle);
+            textContent_div.appendChild(h6_storeType);
+
+        rightStoreContent.appendChild(subscription_btn);
+        
+
+
+        oneSearch_result.appendChild(leftStoreContent);
+        oneSearch_result.appendChild(rightStoreContent);
+
+        allSearch_result.appendChild(oneSearch_result);
+
+        
+
+
+
+    </script>
+
+
+<script>
+
+    var delete_btn_design = document.querySelector('.delete_btn_design');
+    delete_btn_design.addEventListener('click',function(){
+        console.log('its meeee')
+        window.location.replace("sign_up_Customer.php");
+    })
+
+
+</script>
+<?php endforeach;?>
+<?php
+        include "../includes/footer.php";
+    ?>

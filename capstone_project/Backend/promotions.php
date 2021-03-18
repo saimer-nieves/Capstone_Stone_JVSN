@@ -460,7 +460,7 @@ background: none;
 
 #center_view_flip
 {
-  background-color:red;
+  background-color:none;
   height:250px;
   width:300px;
   left:500px;
@@ -503,7 +503,7 @@ background: none;
 }
 
 .flip-card-front {
-  background-color:#53C68C ;
+  background-color:white ;
   color: black;
 }
 
@@ -1455,9 +1455,9 @@ $(document).ready(function(){
               
               coupon_template.style.display="none";
               info_template.style.display="none";
-              big_sale_template.style.display="block";
-              center_view_flip.style.display="block";
-              flip_close_div.style.display="block";
+              big_sale_template.style.display="none";
+              center_view_flip.style.display="none";
+              flip_close_div.style.display="none";
 
 
 

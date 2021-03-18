@@ -540,7 +540,7 @@ height:32px;
 
             <div id="all_stores_bottom">
               <form method="POST" action = "<?php $_PHP_SELF ?>" enctype="multipart/form-data">
-                <button name="plus_merchant_btn" type="button" id="plus_symbol" style="margin-top:50px; margin-left:500px; height:100px; width:150px;font-weight:bold;" ><img src="../images/plus_icon.png" style="width:30px;"></i></button>
+                <button name="plus_merchant_btn" type="button" id="plus_symbol" style="margin-top:50px; margin-left:500px; height:100px; width:150px;font-weight:bold; background-color:#53c68c;" ><img src="../images/plus_icon.png" style="width:30px;"></i></button>
               </form>
             </div>
 

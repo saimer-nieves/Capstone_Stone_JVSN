@@ -3,14 +3,15 @@ session_start();
 
 include "../Model/model_add_merchant_store.php";
 include "../Model/model_promotions.php";
+include "../Model/model_subscriptions.php";
 
 $mer_ID= $_SESSION["mer_ID"];
 
 $message = ''; 
-if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
+if (isset($_POST['uploadBtn']))
 {
 
-
+  
   /*THIS SECTION TAKES CARE OF UPLOADING FILE TO FOLDER */
   if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK)
   {
@@ -20,6 +21,7 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
 
     
     $fileName = $_FILES['uploadedFile']['name'];
+    
     $fileSize = $_FILES['uploadedFile']['size'];
     $fileType = $_FILES['uploadedFile']['type'];
     $fileNameCmps = explode(".", $fileName);
@@ -76,8 +78,12 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
   $store_category = filter_input(INPUT_POST, 'store_category');
 
   $results = add_merchant_stores($store_name, $store_category,date("Y-m-d"), $fileName, $mer_ID);
-
-
+  $answer_part2  = get_merchant_stores_WITHNAME($store_name);
+  foreach($answer_part2 as $row)
+  {
+    $test = add_subscriber("true", date("Y-m-d"), null, $row['store_ID'], 5);
+  }
+  
   $results_array = get_merchant_stores($_SESSION["mer_ID"]);
   $number_of_stores =  count($results_array);
   $_SESSION["number_of_stores"] =  $number_of_stores;
@@ -178,6 +184,18 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
         z-index: 4;
       }
 
+      .blah
+{
+ 
+   
+    //object-fit: cover;
+    
+    height:100%;
+    max-width:100%;
+    
+  
+}
+
       #logo_div
       {
         height:250px;
@@ -186,10 +204,17 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
         margin-left:200px;
         margin-top:100px;
         
-        padding-top:100px;
-        padding-left:90px;
+  
 
         z-index: -3;
+
+
+        
+ 
+  justify-content:center; /* horizontally center */
+    align-items:center;    /* vertically center */
+    display:flex;
+
       }
 
 
@@ -388,7 +413,8 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
     .button_spot_position
     {
       position:absolute;
-      margin-top:205px;
+      margin-top:305px;
+      margin-left:430px;
       left:300px;
     }
 
@@ -416,12 +442,15 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
       unset($_SESSION['message']);
     }
   ?>
+
+<div style='width:570px; height:100px; background-color:#53c68c; margin-top:50px;margin-left:400px; position:absolute;'> <h4 style='font-family: Arial Black, Arial, Helvetica;color:white;font-size: 45px;text-align:center; padding-top:20px'>Add Store</h4></div>
+
 <a href="../Backend/merchant_main_panel.php" class="button_returns" style=" margin-left:200px; margin-top:50px;position:absolute; border-radius:10px;">
 
   <img src="../images/left_return_arrow.png" style="height:30px; ">
   </a>
   <form method="POST" action = "<?php $_PHP_SELF ?>" enctype="multipart/form-data" style="background-color:none;padding-top:100px;">
-    <div class="upload-wrapper" style="padding-bottom:360px; background-color:none;">
+    <div class="upload-wrapper" style="padding-bottom:360px; margin-top:50px; background-color:none;">
       <!--<span class="file-name">Choose a file...</span>-->
      
 
@@ -435,7 +464,7 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
           <div id="logo_div">
           
           
-              
+          <img class='blah ' src='../images/sample_pic_placeholder.PNG' alt='your image' />
             
             
             
@@ -443,12 +472,12 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
           </div>
           <div class="button-wrap button_spot_position">
                 <label class="button" for="upload">Add Logo</label>
-                <input  type="file" id="upload" name="uploadedFile">    <!--FORM ELEMENT *********************-->
+                   <!--FORM ELEMENT ******  onchange='readURL(this)'***************-->
           </div>
 
           <div id="text_boxes_div">
             <div class="form-group">
-              <label for="usr" >Sotore ID:</label>
+              <label for="usr" >Store Name:</label>
                 <input type="text" maxlength = 16 class="form-control" id="store_name"  name ="store_name">      <!--FORM ELEMENT *********************-->
             </div>
 
@@ -457,17 +486,27 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
               <label for="sel1">Select list:</label>
               <select name="store_category" class="form-control" id="sel1">             <!--FORM ELEMENT *********************-->
                 <option>Video Game </option>
-                <option>Cloth</option>
+                <option>Clothing</option>
                 <option>Bar</option>
-                <option>Bible Study</option>
-                <option>IT</option>
-                <option>Lambo</option>
+                <option>Religion</option>
+                <option>Resturant</option>
+                <option>Cars & Vehicles</option>
+                <option>Jewelry</option>
+                <option>Arcade</option>
+                <option>Furniture</option>
+                <option>Shoes</option>
               </select>
+            </div>
+
+            <div class="form-group">
+              <label for="usr" >Store Logo:</label>
+              <input  type="file"  onchange='readURL(this);'  id="upload" name="uploadedFile">    <!--FORM ELEMENT *********************-->   <!--FORM ELEMENT *********************-->
             </div>
 
 
 
-            <input type="submit" name="uploadBtn" value="Upload" id="uploading_btn" />
+
+            <input type="submit" name="uploadBtn" value="Upload" id="uploading_btn" style='background-color:#53c68c; margin-top:120px;'/>
       </div>
 
       
@@ -498,6 +537,27 @@ include "../includes/back_side_nav.php"; // this outputs information and has to 
 <script>
 
 
+
+</script>
+
+
+
+<script>
+
+function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.blah')
+                        .attr('src', e.target.result)
+                        .width(400)
+                        
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
 
 </script>
 

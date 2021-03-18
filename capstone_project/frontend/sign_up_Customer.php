@@ -6,7 +6,7 @@ include "../includes/functions.php";
 include "../Model/model_sign_ups.php";
 include "../Model/model_logins.php";
 
-
+include "../Model/model_add_merchant_store.php";
 
 
 
@@ -234,7 +234,7 @@ height: 230px;
     </style>
 </head>
 
-<body style="background-color:#53C68C ;" >
+<body style="background-color:none ;" >
 	<div style="background-color:#E6FFFA ">
 	   
     <img src="../images/cus_display2.png" alt="cus_login_photo" id="cus_photo_clean">

@@ -20,6 +20,48 @@ function get_merchant_stores($mer_ID) {
 
 }
 
+function get_merchant_stores_WITHNAME($store_name) {
+    global $db;
+
+    $results = [];
+    
+    $stmt = $db->prepare("SELECT store_ID, store_name, store_category, store_day_created, store_img_logo,mer_ID FROM merchant_stores_tbl WHERE store_name = :store_name");
+
+    $stmt->bindValue(":store_name", $store_name);
+
+    if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);   
+    }
+
+    return $results;
+
+}
+
+function get_searched_admin_stores($store_name) {
+    global $db;
+
+    $results = [];
+    
+    $stmt = $db->prepare("SELECT admin_store_ID, store_name, store_category, store_day_created, store_img_logo FROM admin_stores_tbl WHERE store_name = :store_name");
+
+    $stmt->bindValue(":store_name", $store_name);
+
+    if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);   
+    }
+
+    return $results;
+
+}
+
+
+
+
+
+
+
+
+
 /*
 $results = get_merchant_stores(1);
 var_dump($results[0]["store_category"]);

@@ -131,7 +131,7 @@ if (isset($_POST['coupon_submit']) )
     $results = add_promotions( $promotion_type, $promotion_title, $promotion_subheading, $promotion_address, $promotion_exp_date, $promotion_description, $promotion_code, $store_ID);
   // $testing = add_promotions("today", "Fall Big Sale", "2021-02-17", "Come buy fall color shirts 50%", 4561561210,52);
 
-  // header("Location:promotions.php");
+   header("Location:promotions.php");
 
 
   
@@ -178,7 +178,7 @@ if (isset($_POST['info_submit']) )
     $results = add_promotions( $promotion_type, $promotion_title, $promotion_subheading, $promotion_address, $promotion_exp_date, $promotion_description, $promotion_code, $store_ID);
   // $testing = add_promotions("today", "Fall Big Sale", "2021-02-17", "Come buy fall color shirts 50%", 4561561210,52);
 
-  //header("Location:promotions.php");
+  header("Location:promotions.php");
 
 
   
@@ -1480,7 +1480,7 @@ margin-top:0;
     transition: all 750ms ease;
     left: 0;"> 
    
-    <li style=" height: 100%; float: left;width:1400px; background-color:E6FFFA;   margin-right:200px;"> 
+    <li style=" height: 100%; float: left;width:1400px; background-color:E6FFFA;   margin-right:100px;"> 
               <div id="all_promotions">
 
           <!-- TESTING PURPOSES  <div style="background:#98bf21;height:100px;width:100px;position:absolute;"></div>  -->
@@ -1530,7 +1530,7 @@ margin-top:0;
     
     </li>
 
-    <li style=" height: 100%; float: left; width:1400px; background-color:E6FFFA; margin-right:200px;">
+    <li style=" height: 100%; float: left; width:1400px; background-color:E6FFFA; margin-right:100px;">
     
     
               <div id="selected_div">
@@ -1743,22 +1743,7 @@ margin-top:0;
 
                               </form>
                               </div>
-                              <div id="display_sample_big_sale">
-                    
-
-                                <h5 id="store2" name="big_sale_store"> Store</h5>
-                                <h3 id="title2" name="big_sale_title">Title here</h3>
-                                
-                                <h6 id="expire2" name="big_sale_expire"> expire</h6>
-                                <h6 id="description2" name="big_sale_description"> description</h6>
-
-                                
-                                
-                                  <h6 id="address2" name="big_sale_address"> address</h6>
-                              
-
-                                
-                              </div>
+                             
 
                       </div>
 

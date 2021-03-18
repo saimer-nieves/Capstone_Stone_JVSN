@@ -865,7 +865,7 @@ background-size: cover   !important;
 
 
 <div id="box">
-
+<div style='width:570px; height:100px; background-color:#53c68c; margin-left:500px; margin-bottom:10px;'> <h4 style='font-family: Arial Black, Arial, Helvetica;color:white;font-size: 45px;text-align:center; padding-top:20px'>Your Subscriptions</h4></div>
 
   <div class="all_container ">
   

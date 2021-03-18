@@ -388,14 +388,14 @@ box-shadow: -10px 15px 25px black;
 }
 
 .info_text{
-  background-color: red;
-  width: 500px;
+  background-color: none;
+  width: 600px;
   height: 400px;
   margin-left: 200px;
   position: absolute;
   float: left;
-  margin-left: 900px;
-  margin-top: 30px;
+  margin-left: 650px;
+  margin-top: -30px;
 }
 
 .image_logo_center
@@ -480,7 +480,7 @@ Luisa Martinez
   </section><!-- End Hero -->
   <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100" style="position:absolute; right:740px; top:698px;">
             
-            <img src="../images/front_index_pic.PNG" style="width:700px; height:400px; margin-top:30px; margin-left:20px; float:left;">
+            <img src="../images/front_index_pic.PNG" style="width:650px; height:380px; margin-top:30px; margin-left:20px; float:left;">
 <div  class="info_text">
   <h4><center><b>About us</b></center></h4>
   <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
@@ -500,6 +500,11 @@ Luisa Martinez
 
 
         </div>
+        <img src="../images/front_index_pic.PNG" style="width:650px; height:380px; margin-top:-50px; margin-left:-100px; float:left;">
+<div  class="info_text">
+  <h4><center><b>About us</b></center></h4>
+  <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+</div>
 
       </div>
     </section><!-- End About Section -->

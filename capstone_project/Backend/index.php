@@ -594,7 +594,7 @@ position:absolute;
 
 
 
-<body style=' background-color:rgb(0,0,0,0.75); height:auto;'>
+<body class = 'body__' style=' background-color:rgb(0,0,0,0.75); height:auto;'>
 
   <!-- ======= Header ======= -->
   <?php 
@@ -603,6 +603,7 @@ position:absolute;
   ?>
   <!-- ======= Hero Section ======= -->
 
+  <div style='width:570px; height:100px; background-color:rgba(0,0,0,0.2); margin-left:650px; margin-bottom:10px; position:absolute; z-index:9999; border-bottom: 10px solid white;'> <h4 style='font-family: Arial Black, Arial, Helvetica;color:white;font-size: 45px;text-align:center; padding-top:20px'>Search Subscriptions</h4></div>
 
 
 <div id="slider">
@@ -634,9 +635,9 @@ position:absolute;
     </section><!-- End Hero -->
 
   </li>
-  <li style=" height: 100%; float: left; width:1280px; background-color:none; margin-right:0px;">
+  <li style=" height: 100%; float: left; width:1680px; background-color:none; margin-right:0px; ">
 
-    <section id="hero" class="d-flex align-items-center">
+    <section id="hero" class="d-flex align-items-center" style='padding-left:100px;'>
 
     
 
@@ -653,24 +654,7 @@ position:absolute;
 
   </li>
 
-  <li style=" height: 100%; float: left; width:1580px; background-color:none; margin-right:0px;">
-
-<section id="hero" class="d-flex align-items-center">
-
-
-
-<div class="all_store_container all_store_container2">
-
-
-
-
-</div>
- 
-
-
-</section><!-- End Hero -->
-
-</li>
+  
   
 
 </ul>
@@ -742,26 +726,29 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
 
 
 
+<div style='width:570px; height:100px; background-color:rgba(0,0,0,0.2); margin-left:650px; margin-bottom:10px; position:absolute; z-index:9999; border-bottom: 10px solid white;'> <h4 style='font-family: Arial Black, Arial, Helvetica;color:white;font-size: 45px;text-align:center; padding-top:20px'>New Subscriptions</h4></div>
+
+
 
 
 <div id="slider2">
 <ul id="slideWrap2" style="position: relative;
     list-style: none;
-    height: 100%;
+    height: 2000px;
     width: 400%;
     padding-left:0px;
     margin: 0;
     transition: all 750ms ease;
-    left: 0;"> 
+    left: 0; "> 
 
 
-  <li style=" height: auto; float: left; width:1400px; background-color:E6FFFA; margin-right:0px;">
+  <li style=" float: left; width:1400px; background-color:E6FFFA; margin-right:0px;">
 
-    <section id="hero" class="d-flex align-items-center">
+    <section id="hero" class="d-flex align-items-center" style='height:2000px;'>
 
     
 
-    <div class="all_created_store_container " style='width:1200px; background-color:none;'>
+    <div class="all_created_store_container all_created_store_container1 " style='width:1200px; background-color:none; margin-top:400px; height:800px;'>
 
 
  
@@ -906,8 +893,11 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
   
 <?php  foreach($all_created_stores as $row) : ?>
     
+        var all_created_store_container1 = document.querySelector(".all_created_store_container1")
         var created_all_container1 = document.querySelector(".all_created_store_container")
         created_all_container1.style.height= '<?php echo $box_sizing;?>px'
+        all_created_store_container1.style.height= '<?php echo $box_sizing;?>px'
+        
       //  all_container.innerHTML += " <div class='unique_store_OUTER'> <div class='unique_store uniqueStore<?php echo $index_num;?>  unique_logo_display' style='background-image:url(../images/<?php echo $row['store_img_logo'];?>); ' ></div> <div class='store_info_box store_info_box<?php echo $index_num;?> text_info<?php echo $index_num;?>'> </div> </div> "
 
         created_all_container1.innerHTML += " <div class='unique_store_OUTER'> <div class='unique_store created_uniqueStore<?php echo $created_index_num;?>  unique_logo_display' style='background-image:url(../Backend/uploaded_files/<?php echo $row['store_img_logo'];?>); ' ></div> <div class='store_info_box created_store_info_box<?php echo $created_index_num;?> created_text_info<?php echo $created_index_num;?>'> <input type='text' class='pressed_btn_txt created_pressed_btn_txt<?php echo $created_index_num;?>' value='0'> <div class='subscribe_outershell subscribe_outershell<?php echo $created_index_num;?>'> <div class='app-coverbtn created_app-coverbtn<?php echo $created_index_num;?>'> <div class='unsub_content created_unsub_content<?php echo $created_index_num;?>'> <input type='checkbox' class='checkboxbtn checkboxbtn<?php echo $created_index_num;?>'> <img src='../images/subscribe_plus.png' alt='plus' class ='plus_pic' style='position:absolute; height:50px;'> <div class='layerbtn layerbtn<?php echo $created_index_num;?>'></div> </div></div></div></div> </div> "
@@ -928,7 +918,7 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
 
     <?php  $created_z_index_num--;?>
     <?php  $created_index_num++;?>
-    <?php $box_sizing = $box_sizing + 50;?>
+    <?php $box_sizing = $box_sizing + 100;?>
 
     <?php endforeach;?>
 
